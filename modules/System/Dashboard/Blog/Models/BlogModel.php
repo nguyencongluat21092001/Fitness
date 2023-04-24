@@ -1,0 +1,50 @@
+<?php
+
+namespace Modules\System\Dashboard\Blog\Models;
+
+use Illuminate\Database\Eloquent\Model;
+use Modules\System\Dashboard\Blog\Models\BlogDetailModel;
+use Modules\System\Dashboard\Blog\Models\BlogImagesModel;
+
+class BlogModel extends Model
+{
+    protected $table = 'blogs';
+    public $incrementing = false;
+    public $timestamps = false;
+
+    protected $fillable = [
+        'id',
+        'code_blog',
+        'user_id',
+        'code_category',
+        'status',
+        'created_at',
+        'updated_at'
+    ];
+
+    public function filter($query, $param, $value)
+    {
+        switch ($param) {
+            // case 'search':
+            //     $this->value = $value;
+            //     // dd($this->value);
+            //     return $query->where(function ($query) {
+            //         $query->where('name', 'like', '%' . $this->value . '%');
+            //     });
+            //     return $query;
+            // case 'role':
+            //     $query->where('role', $value);
+            //     return $query;
+            default:
+                return $query;
+        }
+    }
+    public function detailBlog()
+    {
+        return $this->hasOne(BlogDetailModel::class, 'code_blog', 'code_blog');
+    }
+    public function imageBlog()
+    {
+        return $this->hasMany(BlogImagesModel::class, 'code_blog', 'code_blog');
+    }
+}
