@@ -20,10 +20,10 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
         <tbody>
             @foreach ($datas as $key => $data)
                 <tr>
-                    <td style="width:5%;padding-top: 75px" align="center"><input type="checkbox" name="chk_item_id"
+                    <td style="width:5%;vertical-align: middle;" align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data['id'] }}"></td>
-                    <td style="width:5%;padding-top: 75px" align="center">{{ $key + 1 }}
-                    <td style="width:65%;height:150px;padding-left:30px" >
+                    <td style="width:5%;vertical-align: middle;" align="center">{{ $key + 1 }}
+                    <td style="width:65%;height:150px;padding-left:30px;vertical-align: middle;" >
                        <div>
                            <div>Tên người dùng : {{ $data['name'] }}</div>
                            <div>Số điện thoại : {{ $data['phone'] }}</div>
@@ -34,7 +34,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                        </div>
                         
                     </td>
-                    <td style="width:20%;" align="center"><img  src="{{url('/file-image/avatar/')}}/{{$data['avatar']}}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;"></td>
+                    <td style="width:20%;vertical-align: middle;" align="center"><img  src="{{url('/file-image/avatar/')}}/{{$data['avatar']}}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;"></td>
                 </tr>
             @endforeach
         </tbody>

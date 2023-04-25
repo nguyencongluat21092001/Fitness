@@ -31,6 +31,7 @@ Js_Main.prototype.darkMode = function (el) {
 
   // if (!el.getAttribute("checked")) {
   if(el == 1){
+    body.classList.remove('bg-white');
     body.classList.add('dark-version');
     // if (navbarBrandImg.includes('logo-ct-dark.png')) {
     //   var navbarBrandImgNew = navbarBrandImg.replace("logo-ct-dark", "logo-ct");

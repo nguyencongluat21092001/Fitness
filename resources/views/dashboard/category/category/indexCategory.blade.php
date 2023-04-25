@@ -14,27 +14,31 @@
                             <button class="btn btn-light btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
                             data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Danh mục</button>
                         </a>
-                        
-                        
-                            &nbsp;
+                        <a>
+                             &nbsp;
                             <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
                             data-original-title="Thêm danh mục"><i class="fas fa-list-alt"></i> Thể loại</button>
+                        </a>
+                            
                     </ol>
-                    @if(Auth::user()->role == 1)
-                    <div class="breadcrumb-input-right">
-                        <button class="btn btn-success btn-sm shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
-                            data-original-title="Thêm danh mục"><i class="fas fa-user-plus"></i></button>
-                        <button class="btn btn-warning btn-sm shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
-                            data-original-title="SỬa danh mục"><i class="fas fa-user-edit"></i></button>
-                        <button class="btn btn-danger btn-sm shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
-                            data-original-title="Xóa người dùng"><i class="fas fa-user-times"></i></button>
-                    </div>
-                    @endif
+                   
                 </div>
                 <section class="content-wrapper">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row form-group" style="text-align: center;">
+                                 <div class="col-md-3">
+                                    @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'STAFF')
+                                    <div class="breadcrumb-input-right">
+                                        <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
+                                            data-original-title="Thêm thể loại"><i class="fas fa-user-plus"></i></button>
+                                        <button class="btn btn-warning shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
+                                            data-original-title="SỬa thể loại"><i class="fas fa-user-edit"></i></button>
+                                        <button class="btn btn-danger shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
+                                            data-original-title="Xóa thể loại"><i class="fas fa-user-times"></i></button>
+                                    </div>
+                                    @endif
+                                 </div>
                                 <div class="col-md-2">
                                     <select class="form-control input-sm chzn-select" name="cate"
                                         id="cate">

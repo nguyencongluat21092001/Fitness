@@ -25,15 +25,15 @@ use Modules\System\Dashboard\Blog\Models\BlogImagesModel;
         <tbody>
         @foreach ($datas as $key => $data)
                 <tr>
-                    <td style="width:5% " align="center"><input type="checkbox" name="chk_item_id"
+                    <td style="width:5% ;vertical-align: middle;" align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data['id'] }}"></td>
-                    <td style="width:5% " align="center">{{ $key + 1 }}</td>
-                    <td style="width:5% " align="center">{{ $data['created_at'] }}</td>
-                    <td style="width:15% ;white-space: inherit;">{{ $data->detailBlog->title }}</td>
-                    <td style="width:60% ;white-space: inherit;">{{ $data->detailBlog->decision }}</td>
-                    <td style="width:20%;" align="center"><img  src="{{url('/file-image-client/blogs/')}}/{{ $data->imageBlog[0]->name_image }}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;"></td>
-                    <td style="width:5% " align="center">{{($data['status'] == '1') ? 'Hoạt động' : 'Không hoạt động'}}</td>
-                    <td style="width:5% " align="center"><i style="color:#7cff87" class="far fa-eye"></i></td>
+                    <td style="width:5% ;vertical-align: middle;" align="center">{{ $key + 1 }}</td>
+                    <td style="width:5% ;vertical-align: middle;" align="center">{{ $data['created_at'] }}</td>
+                    <td style="width:20% ;white-space: inherit;vertical-align: middle;">{{ $data->detailBlog->title }}</td>
+                    <td style="width:60% ;white-space: inherit;vertical-align: middle;">{{ $data->detailBlog->decision }}</td>
+                    <td style="width:20%;vertical-align: middle;" align="center"><img  src="{{url('/file-image-client/blogs/')}}/{{ $data->imageBlog[0]->name_image }}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;"></td>
+                    <td style="width:5% ;vertical-align: middle;" align="center">{{($data['status'] == '1') ? 'Hoạt động' : 'Không hoạt động'}}</td>
+                    <td style="width:5% ;vertical-align: middle;" align="center"><i style="color:#7cff87" class="far fa-eye"></i></td>
                 </tr>
             @endforeach
         </tbody>

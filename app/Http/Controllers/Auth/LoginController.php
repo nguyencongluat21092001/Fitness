@@ -43,19 +43,21 @@ class LoginController extends Controller
             $_SESSION["id"]   = $getUsers->id;
             $_SESSION["email"]   = $user->email;
             $_SESSION["color_view"] = !empty($getInfo->color_view)?$getInfo->color_view:2;
+            // menu sidebar
+            $sideBarConfig = config('SidebarSystem');
+            $sideBar = $this->checkPermision($sideBarConfig , $user->role);
+            $_SESSION["sidebar"] = $sideBar;
             // kiem tra quyen nguoi dung
-            if ($user->role == '1' || $user->role == '2' || $user->role == '3') {
+            if ($user->role == 'ADMIN' || $user->role == 'MANAGE' || $user->role == 'STAFF') {
                 Auth::guard('web')->login($user);
                 return redirect('system/home/index');
-            } else {
+            } else if ($user->role == 'USERS') {
                 Auth::guard('web')->login($user);
                 return view('client.home.home');
             }
         } else {
             $data['class'] = 'form-control error';
             $data['message'] = "Sai tên đăng nhập hoặc mật khẩu!";
-            // $this->middleware('guest')->except('logout');
-            // dd($data);
             return view('auth.signin',compact('data'));
         }
     }
@@ -70,4 +72,13 @@ class LoginController extends Controller
     {
         return view('auth.signin');
     }
+    // check quyền hiển thị menu
+    private function checkPermision($menu,$role){
+        foreach ($menu as $key => $value) {
+            if ($key == $role) {
+                $menu = $value;
+                return  $menu;
+            }
+        }
+   }
 }
