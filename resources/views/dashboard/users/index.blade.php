@@ -22,7 +22,7 @@
                 <section class="content-wrapper">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="row form-group" style="text-align: center;">
+                            <div class="row form-group">
                             <div class="col-md-3">
                             <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
                             data-original-title="Thêm người dùng"><i class="fas fa-user-plus"></i></button>
