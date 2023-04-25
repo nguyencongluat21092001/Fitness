@@ -31,13 +31,14 @@
                         <button class="btn btn-danger btn-sm shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
                             data-original-title="Xóa bài viết"><i class="fas fa-user-times"></i></button>
                             </div>
-                            
                                 <div class="col-md-2">
-                                    <select class="form-control input-sm chzn-select" name="role"
-                                        id="role">
-                                        <option value=''>-- Thể loại --</option>
-                                        <option value="1">Thế giới</option>
-                                        <option value="2">Thị trường</option>
+                                    <select class="form-control input-sm chzn-select" name="category"
+                                        id="category">
+                                        <option value=''>-- Chọn thể loại --</option>
+                                        @foreach($data['category'] as $item){
+                                            <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
+                                        }
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="input-group" style="width:40%;height:10%">
@@ -46,7 +47,6 @@
                                     <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm...">
                                 </div>
                                 <button style="width:5%" id="txt_search" name="txt_search" type="button" class="btn btn-dark"><i class="fas fa-search"></i></button>
-
                             </div>
                             <!-- Màn hình danh sách -->
                             <div class="row" id="table-container" style="padding-top:10px"></div>

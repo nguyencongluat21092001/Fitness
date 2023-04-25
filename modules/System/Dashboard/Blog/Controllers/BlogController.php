@@ -4,6 +4,7 @@ namespace Modules\System\Dashboard\Blog\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\System\Dashboard\Category\Services\CategoryService;
+use Modules\System\Dashboard\Category\Services\CateService;
 use Modules\System\Dashboard\Blog\Services\BlogService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,9 +20,11 @@ use str;
 class BlogController extends Controller
 {
     public function __construct(
+        CateService $cateService,
         CategoryService $categoryService,
         BlogService $blogService
     ){
+        $this->cateService = $cateService;
         $this->categoryService = $categoryService;
         $this->blogService = $blogService;
     }
@@ -33,7 +36,10 @@ class BlogController extends Controller
      */
     public function index(Request $request)
     {
-        return view('dashboard.blog.index');
+        $cate = $this->cateService->where('code_cate','DM_BLOG')->first();
+        $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
+        $data['category'] = $category;
+        return view('dashboard.blog.index',compact('data'));
     }
     /**
      * user_info
@@ -135,8 +141,12 @@ class BlogController extends Controller
     public function loadList(Request $request)
     { 
         $arrInput = $request->input();
+        
         $data = array();
         $param = $arrInput;
+        if($param['category'] == '' || $param['category'] == null){
+            unset($param['category']);
+        }
         $objResult = $this->blogService->filter($param);
         $data['datas']= $objResult;
         return view("dashboard.blog.loadlist", $data)->render();

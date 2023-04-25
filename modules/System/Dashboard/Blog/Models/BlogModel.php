@@ -25,16 +25,16 @@ class BlogModel extends Model
     public function filter($query, $param, $value)
     {
         switch ($param) {
-            // case 'search':
-            //     $this->value = $value;
-            //     // dd($this->value);
-            //     return $query->where(function ($query) {
-            //         $query->where('name', 'like', '%' . $this->value . '%');
-            //     });
-            //     return $query;
-            // case 'role':
-            //     $query->where('role', $value);
-            //     return $query;
+            case 'search':
+                $this->value = $value;
+                // dd($this->value);
+                return $query->where(function ($query) {
+                    $query->whereRelation('detailBlog', 'title',$this->value )
+                          ->orWhere('code_blog', 'like', '%' . $this->value . '%');
+                });
+            case 'category':
+                $query->where('code_category', $value);
+                return $query;
             default:
                 return $query;
         }

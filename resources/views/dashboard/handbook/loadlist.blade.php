@@ -73,14 +73,6 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
 <!-- <div class="modal" id="videomodal" role="dialog"></div> -->
 
 <script>
-    // Swal.fire({
-    //     position: 'top-center',
-    //     title:'<img src="../assets/images/loading.gif" alt="#" />',
-    //     // background-color: none,
-    //     background:  'none',
-    //     showConfirmButton: false,
-    //     timer: 3000
-    // })
 function coppy(e) {
   navigator.clipboard.writeText(e);
   // Alert the copied text

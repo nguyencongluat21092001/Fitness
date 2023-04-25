@@ -18,7 +18,7 @@ class CheckLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::check() && $_SESSION["role"] == 1){
+        if(Auth::check() && ($_SESSION["role"] == 'ADMIN' || $_SESSION["role"] == 'MANAGE')){
             return $next($request);
         };
         return redirect()->route('404_notFound');

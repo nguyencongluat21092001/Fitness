@@ -35,7 +35,7 @@ JS_Blogs
         myClass.updatePass('form#frmChangePass');
     })
      // form load
-     $(oForm).find('#role').change(function () {
+     $(oForm).find('#category').change(function () {
         var page = $(oForm).find('#limit').val();
         var perPage = $(oForm).find('#cbo_nuber_record_page').val();
         myClass.loadList(oForm, page, perPage);
@@ -180,7 +180,7 @@ JS_Blogs
     var myClass = this;
     var url = this.urlPath + '/loadList';
     var data = 'search=' + $("#search").val();
-    data += '&role=' +$("#role").val();
+    data += '&category=' +$("#category").val();
     data += '&offset=' + numberPage;
     data += '&limit=' + perPage;
     console.log(data)

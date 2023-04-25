@@ -22,14 +22,14 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
         <tbody>
             @foreach ($datas as $key => $data)
                 <tr>
-                    <td style="width:5%" align="center"><input type="checkbox" name="chk_item_id"
+                    <td style="width:5%;vertical-align: middle;" align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data->id }}"></td>
-                    <td style="width:5%" align="center">{{ $key + 1 }}
-                    <td style="width:15%" align="center">
+                    <td style="width:5%;vertical-align: middle;" align="center">{{ $key + 1 }}
+                    <td style="width:15%;vertical-align: middle;" align="center">
                         {{ $data->name }}</td>
-                    <td style="width:15%" align="center">
+                    <td style="width:15%;vertical-align: middle;" align="center">
                         {{ $data->code_cate }}</td>
-                    <td style="width:15%" align="center">
+                    <td style="width:15%;vertical-align: middle;" align="center">
                         {{ $data->decision }}</td>
                 </tr>
             @endforeach

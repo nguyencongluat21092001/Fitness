@@ -96,23 +96,23 @@
                     <span class="col-md-3 control-label required">Quyền truy cập</span>
                     <div class="col-md-8">
                     @if(!empty($data['role']))
-                        <input type="checkbox" value="1" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == '1') ? 'checked' : ''}}/>
+                        <input type="checkbox" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'ADMIN') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Quản trị hệ thống</span> <br>
-                        <input type="checkbox" value="2" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == '2') ? 'checked' : ''}}/>
+                        <input type="checkbox" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'MANAGE') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Quản lý</span><br>
-                        <input type="checkbox" value="3" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == '3') ? 'checked' : ''}}/>
+                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'STAFF') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Nhân viên</span><br>
-                        <input type="checkbox" value="4" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == '4') ? 'checked' : ''}}/>
+                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'USERS') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Người dùng</span><br>
                     @endif
                     @if(empty($data['role']))
-                        <input type="checkbox" value="1" name="is_checkbox_role" id="is_checkbox_role"/>
+                        <input type="checkbox" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role"/>
                         <span for="is_checkbox_role">Quản trị hệ thống</span> <br>
-                        <input type="checkbox" value="2" name="is_checkbox_role" id="is_checkbox_role"/>
+                        <input type="checkbox" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role"/>
                         <span for="is_checkbox_role">Quản lý</span><br>
-                        <input type="checkbox" value="3" name="is_checkbox_role" id="is_checkbox_role"/>
+                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role"/>
                         <span for="is_checkbox_role">Nhân viên</span><br>
-                        <input type="checkbox" value="4" name="is_checkbox_role" id="is_checkbox_role"/>
+                        <input type="checkbox" value="USERS" name="is_checkbox_role" id="is_checkbox_role"/>
                         <span for="is_checkbox_role">Người dùng</span><br>
                     @endif
                     </div>

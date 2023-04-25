@@ -33,78 +33,57 @@
 
 
 </head>
+@if ($_SESSION['color_view'] == 1)
 <body class="g-sidenav-show dark-version">
+@else
+<body class="g-sidenav-show bg-white">
+@endif
    <div id="imageLoading">
         <div class="loader_bg">
             <div class="loader"><img src="../assets/images/loading.gif" alt="#" /></div>
         </div>
     </div>
     
-  <div class="min-height-300 bg-primary position-absolute w-100"></div>
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 ps " id="sidenav-main" >
+  <!-- <div class="min-height-300 bg-primary position-absolute w-100"></div> -->
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 ps " id="sidenav-main" style="background:#1d2440 !important">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
-        <img src="../assets/img/carousel-2.jpg" class="navbar-brand-img h-100" alt="main_logo">
-        <span class="ms-1 font-weight-bold">Quản trị hệ thống</span>
+        <img src="../clients\img\logoFinPro.webp" class="navbar-brand-img h-120" alt="main_logo">
+        <span class="ms-1 font-weight-bold"></span>
       </a>
     </div>
     <hr class="horizontal dark mt-0">
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main" >
-    <ul class="navbar-nav">
-                
+        <ul class="navbar-nav">
+            <!-- sidebar -->
+            @foreach($_SESSION['sidebar'] as $value)
                 <li class="nav-item">
-                    <a class="nav-link link-home " href="{{ URL::asset('/system/home/index') }}">
-                        <i class="fas fa-home"></i>
-                        <span class="nav-link-text ms-1">Trang chủ</span>
+                    <a style="color:white" class="{{$value['a']}}" href="{{ URL::asset($value['href']) }}">
+                        <i class="{{$value['icon']}}"></i>
+                        <span class="nav-link-text ms-1" >{{$value['name']}}</span>
                     </a>
                 </li>
-               
-                @if(Auth::user()->role == 1)
+            @endforeach
                 <li class="nav-item">
-                    <a class="nav-link link-user" href="{{ URL::asset('/system/user/index') }}">
-                        <i class="fas fa-users"></i>
-                        <span class="nav-link-text ms-1">Quản trị người dùng</span>
-                    </a>
-                </li>
-                @endif
-                <li class="nav-item">
-                    <a class="nav-link link-category "  href="{{ URL::asset('/system/category/index') }}">
-                        <i class="far fa-calendar-alt"></i>
-                        <span class="nav-link-text ms-1">Quản trị danh mục</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link link-blog "  href="{{ URL::asset('/system/blog/index') }}">
-                        <i class="far fa-calendar-alt"></i>
-                        <span class="nav-link-text ms-1">Quản trị bài viết</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="../pages/billing.html">
+                    <a style="color:white" class="nav-link " href="../pages/billing.html">
                         <i class="fas fa-user-cog"></i>
                         <span class="nav-link-text ms-1">Quản trị mã khuyến mại </span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../pages/virtual-reality.html">
+                    <a style="color:white" class="nav-link " href="../pages/virtual-reality.html">
                         <i class="fas fa-money-check-alt"></i>
                         <span class="nav-link-text ms-1">Quản trị doanh thu</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link link-handbook " href="{{ URL::asset('/system/handbook/index') }}">
-                        <i class="fas fa-medkit"></i>
-                        <span class="nav-link-text ms-1">Cẩm nang cho nhà đầu tư</span></span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="../pages/rtl.html">
+                    <a style="color:white" class="nav-link " href="../pages/rtl.html">
                         <i class="fas fa-hand-holding-usd"></i>
                         <span class="nav-link-text ms-1">Báo cáo</span>
                     </a>
                 </li>
-            </ul>
+        </ul>
     </div>
   </aside>
   <!-- style="background-color:#2a3352f0; padding:40px" -->

@@ -93,7 +93,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
   line-height: var(--bs-body-line-height);
-  color: var(--bs-body-color);
+  /* color: var(--bs-body-color); */
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
@@ -23341,7 +23341,7 @@ hr.horizontal.gray-light {
 }
 
 .navbar-vertical.bg-white .navbar-nav>.nav-item .nav-link.active {
-  background-color: #f6f9fc;
+  /* background-color: #f6f9fc; */
   box-shadow: none;
 }
 
@@ -26970,7 +26970,7 @@ pre[class*="language-"] {
 }
 
 .loader img {
-  width: 150px;
+  width: 100px;
 }
 
 .loader_bg_of {

@@ -24,11 +24,11 @@
                         <div class="panel-body">
                             <div class="row form-group" style="text-align: center;">
                             <div class="col-md-3">
-                            <button class="btn btn-success btn-sm shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
+                            <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
                             data-original-title="Thêm người dùng"><i class="fas fa-user-plus"></i></button>
-                        <button class="btn btn-warning btn-sm shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
+                        <button class="btn btn-warning shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
                             data-original-title="SỬa người dùng"><i class="fas fa-user-edit"></i></button>
-                        <button class="btn btn-danger btn-sm shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
+                        <button class="btn btn-danger shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
                             data-original-title="Xóa người dùng"><i class="fas fa-user-times"></i></button>
                             </div>
                             
@@ -36,10 +36,10 @@
                                     <select class="form-control input-sm chzn-select" name="role"
                                         id="role">
                                         <option value=''>-- Quyền hiển thị --</option>
-                                        <option value="1">Quản trị hệ thống</option>
-                                        <option value="2">Quản lý</option>
-                                        <option value="2">Nhân viên</option>
-                                        <option value="2">Người dùng</option>
+                                        <option value="ADMIN">Quản trị hệ thống</option>
+                                        <option value="MANAGE">Quản lý</option>
+                                        <option value="STAFF">Nhân viên</option>
+                                        <option value="STAFF">Người dùng</option>
                                     </select>
                                 </div>
                                 <div class="input-group" style="width:40%;height:10%">
