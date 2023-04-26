@@ -30,7 +30,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                            <div>Địa chỉ Email : {{ $data['email'] }}</div>
                            <div>Địa chỉ : {{ $data['address'] }}</div>
                            <div>Ngày sinh : {{ $data['dateBirth'] }}</div>
-                           <div>Quyền quản trị : <span class="animate-charcter">Quản trị hệ thống</span></div>
+                           <!-- <div>Quyền quản trị : <span class="animate-charcter">Quản trị hệ thống</span></div> -->
                        </div>
                         
                     </td>

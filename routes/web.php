@@ -78,6 +78,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/createForm', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'createForm']);
             Route::post('/create', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'create']);
             Route::post('/delete', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'delete']);
+            Route::get('/infor',[Modules\System\Dashboard\Blog\Controllers\BlogController::class,'infor']);
+
         });
         // 
         Route::get('/dashboard', [Modules\System\Dashboard\Dashboards\Controllers\DashboardController::class, 'index'])->name('dashboard');

@@ -1,5 +1,7 @@
 <p></p>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+ <!-- message aler (Thông báo) -->
+   <link rel="stylesheet" href="../assets/css/sweetalert2.min.css"/>
+  <script src="../assets/js/sweetalert2.min.js"></script>
   <script>
     Swal.fire({
             // position: 'top-start',

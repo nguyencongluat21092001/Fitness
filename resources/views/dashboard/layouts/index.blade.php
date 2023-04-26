@@ -21,15 +21,16 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
     <link href="../assets/css/dashboard.css?v=2.0.4" rel="stylesheet" />
+    <!-- message aler (Thông báo) -->
+    <link rel="stylesheet" href="../assets/css/sweetalert2.min.css"/>
+    <script src="../assets/js/sweetalert2.min.js"></script>
 
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
     <script src="../assets/js/croppie.js"></script>
     <script rel="stylesheet" src="../assets/css/croppie.css"></script>
-
-  <script src="../assets/js/croppie.min.js"></script>
-  <script type="text/jscript" src="../assets/js/CoreTable.js"></script>
-  <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
+    <script src="../assets/js/croppie.min.js"></script>
+    <script type="text/jscript" src="../assets/js/CoreTable.js"></script>
+    <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
 
 
 </head>
@@ -267,8 +268,11 @@
         @yield('body')
     </main>
     <div class="fixed-plugin">
-        <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-            <i class="fa fa-cog py-2"> </i>
+        <!-- <a class="fixed-plugin-button text-dark position-fixed px-4 py-3" style="background:#ffffff4a">
+              <i class="fas fa-phone animate-charcter"></i>
+        </a> -->
+        <a class="fixed-plugin-button text-dark position-fixed px-4 py-2"style="background:#ffffff4a !important ;font-size: 2rem !important">
+             <i class="fas fa-phone fa-2xl animate-charcter"></i>
         </a>
         <div class="card shadow-lg">
             <div class="card-header pb-0 pt-3 ">

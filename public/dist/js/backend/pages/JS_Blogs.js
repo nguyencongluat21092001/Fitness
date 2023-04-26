@@ -28,12 +28,6 @@ JS_Blogs
     $(oForm).find('#btn_edit').click(function () {
         myClass.edit(oForm);
     });
-    $('form#frmChangePass').find('#btn_changePass').click(function () {
-        myClass.changePass(oForm);
-    })
-    $('form#frmChangePass').find('#btn_updatePass').click(function () {
-        myClass.updatePass('form#frmChangePass');
-    })
      // form load
      $(oForm).find('#category').change(function () {
         var page = $(oForm).find('#limit').val();
@@ -102,17 +96,17 @@ JS_Blogs.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var formdata = new FormData();
-    if ($("#category").val() == '') {
+    if ($("#code_category").val() == '') {
         var nameMessage = 'Thể loại không được để trống!';
         var icon = 'warning';
-        var color = '#f5ae67';
+        var color = '#344767';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
     if ($("#created_at").val() == '') {
         var nameMessage = 'Ngày tạo không được để trống!';
         var icon = 'warning';
-        var color = '#f5ae67';
+        var color = '#344767';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
@@ -123,7 +117,7 @@ JS_Blogs.prototype.store = function (oFormCreate) {
     // if (is_checkbox_status == '') {
     //     var nameMessage = 'Trạng thái không được để trống!';
     //     var icon = 'warning';
-    //     var color = '#f5ae67';
+    //     var color = '#344767';
     //     NclLib.alerMesage(nameMessage,icon,color);
     //     return false;
     // }
@@ -153,7 +147,7 @@ JS_Blogs.prototype.store = function (oFormCreate) {
             if (arrResult['success'] == true) {
                   var nameMessage = 'Cập nhật thành công!';
                   var icon = 'success';
-                //   var color = '#f5ae67';
+                //   var color = '#344767';
                   NclLib.alerMesage(nameMessage,icon,color);
                   $('#editmodal').modal('hide');
                   myClass.loadList(oFormCreate);
@@ -162,7 +156,7 @@ JS_Blogs.prototype.store = function (oFormCreate) {
                 var loadding = NclLib.successLoadding();
                   var nameMessage = 'Cập nhật thất bại!';
                   var icon = 'error';
-                //   var color = '#f5ae67';
+                //   var color = '#344767';
                   NclLib.alerMesage(nameMessage,icon,color);
             }
         }
@@ -202,6 +196,7 @@ JS_Blogs
                 var perPages = $(oForm).find('#cbo_nuber_record_page').val();
                 myClass.loadList(oForm, page, perPages);
             });
+            $(oForm).find('#cbo_nuber_record_page').val(perPage);
             var loadding = NclLib.successLoadding();
             myClass.loadevent(oForm);
         }
@@ -235,14 +230,14 @@ JS_Blogs
     if (listitem == '') {
           var nameMessage = 'Bạn chưa chọn đối tượng!';
           var icon = 'warning';
-          var color = '#f5ae67';
+          var color = '#344767';
           NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
     if (i > 1) {
           var nameMessage = 'Bạn chỉ được chọn một đối tượng!';
           var icon = 'warning';
-          var color = '#f5ae67';
+          var color = '#344767';
           NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
@@ -276,7 +271,8 @@ JS_Blogs
     if (listitem == '') {
           var nameMessage = 'Bạn chưa chọn  bài viết để xóa!';
           var icon = 'warning';
-          var color = '#f5ae67';
+          var color = '#344767';
+        //   var color = '#344767';
           NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
@@ -335,6 +331,32 @@ JS_Blogs
  * @return void
  */
 JS_Blogs
+.prototype.infoBlog = function (id) {
+    var url = this.urlPath + '/infor';
+    var myClass = this;
+    console.log(id)
+    var data = 'id=' + id;
+    var loadding = NclLib.successLoadding();
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: data,
+        success: function (arrResult) {
+            $('#editPassmodal').html(arrResult);
+            $('#editPassmodal').modal('show');
+            myClass.loadevent(oForm);
+
+        }
+    });
+}
+/**
+ * Hàm hiển thị modal edit
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_Blogs
 .prototype.changePass = function (oForm) {
     var url = this.urlPath + '/changePass';
     var myClass = this;
@@ -368,21 +390,21 @@ JS_Blogs
     if ($("#password_old").val() == '') {
         var nameMessage = 'Mật khẩu cũ không được để trống!';
         var icon = 'warning';
-        var color = '#f5ae67';
+        var color = '#344767';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
     if ($("#password_new").val() == '') {
         var nameMessage = 'Mật khẩu mới không được để trống!';
         var icon = 'warning';
-        var color = '#f5ae67';
+        var color = '#344767';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
     if ($("#password_retype_change").val() == '') {
         var nameMessage = 'Chưa nhập lại mật khẩu mới!';
         var icon = 'warning';
-        var color = '#f5ae67';
+        var color = '#344767';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
@@ -395,14 +417,14 @@ JS_Blogs
             if (arrResult['success'] == true) {
                   var nameMessage = arrResult['message'];
                   var icon = 'success';
-                  var color = '#f5ae67';
+                  var color = '#344767';
                   NclLib.alerMesage(nameMessage,icon,color);
                   $('#editPassmodal').modal('hide');
                   myClass.loadList(oFormCreate);
             } else {
                   var nameMessage = arrResult['message'];
                   var icon = 'warning';
-                  var color = '#f5ae67';
+                  var color = '#344767';
                   NclLib.alerMesage(nameMessage,icon,color);
             }
         }

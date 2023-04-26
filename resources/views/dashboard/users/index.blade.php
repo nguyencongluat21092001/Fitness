@@ -9,7 +9,7 @@
             <form action="" method="POST" id="frmUsers_index">
                 <input style="display:none" type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div class="breadcrumb-input-fix d-sm-flex align-items-center justify-content-between" style="padding-top:20px">
-                        <span><H5>DANH SÁCH TÀI KHOẢN</H5></span>
+                        <!-- <span><H5>DANH SÁCH TÀI KHOẢN</H5></span> -->
                     <!-- <div class="breadcrumb-input-right">
                         <button class="btn btn-success btn-sm shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
                             data-original-title="Thêm người dùng"><i class="fas fa-user-plus"></i></button>
@@ -43,8 +43,8 @@
                                     </select>
                                 </div>
                                 <div class="input-group" style="width:40%;height:10%">
-                                    <span class="input-group-text text-body"><i class="fas fa-search"
-                                            aria-hidden="true"></i></span>
+                                    <!-- <span class="input-group-text text-body"><i class="fas fa-search"
+                                            aria-hidden="true"></i></span> -->
                                     <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm...">
                                 </div>
                                 <button style="width:5%" id="txt_search" name="txt_search" type="button" class="btn btn-dark"><i class="fas fa-search"></i></button>

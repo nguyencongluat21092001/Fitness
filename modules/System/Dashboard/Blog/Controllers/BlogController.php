@@ -132,6 +132,20 @@ class BlogController extends Controller
         return array('success' => true, 'message' => 'Xóa thành công');
     }
      /**
+     * Màn hình thông tin bài viết
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function infor(Request $request)
+    {
+        $input = $request->all();
+        $dataInfor = $this->blogService->infor($input);
+        // dd($dataInfor);
+        return view('dashboard.blog.infor',compact('dataInfor'));
+    }
+     /**
      * load màn hình danh sách
      *
      * @param Request $request
