@@ -28,12 +28,16 @@ use Modules\System\Dashboard\Blog\Models\BlogImagesModel;
                     <td style="width:5% ;vertical-align: middle;" align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data['id'] }}"></td>
                     <td style="width:5% ;vertical-align: middle;" align="center">{{ $key + 1 }}</td>
-                    <td style="width:5% ;vertical-align: middle;" align="center">{{ $data['created_at'] }}</td>
+                    <td style="width:5% ;vertical-align: middle;" align="center">{{ $data['created_at']}}</td>
                     <td style="width:20% ;white-space: inherit;vertical-align: middle;">{{ $data->detailBlog->title }}</td>
                     <td style="width:60% ;white-space: inherit;vertical-align: middle;">{{ $data->detailBlog->decision }}</td>
                     <td style="width:20%;vertical-align: middle;" align="center"><img  src="{{url('/file-image-client/blogs/')}}/{{ $data->imageBlog[0]->name_image }}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;"></td>
                     <td style="width:5% ;vertical-align: middle;" align="center">{{($data['status'] == '1') ? 'Hoạt động' : 'Không hoạt động'}}</td>
-                    <td style="width:5% ;vertical-align: middle;" align="center"><i style="color:#7cff87" class="far fa-eye"></i></td>
+                    <td style="width:5% ;vertical-align: middle;" align="center">
+                         <button onclick="JS_Blogs.infoBlog('{{ $data['id'] }}')" class="btn btn-light" type="button">
+                              <i style="color:#00740a" class="far fa-eye"></i>
+                        </button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

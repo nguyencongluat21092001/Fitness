@@ -6,6 +6,8 @@ use Modules\Base\Service;
 use Modules\System\Dashboard\Blog\Repositories\BlogRepository;
 use Modules\System\Dashboard\Blog\Services\BlogDetailService;
 use Modules\System\Dashboard\Blog\Services\BlogImagesService;
+use Modules\System\Dashboard\Category\Services\CategoryService;
+use Modules\System\Dashboard\Users\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use Modules\Base\Library;
 use DB;
@@ -15,12 +17,16 @@ class BlogService extends Service
 {
     private $baseDis;
     public function __construct(
+        UserService $userService,
+        CategoryService $categoryService,
         BlogImagesService $blogImagesService,
         BlogDetailService $blogDetailService,
         BlogRepository $blogRepository
         )
     {
         parent::__construct();
+        $this->userService       = $userService;
+        $this->categoryService   = $categoryService;
         $this->blogImagesService = $blogImagesService;
         $this->blogDetailService = $blogDetailService;
         $this->blogRepository = $blogRepository;
@@ -128,5 +134,31 @@ class BlogService extends Service
     //     $getUserInfor['date_join'] = !empty($userInfo->date_join)?$userInfo->date_join:null;
     //     return $getUserInfor;
     // }
-
+ /**
+     * Màn hình thông tin bài viết
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function infor($input)
+    {
+        $dataInfor = $this->where('id',$input['id'])->first();
+        $category = $this->categoryService->where('code_category',$dataInfor->code_category)->first();
+        $blogDetail = $this->blogDetailService->where('code_blog',$dataInfor['code_blog'])->first();
+        $blogImage = $this->blogImagesService->where('code_blog',$dataInfor['code_blog'])->get()->toArray();
+        $users = $this->userService->where('id',$dataInfor['user_id'])->first();
+        $data = [
+            'users_name' => !empty($users->name)?$users->name:null,
+            'code_blog' => $dataInfor->code_blog,
+            'name_category' => isset($category->name_category)?$category->name_category:null,
+            'status' => !empty($dataInfor->status == '1')?'Hoạt động':'Không hoạt động',
+            'title' => isset($blogDetail->title)?$blogDetail->title:null,
+            'decision' => isset($blogDetail->decision)?$blogDetail->decision:null,
+            'rate' => isset($blogDetail->rate)?$blogDetail->rate:5,
+            'image' => !empty($blogImage)?$blogImage:null,
+            'created_at' => !empty($blogDetail->created_at)?$blogDetail->created_at:null
+        ];
+        return $data;
+    }
 }

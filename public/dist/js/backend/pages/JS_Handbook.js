@@ -177,6 +177,7 @@ JS_Handbook.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) 
                 var perPages = $(oForm).find('#cbo_nuber_record_page').val();
                 myClass.loadList(oForm, page, perPages);
             });
+            $(oForm).find('#cbo_nuber_record_page').val(perPage);
             var loadding = NclLib.successLoadding();
             myClass.loadevent(oForm);
         }

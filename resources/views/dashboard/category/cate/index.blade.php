@@ -28,16 +28,16 @@
                                 @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'STAFF')
                                 <div class="col-md-3">
                                     <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
-                                        data-original-title="Thêm danh mục"><i class="fas fa-user-plus"></i></button>
+                                        data-original-title="Thêm danh mục"><i class="fas fa-plus"></i></button>
                                     <button class="btn btn-warning shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
-                                        data-original-title="SỬa danh mục"><i class="fas fa-user-edit"></i></button>
+                                        data-original-title="SỬa danh mục"><i class="far fa-edit"></i></button>
                                     <button class="btn btn-danger shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
-                                        data-original-title="Xóa danh mục"><i class="fas fa-user-times"></i></button>
+                                        data-original-title="Xóa danh mục"><i class="fas fa-trash-alt"></i></button>
                                 </div>
                                 @endif
                                 <div class="input-group" style="width:40%;height:10%">
-                                    <span class="input-group-text text-body"><i class="fas fa-search"
-                                            aria-hidden="true"></i></span>
+                                    <!-- <span class="input-group-text text-body"><i class="fas fa-search"
+                                            aria-hidden="true"></i></span> -->
                                     <input id="search" name="search" type="text" class="form-control" placeholder="Từ khóa tìm kiếm...">
                                 </div>
                                 <button style="width:8%" id="txt_search" name="txt_search" type="button" class="btn btn-dark"><i class="fas fa-search"></i></button>
