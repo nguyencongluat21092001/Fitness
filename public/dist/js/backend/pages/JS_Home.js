@@ -41,11 +41,10 @@ JS_Home.prototype.loadIndex = function () {
         myClass.edit(oForm);
     });
      // form load
-     $(oForm).find('#role').change(function () {
+     $(oForm).find('#type_code').change(function () {
         var page = $(oForm).find('#limit').val();
         var perPage = $(oForm).find('#cbo_nuber_record_page').val();
         myClass.loadList(oForm, page, perPage);
-        // hàm gọi js điều kiện select đơn vị nào hiển thị phường xã của đơn vị đó//
     });
     $(oForm).find('#txt_search').click(function () {
         /* ENTER PRESSED*/
@@ -201,7 +200,7 @@ JS_Home.prototype.store = function (oFormCreate) {
 JS_Home.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
     var myClass = this;
     // var loadding = NclLib.loadding();
-    console.log(oForm,)
+    console.log(1,oForm,)
     var url = this.urlPath + '/loadList';
     data = 'offset=' + numberPage;
     data += '&limit=' + perPage;
@@ -239,10 +238,10 @@ JS_Home.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
 JS_Home.prototype.loadListTap1 = function (oForm, numberPage = 1, perPage = 15) {
     var myClass = this;
     // var loadding = NclLib.loadding();
-    console.log(oForm,)
     var url = this.urlPath + '/loadListTap1';
     data = 'offset=' + numberPage;
     data += '&limit=' + perPage;
+    var oForm = 'form#frmLoadlist_list_tap1'
     var data = $(oForm).serialize();
     $.ajax({
         url: url,
@@ -250,17 +249,18 @@ JS_Home.prototype.loadListTap1 = function (oForm, numberPage = 1, perPage = 15) 
         // cache: true,
         data: data,
         success: function (arrResult) {
+            console.log(arrResult)
             $("#table-tap1-container").html(arrResult);
             // phan trang
             $(oForm).find('.main_paginate .pagination a').click(function () {
                 var page = $(this).attr('page');
                 var perPage = $('#cbo_nuber_record_page').val();
-                myClass.loadList(oForm, page, perPage);
+                myClass.loadListTap1(oForm, page, perPage);
             });
             $(oForm).find('#cbo_nuber_record_page').change(function () {
                 var page = $(oForm).find('#_currentPage').val();
                 var perPages = $(oForm).find('#cbo_nuber_record_page').val();
-                myClass.loadList(oForm, page, perPages);
+                myClass.loadListTap1(oForm, page, perPages);
             });
             // loadding.go(100);
             myClass.loadevent(oForm);

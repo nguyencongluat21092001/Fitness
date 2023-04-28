@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.index')
 @section('body')
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Blogs.js') }}"></script>
-
+    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     {{-- <link  href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" /> --}}
     <div class="container-fluid" >
@@ -70,6 +70,10 @@
         $(document).ready(function($) {
             JS_Blogs.loadIndex(baseUrl);
         })
+        // var JS_System_Security = new JS_System_Security();
+        // $(document).ready(function($) {
+        //     JS_System_Security.security();
+        // })
     </script>
 @endsection
 
