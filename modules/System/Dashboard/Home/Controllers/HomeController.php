@@ -7,6 +7,7 @@ use Modules\Base\Library;
 use Illuminate\Http\Request;
 use Modules\Api\Services\Admin\PositionService;
 use Modules\System\Dashboard\Home\Services\HomeService;
+use Illuminate\Support\Facades\Http;
 use DB;
 
 /**
@@ -42,13 +43,17 @@ class HomeController extends Controller
     public function loadList(Request $request)
     { 
         $arrInput = $request->input();
-        $data = array();
-        $param = $arrInput;
-        $objResult = $this->homeService->filter($param);
-        $data['datas'] = $objResult;
+        $param = [
+            'code'=> $arrInput['type_code'],
+            'startDate'=> $arrInput['fromDate'],
+            'endDate'=> $arrInput['toDate'],
+            'limit'=> $arrInput['limit'],
+        ];
+        $response = Http::withBody(json_encode($param),'application/json')->get('10.20.3.170:7500/api/list-coin-code/');
+        $response = $response->getBody()->getContents();
+        $response = json_decode($response,true);
+        $data['datas'] = $response;
         // dd($data);
-        $data['param'] = $param;
-        $data['pagination'] = $data['datas']->links('pagination.default');
         return view("dashboard.home.loadlist", $data);
     }
     /**
@@ -62,13 +67,11 @@ class HomeController extends Controller
     { 
         // dd(222);
         $arrInput = $request->input();
-        $data = array();
-        $param = $arrInput;
-        $objResult = $this->homeService->filter($param);
-        $data['datas'] = $objResult;
+        $response = Http::get('10.20.3.170:7500/api/list-top-coin');
+        $response = $response->getBody()->getContents();
+        $response = json_decode($response,true);
+        $data['datas'] = $response;
         // dd($data);
-        $data['param'] = $param;
-        $data['pagination'] = $data['datas']->links('pagination.default');
         return view("dashboard.home.loadlist-tap1", $data);
     }
 }

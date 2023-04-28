@@ -31,6 +31,7 @@
     <script src="../assets/js/croppie.min.js"></script>
     <script type="text/jscript" src="../assets/js/CoreTable.js"></script>
     <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
 
 
 </head>
@@ -460,6 +461,11 @@
       }
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
+
+    // var JS_System_Security = new JS_System_Security();
+    //     $(document).ready(function($) {
+    //         JS_System_Security.security();
+    //     })
   </script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -473,6 +479,4 @@
         }, 2000)
     </script>
 </body>
-
-
 </html>

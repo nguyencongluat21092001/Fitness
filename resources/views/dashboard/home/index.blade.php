@@ -6,7 +6,7 @@
     <form action="" method="POST" id="frmHome_index">
         <main class="main-content position-relative border-radius-lg ">
             <div class="container-fluid py-4">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -129,7 +129,7 @@
                     <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
                     <div class="carousel-inner border-radius-lg h-100">
                         <div class="carousel-item h-100 active" style="background-image: url('../assets/img/carousel-1.jpg');
-            background-size: cover;">
+              background-size: cover;">
                         <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                             <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                             <i class="ni ni-camera-compact text-dark opacity-10"></i>
@@ -139,7 +139,7 @@
                         </div>
                         </div>
                         <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-2.jpg');
-            background-size: cover;">
+               background-size: cover;">
                         <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                             <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                             <i class="ni ni-bulb-61 text-dark opacity-10"></i>
@@ -149,7 +149,7 @@
                         </div>
                         </div>
                         <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-3.jpg');
-            background-size: cover;">
+               background-size: cover;">
                         <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
                             <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
                             <i class="ni ni-trophy text-dark opacity-10"></i>
@@ -170,32 +170,54 @@
                     </div>
                 </div>
                 </div>
-            </div>
+            </div> -->
             <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
+                <div class="col-lg-7 mb-lg-0 mb-4" id="frmLoadlist_list">
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
                         <div class="d-flex justify-content-between">
                             <h6 class="mb-2">Chỉ số thế giới chính</h6>
                         </div>
                         <div class="row form-group" style="text-align: center;">
-                                <div class="col-md-2">
-                                    <select class="form-control input-sm chzn-select" name="role"
-                                        id="role">
-                                        <option value=''>-- Loại --</option>
-                                        <option value="1">Giá</option>
-                                        <option value="2">Hoạt động</option>
-                                        <option value="2">Kỹ thuật</option>
+                                <div class="col-md-3">
+                                    <select class="form-control input-sm chzn-select" name="type_code"
+                                        id="type_code">
+                                        <!-- <option value=''>-- Loại --</option> -->
+                                        <option value="VNINDEX">VNINDEX</option>
+                                        <option value="VPB">VPB</option>
+                                        <option value="HNXINDEX">HNXINDEX</option>
+                                        <option value="UPINDEX">UPINDEX</option>
+                                        <option value="VN30">VN30</option>
+                                        <option value="VN30">VN30</option>
                                     </select>
+                                </div>         
+                                <div class="col-md-3" style="">
+                                    <input class="form-control input-sm" type="date" id="fromDate" name="fromDate" 
+                                        value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")))?>"  min="2010-01-01" max="2030-12-31">   
                                 </div>
-                                <div class="input-group" style="width:40%;height:10%">
+                                <div class="col-md-3"> 
+                                    <input class="form-control input-sm" type="date" id="toDate" name="toDate" 
+                                        value="<?php echo (new DateTime())->format('Y-m-d');?>"  min="2010-01-01" max="2030-12-31">  
+                                </div>
+                                <!-- <div class="input-group" style="width:40%;height:10%">
                                     <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
                                     <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm...">
+                                </div> -->
+                            </div>
+                            <div class="row form-group" style="text-align: center;">
+                                <div class="col-md-3">
+                                    <select class="form-control input-sm chzn-select" name="limit"
+                                        id="limit">
+                                        <option value="5">Hiển thị 5</option>
+                                        <option value="10">Hiển thị 10</option>
+                                        <option value="20">Hiển thị 20</option>
+                                        <option value="50">Hiển thị 50</option>
+                                    </select>
                                 </div>
                                 <div class="col-md-2">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-dark">Xem</button>
-                                </div>
+                                </div>        
                             </div>
                         </div>
                         <div class="table-responsive">
@@ -204,22 +226,22 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-5" id="frmLoadlist_list_tap1">
                 <div class="card">
                     <div class="card-header pb-0 p-3">
-                    <h6 class="mb-0">Chuyển động Thị trường</h6>
+                    <h6 class="mb-0">Chỉ số tài chính ngân hàng</h6>
                     </div>
                     <div class="card-body p-3">
                         <div class="row form-group">
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-warning">H.động mạnh nhất</button>
-                                </div>
-                                <div class="col-md-3">
+                                </div> -->
+                                <!-- <div class="col-md-3">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-secondary">% Tăng</button>
                                 </div>
                                 <div class="col-md-3">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-secondary">% Hạ</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                          <!-- Màn hình danh sách -->
@@ -328,72 +350,72 @@
                 </div>
                 </div>
                 <div class="col-lg-4">
-                <div class="card h-100">
-                    <div class="card-header pb-0 p-3">
-                    <div class="row">
-                        <div class="col-6 d-flex align-items-center">
-                        <h6 class="mb-0">Invoices</h6>
+                    <div class="card h-100">
+                        <div class="card-header pb-0 p-3">
+                        <div class="row">
+                            <div class="col-6 d-flex align-items-center">
+                            <h6 class="mb-0">Invoices</h6>
+                            </div>
+                            <div class="col-6 text-end">
+                            <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+                            </div>
                         </div>
-                        <div class="col-6 text-end">
-                        <button class="btn btn-outline-primary btn-sm mb-0">View All</button>
+                        </div>
+                        <div class="card-body p-3 pb-0">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex flex-column">
+                                <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
+                                <span class="text-xs">#MS-415646</span>
+                            </div>
+                            <div class="d-flex align-items-center text-sm">
+                                $180
+                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                            </div>
+                            </li>
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex flex-column">
+                                <h6 class="text-dark mb-1 font-weight-bold text-sm">February, 10, 2021</h6>
+                                <span class="text-xs">#RV-126749</span>
+                            </div>
+                            <div class="d-flex align-items-center text-sm">
+                                $250
+                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                            </div>
+                            </li>
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex flex-column">
+                                <h6 class="text-dark mb-1 font-weight-bold text-sm">April, 05, 2020</h6>
+                                <span class="text-xs">#FB-212562</span>
+                            </div>
+                            <div class="d-flex align-items-center text-sm">
+                                $560
+                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                            </div>
+                            </li>
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
+                            <div class="d-flex flex-column">
+                                <h6 class="text-dark mb-1 font-weight-bold text-sm">June, 25, 2019</h6>
+                                <span class="text-xs">#QW-103578</span>
+                            </div>
+                            <div class="d-flex align-items-center text-sm">
+                                $120
+                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                            </div>
+                            </li>
+                            <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
+                            <div class="d-flex flex-column">
+                                <h6 class="text-dark mb-1 font-weight-bold text-sm">March, 01, 2019</h6>
+                                <span class="text-xs">#AR-803481</span>
+                            </div>
+                            <div class="d-flex align-items-center text-sm">
+                                $300
+                                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
+                            </div>
+                            </li>
+                        </ul>
                         </div>
                     </div>
-                    </div>
-                    <div class="card-body p-3 pb-0">
-                    <ul class="list-group">
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="mb-1 text-dark font-weight-bold text-sm">March, 01, 2020</h6>
-                            <span class="text-xs">#MS-415646</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $180
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">February, 10, 2021</h6>
-                            <span class="text-xs">#RV-126749</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $250
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">April, 05, 2020</h6>
-                            <span class="text-xs">#FB-212562</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $560
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">June, 25, 2019</h6>
-                            <span class="text-xs">#QW-103578</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $120
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                        </li>
-                        <li class="list-group-item border-0 d-flex justify-content-between ps-0 border-radius-lg">
-                        <div class="d-flex flex-column">
-                            <h6 class="text-dark mb-1 font-weight-bold text-sm">March, 01, 2019</h6>
-                            <span class="text-xs">#AR-803481</span>
-                        </div>
-                        <div class="d-flex align-items-center text-sm">
-                            $300
-                            <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-file-pdf text-lg me-1"></i> PDF</button>
-                        </div>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
                 </div>
             </div>
             <div class="row">

@@ -109,10 +109,8 @@ JS_User.prototype.store = function (oFormCreate) {
         return false;
     }
     if ($("#phone").val() == '') {
-        var nameMessage = 'Số điện thoại không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+                               console.log(1000);
+
         return false;
     }
     if ($("#email").val() == '') {
