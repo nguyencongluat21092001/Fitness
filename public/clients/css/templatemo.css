@@ -16,7 +16,9 @@ Table of contents
 7. Pricing
 8. Contact
 --------------------------------------------- */
-
+/* body{
+  background: #001f39!important;
+} */
 html {font-family: 'Open Sans', sans-serif;}
 /* Typography */
 p, a {font-weight: 400;}
@@ -37,10 +39,10 @@ p, a {font-weight: 400;}
 .typo-space-line::after,
 .typo-space-line-center::after {
   content: "";
-  width: 150px;
+  width: 170px;
   display:block;
   position: absolute;
-  border-bottom:  5px solid #6266ea;
+  border-bottom:  3px solid #031a6e;
   padding-top: .5em;
 }
 .typo-space-line-center::after {
@@ -190,7 +192,80 @@ footer a.text-light:hover {
   color: #bfbfbf !important;
   transition-duration: 0.15s;
 }
+/* header */
+.header-one{
+  background:#192943 !important;
+  display: flex;
+}
+.date-header{
+  color: white;
+  width: 17%;
+  margin: 10px;
+}
+.marquee-header{
+  width: 63%;
+}
+.user-login-header{
+  width: 20%;
+  margin: 10px;
+}
 /*text color */
 .text-color{
   color:red;
+  transform:translate(-50%,-50%);
 }
+.menul_small{
+  width:100%;
+  background: #f1f1f1;  
+  margin:auto;
+
+
+}
+/* .menul_small_one{
+  display: flex;
+  text-align:center;
+
+} */
+
+/* Căn giữa các phần tử inline-block (như <a>, <span>, <img>,...) */
+.text-center{
+  text-align:center;
+}
+.menu-center{
+  padding:10px;
+  margin: 10px;
+}
+
+/* animation */
+.animate-charcter
+{
+text-transform: uppercase;
+background-image: linear-gradient( -225deg, #ffc600 0%, #ffed6e 29%, #ffc23a 67%, #ffffff 100% );
+background-size: auto auto;
+background-clip: border-box;
+background-size: 200% auto;
+color: #fff;
+background-clip: text;
+text-fill-color: transparent;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: textclip 2s linear infinite;
+display: inline-block;
+}
+
+@keyframes textclip {
+to {
+    background-position: 200% center;
+}
+}
+
+/* page home */
+.home_index_vnindex{
+  background:#f8f8f8;
+  border-radius: 2%;
+}
+.home_index_child{
+  margin: 20px;
+  display: flex;
+}
+

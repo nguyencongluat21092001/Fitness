@@ -4,11 +4,13 @@ namespace Modules\System\Dashboard\Blog\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\System\Dashboard\Category\Services\CategoryService;
+use Modules\System\Dashboard\Users\Services\UserService;
 use Modules\System\Dashboard\Category\Services\CateService;
 use Modules\System\Dashboard\Blog\Services\BlogService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use DB;
 use str;
 
@@ -20,10 +22,12 @@ use str;
 class BlogController extends Controller
 {
     public function __construct(
+        UserService $userService,
         CateService $cateService,
         CategoryService $categoryService,
         BlogService $blogService
     ){
+        $this->userService = $userService;
         $this->cateService = $cateService;
         $this->categoryService = $categoryService;
         $this->blogService = $blogService;
@@ -77,9 +81,7 @@ class BlogController extends Controller
      */
     public function createForm(Request $request)
     {
-        $input = $request->all();
-        // dd($input);
-        
+        $input = $request->all();        
         $category = $this->categoryService->where('cate','DM_BLOG')->get()->toArray();
         $data['category'] = $category;
         return view('dashboard.blog.edit',compact('data'));
@@ -105,12 +107,14 @@ class BlogController extends Controller
      *
      * @return view
      */
-    // public function edit(Request $request)
-    // {
-    //     $input = $request->all();
-    //     $data = $this->userService->editUser($input);
-    //     return view('dashboard.users.edit',compact('data'));
-    // }
+    public function edit(Request $request)
+    {
+        $input = $request->all();        
+        $category = $this->categoryService->where('cate','DM_BLOG')->get()->toArray();
+        $data = $this->blogService->editBlog($input);
+        $data['category'] = $category;
+        return view('dashboard.blog.edit',compact('data'));
+    }
 
      /**
      * Xóa bài viết
@@ -122,13 +126,8 @@ class BlogController extends Controller
     public function delete(Request $request)
     {
         $input = $request->all();
-        $listids = trim($input['listitem'], ",");
-        $ids = explode(",", $listids);
-        foreach ($ids as $id) {
-            if ($id) {
-                $this->blogService->where('id',$id)->delete();
-            }
-        }
+        $this->blogService->delete($input);
+        
         return array('success' => true, 'message' => 'Xóa thành công');
     }
      /**
@@ -155,7 +154,6 @@ class BlogController extends Controller
     public function loadList(Request $request)
     { 
         $arrInput = $request->input();
-        
         $data = array();
         $param = $arrInput;
         if($param['category'] == '' || $param['category'] == null){

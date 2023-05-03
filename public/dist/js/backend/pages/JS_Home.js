@@ -200,7 +200,6 @@ JS_Home.prototype.store = function (oFormCreate) {
 JS_Home.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
     var myClass = this;
     // var loadding = NclLib.loadding();
-    console.log(1,oForm,)
     var url = this.urlPath + '/loadList';
     data = 'offset=' + numberPage;
     data += '&limit=' + perPage;

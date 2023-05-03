@@ -1,176 +1,180 @@
 @extends('dashboard.layouts.index')
 @section('body')
+<style>
+        .tv-lightweight-charts{
+            margin-left: 300px !important;
+            margin-bottom:300px !important;
+    }
+</style>
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Home.js') }}"></script>
     <!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
     {{-- <link  href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" /> --}}
+    <script src="../assets/js/chart.nen.js"></script>
+
+<script>
+    var chart = LightweightCharts.createChart(document.body, {
+    width: 1250,
+    height: 500,
+    
+    crosshair: {
+      mode: LightweightCharts.CrosshairMode.Normal,
+    },
+  });
+  var candleSeries = chart.addCandlestickSeries();
+  var data = [
+    { time: '2023-03-30', open: 1052.23, high: 1052.30, low: 1051.52, close: 1056.52 },
+    { time: '2023-04-01', open: 1057.23, high: 1057.30, low: 1056.52, close: 1056.52 },
+    { time: '2023-04-02', open: 1056.81, high: 1058.23, low: 1056.68, close: 1056.99 },
+    { time: '2023-04-03', open: 1057.15, high: 1057.36, low: 1056.87, close: 1057.24 },
+    { time: '2023-04-06', open: 1056.83, high: 1057.09, low: 1056.74, close: 1056.91 },
+    { time: '2023-04-07', open: 1056.69, high: 1056.81, low: 1056.33, close: 1056.63 },
+    { time: '2023-04-08', open: 1056.66, high: 1056.70, low: 1056.25, close: 1056.38 },
+    { time: '2023-04-09', open: 1056.12, high: 1056.56, low: 1055.93, close: 1056.48 },
+    { time: '2023-04-01', open: 1057.23, high: 1057.30, low: 1056.52, close: 1056.52 },
+    { time: '2023-04-02', open: 1056.81, high: 1058.23, low: 1056.68, close: 1056.99 },
+    { time: '2023-04-03', open: 1057.15, high: 1057.36, low: 1056.87, close: 1057.24 },
+    { time: '2023-04-06', open: 1056.83, high: 1057.09, low: 1056.74, close: 1056.91 },
+    { time: '2023-04-07', open: 1056.69, high: 1056.81, low: 1056.33, close: 1056.63 },
+    { time: '2023-04-08', open: 1056.66, high: 1056.70, low: 1056.25, close: 1056.38 },
+    { time: '2023-04-09', open: 1056.12, high: 1056.56, low: 1055.93, close: 1056.48 },
+    { time: '2023-04-10', open: 1056.49, high: 1057.04, low: 1056.26, close: 1056.91 },
+    { time: '2023-04-13', open: 1056.72, high: 1057.34, low: 1056.66, close: 1056.75 },
+    { time: '2023-04-14', open: 1056.76, high: 1057.19, low: 1056.50, close: 1056.55 },
+    { time: '2023-04-15', open: 1056.51, high: 1056.84, low: 1056.17, close: 1056.81 },
+    { time: '2023-04-16', open: 1057.00, high: 1057.80, low: 1056.82, close: 1057.38 },
+    { time: '2023-04-17', open: 1057.06, high: 1058.48, low: 1057.01, close: 1058.09 },
+    { time: '2023-04-20', open: 1059.15, high: 1060.54, low: 1058.00, close: 1059.01 },
+    { time: '2023-04-21', open: 1059.10, high: 1059.63, low: 1058.76, close: 1059.50 },
+    { time: '2023-04-22', open: 1059.09, high: 1059.37, low: 1058.96, close: 1059.25 },
+    { time: '2023-04-23', open: 1059.00, high: 1059.27, low: 1058.54, close: 1058.87 },
+    { time: '2023-04-24', open: 1059.07, high: 1059.36, low: 1058.67, close: 1059.32 },
+    { time: '2023-04-28', open: 1059.21, high: 1059.66, low: 1059.02, close: 1059.57 },
+  ];
+  candleSeries.setData(data);
+
+  var lastClose = data[data.length - 1].close;
+  var lastIndex = data.length - 1;
+
+  var targetIndex = lastIndex + 105 + Math.round(Math.random() + 30);
+  var targetPrice = getRandomPrice();
+
+  var currentIndex = lastIndex + 1;
+  var currentBusinessDay = { day: 28, month: 4, year: 2023 };
+  var ticksInCurrentBar = 0;
+  var currentBar = {
+    open: null,
+    high: null,
+    low: null,
+    close: null,
+    time: currentBusinessDay,
+  };
+
+  function mergeTickToBar(price) {
+    if (currentBar.open === null) {
+      currentBar.open = price;
+      currentBar.high = price;
+      currentBar.low = price;
+      currentBar.close = price;
+    } else {
+      currentBar.close = price;
+      currentBar.high = Math.max(currentBar.high, price);
+      currentBar.low = Math.min(currentBar.low, price);
+    }
+    candleSeries.update(currentBar);
+  }
+
+  function reset() {
+    candleSeries.setData(data);
+    lastClose = data[data.length - 1].close;
+    lastIndex = data.length - 1;
+
+    targetIndex = lastIndex + 5 + Math.round(Math.random() + 30);
+    targetPrice = getRandomPrice();
+
+    currentIndex = lastIndex + 1;
+    currentBusinessDay = { day: 29, month: 5, year: 2019 };
+    ticksInCurrentBar = 0;
+  }
+
+  function getRandomPrice() {
+    return 10 + Math.round(Math.random() * 10000) / 100;
+  }
+
+  function nextBusinessDay(time) {
+    var d = new Date();
+    d.setUTCFullYear(time.year);
+    d.setUTCMonth(time.month - 1);
+    d.setUTCDate(time.day + 1);
+    d.setUTCHours(0, 0, 0, 0);
+    return {
+      year: d.getUTCFullYear(),
+      month: d.getUTCMonth() + 1,
+      day: d.getUTCDate(),
+    };
+  }
+  setInterval(function() {
+    var url = '/system/home/realTimeData';
+    $.ajax({
+        url: url,
+        type: "GET",
+        // cache: true,
+        success: function (arrResult) {
+            console.log(arrResult);
+            // phan trang
+            // $(oForm).find('.main_paginate .pagination a').click(function () {
+            //     var page = $(this).attr('page');
+            //     var perPage = $('#cbo_nuber_record_page').val();
+            //     myClass.loadList(oForm, page, perPage);
+            // });
+            // $(oForm).find('#cbo_nuber_record_page').change(function () {
+            //     var page = $(oForm).find('#_currentPage').val();
+            //     var perPages = $(oForm).find('#cbo_nuber_record_page').val();
+            //     myClass.loadList(oForm, page, perPages);
+            // });
+            // loadding.go(100);
+            // myClass.loadevent(oForm);
+        }
+    });
+
+
+        // var deltaY = targetPrice - lastClose;
+        // var deltaX = targetIndex - lastIndex;
+        // var angle = deltaY / deltaX;
+        // var basePrice = lastClose + (currentIndex - lastIndex) * angle;
+        // var noise = (0.1 - Math.random() * 0.1) + 1.0;
+        // var noisedPrice = basePrice * noise;
+        // mergeTickToBar(noisedPrice);
+        // console.log(noisedPrice,deltaX,angle,basePrice,noise,noisedPrice)
+        // if (++ticksInCurrentBar === 5) {
+        // 	// move to next bar
+        // 	currentIndex++;
+        // 	currentBusinessDay = nextBusinessDay(currentBusinessDay);
+        // 	currentBar = {
+        // 		open: null,
+        // 		high: null,
+        // 		low: null,
+        // 		close: null,
+        // 		time: currentBusinessDay,
+        // 	};
+        // 	ticksInCurrentBar = 0;
+        // 	if (currentIndex === 5000) {
+        // 		reset();
+        // 		return;
+        // 	}
+        // 	if (currentIndex === targetIndex) {
+        // 		// change trend
+        // 		lastClose = noisedPrice;
+        // 		lastIndex = currentIndex;
+        // 		targetIndex = lastIndex + 5 + Math.round(Math.random() + 30);
+        // 		targetPrice = getRandomPrice();
+        // 	}
+        // }
+    }, 3000);
+</script>
     <form action="" method="POST" id="frmHome_index">
         <main class="main-content position-relative border-radius-lg ">
             <div class="container-fluid py-4">
-            <!-- <div class="row">
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                        <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
-                            <h5 class="font-weight-bolder">
-                            $53,000
-                            </h5>
-                            <p class="mb-0">
-                            <span class="text-success text-sm font-weight-bolder">+55%</span>
-                            since yesterday
-                            </p>
-                        </div>
-                        </div>
-                        <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
-                            <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                        <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
-                            <h5 class="font-weight-bolder">
-                            2,300
-                            </h5>
-                            <p class="mb-0">
-                            <span class="text-success text-sm font-weight-bolder">+3%</span>
-                            since last week
-                            </p>
-                        </div>
-                        </div>
-                        <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                            <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                <div class="card">
-                    <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                        <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
-                            <h5 class="font-weight-bolder">
-                            +3,462
-                            </h5>
-                            <p class="mb-0">
-                            <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                            since last quarter
-                            </p>
-                        </div>
-                        </div>
-                        <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                            <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-xl-3 col-sm-6">
-                <div class="card">
-                    <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                        <div class="numbers">
-                            <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
-                            <h5 class="font-weight-bolder">
-                            $103,430
-                            </h5>
-                            <p class="mb-0">
-                            <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                            </p>
-                        </div>
-                        </div>
-                        <div class="col-4 text-end">
-                        <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                            <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
-                <div class="card z-index-2 h-100">
-                    <div class="card-header pb-0 pt-3 bg-transparent">
-                    <h6 class="text-capitalize">Sales overview</h6>
-                    <p class="text-sm mb-0">
-                        <i class="fa fa-arrow-up text-success"></i>
-                        <span class="font-weight-bold">4% more</span> in 2021
-                    </p>
-                    </div>
-                    <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-                    </div>
-                    </div>
-                </div>
-                </div>
-                <div class="col-lg-5">
-                <div class="card card-carousel overflow-hidden h-100 p-0">
-                    <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner border-radius-lg h-100">
-                        <div class="carousel-item h-100 active" style="background-image: url('../assets/img/carousel-1.jpg');
-              background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Get started with Argon</h5>
-                            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-                        </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-2.jpg');
-               background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                            <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
-                        </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('../assets/img/carousel-3.jpg');
-               background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-trophy text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-                        </div>
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next w-5 me-3" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div> -->
+            
             <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4" id="frmLoadlist_list">
                     <div class="card ">
@@ -251,7 +255,7 @@
                 </div>
             </div>
                 <!-- content -->
-            <div class="container-fluid py-4">
+            <!-- <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="row">
@@ -561,43 +565,10 @@
                     </div>
                 </div>
                 </div>
-            </div>
-            <!-- content -->
-            <footer class="footer pt-3  ">
-                <div class="container-fluid">
-                <div class="row align-items-center justify-content-lg-between">
-                    <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="copyright text-center text-sm text-muted text-lg-start">
-                        © <script>
-                        document.write(new Date().getFullYear())
-                        </script>,
-                        made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                        for a better web.
-                    </div>
-                    </div>
-                    <div class="col-lg-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                        <li class="nav-item">
-                        <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                        <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-                </div>
-            </footer>
-            </div> 
+            </div> -->
         </main>
     </form>
+    
     <div class="modal fade" id="editmodal" role="dialog"></div>
     <div class="modal " id="addfile" role="dialog"></div>
 
@@ -610,4 +581,5 @@
             JS_Home.loadIndex(baseUrl);
         })
     </script>
+
 @endsection

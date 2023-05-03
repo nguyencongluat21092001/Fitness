@@ -4,11 +4,16 @@
 <head>
     <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
     <meta charset="utf-8">
+    <base href="{{ asset('') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="../clients/img/apple-icon.png">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
     <!-- Load Require CSS -->
+    {{-- @yield('css') --}}
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
     <link href="../clients/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Font CSS -->
     <link href="../clients/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -30,27 +35,132 @@ https://templatemo.com/tm-561-purple-buzz
 </head>
 
 <body>
+<div class="header-one">
+    <div class="date-header">
+             Thứ năm, 04/05/2023 02:18:26
+    </div>
+    <div class="marquee-header">
+        <marquee style="padding-top:10px;color:white">
+            <span>
+            Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.
+            </span> 
+            <span style="padding-left:200px">
+            Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.1
+            </span> 
+            <span style="padding-left:200px">
+            Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.2
+            </span> 
+            <span style="padding-left:200px">
+            Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.3
+            </span> 
+        </marquee>
+    </div>
+    <div class="user-login-header">
+        <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
+            <ul class="navbar-nav">
+                        <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
+                        </li> 
+                    @endif
 
-    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <span id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <img  src="{{url('/file-image/avatar/')}}/{{ Auth::user()->avatar }}" alt="Image" style="border-radius:50%;height: 30px;width: 30px;object-fit: cover;">
+                            <span style="color:white">
+                            <!-- user -->
+                            {{ Auth::user()->name }}
+                            </span>
+                        </span>
+                        <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
+                                    <p>
+                                        {{ __('Thông tin cá nhân') }}
+                                    </p>
+                            </a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                                    <p>
+                                        {{ __('Đăng xuất') }}
+                                    </p>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+                <!-- Right Side Of Navbar -->
+            
+            <!-- <div class="navbar align-self-center d-flex"> 
+                <a href="#" style="color:#ffcf48"><i class='bx bx-bell bx-sm bx-tada-hover'></i></a>
+                </div> -->
+        <!-- </div> -->
+    </div>
+</div>
+
+<nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
         
         <div class="container d-flex justify-content-between align-items-center">
-            <a class="navbar-brand h1" href="index.html">
+            <a class="navbar-brand h1" style="width: 25%;">
                 <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                 <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
-                <img class="card-img" src="../clients/img/logoFinPro.webp" alt="Card image">
+                <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
             </a>
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">     
+               <h1 style="font-family: auto;color:#ff000091;font-weight: 600;">Tài chính & Đầu tư</h1>          
+            </div>
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                
+               <form action="#" method="get">
+                    <div class="input-group py-3">
+                        <input name="email" type="text" class="form-control rounded-end" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" style="width:350px">
+                        <button class="btn text-white btn-lg rounded-start px-lg-4" type="submit" style="background:#22314b"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            
+               
+        </div>
+    </nav>
+    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow" style="background:#03233e!important"> 
+        
+        <div class="container d-flex justify-content-between align-items-center">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success">
-                <div class=" mx-xl-5 mb-2" style="padding-left: 5%;background: rgba(255, 255, 255, 0.1);border-radius: 50px;">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="padding-left:0%">
+                <div class=" mx-xl-5 mb-2" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
                             <a class="nav-link  rounded-pill px-3 " style="color:white" href="index.html">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">CHỨNG KHOÁN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">TÀI CHÍNH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">BẤT ĐỘNG SẢN</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">THỊ TRƯỜNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">THẾ GIỚI</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="work.html">BÀI VIẾT</a>
@@ -81,60 +191,33 @@ https://templatemo.com/tm-561-purple-buzz
                         </li>
                     </ul>
                 </div>
-                <ul class="navbar-nav">
-                            <!-- Authentication Links -->
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
-                            </li> 
-                        @endif
-
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
-                            </li>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <span id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img  src="{{url('/file-image/avatar/')}}/{{ Auth::user()->avatar }}" alt="Image" style="border-radius:50%;height: 30px;width: 30px;object-fit: cover;">
-                                <span style="color:white">
-                                {{ Auth::user()->name }}
-                                </span>
-                            </span>
-                            <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                        <p>
-                                            {{ __('Thông tin cá nhân') }}
-                                        </p>
-                                </a>
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                                        <p>
-                                            {{ __('Đăng xuất') }}
-                                        </p>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                    class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-                 <!-- Right Side Of Navbar -->
-                
-                <div class="navbar align-self-center d-flex"> 
-                    <a href="#" style="color:#ffcf48"><i class='bx bx-bell bx-sm bx-tada-hover'></i></a>
-                 </div>
             </div>
                
         </div>
     </nav>
-
+ 
+    <div class="menul_small">
+            <div class="text-center">
+                <span class="menu-center">
+                    <a>CHỈ SỐ</a>
+                </span>
+                <span class="menu-center">
+                    <a>THỊ TRƯỜNG</a>
+                </span>
+                <span class="menu-center">
+                    <a>BÀI VIẾT</a>
+                </span>
+                <span class="menu-center">
+                    <a>DỊCH VỤ</a>
+                </span>
+                <span class="menu-center">
+                    <a>HỖ TRỢ</a>
+                 </span>
+                <span class="menu-center">
+                    <a>LIÊN HỆ</a>
+                </span>
+            </div>
+    </div>
 
 
     

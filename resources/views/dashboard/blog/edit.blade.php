@@ -13,31 +13,29 @@
               <div class="card-body">
                 <!-- <p class="text-uppercase text-sm">Thông tin cơ bản</p> -->
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-8">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Thể loại</p>
                       <select class="form-control input-sm chzn-select" name="code_category"
                             id="code_category">
                             <option value=''>-- Chọn thể loại --</option>
-                            @if(!empty($data['category']))
+                            @if(!empty($data['code_category']))
                                 @foreach($data['category'] as $item){
                                     <option 
-                                    {{!empty($data['category'] == $item['code_category']) ? 'selected' :''}}
+                                    {{!empty($data['code_category'] == $item['code_category']) ? 'selected' :''}}
                                     value="{{$item['code_category']}}">{{$item['name_category']}}</option>
                                 }
                                 @endforeach
-                            @endif 
+                            @else 
+                                @foreach($data['category'] as $item){
+                                    <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
+                                }
+                                @endforeach
+                            @endif
                         </select>
                     </div>
                   </div>
-                  <div class="col-md-6">
-                    <div class="form-group">
-                      <p for="example-text-input" class="form-control-label">Ngày tạo</p>
-                      <input class="form-control" type="date" value="{{!empty($data['created_at'])?$data['created_at']:''}}" name="created_at" id="created_at"
-                            placeholder="Chọn ngày tạo..." />
-                    </div>
-                  </div>
-                  <div class="col-md-12">
+                  <div class="col-md-11">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Tên bài viết</p>
                       <input class="form-control" type="text" value="{{!empty($data['title'])?$data['title']:''}}" name="title" id="title"
@@ -51,8 +49,8 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Nội dung</p>
-                      <input class="form-control" type="text" value="{{!empty($data['decision'])?$data['decision']:''}}" name="decision" id="decision"
-                            placeholder="Nhập nội dung..." />
+                      <textarea class="form-control" type="text" value="" name="decision" id="decision"
+                            placeholder="Nhập nội dung..." >{{!empty($data['decision'])?$data['decision']:''}}</textarea>
                     </div>
                   </div>
                 </div>
@@ -60,8 +58,8 @@
                 <div class="row form-group" id="div_hinhthucgiai">
                     <span class="col-md-3 control-label required">Trạng thái</span>
                     <div class="col-md-8">
-                        @if(!empty($data['detail']['current_status']))
-                        <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        @if(!empty($data['status']))
+                        <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status" {{($data['status'] == '1') ? 'checked' : ''}}/>
                         <span for="is_checkbox_status">Hoạt động</span> <br>
                         @else
                         <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status"/>

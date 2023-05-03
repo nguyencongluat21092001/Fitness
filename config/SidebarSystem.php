@@ -21,6 +21,12 @@ return [
         'a'    => 'nav-link link-category',
         'href' => '/system/category/index',
     ],
+    'datafinancial' => [
+        'name' => 'Dữ liệu chứng khoán',
+        'icon' => 'fas fa-coins',
+        'a'    => 'nav-link link-datafinancial',
+        'href' => '/system/datafinancial/index',
+    ],
     'blog' => [
         'name' => 'Quản trị bài viết',
         'icon' => 'far fa-calendar-alt',
@@ -53,6 +59,12 @@ return [
         'icon' => 'far fa-calendar-alt',
         'a'    => 'nav-link link-category',
         'href' => '/system/category/index',
+    ],
+    'datafinancial' => [
+        'name' => 'Dữ liệu chứng khoán',
+        'icon' => 'fas fa-coins',
+        'a'    => 'nav-link link-datafinancial',
+        'href' => '/system/datafinancial/index',
     ],
     'blog' => [
         'name' => 'Quản trị bài viết',

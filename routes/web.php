@@ -70,6 +70,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/editCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'edit'])->name('editCategory');
             Route::post('/deleteCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'delete'])->name('deleteCategory');
         });
+        //dữ liệu chứng khoán
+        Route::prefix('/datafinancial')->group(function () {
+            //Handbook
+            Route::get('/index', [Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class, 'index']);
+            Route::get('/loadList',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'loadList']);
+            Route::post('/createForm',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'createForm']);
+            Route::post('/create',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'create']);
+            Route::get('/changeUpdate',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'changeUpdate']);
+            Route::post('/edit',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'edit']);
+            Route::post('/delete',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'delete']);
+        });
         Route::prefix('/blog')->group(function () {
             //bài viết 
             Route::get('/index', [Modules\System\Dashboard\Blog\Controllers\BlogController::class, 'index']);
@@ -90,6 +101,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::get('/home/index', [Modules\System\Dashboard\Home\Controllers\HomeController::class, 'index']);
         Route::get('/home/loadList',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'loadList'])->name('loadList');
         Route::get('/home/loadListTap1',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'loadListTap1'])->name('loadListTap1');
+
+        Route::get('/home/realTimeData',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'realTimeData'])->name('realTimeData');
+
         //Cẩm nâng
         Route::prefix('/handbook')->group(function () {
             //Handbook
@@ -102,6 +116,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::get('/seeVideo',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'seeVideo'])->name('seeVideo');
         });
        
+    });
+    // route phía người dùng
+    Route::prefix('/client')->group(function () {
+            // Trang chủ Admin
+            Route::get('/home/index', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
+            Route::get('/home/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
+            Route::get('/home/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
+            Route::get('/home/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
     });
 });
 Auth::routes();

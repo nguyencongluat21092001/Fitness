@@ -53,7 +53,8 @@ class LoginController extends Controller
                 return redirect('system/home/index');
             } else if ($user->role == 'USERS') {
                 Auth::guard('web')->login($user);
-                return view('client.home.home');
+                // return view('client.home.home');
+                return redirect('client/home/index');
             }
         } else {
             $data['class'] = 'form-control error';

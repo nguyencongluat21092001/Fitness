@@ -41,14 +41,18 @@ class BlogService extends Service
      * cập nhật bài viết
      */
     public function store($input,$file){
-        $random = Library::_get_randon_number();
-        $code_blog = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") . $random;
+      
         DB::beginTransaction();
         // try{
+            //lấy mã bài viết
+            $random = Library::_get_randon_number();
+            $code_blog = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") . $random;
             $image_old = null;
             if($input['id'] != ''){
-                $user = $this->UserRepository->where('id',$input['id'])->first();
-                $image_old = $user->avatar;
+                $blog = $this->blogRepository->where('id',$input['id'])->first();
+                $image = $this->blogImagesService->where('code_blog',$blog['code_blog'])->first();
+                $image_old = $image->name_image;
+                $code_blog = $blog['code_blog'];
             }
             if(isset($file) && $file != []){
                 $arrFile = $this->uploadFile($input,$file,$image_old);
@@ -67,9 +71,31 @@ class BlogService extends Service
                 'decision'=>$input['decision'],
                 'rate'=> 5
             ];
-            // dd($arrBlog,$arrBlogDetails);
             if($input['id'] != ''){
-
+                //edit Blog
+                $createBlog = $this->where('id',$input['id'])->update($arrBlog);
+                //Create Blog details
+                $createBlogDetails = $this->blogDetailService->where('code_blog',$code_blog)->update($arrBlogDetails);
+                // create image Blog
+                if(!empty($arrFile) && $arrFile != []){
+                    $i = 1;
+                    $image = $this->blogImagesService->where('code_blog',$code_blog)->delete();
+                    foreach($arrFile as $imageValue){
+                        $imageNew = trim($imageValue, "!~!");
+                        $name = explode("!~!", $imageNew);
+                        $arrImages = [
+                            'id'=> (string)Str::uuid(),
+                            'code_blog'=> $code_blog,
+                            'name'=> $name[1],
+                            'name_image'=> $imageValue,
+                            'order_image'=> $i,
+                            'created_at' => date("Y/m/d"),
+                            'updated_at' => date("Y/m/d")
+                        ];
+                        $createImage = $this->blogImagesService->create($arrImages);
+                        $i++;
+                    }
+                }
             }else{
                 //Create Blog
                 $arrBlog['id']= (string)Str::uuid();
@@ -126,15 +152,26 @@ class BlogService extends Service
             }
             return $arrImage;
     }
-    // public function editUser($arrInput){
-    //     $getUserInfor = $this->repository->where('id',$arrInput['chk_item_id'])->first()->toArray();
-    //     $userInfo = $this->UserInfoService->where('user_id',$arrInput['chk_item_id'])->first();
-    //     $getUserInfor['company'] = !empty($userInfo->company)?$userInfo->company:null;
-    //     $getUserInfor['position'] = !empty($userInfo->position)?$userInfo->position:null;
-    //     $getUserInfor['date_join'] = !empty($userInfo->date_join)?$userInfo->date_join:null;
-    //     return $getUserInfor;
-    // }
- /**
+    public function editBlog($arrInput){
+        $getBlogInfor = $this->repository->where('id',$arrInput['chk_item_id'])->first();
+        $arrBlog = '';
+        if(isset($getBlogInfor)){
+            $blogDetail = $this->blogDetailService->where('code_blog',$getBlogInfor['code_blog'])->first();
+            $blogImage = $this->blogImagesService->where('code_blog',$getBlogInfor['code_blog'])->get();
+            $arrBlog = [
+                'id' => $getBlogInfor->id,
+                'code_blog' => $getBlogInfor->code_blog,
+                'code_category' => isset($getBlogInfor->code_category)?$getBlogInfor->code_category:null,
+                'status' => $getBlogInfor->status,
+                'title' => isset($blogDetail->title)?$blogDetail->title:null,
+                'decision' => isset($blogDetail->decision)?$blogDetail->decision:null,
+                'rate' => isset($blogDetail->rate)?$blogDetail->rate:5,
+                'image' => !empty($blogImage)?$blogImage:null,
+            ];
+        }
+        return $arrBlog;
+    }
+    /**
      * Màn hình thông tin bài viết
      *
      * @param Request $request
@@ -160,5 +197,25 @@ class BlogService extends Service
             'created_at' => !empty($blogDetail->created_at)?$blogDetail->created_at:null
         ];
         return $data;
+    }
+     /**
+     * xóa bài viết
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function delete($input)
+    {
+        $listids = trim($input['listitem'], ",");
+        $ids = explode(",", $listids);
+        foreach ($ids as $id) {
+            if ($id) {
+                $getBlogInfor = $this->repository->where('id',$id)->first();
+                $this->repository->where('id',$id)->delete();
+                $this->blogDetailService->where('code_blog',$getBlogInfor->code_blog)->delete();
+                $this->blogImagesService->where('code_blog',$getBlogInfor->code_blog)->delete();
+            }
+        }
     }
 }

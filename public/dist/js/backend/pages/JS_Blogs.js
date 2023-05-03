@@ -103,13 +103,6 @@ JS_Blogs.prototype.store = function (oFormCreate) {
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
-    if ($("#created_at").val() == '') {
-        var nameMessage = 'Ngày tạo không được để trống!';
-        var icon = 'warning';
-        var color = '#344767';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
     is_checkbox_status = ''
     $('input[name="is_checkbox_status"]:checked').each(function() {
         is_checkbox_status =  $(this).val();
