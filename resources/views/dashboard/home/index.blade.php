@@ -112,29 +112,29 @@
       day: d.getUTCDate(),
     };
   }
-  setInterval(function() {
-    var url = '/system/home/realTimeData';
-    $.ajax({
-        url: url,
-        type: "GET",
-        // cache: true,
-        success: function (arrResult) {
-            console.log(arrResult);
-            // phan trang
-            // $(oForm).find('.main_paginate .pagination a').click(function () {
-            //     var page = $(this).attr('page');
-            //     var perPage = $('#cbo_nuber_record_page').val();
-            //     myClass.loadList(oForm, page, perPage);
-            // });
-            // $(oForm).find('#cbo_nuber_record_page').change(function () {
-            //     var page = $(oForm).find('#_currentPage').val();
-            //     var perPages = $(oForm).find('#cbo_nuber_record_page').val();
-            //     myClass.loadList(oForm, page, perPages);
-            // });
-            // loadding.go(100);
-            // myClass.loadevent(oForm);
-        }
-    });
+    // setInterval(function() {
+    //     var url = '/system/home/realTimeData';
+    //     $.ajax({
+    //         url: url,
+    //         type: "GET",
+    //         // cache: true,
+    //         success: function (arrResult) {
+    //             console.log(arrResult);
+    //             // phan trang
+    //             // $(oForm).find('.main_paginate .pagination a').click(function () {
+    //             //     var page = $(this).attr('page');
+    //             //     var perPage = $('#cbo_nuber_record_page').val();
+    //             //     myClass.loadList(oForm, page, perPage);
+    //             // });
+    //             // $(oForm).find('#cbo_nuber_record_page').change(function () {
+    //             //     var page = $(oForm).find('#_currentPage').val();
+    //             //     var perPages = $(oForm).find('#cbo_nuber_record_page').val();
+    //             //     myClass.loadList(oForm, page, perPages);
+    //             // });
+    //             // loadding.go(100);
+    //             // myClass.loadevent(oForm);
+    //         }
+    // });
 
 
         // var deltaY = targetPrice - lastClose;

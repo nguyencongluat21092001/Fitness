@@ -7,7 +7,6 @@ use Modules\Base\Library;
 use Illuminate\Http\Request;
 use Modules\Api\Services\Admin\PositionService;
 use Modules\System\Dashboard\Home\Services\HomeService;
-use Illuminate\Support\Facades\Http;
 use DB;
 
 /**
@@ -41,46 +40,36 @@ class HomeController extends Controller
      * @return json $return
      */
     public function loadList(Request $request)
-    { 
+    {
         $arrInput = $request->input();
-        $param = [
-            'code'=> $arrInput['type_code'],
-            'startDate'=> $arrInput['fromDate'],
-            'endDate'=> $arrInput['toDate'],
-            'limit'=> $arrInput['limit'],
-        ];
-        $response = Http::withBody(json_encode($param),'application/json')->get('192.168.1.5:7500/api/list-coin-code/');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        $data['datas'] = $response;
-        // dd($data);
+        $data = $this->homeService->loadList($arrInput);
         return view("client.home.loadlist", $data);
     }
-    public function realTimeData(Request $request)
-    { 
-        $arrInput = $request->input();
-        $param = [
-            'code'=> 'VNINDEX',
-            'startDate'=> '2020-01-01',
-            'endDate'=> '2023-04-28',
-            'limit'=> '500',
-        ];
-        $response = Http::withBody(json_encode($param),'application/json')->get('192.168.1.5:7500/api/list-coin-code/');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        foreach($response as $value){
-            $data[] = [
-                'time'=> substr($value['date'], 0, 10) ,
-                'open'=> $value['priceOpen'],
-                'high'=> $value['priceHigh'],
-                'low'=> $value['priceLow'],
-                'close'=> $value['priceClose'],
-            ];
-        }
-        // dd($data);
+    // public function realTimeData(Request $request)
+    // { 
+    //     $arrInput = $request->input();
+    //     $param = [
+    //         'code'=> 'VNINDEX',
+    //         'startDate'=> '2020-01-01',
+    //         'endDate'=> '2023-04-28',
+    //         'limit'=> '500',
+    //     ];
+    //     $response = Http::withBody(json_encode($param),'application/json')->get('192.168.1.5:7500/api/list-coin-code/');
+    //     $response = $response->getBody()->getContents();
+    //     $response = json_decode($response,true);
+    //     foreach($response as $value){
+    //         $data[] = [
+    //             'time'=> substr($value['date'], 0, 10) ,
+    //             'open'=> $value['priceOpen'],
+    //             'high'=> $value['priceHigh'],
+    //             'low'=> $value['priceLow'],
+    //             'close'=> $value['priceClose'],
+    //         ];
+    //     }
+    //     // dd($data);
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
     /**
      * load màn hình danh sách
      *
@@ -90,13 +79,8 @@ class HomeController extends Controller
      */
     public function loadListTap1(Request $request)
     { 
-        // dd(222);
         $arrInput = $request->input();
-        $response = Http::get('192.168.1.5:7500/api/list-top-coin');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        $data['datas'] = $response;
-        // dd($data);
+        $data = $this->homeService->loadListTap1($arrInput);
         return view("dashboard.home.loadlist-tap1", $data);
     }
 }

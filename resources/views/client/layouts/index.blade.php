@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Purple Buzz HTML Template with Bootstrap 5 Beta 1</title>
+    <title>TÀI CHÍNH & ĐẦU TƯ FINTOP</title>
     <meta charset="utf-8">
     <base href="{{ asset('') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,15 +23,6 @@
     <!-- <link rel="stylesheet" href="assets/css/templatemo.css"> -->
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../clients/css/custom.css">
-
-    <!-- <link rel="stylesheet" href="assets/css/custom.css"> -->
-<!--
-    
-TemplateMo 561 Purple Buzz
-
-https://templatemo.com/tm-561-purple-buzz
-
--->
 </head>
 
 <body>
