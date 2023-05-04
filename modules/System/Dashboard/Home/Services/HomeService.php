@@ -4,62 +4,84 @@ namespace Modules\System\Dashboard\Home\Services;
 
 use Illuminate\Support\Facades\Hash;
 use Modules\Base\Service;
-use Modules\System\Dashboard\Home\Repositories\HomeRepository;
+use Illuminate\Support\Facades\Http;
 use Str;
 
-class HomeService extends Service
+class HomeService
 {
 
-    public function __construct(
-        HomeRepository $HomeRepository
-        )
-    {
-        parent::__construct();
-        $this->HomeRepository = $HomeRepository;
-        parent::__construct();
-    }
+    public function __construct(){}
 
-    public function repository()
-    {
-        return HomeRepository::class;
-    }
-
-    public function store($input){
-        if($input['id'] != ''){
-            $arrData = [
-                'name'=>$input['name'],
-                'address'=>$input['address'],
-                'phone'=>$input['phone'],
-                'email'=>$input['email'],
-                'password'=> Hash::make($input['password']),
-                'dateBirth'=>$input['dateBirth'],
-                'role'=>$input['is_checkbox_role']
-            ];
-            $create = $this->HomeRepository->where('id',$input['id'])->update($arrData);
-        }else{
-            $arrData = [
-                'name'=>$input['name'],
-                'address'=>$input['address'],
-                'phone'=>$input['phone'],
-                'email'=>$input['email'],
-                'password'=> Hash::make($input['password']),
-                'dateBirth'=>$input['dateBirth'],
-                'role'=>$input['is_checkbox_role']
-            ];
-            $create = $this->HomeRepository->create($arrData);
-        }
-        
-        return $create;
-    }
+     /**
+     * load màn hình danh sách lấy chỉ số thị trường
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
     public function loadList($arrInput){
-        $data = array();
-        $param = $arrInput;
-        $objResult = $this->repository->filter($param);
-        $data['datas'] = $objResult;
-        $data['param'] = $param;
-        $data['pagination'] = $data['datas']->links('pagination.default');
-        return $create;
-    }
-   
+        try{
+            $param = [
+                'code'=> $arrInput['type_code'],
+                'startDate'=> $arrInput['fromDate'],
+                'endDate'=> $arrInput['toDate'],
+                'limit'=> $arrInput['limit'],
+            ];
+            $dataConfig = config('apiConnect.financial');
+            $urlApi = $dataConfig['api'].$dataConfig['apiChild']['list-coin-code'];
+            $response = Http::withToken($dataConfig['token'])
+                            ->withBody(json_encode($param),'application/json')
+                            ->get($urlApi);
+            $response = $response->getBody()->getContents();
+            $response = json_decode($response,true);
+            $data['datas'] = $response;
 
+            if($data['datas'] == null || $data['datas'] == ''){
+                $data['datas'][0] = [
+                    "date" => date('Y-m-d'),
+                    "symbol" => "VNINDEX",
+                    "priceHigh" => 'Không xác định!'
+                ];
+            }
+            return $data;
+        }catch (\Exception $e) {
+            $data['datas'][0] = [
+                "date" => date('Y-m-d'),
+                "symbol" => "VNINDEX",
+                "priceHigh" => 'Không xác định!'
+            ];
+            return $data;
+        }
+    }
+     /**
+     * load màn hình danh sách top chỉ số thị trường
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function loadListTap1($arrInput){
+        try{
+            $dataConfig = config('apiConnect.financial');
+            $urlApi = $dataConfig['api'].$dataConfig['apiChild']['list-top-coin'];
+            $response = Http::withToken($dataConfig['token'])
+                            ->get($urlApi);
+            $response = $response->getBody()->getContents();
+            $response = json_decode($response,true);
+            $data['datas'] = $response;
+            if($data['datas'] == null || $data['datas'] == ''){
+                $data['datas'][0] = [
+                    "date" => date('Y-m-d'),
+                    "value" => "Không xác định!",
+                ];
+            }
+            return $data;
+        }catch (\Exception $e) {
+            $data['datas'][0] = [
+                "date" => date('Y-m-d'),
+                "value" => "Không xác định!",
+            ];
+            return $data;
+        }
+    }
 }

@@ -36,7 +36,7 @@ class HomeController extends Controller
         return view('client.home.home');
     }
      /**
-     * load màn hình danh sách
+     * load màn hình danh sách lấy chỉ số thị trường
      *
      * @param Request $request
      *
@@ -45,16 +45,7 @@ class HomeController extends Controller
     public function loadList(Request $request)
     { 
         $arrInput = $request->input();
-        $param = [
-            'code'=> $arrInput['type_code'],
-            'startDate'=> $arrInput['fromDate'],
-            'endDate'=> $arrInput['toDate'],
-            'limit'=> $arrInput['limit'],
-        ];
-        $response = Http::withBody(json_encode($param),'application/json')->get('172.20.10.2:7500/api/list-coin-code/');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        $data['datas'] = $response;
+        $data = $this->homeService->loadList($arrInput);
         return view("client.home.loadlist", $data);
     }
     /**
@@ -76,31 +67,31 @@ class HomeController extends Controller
         $data['datas']= $objResult;
         return view("client.home.loadlist-blog", $data);
     }
-    public function realTimeData(Request $request)
-    { 
-        $arrInput = $request->input();
-        $param = [
-            'code'=> 'VNINDEX',
-            'startDate'=> '2020-01-01',
-            'endDate'=> '2023-04-28',
-            'limit'=> '500',
-        ];
-        $response = Http::withBody(json_encode($param),'application/json')->get('172.20.10.2:7500/api/list-coin-code/');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        foreach($response as $value){
-            $data[] = [
-                'time'=> substr($value['date'], 0, 10) ,
-                'open'=> $value['priceOpen'],
-                'high'=> $value['priceHigh'],
-                'low'=> $value['priceLow'],
-                'close'=> $value['priceClose'],
-            ];
-        }
-        // dd($data);
+    // public function realTimeData(Request $request)
+    // { 
+    //     $arrInput = $request->input();
+    //     $param = [
+    //         'code'=> 'VNINDEX',
+    //         'startDate'=> '2020-01-01',
+    //         'endDate'=> '2023-04-28',
+    //         'limit'=> '500',
+    //     ];
+    //     $response = Http::withBody(json_encode($param),'application/json')->get('10.20.3.170:7500/api/list-coin-code/');
+    //     $response = $response->getBody()->getContents();
+    //     $response = json_decode($response,true);
+    //     foreach($response as $value){
+    //         $data[] = [
+    //             'time'=> substr($value['date'], 0, 10) ,
+    //             'open'=> $value['priceOpen'],
+    //             'high'=> $value['priceHigh'],
+    //             'low'=> $value['priceLow'],
+    //             'close'=> $value['priceClose'],
+    //         ];
+    //     }
+    //     // dd($data);
 
-        return response()->json($data);
-    }
+    //     return response()->json($data);
+    // }
     /**
      * load màn hình danh sách
      *

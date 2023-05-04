@@ -70,7 +70,6 @@
     }
 </style>
 <table id="table-data" class="table align-items-center" >
-  
         <div class="pb-0 px-3">
             <div class="row">
                 <div class="col-md-6" style="padding-left:10px">

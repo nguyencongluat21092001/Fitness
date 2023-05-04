@@ -183,7 +183,7 @@
                     </div>
                 <div class="col-lg-8 row" style="padding-left:30px">
                     <!-- Start Our Work -->
-                    <h2 class="h4 py-2 typo-space-line">Bài viết nổi bật</h2>
+                    <h2 class="h4 typo-space-line">Bài viết nổi bật</h2>
                     <section class="container py-2">
                         <!-- <div class="row justify-content-center my-5">
                             <div class="filter-btns shadow-md rounded-pill text-center col-auto">
@@ -195,7 +195,7 @@
                             </div>
                         </div> -->
                         
-                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#f8f8f8;border-radius: 2%;">
+                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#f8f8f8;border-radius: 1%;">
                              <!-- Màn hình danh sách -->
                                 <div class="home_index_child py-2">
                                     <div class="col-md-3">
