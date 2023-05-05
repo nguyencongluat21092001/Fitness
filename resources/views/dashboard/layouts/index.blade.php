@@ -26,6 +26,8 @@
     <script src="../assets/js/sweetalert2.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
+    <link rel="stylesheet" href="../assets/chosen/chosen.min.css">
+
     <script src="../assets/js/croppie.js"></script>
     <script rel="stylesheet" src="../assets/css/croppie.css"></script>
     <script src="../assets/js/croppie.min.js"></script>
@@ -478,6 +480,7 @@
     {{--<script src="../assets/js/dashboard.min.js?v=2.0.4"></script>--}}
     <!-- <script src="../assets/js/argon-dashboard.js"></script> -->
     <script src='../assets/js/jquery.js'></script>
+    <script type="text/jscript" src="../assets/chosen/chosen.min.js"></script>
         <script>
             setTimeout(() => {
                 $('#imageLoading').addClass("loader_bg_of");

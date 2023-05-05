@@ -13,7 +13,7 @@ function JS_DataFinancial(baseUrl, module, controller) {
  */
 JS_DataFinancial.prototype.loadIndex = function () {
     var myClass = this;
-    // $('.chzn-select').chosen({ height: '100%', width: '100%' });
+    $('.chzn-select').chosen({ height: '100%', width: '100%' });
     var oForm = 'form#frmDataFinancial_index';
     var oFormCreate = 'form#frmAdd';
     myClass.loadList(oForm);

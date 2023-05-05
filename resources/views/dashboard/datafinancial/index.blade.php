@@ -34,7 +34,7 @@
                                 <div class="col-md-2">
                                     <select class="form-control input-sm chzn-select" name="act"
                                         id="act">
-                                        <option value=''>-- Chọn hành động --</option>
+                                        <option selected value=''>-- Chọn hành động --</option>
                                         <option value="MUA">Mua</option>
                                         <option value="CANH_MUA_DAN">Canh mua dần</option>
                                     </select>
