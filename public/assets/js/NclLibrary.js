@@ -6,7 +6,7 @@ NclLib.prototype.successLoadding = function () {
   $('#imageLoading').even().removeClass( "loader_bg_of" );
     setTimeout(() => {
        $('#imageLoading').addClass("loader_bg_of");
-    }, 3000)
+    }, 2000)
 }
 // alerMesage thông báo sau khi có sự kiện
 NclLib.prototype.alerMesage = function(nameMessage,icon,color){

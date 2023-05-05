@@ -32,6 +32,22 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
 @endphp --}}
 <div class="table-responsive pmd-card pmd-z-depth ">
     <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
+        <colgroup>
+            <col width="5%">
+            <col width="5%">
+            <col width="5%">
+            <col width="5%">
+            <col width="5%">
+            <col width="10%">
+            <col width="10%">
+            <col width="5%">
+            <col width="20%">
+            <col width="10%">
+            <col width="5%">
+            <col width="5%">
+            <col width="5%">
+            <col width="5%">
+        </colgroup>
         <thead>
             <tr style="background:#151f38b3">
                 <td style="white-space: inherit;vertical-align: middle" align="center"><input type="checkbox" name="chk_all_item_id"
@@ -49,52 +65,58 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá cắt lỗ</b></td>
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng FA</b></td>
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
+                <td><span onclick="JS_DataFinancial.addrow()" class="text-cursor text-primary"><i class="fas fa-plus-square"></i></span></td>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="body_data">
             @foreach ($datas as $key => $data)
+            @php $id = $data->id; @endphp
                 <tr>
-                    <td style="width:3%;vertical-align: middle;"align="center"><input type="checkbox" name="chk_item_id"
+                    <td style="vertical-align: middle;"align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data->id }}"></td>
-                    <td style="width:3%;vertical-align: middle;" align="center">{{ $key + 1 }}
-                    <!-- <td style="width:10%;vertical-align: middle;" align="center" ondblclick="" onclick="{select_row(this);}">
+                    <td style="vertical-align: middle;" align="center">
+                    {{($datas->currentPage() - 1)*$datas->perPage() + ($key + 1)}}
+                    <!-- <td style="vertical-align: middle;" align="center" ondblclick="" onclick="{select_row(this);}">
                        {{$data->code_cp}}
                     </td> -->
-                    <td style="width:5%;vertical-align: middle;" align="center" onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->code_cp}}
+                    <td class="td_code_cp_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'code_cp')">
+                       <span id="span_code_cp_{{$id}}" class="span_code_cp_{{$id}}">{{$data->code_cp}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->exchange}}
+                    <td class="td_exchange_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'exchange')">
+                       <span id="span_exchange_{{$id}}" class="span_exchange_{{$id}}">{{$data->exchange}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;white-space: inherit;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->category->name_category}}
+                    <td class="td_code_category_{{$id}}" style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'code_category')">
+                    <span id="span_code_category_{{$id}}" class="span_code_category_{{$id}}">{{!empty($data->category) ? $data->category->name_category : ''}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;white-space: inherit;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
+                    <td style="vertical-align: middle;white-space: inherit;" align="center">
                        {{$data->Users->name}}
                     </td>
-                    <td style="width:9%;vertical-align: middle;white-space: inherit;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->updated_at}}
+                    <td class="td_created_at_{{$id}}" style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'created_at')">
+                       <span id="span_created_at_{{$id}}" class="span_created_at_{{$id}}">{{$data->created_at}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->ratings_TA}}
+                    <td class="td_ratings_TA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_TA')">
+                       <span id="span_ratings_TA_{{$id}}" class="span_ratings_TA_{{$id}}">{{$data->ratings_TA}}</span>
                     </td>
-                    <td style="vertical-align: middle;white-space: inherit;" onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->identify_trend}}
+                    <td class="td_identify_trend_{{$id}}" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'identify_trend')">
+                       <span id="span_identify_trend_{{$id}}" class="span_identify_trend_{{$id}}" 
+                       style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;white-space: break-spaces;overflow:hidden;" title="{{$data->identify_trend}}">{{$data->identify_trend}}</span>
                     </td>
-                    <td style="width:10%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->act}}
+                    <td class="td_act_{{$id}}" style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'act')">
+                       <span id="span_act_{{$id}}" class="span_act_{{$id}}">{{$data->act}}</span>
                     </td>
-                    <td style="width:10%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->trading_price_range}}
+                    <td class="td_trading_price_range_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'trading_price_range')">
+                       <span id="span_trading_price_range_{{$id}}" class="span_trading_price_range_{{$id}}">{{$data->trading_price_range}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->stop_loss_price_zone}}
+                    <td class="td_stop_loss_price_zone_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'stop_loss_price_zone')">
+                       <span id="span_stop_loss_price_zone_{{$id}}" class="span_stop_loss_price_zone_{{$id}}">{{$data->stop_loss_price_zone}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                       {{$data->ratings_FA}}
+                    <td class="td_ratings_FA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_FA')">
+                       <span id="span_ratings_FA_{{$id}}" class="span_ratings_FA_{{$id}}">{{$data->ratings_FA}}</span>
                     </td>
-                    <td style="width:5%;vertical-align: middle;" align="center"  onclick="JS_DataFinancial.changeUpdate('{{$data->id}}')">
-                        <i class="fas fa-link"></i>
+                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_FA')"><i class="fas fa-link"></i>
+                    </td>
+                    <td class="text-center" style="vertical-align: middle;">
+                        <span class="text-cursor text-warning" onclick="JS_DataFinancial.edit('#frmAdd')"><i class="fas fa-edit"></i></span>
                     </td>
                 </tr>
             @endforeach

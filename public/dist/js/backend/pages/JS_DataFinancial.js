@@ -407,3 +407,142 @@ JS_DataFinancial.prototype.seeVideo = function (id) {
         }
     });
 }
+/**
+ * Thêm một dòng mới trên danh sách
+ */
+JS_DataFinancial.prototype.addrow = function() {
+    var numberRow = $("#body_data tr").length;
+    var id = broofa();
+    var html = '';
+    html += '<tr>';
+    // checkbox
+    html += '<td align="center"><input type="checkbox" name="chk_item_id" value="' + id + '"></td>';
+    // stt
+    html += '<td align="center">' + (parseInt(numberRow) + 1) + '</td>';
+    // code_cp
+    html += '<td class="td_code_cp_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'code_cp\')">';
+    html += '<span id="span_code_cp_' + id + '" class="span_code_cp_' + id + '"></span>';
+    html += '</td>';
+    // exchange
+    html += '<td class="td_exchange_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'exchange\')">';
+    html += '<span id="span_exchange_' + id + '" class="span_exchange_' + id + '"></span>';
+    html += '</td>';
+    // code_category
+    html += '<td class="td_code_category_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'code_category\')">';
+    html += '<span id="span_code_category_' + id + '" class="span_code_category_' + id + '"></span>';
+    html += '</td>';
+    // user_id
+    html += '<td></td>';
+    // created_at
+    html += '<td class="td_created_at_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'created_at\')">';
+    html += '<span id="span_created_at_' + id + '" class="span_created_at_' + id + '"></span>';
+    html += '</td>';
+    // ratings_TA
+    html += '<td class="td_ratings_TA_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'ratings_TA\')">';
+    html += '<span id="span_ratings_TA_' + id + '" class="span_ratings_TA_' + id + '"></span>';
+    html += '</td>';
+    // identify_trend
+    html += '<td class="td_identify_trend_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'identify_trend\')">';
+    html += '<span id="span_identify_trend_' + id + '" class="span_identify_trend_' + id + '"></span>';
+    html += '</td>';
+    // act
+    html += '<td class="td_act_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'act\')">';
+    html += '<span id="span_act_' + id + '" class="span_act_' + id + '"></span>';
+    html += '</td>';
+    // trading_price_range
+    html += '<td class="td_trading_price_range_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'trading_price_range\')">';
+    html += '<span id="span_trading_price_range_' + id + '" class="span_trading_price_range_' + id + '"></span>';
+    html += '</td>';
+    // stop_loss_price_zone
+    html += '<td class="td_stop_loss_price_zone_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'stop_loss_price_zone\')">';
+    html += '<span id="span_stop_loss_price_zone_' + id + '" class="span_stop_loss_price_zone_' + id + '"></span>';
+    html += '</td>';
+    // ratings_FA
+    html += '<td class="td_ratings_FA_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'ratings_FA\')">';
+    html += '<span id="span_ratings_FA_' + id + '" class="span_ratings_FA_' + id + '"></span>';
+    html += '</td>';
+    // url_link
+    html += '<td class="td_url_link_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'url_link\')">';
+    html += '<span id="span_url_link_' + id + '" class="span_url_link_' + id + '"></span>';
+    html += '</td>';
+    // status
+    // html += '<td onclick="{select_row(this);}" align="center">';
+    // html += '<label class="custom-control custom-checkbox p-0 m-0 pointer " style="cursor: pointer;">';
+    // html += '<input type="checkbox" hidden class="custom-control-input toggle-status" id="status_' + id + '" data-id="' + id + '" checked>';
+    // html += '<span class="custom-control-indicator p-0 m-0" onclick="JS_DataFinancial.changeStatus(\'' + id + '\')"></span>';
+    // html += '</label></td>';
+    // edit
+    html += '<td align="center"><span class="text-cursor text-warning" onclick="JS_DataFinancial.edit(\'#frmAdd\')"><i class="fas fa-edit"></i></span></td>';
+    html += '</tr>';
+    $("#body_data").append(html);
+    // JS_DataFinancial.loadEvent();
+}
+/**
+ * Tạo một id mới ngẫu nhiên
+ */
+function broofa() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+/**
+ * Sự kiện khi nhấn 2 lần vào dòng td để sửa
+ */
+function click2(id, type) {
+    $(".td_"+type+"_" + id).removeAttr('ondblclick');
+    var text = $("#span_"+type+"_" + id).html();
+    $("#"+type+"_" + id).removeAttr('hidden');
+    $("#span_"+type+"_" + id).html('<textarea name="'+type+'" id="'+type+'_' + id + '" rows="3">'+text+'</textarea>');
+    $("#"+type+"_" + id).focus();
+    $("#span_"+type+"_" + id).removeAttr('id');
+    $("#"+type+"_" + id).focusout(function(){
+        $(".td_"+type+"_" + id).attr('ondblclick', "click2('"+id+"', '"+type+"')");
+        $("#"+type+"_" + id).attr('hidden', true);
+        $(".span_"+type+"_" + id).attr('id', 'span_'+type+'_' + id);
+        $(".span_"+type+"_" + id).html($("#"+type+"_" + id).val());
+        if(text != $(".span_" + type + '_' + id).html()){
+            JS_DataFinancial.updateDataFinancial(id, type, $(".span_" + type + '_' + id).html());
+        }
+    })
+}
+/**
+ * Cập nhật khi ở màn hình hiển thị danh sách
+ */
+JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = '') {
+    var myClass = this;
+    var url = myClass.urlPath + '/updateDataFinancial';
+    var data = 'id=' + id;
+    data += '&_token=' + $('#frmDataFinancial_index').find('#_token').val();
+    if(column == 'code_cp'){ data += '&code_cp=' + (column == 'code_cp' ? value : ""); }
+    else if(column == 'exchange') {data += '&exchange=' + value}
+    else if(column == 'code_category') {data += '&code_category=' + value}
+    else if(column == 'ratings_TA') {data += '&ratings_TA=' + value}
+    else if(column == 'identify_trend') {data += '&identify_trend=' + value}
+    else if(column == 'act') {data += '&act=' + value}
+    else if(column == 'trading_price_range') {data += '&trading_price_range=' + value}
+    else if(column == 'stop_loss_price_zone') {data += '&stop_loss_price_zone=' + value}
+    else if(column == 'ratings_FA') {data += '&ratings_FA=' + value}
+    else if(column == 'url_link') {data += '&url_link=' + value}
+    else if(column == 'status') {data += '&status=' + value}
+    $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        success: function (arrResult) {
+            if (arrResult['success'] == true) {
+                NclLib.alerMesage(arrResult['message'], 'success');
+                if(column == 'order'){
+                    JS_DataFinancial.loadList();
+                }
+            } else {
+                NclLib.alerMesage(arrResult['message'], 'danger');
+                JS_DataFinancial.loadList();
+            }
+        }, error: function(e){
+            console.log(e);
+            NclLib.successLoadding();
+        }
+    });
+    $("#" + id).prop('readonly');
+}

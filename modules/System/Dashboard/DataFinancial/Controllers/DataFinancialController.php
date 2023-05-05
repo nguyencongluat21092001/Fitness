@@ -111,4 +111,18 @@ class DataFinancialController extends Controller
         }
         return array('success' => true, 'message' => 'Xóa thành công');
     }
+    /**
+     * 
+     */
+    // updateDataFinancial
+    
+    /**
+     * Cập nhật dữ liệu màn hình index
+     */
+    public function updateDataFinancial(Request $request)
+    {
+        $arrInput = $request->all();
+        $data = $this->DataFinancialService->_updateDataFinancial($arrInput, $arrInput['id']);
+        return $data;
+    }
 }
