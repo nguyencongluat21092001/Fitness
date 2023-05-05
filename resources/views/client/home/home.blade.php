@@ -134,7 +134,7 @@
 
         <!-- Start Team Member -->
         <section class="container">
-            <div class="pt-5 pb-3 d-lg-flex  gx-5">
+            <div class="pt-5 pb-3 d-lg-flex gx-5">
                     <div class="col-lg-4">
                         <form action="" method="POST" id="frmLoadlist_list">
                             <h2 class="h4 py-2 typo-space-line">Chỉ số thị trường</h2>
@@ -181,9 +181,9 @@
                             </div>
                         </form>
                     </div>
-                <div class="col-lg-8 row" style="padding-left:30px">
+                <div class="col-lg-8">
                     <!-- Start Our Work -->
-                    <h2 class="h4 typo-space-line">Bài viết nổi bật</h2>
+                    
                     <section class="container py-2">
                         <!-- <div class="row justify-content-center my-5">
                             <div class="filter-btns shadow-md rounded-pill text-center col-auto">
@@ -194,8 +194,8 @@
                                 <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic" href="#">Graphic</a>
                             </div>
                         </div> -->
-                        
-                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#f8f8f8;border-radius: 1%;">
+                        <h2 class="h4 typo-space-line">Bài viết nổi bật</h2>
+                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#fdfdfd;border-radius: 1%;">
                              <!-- Màn hình danh sách -->
                                 <div class="home_index_child py-2">
                                     <div class="col-md-3">
