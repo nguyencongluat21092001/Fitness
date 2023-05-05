@@ -24,7 +24,6 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../clients/css/custom.css">
 </head>
-
 <body>
 <div class="header-one">
     <div class="date-header">
@@ -56,7 +55,6 @@
                             <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
                         </li> 
                     @endif
-
                     @if (Route::has('register'))
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
@@ -68,7 +66,6 @@
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             <img  src="{{url('/file-image/avatar/')}}/{{ Auth::user()->avatar }}" alt="Image" style="border-radius:50%;height: 30px;width: 30px;object-fit: cover;">
                             <span style="color:white">
-                            <!-- user -->
                             {{ Auth::user()->name }}
                             </span>
                         </span>

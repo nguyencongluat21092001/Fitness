@@ -102,7 +102,7 @@
                         <span for="is_checkbox_role">Quản lý</span><br>
                         <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'STAFF') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Nhân viên</span><br>
-                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'USERS') ? 'checked' : ''}}/>
+                        <input type="checkbox" value="USERS" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'USERS') ? 'checked' : ''}}/>
                         <span for="is_checkbox_role">Người dùng</span><br>
                     @endif
                     @if(empty($data['role']))

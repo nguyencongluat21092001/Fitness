@@ -43,17 +43,16 @@ class LoginController extends Controller
             $_SESSION["id"]   = $getUsers->id;
             $_SESSION["email"]   = $user->email;
             $_SESSION["color_view"] = !empty($getInfo->color_view)?$getInfo->color_view:2;
-            // menu sidebar
-            $sideBarConfig = config('SidebarSystem');
-            $sideBar = $this->checkPermision($sideBarConfig , $user->role);
-            $_SESSION["sidebar"] = $sideBar;
             // kiem tra quyen nguoi dung
             if ($user->role == 'ADMIN' || $user->role == 'MANAGE' || $user->role == 'STAFF') {
+                // menu sidebar
+                $sideBarConfig = config('SidebarSystem');
+                $sideBar = $this->checkPermision($sideBarConfig , $user->role);
+                $_SESSION["sidebar"] = $sideBar;
                 Auth::guard('web')->login($user);
                 return redirect('system/home/index');
             } else if ($user->role == 'USERS') {
                 Auth::guard('web')->login($user);
-                // return view('client.home.home');
                 return redirect('client/home/index');
             }
         } else {
