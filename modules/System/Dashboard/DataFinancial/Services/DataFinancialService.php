@@ -69,5 +69,57 @@ class DataFinancialService extends Service
         $getUserInfor = $this->repository->where('id',$arrInput['chk_item_id'])->first()->toArray();
         return $getUserInfor;
     }
+    
+    /**
+     * Cập nhật và thêm mới màn index
+     */
+    public function _updateDataFinancial($input, $id)
+    {
+        // if(isset($input['order']) && !empty($input['order'])){
+        //     $this->updateOrder($input);
+        // }
+        $dataFinancialSingle = $this->repository->where('id', $id)->first();
+        $dataFinancials = $this->repository->select('*')->get();
+        
+        $code_cp = isset($dataFinancialSingle->code_cp) ? $dataFinancialSingle->code_cp : '';
+        $exchange = isset($dataFinancialSingle->exchange) ? $dataFinancialSingle->exchange : '';
+        $code_category = isset($dataFinancialSingle->code_category) ? $dataFinancialSingle->code_category : '';
+        $ratings_TA = isset($dataFinancialSingle->ratings_TA) ? $dataFinancialSingle->ratings_TA : '';
+        $identify_trend = isset($dataFinancialSingle->identify_trend) ? $dataFinancialSingle->identify_trend : '';
+        $act = isset($dataFinancialSingle->act) ? $dataFinancialSingle->act : '';
+        $trading_price_range = isset($dataFinancialSingle->trading_price_range) ? $dataFinancialSingle->trading_price_range : '';
+        $stop_loss_price_zone = isset($dataFinancialSingle->stop_loss_price_zone) ? $dataFinancialSingle->stop_loss_price_zone : '';
+        $ratings_FA = isset($dataFinancialSingle->ratings_FA) ? $dataFinancialSingle->ratings_FA : '';
+        $url_link = isset($dataFinancialSingle->url_link) ? $dataFinancialSingle->url_link : '';
+        // $status = isset($dataFinancialSingle->status) ? $dataFinancialSingle->status : '';
+        $param = [
+            'user_id' => $_SESSION['id'],
+            'code_cp' => isset($input['code_cp']) ? $input['code_cp'] : $code_cp,
+            'exchange' => isset($input['exchange']) ? $input['exchange'] : $exchange,
+            'code_category' => isset($input['code_category']) ? $input['code_category'] : $code_category,
+            'ratings_TA' => isset($input['ratings_TA']) ? $input['ratings_TA'] : $ratings_TA,
+            'identify_trend' => isset($input['identify_trend']) ? $input['identify_trend'] : $identify_trend,
+            'act' => isset($input['act']) ? $input['act'] : $act,
+            'trading_price_range' => isset($input['trading_price_range']) ? $input['trading_price_range'] : $trading_price_range,
+            'stop_loss_price_zone' => isset($input['stop_loss_price_zone']) ? $input['stop_loss_price_zone'] : $stop_loss_price_zone,
+            'ratings_FA' => isset($input['ratings_FA']) ? $input['ratings_FA'] : $ratings_FA,
+            'url_link' => isset($input['url_link']) ? $input['url_link'] : $url_link,
+            // 'status' => isset($input['status']) ? $input['status'] : $status,
+        ];
+        foreach($dataFinancials as $value){
+            if(isset($input['code_cp']) && $input['code_cp'] === $value->code_cp){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
+        }
+        if(isset($dataFinancialSingle) && !empty($dataFinancialSingle)){
+            $this->repository->where('id',$id)->update($param);
+            return array('success' => true, 'message' => 'Cập nhật thành công!');
+        }else{
+            $param['status'] = 1;
+            $param['id'] = $id;
+            $this->repository->insert($param);
+            return array('success' => true, 'message' => 'Thêm mới thành công!');
+        }
+    }
 
 }

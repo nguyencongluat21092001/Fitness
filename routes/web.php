@@ -64,6 +64,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::get('/changeUpdate',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'changeUpdate']);
             Route::post('/edit',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'edit']);
             Route::post('/delete',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'delete']);
+            Route::post('/updateDataFinancial',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'updateDataFinancial']);
         });
     });
     Route::prefix('/system')->group(function () {

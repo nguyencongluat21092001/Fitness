@@ -64,7 +64,7 @@
     <div id="dialogconfirm"></div>
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
-        var baseUrl = '{{ url('') }}';
+        var baseUrl = "{{ url('') }}";
         var JS_DataFinancial = new JS_DataFinancial(baseUrl, 'system', 'datafinancial');
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);

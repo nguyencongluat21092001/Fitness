@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address')->nullable();
             $table->string('phone')->nullable();
             $table->string('dateBirth')->nullable();
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('avatar_default.png');
             $table->rememberToken();
             $table->timestamps();
         });

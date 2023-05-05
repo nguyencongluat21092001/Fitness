@@ -12,7 +12,7 @@
 
 return [
     'financial' => [
-        'api'         => '10.20.3.170:7500/api/',
+        'api'         => '192.168.2.148:7600/api/',
         "token"       => "fintopluatnc2023",
         'apiChild' => [
             'list-coin-code' => "list-coin-code", // lấy chỉ số chứng khoán việt Nam 
