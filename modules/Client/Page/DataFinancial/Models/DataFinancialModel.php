@@ -18,7 +18,7 @@ class DataFinancialModel extends Model
         'user_id',
         'code_cp',
         'exchange',
-        'code_category',
+        '08be4b72-4560-4693-8d4a-3fdfe3353cca',
         'ratings_TA',
         'identify_trend',
         'act',

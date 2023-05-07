@@ -20,6 +20,16 @@ NclLib.prototype.alerMesage = function(nameMessage,icon,color){
       timer: 2500
     })
 }
+NclLib.prototype.alerMesageBackend = function(type, label, message, s = 30000) {
+    $.toast({
+        title: label,
+        content: message,
+        type: type,
+        delay: s,
+        dismissible: true,
+        positionDefaults: 'top-left'
+    });
+}
 // add class hiển thị đang ở page nào 
 NclLib.prototype.menuActive = function(nameMenu){
   $(nameMenu).addClass("active");
