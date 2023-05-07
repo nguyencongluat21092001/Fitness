@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Auth;
 //     $googleSheet->readGoogleSheet();
 //     // return view('auth.login');
 // });
-Route::get('/', function () {
-    return view('client.home.home');
-});
+Route::get('/', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
 Route::get('/login', function () {
     return view('auth.signin');
 });
