@@ -27,6 +27,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
     <link rel="stylesheet" href="../assets/chosen/chosen.min.css">
+    <link rel="stylesheet" href="../assets/datepicker/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="../assets/css/toast.min.css">
 
     <script src="../assets/js/croppie.js"></script>
     <script rel="stylesheet" src="../assets/css/croppie.css"></script>
@@ -481,11 +483,13 @@
     <!-- <script src="../assets/js/argon-dashboard.js"></script> -->
     <script src='../assets/js/jquery.js'></script>
     <script type="text/jscript" src="../assets/chosen/chosen.min.js"></script>
-        <script>
-            setTimeout(() => {
-                $('#imageLoading').addClass("loader_bg_of");
-            }, 2000)
-        </script>
+    <script type="text/jscript" src="../assets/datepicker/bootstrap-datepicker.min.js"></script>
+    <script type="text/jscript" src="../assets/js/toast.min.js"></script>
+    <script>
+        setTimeout(() => {
+            $('#imageLoading').addClass("loader_bg_of");
+        }, 2000)
+    </script>
 @endif
 </body>
 </html>

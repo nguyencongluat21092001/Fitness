@@ -10530,7 +10530,7 @@ fieldset:disabled .btn {
 }
 
 .text-warning {
-  color: #fb6340 !important;
+  color: #ffc107 !important;
 }
 
 .text-danger {
@@ -10602,7 +10602,7 @@ fieldset:disabled .btn {
 }
 
 .bg-warning {
-  background-color: #fb6340 !important;
+  background-color: #ffc107 !important;
 }
 
 .bg-danger {
@@ -20548,13 +20548,13 @@ fieldset:disabled .btn {
 
 .btn-warning:hover,
 .btn.bg-gradient-warning:hover {
-  background-color: #fb6340;
-  border-color: #fb6340;
+  background-color: #ffc107;
+  border-color: #ffc107;
 }
 
 .btn-warning .btn.bg-outline-warning,
 .btn.bg-gradient-warning .btn.bg-outline-warning {
-  border: 1px solid #fb6340;
+  border: 1px solid #ffc107;
 }
 
 .btn-warning:not(:disabled):not(.disabled).active,
@@ -25229,7 +25229,7 @@ p {
 .dark-version h6,
 .dark-version .h6,
 .dark-version .h6,
-.dark-version a:not(.dropdown-item):not(.choices__item):not(.leaflet-control-zoom-in):not(.leaflet-control-zoom-out):not(.btn):not(.nav-link):not(.fixed-plugin-button),
+/* .dark-version a:not(.dropdown-item):not(.choices__item):not(.leaflet-control-zoom-in):not(.leaflet-control-zoom-out):not(.btn):not(.nav-link):not(.fixed-plugin-button), */
 .dark-version .table thead tr th,
 .dark-version .kanban-title-board {
   color: #fff !important;
