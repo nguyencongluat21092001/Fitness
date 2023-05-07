@@ -2,81 +2,84 @@
     .unit-edit span {
         font-size: 19px;
     }
-    .modal-dialog{
-        max-width:none !important
-    }
-    @media (min-width: 1200px)
-        .modal-xl {
-            --bs-modal-width: 1740px !important;
-    }
+
     .modal.show .modal-dialog {
-        padding-top:15% !important;
         transform: none;
     }
 </style>
-<form id="frmAdd"  role="form" action="" method="POST" enctype="multipart/form-data">
-    @csrf
-    <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-    <input type="hidden" name="id" id="id" value="{{!empty($data['datas'])?$data['datas'][0]->id:''}}">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content card"> 
+<div class="modal-dialog modal-xl">
+    <form id="frmAdd">
+        <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" id="id" value="{{isset($datas->id) ? $datas->id : ''}}">
+        <div class="modal-content card">
             <div class="modal-header">
                 <h5 class="modal-title">Cập nhật cổ phiếu</h5>
-                <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
+                <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="color: #fff;">
                     X
                 </button>
             </div>
-                <div class="card-body">
-                    <table class="table  table-bordered table-striped table-condensed dataTable no-footer">
-                        <thead>
-                            <tr>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Mã CP</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Sàn</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhóm nghành HĐKD</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng TA</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhận định Ta - Xu hướng CP</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Hành động</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá giao dịch</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá cắt lỗ</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng FA</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
-                                <td style="white-space: inherit;vertical-align: middle" align="center"><b>#</b></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td style="width:10%;vertical-align: middle;" align="center"><input id="code_cp" name="code_cp" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->code_cp:''}}" class="form-control"></td>
-                                <td style="width:10%;vertical-align: middle;" align="center"><input id="exchange" name="exchange" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->exchange:''}}" class="form-control"></td>
-                                <td style="width:12%;vertical-align: middle;" align="center"><select class="form-control input-sm chzn-select" name="code_category"
-                                id="code_category">
-                                <option value=''>-- Chọn nhóm ngành --</option>
-                                @if(!empty($data['datas'][0]->code_category))
-                                    @foreach($data['category'] as $item){
-                                        <option {{!empty($data['datas'][0]->code_category == $item['code_category']) ? 'selected' :''}} value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                    }
-                                    @endforeach
-                                @else 
-                                    @foreach($data['category'] as $item){
-                                        <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                    }
-                                    @endforeach
-                                @endif 
-                            </select></td>
-                                <td style="width:4%;vertical-align: middle;" align="center"><input id="ratings_TA" name="ratings_TA" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->ratings_TA:''}}" class="form-control"></td>
-                                <td style="vertical-align: middle;" align="center"><textarea  id="identify_trend" name="identify_trend" type="text" value="" class="form-control">{{!empty($data['datas'])?$data['datas'][0]->identify_trend:''}}</textarea></td>
-                                <td style="width:10%;vertical-align: middle;" align="center"><input id="act" name="act" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->act:''}}" class="form-control"></td>
-                                <td style="width:7%;vertical-align: middle;" align="center"><input id="trading_price_range" name="trading_price_range" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->trading_price_range:''}}" class="form-control"></td>
-                                <td style="width:7%;vertical-align: middle;" align="center"><input id="stop_loss_price_zone" name="stop_loss_price_zone" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->stop_loss_price_zone:''}}" class="form-control"></td>
-                                <td style="width:4%;vertical-align: middle;" align="center"><input id="ratings_FA" name="ratings_FA" type="text" value="{{!empty($data['datas'])?$data['datas'][0]->ratings_FA:''}}" class="form-control"></td>
-                                <td style="width:4%;vertical-align: middle;" align="center"><i class="fas fa-marker"></i></td>
-                                <td style="width:5%;vertical-align: middle;" align="center">
-                                <p></p>
-                                <button id="btn_create" type="button" class="btn btn-success" title="Xem trực tuyến"><i class="fas fa-thumbs-up"></i></button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Mã cổ phiếu</label>
+                        <input id="code_cp" name="code_cp" type="text" value="{{!empty($datas) ? $datas->code_cp : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Sàn giao dịch</label>
+                        <input id="exchange" name="exchange" type="text" value="{{!empty($datas) ? $datas->exchange : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Nhóm nghành HĐKD</label>
+                        <select class="form-control input-sm chzn-select" name="code_category" id="code_category">
+                            <option value="">--Chọn nhóm ngành--</option>
+                            @foreach($category as $key => $value)
+                            <option @if(isset($datas->code_category) && $value->code_category == $datas->code_category) selected @endif
+                                value="{{$value->code_category}}">{{$value->name_category}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Xếp hạng TA</label>
+                        <input id="ratings_TA" name="ratings_TA" type="text" value="{{!empty($datas) ? $datas->ratings_TA : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="">Nhận định Ta - Xu hướng CP</label>
+                        <textarea id="identify_trend" rows="5" name="identify_trend" type="text" value="" class="form-control">{{!empty($datas) ? $datas->identify_trend : ''}}</textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Hành động</label>
+                        <input id="act" name="act" type="text" value="{{!empty($datas) ? $datas->act : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Vùng giá giao dịch</label>
+                        <input id="trading_price_range" name="trading_price_range" type="text" value="{{!empty($datas) ? $datas->trading_price_range : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Vùng giá cắt lỗ</label>
+                        <input id="stop_loss_price_zone" name="stop_loss_price_zone" type="text" value="{{!empty($datas) ? $datas->stop_loss_price_zone : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Xếp hạng FA</label>
+                        <input id="ratings_FA" name="ratings_FA" type="text" value="{{!empty($datas) ? $datas->ratings_FA : ''}}" class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="">Phân tích DN FA</label>
+                        <input type="text" name="url_link" id="url_link" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">Số thứ tự</label>
+                        <input type="text" name="order" id="order" class="form-control">
+                    </div>
+                    <div class="col-md-3">
+                        <label for="">Trạng thái</label>
+                        <label class="form-control" style="border: none; background-color: unset; padding-left: 0"><input type="checkbox" name="status" id="status"> Hoạt động</label>
+                    </div>
+                    <div class="col-md-12 mt-2" align="center">
+                        <button type="button" id="btn_create" class="btn btn-success"><i class="fas fa-save"></i> Lưu</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    </div>
                 </div>
+            </div>
         </div>
-    </div>
-</form>
-
+    </form>
+</div>

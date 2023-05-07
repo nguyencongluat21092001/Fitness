@@ -3,29 +3,7 @@
         font-size: 19px;
     }
     body {margin:2rem;}
-        .modal-dialog {
-            max-width: 800px;
-            margin: 30px auto;
-        }
-
-
-
-        .modal-body {
-        position:relative;
-        padding:0px;
-        }
-        .close {
-        position:absolute;
-        right:-30px;
-        top:0;
-        z-index:999;
-        font-size:2rem;
-        font-weight: normal;
-        color:#fff;
-        opacity:1;
-        }
-
-        td > p { overflow-y:scroll;overflow-x:hidden;} 
+    td > p { overflow-y:scroll;overflow-x:hidden;} 
 </style>
 {{-- @php
 use Modules\System\Recordtype\Helpers\WorkflowHelper;
@@ -113,10 +91,10 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td class="td_ratings_FA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_FA')">
                        <span id="span_ratings_FA_{{$id}}" class="span_ratings_FA_{{$id}}">{{$data->ratings_FA}}</span>
                     </td>
-                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_FA')"><i class="fas fa-link"></i>
+                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}"><i class="fas fa-link"></i>
                     </td>
                     <td class="text-center" style="vertical-align: middle;">
-                        <span class="text-cursor text-warning" onclick="JS_DataFinancial.edit('#frmAdd')"><i class="fas fa-edit"></i></span>
+                        <span class="text-cursor text-warning" onclick="JS_DataFinancial.edit('{{$id}}')"><i class="fas fa-edit"></i></span>
                     </td>
                 </tr>
             @endforeach

@@ -96,29 +96,20 @@
                     <span class="col-md-3 control-label required">Quyền truy cập</span>
                     <div class="col-md-8">
                     @if(!empty($data['role']))
-                        <input type="checkbox" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'ADMIN') ? 'checked' : ''}}/>
-                        <span for="is_checkbox_role">Quản trị hệ thống</span> <br>
-                        <input type="checkbox" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'MANAGE') ? 'checked' : ''}}/>
-                        <span for="is_checkbox_role">Quản lý</span><br>
-                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'STAFF') ? 'checked' : ''}}/>
-                        <span for="is_checkbox_role">Nhân viên</span><br>
-                        <input type="checkbox" value="USERS" name="is_checkbox_role" id="is_checkbox_role" {{($data['role'] == 'USERS') ? 'checked' : ''}}/>
-                        <span for="is_checkbox_role">Người dùng</span><br>
-                    @endif
-                    @if(empty($data['role']))
-                        <input type="checkbox" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role"/>
-                        <span for="is_checkbox_role">Quản trị hệ thống</span> <br>
-                        <input type="checkbox" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role"/>
-                        <span for="is_checkbox_role">Quản lý</span><br>
-                        <input type="checkbox" value="STAFF" name="is_checkbox_role" id="is_checkbox_role"/>
-                        <span for="is_checkbox_role">Nhân viên</span><br>
-                        <input type="checkbox" value="USERS" name="is_checkbox_role" id="is_checkbox_role"/>
-                        <span for="is_checkbox_role">Người dùng</span><br>
+                        <input type="radio" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role_admin" {{!empty($data['role']) && $data['role'] == 'ADMIN' ? 'checked' : ''}}/>
+                        <label for="is_checkbox_role_admin">Quản trị hệ thống</label> <br>
+                        <input type="radio" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role_manage" {{!empty($data['role']) && $data['role'] == 'MANAGE' ? 'checked' : ''}}/>
+                        <label for="is_checkbox_role_manage">Quản lý</label><br>
+                        <input type="radio" value="STAFF" name="is_checkbox_role" id="is_checkbox_role_staff" {{!empty($data['role']) && $data['role'] == 'STAFF' ? 'checked' : ''}}/>
+                        <label for="is_checkbox_role_staff">Nhân viên</label><br>
+                        <input type="radio" value="USERS" name="is_checkbox_role" id="is_checkbox_role_user" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}}/>
+                        <label for="is_checkbox_role_user">Người dùng</label><br>
                     @endif
                     </div>
                     <div class="modal-body">
                     <div>
-                        <input type="file" name="upload_image" id="upload_image" multiple>
+                        <label for="upload_image">Chọn ảnh</label>
+                        <input hidden type="file" name="upload_image" id="upload_image">
                     </div>
                 </div>
                 <div id="uploadimage" style="display:none">

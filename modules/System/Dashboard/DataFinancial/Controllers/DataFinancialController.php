@@ -70,13 +70,13 @@ class DataFinancialController extends Controller
     public function changeUpdate(Request $request)
     {
         $input = $request->all();
-        $getCategory = $this->categoryService->where('cate','DM_DATA_CK')->get()->toArray();
+        $getCategory = $this->categoryService->where('cate','DM_DATA_CK')->get();
         $data['category'] = $getCategory;
         if($input['id'] != null || $input['id'] != ''){
-            $dataFinacial = $this->DataFinancialService->where('id',$input['id'])->get();
+            $dataFinacial = $this->DataFinancialService->where('id',$input['id'])->first();
             $data['datas'] = $dataFinacial;
         }
-        return view('dashboard.datafinancial.changeEdit',compact('data'));
+        return view('dashboard.datafinancial.changeEdit',$data);
     }
     /**
      * them thông tin
@@ -91,8 +91,7 @@ class DataFinancialController extends Controller
         $create = $this->DataFinancialService->store($input); 
         return array('success' => true, 'message' => 'Cập nhật thành công');
     }
-
-     /**
+    /**
      * Xóa
      *
      * @param Request $request

@@ -39,7 +39,7 @@ class CateService extends Service
                 'name'=>$input['name'],
                 'code_cate'=>$input['code_cate'],
                 'decision'=>$input['decision'],
-                'current_status'=>$input['is_checkbox_status']
+                'current_status'=>isset($input['is_checkbox_status']) ? $input['is_checkbox_status'] : ''
             ];
             $create = $this->CateRepository->create($arrData);
         }
