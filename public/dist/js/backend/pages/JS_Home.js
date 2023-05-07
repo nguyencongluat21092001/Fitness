@@ -28,8 +28,8 @@ JS_Home.prototype.loadIndex = function () {
     // $('.chzn-select').chosen({ height: '100%', width: '100%' });
     var oForm = 'form#frmHome_index';
     var oFormCreate = 'form#frmAdd';
-    myClass.loadList(oForm);
-    myClass.loadListTap1(oForm);
+    // myClass.loadList(oForm);
+    // myClass.loadListTap1(oForm);
 
     $(oForm).find('#btn_add').click(function () {
         myClass.add(oForm);

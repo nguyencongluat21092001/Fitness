@@ -13,23 +13,22 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <link href="../clients/css/bootstrap.min.css" rel="stylesheet">
-
+    <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <!-- Font CSS -->
     <link href="../clients/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
     <link rel="stylesheet" href="../clients/css/templatemo.css">
-
-    <!-- <link rel="stylesheet" href="assets/css/templatemo.css"> -->
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../clients/css/custom.css">
 </head>
 <body>
-<div class="header-one">
+<div class="header-one" >
+    <div class="container header-one">
     <div class="date-header">
              Thứ năm, 04/05/2023 02:18:26
     </div>
-    <div class="marquee-header">
+    <!-- <div class="marquee-header">
         <marquee style="padding-top:10px;color:white">
             <span>
             Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.
@@ -44,22 +43,30 @@
             Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.3
             </span> 
         </marquee>
-    </div>
+    </div> -->
     <div class="user-login-header">
         <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
             <ul class="navbar-nav">
                         <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
-                        </li> 
-                    @endif
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
-                        </li>
-                    @endif
+                   <div style="display:flex">
+                        <div>
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
+                                </li> 
+                            @endif
+                       </div>
+                       <div style="padding-left:10px">
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
+                                </li>
+                            @endif
+                       </div>
+                   </div>
+                   
+                   
                 @else
                     <li class="nav-item dropdown">
                         <span id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
@@ -97,6 +104,7 @@
                 </div> -->
         <!-- </div> -->
     </div>
+    </div>
 </div>
 
 <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -133,7 +141,7 @@
                 <div class=" mx-xl-5 mb-2" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link  rounded-pill px-3 " style="color:white" href="index.html">TRANG CHỦ</a>
+                            <a class="nav-link link-home  rounded-pill px-3 " style="color:white" href="index.html">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">CHỨNG KHOÁN</a>
@@ -352,6 +360,7 @@
     <script src="../clients/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="../clients/js/custom.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
 
 </body>
 

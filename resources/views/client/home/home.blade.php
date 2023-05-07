@@ -69,69 +69,72 @@
 </style>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Home.js') }}"></script>
         <!-- Start Banner Hero -->
-        <div class="banner-wrapper bg-light">
-            <!-- <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5"> -->
-                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
-                        <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="py-5 row d-flex align-items-center">
-                                <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5" style="background: #e4f3ffbf;border-radius: 50px">
-                                    <h1 class="banner-heading h1  display-3 mb-0 pb-5 mx-0 px-0 light-350 typo-space-line" style="color:#2c3a4cab">
-                                    Xây dựng chiến lược đầu tư
-                                    <br>của bạn
-                                </h1>
-                                    <p class="banner-body text-muted py-3 mx-0 px-0">
-                                    Khi mở một tài khoản đầu tư, đôi khi những công ty bình thường có ít người đầu tư lại mang đến cho bạn sự bứt phá kinh ngạc. Tuy nhiên, vẫn theo quy luật chung, bạn cần tìm hiểu họ kỹ lưỡng trước khi đưa ra quyết định.
-                                </p>
-                                    <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
-                                </div>
-                            </div>
+        <div class="banner-wrapper">
+        <section class="container">
+            <div class="table-responsive">
+                <!-- Màn hình danh sách top chỉ số tài chính-->
+                <div id="table-container-loadListTop"></div>
+            </div>
+        </section>
+       
+        <section class="container">
+            <div class="row mt-4">
+                <div class="col-lg-7 mb-lg-0 mb-4">
+                    <div class="card z-index-2 h-100">
+                        <div class="card-header pb-0 pt-3 bg-transparent">
+                        <h6 class="text-capitalize">Biểu đồ thị trường</h6>
+                        <p class="text-sm mb-0">
+                            <i class="fa fa-arrow-up text-success"></i>
+                            <span class="font-weight-bold">Tháng 5</span> năm 2023
+                        </p>
                         </div>
-                        <div class="carousel-item">
-                            <div class="py-5 row d-flex align-items-center">
-                                <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5"style="background: #e4f3ffbf;border-radius: 50px">
-                                    <h1 class="banner-heading h1  display-3 mb-0 pb-3 mx-0 px-0 light-350" style="color:#2c3a4cab">
-                                    Những con sóng lớn cần thời gian để phát triển.
-                                    </h1>
-                                    <p class="banner-body text-muted py-3">
-                                    Anh đúng hay anh sai, điều đó không quan trọng, cái chính là anh kiếm được bao nhiêu khi anh đúng và mất bao nhiêu khi anh sai.
-                                    </p>
-                                    <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="py-5 row d-flex align-items-center">
-                                <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5" style="background: #e4f3ffbf;border-radius: 50px">
-                                    <h1 class="banner-heading h1  display-3 mb-0 pb-3 mx-0 px-0 light-350" style="color:#2c3a4cab">
-                                        Cupidatat non proident, sunt in culpa qui officia
-                                    </h1>
-                                    <p class="banner-body text-muted py-3">
-                                    Cổ phiếu dẫn dắt hàng đầu không phải là công ty lớn nhất hay nhãn hiệu nổi tiếng, dễ nhận biết, mà là công ty có tăng trưởng lợi nhuận quý và hàng năng tốt nhất, ROE, lợi nhuận biên, tăng trưởng doanh số cao nhất và hành động giá tích cực.
-                                    </p>
-                                    <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="#" role="button">Get Started</a>
-                                </div>
-                            </div>
+                        <div class="card-body p-3">
+                        <div class="chart">
+                            <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
                         </div>
                     </div>
-                    <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
-                        <i class='bx bx-chevron-left'></i>
-                        <span class="visually-hidden">Previous</span>
-                    </a>
-                    <a class="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
-                        <i class='bx bx-chevron-right'></i>
-                        <span class="visually-hidden">Next</span>
-                    </a>
-                </div> -->
-            <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card card-carousel overflow-hidden h-100 p-0">
+                    <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
+                    <div class="carousel-inner border-radius-lg h-100">
+                        <div class="carousel-item h-100 active" style="background-image: url('./assets/img/carousel-1.jpg');
+                        background-size: cover;">
+                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
+                            </div>
+                            <h5 class="text-white mb-1">Get started with Argon</h5>
+                            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
+                        </div>
+                        </div>
+                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-2.jpg');
+                        background-size: cover;">
+                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
+                            </div>
+                            <h5 class="text-white mb-1">Faster way to create web pages</h5>
+                            <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
+                        </div>
+                        </div>
+                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-3.jpg');
+                        background-size: cover;">
+                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
+                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
+                            <i class="ni ni-trophy text-dark opacity-10"></i>
+                            </div>
+                            <h5 class="text-white mb-1">Share with us your design tips!</h5>
+                            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         </div>
-        <!-- End Banner Hero -->
-
         <!-- Start Team Member -->
         <section class="container">
             <div class="pt-5 pb-3 d-lg-flex gx-5">
@@ -144,11 +147,11 @@
                                         <select class="form-control input-sm chzn-select" name="type_code"
                                             id="type_code">
                                             <option value="VNINDEX">VNINDEX</option>
-                                            <option value="VPB">VPB</option>
+                                            <option value="HNX30">HNX30</option>
                                             <option value="HNXINDEX">HNXINDEX</option>
                                             <option value="UPINDEX">UPINDEX</option>
                                             <option value="VN30">VN30</option>
-                                            <option value="VN30">VN30</option>
+                                            <option value="VN100">VN100</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6" style="padding-left:10px">
@@ -160,7 +163,7 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="home_index_child">
+                                <div class="home_index_child" style="display:none">
                                     <div class="col-md-5">
                                             <input class="form-control input-sm" type="date" id="fromDate" name="fromDate" 
                                                 value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")))?>"  min="2010-01-01" max="2030-12-31">   
@@ -171,64 +174,77 @@
                                                 value="<?php echo (new DateTime())->format('Y-m-d');?>"  min="2010-01-01" max="2030-12-31">  
                                     </div>
                                 </div>
-                                <!-- <div class="home_index_child" style="text-align:center">
+                                <div class="home_index_child" style="display:none">
                                     <button id="txt_search" name="txt_search" style="background:#2e4970;color:white" type="button" class="btn"><i class="fas fa-search"></i></button>
-                                </div> -->
+                                </div>
                                 <div class="table-responsive">
                                     <!-- Màn hình danh sách -->
-                                    <div id="table-container" style="padding-top:10px"></div>
+                                    <div id="table-container"></div>
                                 </div>
                             </div>
                         </form>
+                        <div class="card mb-4">
+                            <form action="" method="POST" id="frmLoadlist_Bank">
+                                <h2 class="h4 py-2 typo-space-line">Chứng khoán ngân hàng</h2>
+                                <div class="home_index_vnindex">
+                                    <div class="home_index_child py-2">
+                                        <div class="col-md-6">
+                                            <select class="form-control input-sm chzn-select" name="type_code"
+                                                id="type_code">
+                                                @foreach($codeBank as $key => $value)
+                                                    <option value="{{$key}}">{{$value}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="home_index_child" style="display:none">
+                                        <div class="col-md-5">
+                                                <input class="form-control input-sm" type="date" id="fromDate" name="fromDate" 
+                                                    value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")))?>"  min="2010-01-01" max="2030-12-31">   
+                                        </div> 
+                                        <i style="padding:10px 20px 0px 20px" class="fas fa-long-arrow-alt-right"></i>
+                                        <div class="col-md-5"> 
+                                                <input class="form-control input-sm" type="date" id="toDate" name="toDate" 
+                                                    value="<?php echo (new DateTime())->format('Y-m-d');?>"  min="2010-01-01" max="2030-12-31">  
+                                        </div>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <!-- Màn hình danh sách cổ phiếu ngân hàng -->
+                                        <div id="table-container-bank"></div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                <div class="col-lg-8">
-                    <!-- Start Our Work -->
-                    
-                    <section class="container py-2">
-                        <!-- <div class="row justify-content-center my-5">
-                            <div class="filter-btns shadow-md rounded-pill text-center col-auto">
-                                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4 active" data-filter=".project" href="#">All</a>
-                                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".000.BV_TN" href="#">000.BV_TN</a>
-                                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".000.BV_TG" href="#">VB thế giới</a>
-                                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".social" href="#">Social Media</a>
-                                <a class="filter-btn btn rounded-pill btn-outline-primary border-0 m-md-2 px-md-4" data-filter=".graphic" href="#">Graphic</a>
-                            </div>
-                        </div> -->
-                        <h2 class="h4 typo-space-line">Bài viết nổi bật</h2>
-                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#fdfdfd;border-radius: 1%;">
-                             <!-- Màn hình danh sách -->
+                    <div class="col-lg-8" style="padding-left:10px">
+                        <!-- Start Our Work -->
+                        <h2 class="h4 typo-space-line py-2">Bài viết nổi bật</h2>
+                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#e2e5e7de;border-radius: 0.25em;">
+                                <!-- Màn hình danh sách -->
                                 <div class="home_index_child py-2">
                                     <div class="col-md-3">
                                         <select class="form-control input-sm chzn-select" name="category"
                                             id="category">
-                                            <option value="">Chon thể loại</option>
-                                            <option value="000.BV_TN">000.BV_TN</option>
-                                            <option value="000.BV_TG">000.BV_TG</option>
+                                            <option value=''>-- Chọn thể loại --</option>
+                                            @foreach($category as $item){
+                                                <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
+                                            }
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <div class="col-md-3" style="padding-left:15px">
+                                    <!-- <div class="col-md-3" style="padding-left:15px">
                                             <input class="form-control input-sm" type="date" id="fromDate" name="fromDate" 
                                                 value="<?php echo date('Y-m-d', mktime(0, 0, 0, date("m")-1, date("d"), date("Y")))?>"  min="2010-01-01" max="2030-12-31">   
                                     </div> 
-                                    <i style="padding:10px 20px 0px 20px" class="fas fa-long-arrow-alt-right"></i>
                                     <div class="col-md-3" style=""> 
                                             <input class="form-control input-sm" type="date" id="toDate" name="toDate" 
                                                 value="<?php echo (new DateTime())->format('Y-m-d');?>"  min="2010-01-01" max="2030-12-31">  
-                                    </div>
+                                    </div> -->
                                 </div>
-                                <div class="home_index_child py-2">
-                                    <div class="col-md-8">
-                                        <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm...">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button id="txt_search" name="txt_search" style="background:#2e4970;color:white" type="button" class="btn"><i class="fas fa-search"></i></button>
-                                    </div>
-                                </div>
-                             <div id="table-blog-container" style="padding-top:10px"></div>
+                                <div id="table-blog-container"></div>
                         </form>
-                    </section>
-                    <!-- End Our Work -->
-                </div>
+                        <!-- End Our Work -->
+                    </div>
             </div>
         </section>
         <!-- End Team Member -->
@@ -482,4 +498,90 @@
             JS_Home.loadIndex(baseUrl);
         })
     </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+     <script>
+        console.log(222);
+    var ctx1 = document.getElementById("chart-line").getContext("2d");
+
+    var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
+    gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
+    gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
+    new Chart(ctx1, {
+      type: "line",
+      data: {
+        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9","10","11", "12", "13", "14", "15", "16", "17", "18", "19"],
+        datasets: [{
+          label: "Mobile apps",
+          tension: 0.4,
+          borderWidth: 0,
+          pointRadius: 0,
+          borderColor: "#5e72e4",
+          backgroundColor: gradientStroke1,
+          borderWidth: 3,
+          fill: true,
+          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+          maxBarThickness: 6
+
+        }],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          }
+        },
+        interaction: {
+          intersect: false,
+          mode: 'index',
+        },
+        scales: {
+          y: {
+            grid: {
+              drawBorder: false,
+              display: true,
+              drawOnChartArea: true,
+              drawTicks: false,
+              borderDash: [5, 5]
+            },
+            ticks: {
+              display: true,
+              padding: 10,
+              color: '#fbfbfb',
+              font: {
+                size: 11,
+                family: "Open Sans",
+                style: 'normal',
+                lineHeight: 2
+              },
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              display: false,
+              drawOnChartArea: false,
+              drawTicks: false,
+              borderDash: [5, 5]
+            },
+            ticks: {
+              display: true,
+              color: '#ccc',
+              padding: 20,
+              font: {
+                size: 11,
+                family: "Open Sans",
+                style: 'normal',
+                lineHeight: 2
+              },
+            }
+          },
+        },
+      },
+    });
+  </script>
 @endsection

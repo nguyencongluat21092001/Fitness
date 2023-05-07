@@ -23,9 +23,9 @@ class HomeService
         try{
             $param = [
                 'code'=> $arrInput['type_code'],
-                'startDate'=> $arrInput['fromDate'],
-                'endDate'=> $arrInput['toDate'],
-                'limit'=> $arrInput['limit'],
+                'startDate'=> isset($arrInput['fromDate'])?$arrInput['fromDate']:null,
+                'endDate'=> isset($arrInput['toDate'])?$arrInput['toDate']:null,
+                'limit'=> isset($arrInput['limit'])?$arrInput['limit']:10,
             ];
             $dataConfig = config('apiConnect.financial');
             $urlApi = $dataConfig['api'].$dataConfig['apiChild']['list-coin-code'];
@@ -35,7 +35,6 @@ class HomeService
             $response = $response->getBody()->getContents();
             $response = json_decode($response,true);
             $data['datas'] = $response;
-
             if($data['datas'] == null || $data['datas'] == ''){
                 $data['datas'][0] = [
                     "date" => date('Y-m-d'),
@@ -53,5 +52,42 @@ class HomeService
             return $data;
         }
         
+    }
+     /**
+     * load màn hình danh sách lấy top chỉ số thị trường
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function loadListTop($arrInput){
+        try{
+            $dataConfig = config('apiConnect.financial');
+            $urlApi = $dataConfig['api'].$dataConfig['apiChild']['list-top-coin'];
+            $response = Http::withToken($dataConfig['token'])
+                            ->get($urlApi);
+            $response = $response->getBody()->getContents();
+            $response = json_decode($response,true);
+            $data['datas'] = $response;
+            return $data;
+        }catch (\Exception $e) {
+            $data['datas'][0] = [
+                "symbol" => "Chưa cập nhật!",
+                 "value" => 'Chưa cập nhật!'
+            ];
+            $data['datas'][1] = [
+                "symbol" => "Chưa cập nhật!",
+                 "value" => 'Chưa cập nhật!'
+            ];
+            $data['datas'][2] = [
+                "symbol" => "Chưa cập nhật!",
+                 "value" => 'Chưa cập nhật!'
+            ];
+            $data['datas'][3] = [
+                "symbol" => "Chưa cập nhật!",
+                 "value" => 'Chưa cập nhật!'
+            ];
+            return $data;
+        }
     }
 }
