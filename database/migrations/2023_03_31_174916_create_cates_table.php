@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('code_cate');
             $table->string('decision')->nullable();
             $table->string('current_status')->nullable();
+            $table->integer('order');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

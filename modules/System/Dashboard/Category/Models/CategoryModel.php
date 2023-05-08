@@ -10,6 +10,7 @@ class CategoryModel extends Model
     protected $table = 'categorys';
     public $incrementing = false;
     public $timestamps = false;
+    public $sortable = ['order'];
 
     protected $fillable = [
         'id',
@@ -18,6 +19,8 @@ class CategoryModel extends Model
         'code_category',
         'decision',
         'current_status',
+        'order',
+        'status',
         'created_at',
         'updated_at'
     ];

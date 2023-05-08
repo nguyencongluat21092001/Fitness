@@ -45,14 +45,12 @@ class CategoryController extends Controller
     public function loadListCategory(Request $request)
     {
         $arrInput = $request->input();
-        if($arrInput['cate'] == null || $arrInput['cate'] == ''){
-            unset($arrInput['cate']);
-        }
         $data = array();
-        $param = $arrInput;
-        $objResult = $this->CategoryService->filter($param);
+        $arrInput['sort'] = 'order';
+        $arrInput['sortType'] = 1;
+        $objResult = $this->CategoryService->filter($arrInput);
         $data['datas'] = $objResult;
-        $data['param'] = $param;
+        $data['param'] = $arrInput;
         // $data['pagination'] = $data['datas']->links('pagination.default');
         return view("dashboard.category.category.loadlistCategory", $data)->render();
     }
@@ -66,9 +64,10 @@ class CategoryController extends Controller
     public function createFormCategory(Request $request)
     {
         $input = $request->all();
-        $getCate = $this->CateService->where('current_status','1')->get()->toArray();
-        $data['cate'] = $getCate;
-        return view('dashboard.category.category.edit',compact('data'));
+        $getCate = $this->CateService->where('status','1')->get();
+        $data['cates'] = $getCate;
+        $data['order'] = $this->CategoryService->select('id')->count();
+        return view('dashboard.category.category.edit',$data);
     }
     /**
      * thêm + update thông tin thể loại
@@ -93,10 +92,13 @@ class CategoryController extends Controller
     public function edit(Request $request)
     {
         $input = $request->all();
-        $data['detail'] = $this->CategoryService->editCategory($input);
-        $data['cate'] = $this->CateService->where('current_status','1')->get()->toArray();
+        $category = $this->CategoryService->where('id', $input['id'])->first();
+        $data['cates'] = $this->CateService->select('*')->where('status','1')->get();
+        $data['datas'] = $category;
+        $data['order'] = $this->CategoryService->select('id')->count();
+        $data['_id'] = $input['id'];
         // dd($data);
-        return view('dashboard.category.category.edit',compact('data'));
+        return view('dashboard.category.category.edit',$data);
     }
 
 
@@ -118,5 +120,28 @@ class CategoryController extends Controller
             }
         }
         return array('success' => true, 'message' => 'Xóa thành công');
+    }
+    /**
+     * Cập nhật thông tin màn hình index
+     */
+    public function updateCategoryCate(Request $request)
+    {
+        $arrInput = $request->all();
+        $data = $this->CategoryService->_updateCategoryCate($arrInput, $arrInput['id']);
+        return $data;
+    }
+    /**
+     * Cập nhật trạng thái
+     */
+    public function changeStatusCategoryCate(Request $request)
+    {
+        $arrInput = $request->all();
+        $list = $this->CategoryService->where('id', $arrInput['id']);
+        if(!empty($list->first())){
+            $list->update(['status' => $arrInput['status']]);
+            return array('success' => true, 'message' => 'Cập nhật thành công!');
+        }else{
+            return array('success' => false, 'message' => 'Không tìm thấy dữ liệu!');
+        }
     }
 }

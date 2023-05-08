@@ -101,65 +101,8 @@ JS_User.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var formdata = new FormData();
-    if ($("#name").val() == '') {
-        var nameMessage = 'Tên người dùng không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
-    if ($("#phone").val() == '') {
-                               console.log(1000);
-
-        return false;
-    }
-    if ($("#email").val() == '') {
-        var nameMessage = 'Địa chỉ email không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
-    if ($("#dateBirth").val() == '') {
-        var nameMessage = 'Ngày sinh không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
-    if ($("#id").val() == ''){
-        if ($("#password").val() == '') {
-            var nameMessage = 'Mật khẩu không được để trống!';
-            var icon = 'warning';
-            var color = '#f5ae67';
-            NclLib.alerMesage(nameMessage,icon,color);
-            return false;
-        }
-        if ($("#password_retype").val() == '') {
-            var nameMessage = 'Chưa nhập lại mật khẩu!';
-            var icon = 'warning';
-            var color = '#f5ae67';
-            NclLib.alerMesage(nameMessage,icon,color);
-            return false;
-        }
-        if($("#password").val() != $("#password_retype").val()){
-            var nameMessage = 'Mật khẩu nhập lại không khớp';
-            var icon = 'warning';
-            var color = '#f5ae67';
-            NclLib.alerMesage(nameMessage,icon,color);
-            return false;
-        }
-        formdata.append('password', $("#password").val());
-    }
-    is_checkbox_role = ''
-    $('input[name="is_checkbox_role"]:checked').each(function() {
-        is_checkbox_role =  $(this).val();
-    });
-    if (is_checkbox_role == '') {
-        var nameMessage = 'Quyền truy cập không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+    var check = myClass.checkValidate();
+    if(check == false){
         return false;
     }
     formdata.append('_token', $("#_token").val());
@@ -443,4 +386,59 @@ JS_User.prototype.updatePass = function (oFormCreate) {
             }
         }
     });
+}
+/**
+ * Check Validate
+ */
+JS_User.prototype.checkValidate = function(){
+    if ($("#name").val() == '') {
+        var nameMessage = 'Tên người dùng không được để trống!';
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        $("#name").focus();
+        return false;
+    }
+    if ($("#phone").val() == '') {
+        var nameMessage = 'Số điện thoại không được để trống!';
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        $("#phone").focus();
+        return false;
+    }
+    if ($("#email").val() == '') {
+        var nameMessage = 'Địa chỉ email không được để trống!';
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        $("#email").focus();
+        return false;
+    }
+    if ($("#dateBirth").val() == '') {
+        var nameMessage = 'Ngày sinh không được để trống!';
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        $("#dateBirth").focus();
+        return false;
+    }
+    if ($("#id").val() == ''){
+        // if ($("#password").val() == '') {
+        //     var nameMessage = 'Mật khẩu không được để trống!';
+        //     NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        //     $("#password").focus();
+        //     return false;
+        // }
+        // if ($("#password_retype").val() == '') {
+        //     var nameMessage = 'Chưa nhập mật khẩu xác nhận!';
+        //     NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        //     $("#password_retype").focus();
+        //     return false;
+        // }
+        // if($("#password").val() != $("#password_retype").val()){
+        //     var nameMessage = 'Mật khẩu xác nhận không khớp';
+        //     NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        //     $("#email").focus();
+        //     return false;
+        // }
+        // formdata.append('password', $("#password").val());
+    }
+    if ($('input[name="is_checkbox_role"]:checked').val() == '') {
+        var nameMessage = 'Quyền truy cập không được để trống!';
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+        return false;
+    }
 }

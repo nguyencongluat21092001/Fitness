@@ -20,7 +20,7 @@ NclLib.prototype.alerMesage = function(nameMessage,icon,color){
       timer: 2500
     })
 }
-NclLib.prototype.alerMesageBackend = function(type, label, message, s = 30000) {
+NclLib.prototype.alertMessageBackend = function(type, label, message, s = 30000) {
     $.toast({
         title: label,
         content: message,
