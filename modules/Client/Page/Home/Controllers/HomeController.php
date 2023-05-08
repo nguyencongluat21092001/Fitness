@@ -7,6 +7,8 @@ use Modules\Base\Library;
 use Illuminate\Http\Request;
 use Modules\Client\Page\Home\Services\HomeService;
 use Modules\System\Dashboard\Blog\Services\BlogService;
+use Modules\System\Dashboard\Category\Services\CategoryService;
+use Modules\System\Dashboard\Category\Services\CateService;
 use Illuminate\Support\Facades\Http;
 use DB;
 
@@ -19,9 +21,13 @@ class HomeController extends Controller
 {
 
     public function __construct(
+        CateService $cateService,
+        CategoryService $categoryService,
         HomeService $homeService,
         BlogService $blogService
     ){
+        $this->cateService = $cateService;
+        $this->categoryService = $categoryService;
         $this->blogService = $blogService;
         $this->homeService = $homeService;
     }
@@ -33,7 +39,11 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        return view('client.home.home');
+        $datas['codeBank'] = config('codeBank.BANK');
+        $cate = $this->cateService->where('code_cate','DM_BLOG')->first();
+        $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
+        $datas['category'] = $category;
+        return view('client.home.home',$datas);
     }
      /**
      * load màn hình danh sách lấy chỉ số thị trường
@@ -47,6 +57,19 @@ class HomeController extends Controller
         $arrInput = $request->input();
         $data = $this->homeService->loadList($arrInput);
         return view("client.home.loadlist", $data);
+    }
+     /**
+     * load màn hình danh sách lấy top chỉ số thị trường
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function loadListTop(Request $request)
+    { 
+        $arrInput = $request->input();
+        $data = $this->homeService->loadListTop($arrInput);
+        return view("client.home.loadlistTop", $data);
     }
     /**
      * load màn hình danh sách
@@ -67,31 +90,6 @@ class HomeController extends Controller
         $data['datas']= $objResult;
         return view("client.home.loadlist-blog", $data);
     }
-    // public function realTimeData(Request $request)
-    // { 
-    //     $arrInput = $request->input();
-    //     $param = [
-    //         'code'=> 'VNINDEX',
-    //         'startDate'=> '2020-01-01',
-    //         'endDate'=> '2023-04-28',
-    //         'limit'=> '500',
-    //     ];
-    //     $response = Http::withBody(json_encode($param),'application/json')->get('10.20.3.170:7500/api/list-coin-code/');
-    //     $response = $response->getBody()->getContents();
-    //     $response = json_decode($response,true);
-    //     foreach($response as $value){
-    //         $data[] = [
-    //             'time'=> substr($value['date'], 0, 10) ,
-    //             'open'=> $value['priceOpen'],
-    //             'high'=> $value['priceHigh'],
-    //             'low'=> $value['priceLow'],
-    //             'close'=> $value['priceClose'],
-    //         ];
-    //     }
-    //     // dd($data);
-
-    //     return response()->json($data);
-    // }
     /**
      * load màn hình danh sách
      *
@@ -101,13 +99,8 @@ class HomeController extends Controller
      */
     public function loadListTap1(Request $request)
     { 
-        // dd(222);
         $arrInput = $request->input();
-        $response = Http::get('192.168.1.5:7500/api/list-top-coin');
-        $response = $response->getBody()->getContents();
-        $response = json_decode($response,true);
-        $data['datas'] = $response;
-        // dd($data);
-        return view("dashboard.home.loadlist-tap1", $data);
+        $data = $this->homeService->loadList($arrInput);
+        return view("client.home.loadlist-tap1", $data);
     }
 }

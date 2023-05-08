@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Auth;
 //     $googleSheet->readGoogleSheet();
 //     // return view('auth.login');
 // });
-Route::get('/', function () {
-    return view('client.home.home');
-});
+Route::get('/', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
 Route::get('/login', function () {
     return view('auth.signin');
 });
@@ -133,6 +131,7 @@ Route::prefix('/client')->group(function () {
         Route::get('/home/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
         Route::get('/home/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
         Route::get('/home/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
+        Route::get('/home/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
 });
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -2,7 +2,7 @@ function JS_Home(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    // NclLib.menuActive('.link-home');
+    NclLib.menuActive('.link-home');
     this.urlPath = baseUrl + '/' + module + '/' + controller;//Biên public lưu tên module
 }
 JS_Home.prototype.alerMesage = function(nameMessage,icon,color){
@@ -27,16 +27,28 @@ JS_Home.prototype.loadIndex = function () {
     var myClass = this;
     var oForm = 'form#frmLoadlist_list_tap1';
     var oFormBlog = 'form#frmLoadlist_blog';
-
+    //lấy 4 chỉ số đứng top
+    myClass.loadListTop();
+    //lấy tất cả chỉ số theo tiêu thức lọc
     myClass.loadList();
+    //lấy danh sách bà viết
     myClass.loadListBlog(oFormBlog);
-    // myClass.loadListTap1(oForm);
+    //lấy chỉ số chứng khoán ngân hàng
+    myClass.loadListTap1(oForm);
     $('form#frmAdd').find('#btn_create').click(function () {
         myClass.store('form#frmAdd');
     })
      // form load
      $('form#frmLoadlist_list').find('#type_code').change(function () {
         myClass.loadList();
+    });
+     // form load
+     $('form#frmLoadlist_list').find('#limit').change(function () {
+        myClass.loadList();
+    });
+     // form load
+     $('form#frmLoadlist_Bank').find('#type_code').change(function () {
+        myClass.loadListTap1();
     });
     // form load
     $(oFormBlog).find('#category').change(function () {
@@ -77,13 +89,34 @@ JS_Home.prototype.loadList = function () {
     });
 }
 /**
+ * Load màn hình chỉ số top
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_Home.prototype.loadListTop = function () {
+    var myClass = this;
+    var oForm = 'form#frmLoadlist_list';
+    var url = this.urlPath + '/loadListTop';
+    $.ajax({
+        url: url,
+        type: "GET",
+        success: function (arrResult) {
+            console.log(arrResult)
+            $("#table-container-loadListTop").html(arrResult);
+            myClass.loadevent(oForm);
+        }
+    });
+}
+/**
  * Load màn hình danh sách
  *
  * @param oForm (tên form)
  *
  * @return void
  */
-JS_Home.prototype.loadListBlog = function (oFormBlog,numberPage = 1, perPage = 6) {
+JS_Home.prototype.loadListBlog = function (oFormBlog,numberPage = 1, perPage = 15) {
     var myClass = this;
     var url = this.urlPath + '/loadListBlog';
     var data = $(oFormBlog).serialize();
@@ -122,7 +155,7 @@ JS_Home.prototype.loadListTap1 = function (oForm, numberPage = 1, perPage = 15) 
     var url = this.urlPath + '/loadListTap1';
     data = 'offset=' + numberPage;
     data += '&limit=' + perPage;
-    var oForm = 'form#frmLoadlist_list_tap1'
+    var oForm = 'form#frmLoadlist_Bank'
     var data = $(oForm).serialize();
     $.ajax({
         url: url,
@@ -131,7 +164,7 @@ JS_Home.prototype.loadListTap1 = function (oForm, numberPage = 1, perPage = 15) 
         data: data,
         success: function (arrResult) {
             console.log(arrResult)
-            $("#table-tap1-container").html(arrResult);
+            $("#table-container-bank").html(arrResult);
             // phan trang
             $(oForm).find('.main_paginate .pagination a').click(function () {
                 var page = $(this).attr('page');

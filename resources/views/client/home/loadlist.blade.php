@@ -69,38 +69,40 @@
       background-color: #D62929;
     }
 </style>
-<table id="table-data" class="table align-items-center" >
-        <div class="pb-0 px-3">
-            <div class="row">
-                <div class="col-md-6" style="padding-left:10px">
-                 <h6 class="mb-0 p-3">Chỉ số lọc</h6>
-                </div>
-                <div class="col-md-6 d-flex justify-content-end align-items-center">
-                <i class="far fa-calendar-alt me-2"></i>
-                <small>05/5/2023</small>
-                </div>
+<div class="card mb-4 ">
+    <div class="card-header pb-0 px-3">
+        <div class="row">
+            <div class="col-md-6">
+            <h6 class="mb-0">Chỉ số</h6>
             </div>
+            <div class="col-md-6 d-flex justify-content-end align-items-center">
+            <i class="far fa-calendar-alt me-2"></i>
+            <small>Chủ nhật , 07-05-2023</small>
+            </div>
+        </div>
         </div>
         <div class="scrollbar" id="style-1" style="padding-right:10px">
-            <div class="force-overflow">
-                <div class="card-body pt-2 p-3">
-                    <ul class="list-group">
-                        @foreach ($datas as $key => $data)
-                            <li class="list-group-item border-0 d-flex justify-content-between mb-2 border-radius-lg">
-                                <div class="d-flex align-items-center">
-                                    &nbsp;<button style="color: #0eb100a6;" class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button>
-                                    <div class="d-flex flex-column">
-                                    <h6 class="mb-1 text-dark text-sm"> Chỉ số {{ $data['symbol']}}</h6>
-                                    <span class="text-xs"> {{ $data['date']}}</span>
-                                    </div>
-                                </div>
-                                <div style="color: #0eb100a6;" class="d-flex align-items-center text-gradient text-sm font-weight-bold">
-                                    {{ $data['priceHigh']}}
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
+          <div class="card-body pt-4 p-3" >
+              <ul class="list-group">
+                  @foreach ($datas as $key => $data)
+                    <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg" style="background: #e7eefe3b;">
+                      <div class="d-flex align-items-center">
+                      <span>
+                        <i style="padding:5px;color:#ffcd19" class="fas fa-coins"></i>
+                    </span>
+                      <!-- <button class="btn btn-icon-only btn-rounded btn-outline-success mb-0 me-3 btn-sm d-flex align-items-center justify-content-center"><i class="fas fa-arrow-up"></i></button> -->
+                          <div class="d-flex flex-column">
+                            <h6 class="mb-1 text-dark text-sm">{{ $data['symbol']}}</h6>
+                            <span class="text-xs">{{ $data['date']}}</span>
+                          </div>
+                      </div>
+                      <div class="d-flex align-items-center text-success text-gradient text-sm font-weight-bold animate-charcter-penTable">
+                          {{ $data['priceHigh']}}
+                      </div>
+                    </li>
+                  @endforeach
+              </ul>
+          </div>
         </div>
-</table>
+    </div>
+</div>

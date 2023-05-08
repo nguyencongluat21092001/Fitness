@@ -199,14 +199,14 @@ footer a.text-light:hover {
 }
 .date-header{
   color: white;
-  width: 17%;
+  width: 80%;
   margin: 10px;
 }
 .marquee-header{
   width: 63%;
 }
 .user-login-header{
-  width: 20%;
+  width: 15%;
   margin: 10px;
 }
 /*text color */
@@ -240,8 +240,7 @@ footer a.text-light:hover {
 .animate-charcter
 {
 text-transform: uppercase;
-background-image: linear-gradient( -225deg, #ffc600 0%, #ffed6e 29%, #ffc23a 67%, #ffffff 100% );
-background-size: auto auto;
+background-image: linear-gradient( -225deg, #ffffff 0%, #6bfbff 29%, #55c4ff 67%, #ffffff 100% );
 background-clip: border-box;
 background-size: 200% auto;
 color: #fff;
@@ -249,7 +248,22 @@ background-clip: text;
 text-fill-color: transparent;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
-animation: textclip 2s linear infinite;
+animation: textclip 4s linear infinite;
+display: inline-block;
+}
+/* animation */
+.animate-charcter-penTable
+{
+text-transform: uppercase;
+background-image: linear-gradient( -225deg, #ffefef 0%, #3489e0 29%, #182932 67%, #fcfcfc 100% );
+background-clip: border-box;
+background-size: 200% auto;
+color: #fff;
+background-clip: text;
+text-fill-color: transparent;
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+animation: textclip 4s linear infinite;
 display: inline-block;
 }
 
@@ -261,11 +275,13 @@ to {
 
 /* page home */
 .home_index_vnindex{
-  background:#fdfdfd;
+  background:#e2e5e7de;
   border-radius: 1%;
 }
 .home_index_child{
   margin: 20px;
   display: flex;
 }
-
+.active-menuClient{
+  background: #88d5ff54;
+}

@@ -13,23 +13,22 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <link href="../clients/css/bootstrap.min.css" rel="stylesheet">
-
+    <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <!-- Font CSS -->
     <link href="../clients/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
     <!-- Load Tempalte CSS -->
     <link rel="stylesheet" href="../clients/css/templatemo.css">
-
-    <!-- <link rel="stylesheet" href="assets/css/templatemo.css"> -->
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../clients/css/custom.css">
 </head>
 <body>
-<div class="header-one">
+<div class="header-one" >
+    <div class="container header-one">
     <div class="date-header">
              Thứ năm, 04/05/2023 02:18:26
     </div>
-    <div class="marquee-header">
+    <!-- <div class="marquee-header">
         <marquee style="padding-top:10px;color:white">
             <span>
             Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.
@@ -44,22 +43,28 @@
             Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.3
             </span> 
         </marquee>
-    </div>
+    </div> -->
     <div class="user-login-header">
         <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
             <ul class="navbar-nav">
                         <!-- Authentication Links -->
                 @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
-                        </li> 
-                    @endif
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
-                        </li>
-                    @endif
+                   <div style="display:flex">
+                        <div>
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
+                                </li> 
+                            @endif
+                       </div>
+                       <div style="padding-left:10px">
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
+                                </li>
+                            @endif
+                       </div>
+                   </div>
                 @else
                     <li class="nav-item dropdown">
                         <span id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
@@ -97,6 +102,7 @@
                 </div> -->
         <!-- </div> -->
     </div>
+    </div>
 </div>
 
 <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
@@ -133,7 +139,7 @@
                 <div class=" mx-xl-5 mb-2" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link  rounded-pill px-3 " style="color:white" href="index.html">TRANG CHỦ</a>
+                            <a class="nav-link link-home  rounded-pill px-3 " style="color:white" href="index.html">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">CHỨNG KHOÁN</a>
@@ -147,9 +153,9 @@
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">THỊ TRƯỜNG</a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="about.html">THẾ GIỚI</a>
-                        </li>
+                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="work.html">BÀI VIẾT</a>
                         </li>
@@ -174,9 +180,9 @@
                                 </a>
                             </div>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="contact.html">HỖ TRỢ</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </div>
@@ -216,19 +222,51 @@
 
 
      <!-- Start Footer -->
- <footer class="bg-secondary pt-4">
+ <footer class=" pt-4" style="background-color: #152430!important">
         <div class="container">
             <div class="row py-4">
+            <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:7%"> 
+               <span style="color:#ff0000d1"><b>Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
+            </h2>
 
-                <div class="col-lg-3 col-12 align-left">
+                <div class="col-lg-5 col-md-4 my-sm-0 mt-2">
                     <a class="navbar-brand" href="index.html">
-                        <i class='bx bx-buildings bx-sm text-light'></i>
-                        <span class="text-light h5">Purple</span> <span class="text-light h5 semi-bold-600">Buzz</span>
+                        <h3 class="h5 text-light light-300"><i class="fas fa-address-book"></i> Liên hệ</h3>
                     </a>
-                    <p class="text-light my-lg-4 my-2">
+                    <!-- <p class="text-light my-lg-4 my-2">
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                         sed do eiusmod tempor incididunt ut.
-                    </p>
+                    </p> -->
+                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
+                        <li class="pb-2">
+                           <i class="fas fa-phone-volume"></i><a class="text-decoration-none pt-2 text-light py-1" href="tel:086.234.8886"> 086.234.8886</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class="fas fa-envelope"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> FinTop.DVKH@gmail.com</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class="fas fa-laptop-house"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> Trụ sở Hà Nội: 121/26 Thái Hà, P. Trung Liệt, Q. Đống Đa, Hà Nội</a>
+                        </li>
+                        <li class="pb-2">
+                        <i class="fas fa-house-user"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> Văn phòng HCM:  383 Võ Văn Tần, P. 5, Q. 3, TP. Hồ Chí Minh</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 my-sm-0 mt-2">
+                    <a class="navbar-brand" href="index.html">
+                        <h2 class="h5 text-light light-300"><i class="fas fa-handshake"></i> Đồng hành</h2>
+                    </a>
+                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
+                        <li class="pb-2">
+                           <i class="fab fa-facebook-f"></i><a class="text-decoration-none pt-2 text-light py-1" href="tel:086.234.8886"> Dữ liệu chứng khoán FinTop.Data</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class="fab fa-youtube"></i><a class="text-decoration-none pt-2 text-light py-1" href="https://www.youtube.com/@taichinhdautufintop"> Tài chính & Đầu tư FinTop</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class="fas fa-hand-point-right"></i><a class="text-decoration-none pt-2 text-light py-1" href="https://www.youtube.com/@taichinhdautufintop"> Tham gia cộng đồng FinTop </a>
+                        </li>
+                    </ul>
                     <ul class="list-inline footer-icons light-300">
                         <li class="list-inline-item m-0">
                             <a class="text-light" target="_blank" href="http://facebook.com/">
@@ -257,62 +295,39 @@
                         </li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
-                        <ul class="list-unstyled text-light light-300">
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">Our Works</h2>
-                    <ul class="list-unstyled text-light light-300">
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-2">
+                    <h2 class="h5 pb-lg-3 text-light light-300"><i class="fas fa-cloud-download-alt"></i> Tải App</h2>
+                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
+                        
                         <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Branding</a>
+                            <i class="fab fa-app-store-ios"></i><a class="text-decoration-none text-light py-1" href="tel:086.234.8886"> App Store </a>
                         </li>
                         <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Business</a>
+                           <i class="fab fa-google-play"></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com"> Google Play</a>
                         </li>
                         <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Marketing</a>
+                        <i class="fas fa-qrcode"></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com"> QR ví momo</a>
                         </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Social Media</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Digital Solution</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="#">Graphic</a>
+                        <li class="pb-2" style="padding-left:20px;">
+                            <a class="text-decoration-none text-light py-1" href="tel:086.234.8886"> <img class="card-img " src="../clients/img/qrluatnc.jpg" alt="Card image" style="width:30%">  </a>
                         </li>
                     </ul>
                 </div>
-
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
-                    <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
-                    <ul class="list-unstyled text-light light-300">
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com">info@company.com</a>
-                        </li>
-                    </ul>
+                <div class="w-100 py-1" style="background: #162d3a;">
+                    <div class="container">
+                        <div class="row pt-2">
+                            <div class="col-lg-6 col-sm-12">
+                                <p class="text-lg-start text-center text-light light-300">
+                                Bản quyền @2023 , Công ty TNHH Đầu tư & Phát triển FinTop
+                                </p>
+                            </div>
+                            <div class="col-lg-6 col-sm-12">
+                                <p class="text-lg-end text-center text-light light-300">
+                                    Phát triển bởi <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>nguyencongluat092001@gmail.com</strong></a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -352,6 +367,7 @@
     <script src="../clients/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="../clients/js/custom.js"></script>
+    <script src="../assets/js/plugins/chartjs.min.js"></script>
 
 </body>
 

@@ -32,8 +32,9 @@ NclLib.prototype.alertMessageBackend = function(type, label, message, s = 30000)
 }
 // add class hiển thị đang ở page nào 
 NclLib.prototype.menuActive = function(nameMenu){
-  $(nameMenu).addClass("active");
+  $(nameMenu).addClass("active-menuClient");
 }
+
 NclLib = new NclLib();
 
 function checkallper(obj, name) {
