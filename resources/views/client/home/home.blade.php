@@ -70,13 +70,14 @@
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Home.js') }}"></script>
         <!-- Start Banner Hero -->
         <div class="banner-wrapper">
+        <!-- top cổ phiếu biến động -->
         <section class="container">
             <div class="table-responsive">
                 <!-- Màn hình danh sách top chỉ số tài chính-->
                 <div id="table-container-loadListTop"></div>
             </div>
         </section>
-       
+        <!-- biểu đồ + băng ron đăng ký tk -->
         <section class="container">
             <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4">
@@ -134,10 +135,9 @@
                 </div>
             </div>
         </section>
-        </div>
-        <!-- Start Team Member -->
+        <!-- tra cứu cổ phiếu -->
         <section class="container">
-            <div class="pt-5 pb-3 d-lg-flex gx-5">
+            <div class="pt-1 pb-3 d-lg-flex gx-5">
                     <div class="col-lg-4">
                         <form action="" method="POST" id="frmLoadlist_list">
                             <h2 class="h4 py-2 typo-space-line">Chỉ số thị trường</h2>
@@ -247,248 +247,8 @@
                     </div>
             </div>
         </section>
-        <!-- End Team Member -->
-        <!-- Start Service -->
-        <section class="service-wrapper py-3">
-            <div class="service-tag py-5 bg-secondary">
-                <div class="col-md-12">
-                    <ul class="nav d-flex justify-content-center">
-                        <li class="nav-item mx-lg-4">
-                            <a class="filter-btn nav-link btn-outline-primary active shadow rounded-pill text-light px-4 light-300" href="#" data-filter=".project">All</a>
-                        </li>
-                        <li class="nav-item mx-lg-4">
-                            <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".graphic">Graphics</a>
-                        </li>
-                        <li class="filter-btn nav-item mx-lg-4">
-                            <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".ui">UI/UX</a>
-                        </li>
-                        <li class="nav-item mx-lg-4">
-                            <a class="filter-btn nav-link btn-outline-primary rounded-pill text-light px-4 light-300" href="#" data-filter=".branding">Branding</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </section>
-
-        <section class="container overflow-hidden py-5">
-            <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project ui branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="service card-img" src="../clients/img/services-01.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">UI/UX design</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-02.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Social Media</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-03.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Marketing</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-04.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Graphic</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-05.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Digtal Marketing</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-06.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Market Research</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-07.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Business</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-                <!-- Start Recent Work -->
-                <div class="col-xl-3 col-md-4 col-sm-6 project ui graphic branding">
-                    <a href="#" class="service-work card border-0 text-white shadow-sm overflow-hidden mx-5 m-sm-0">
-                        <img class="card-img" src="../clients/img/services-08.jpg" alt="Card image">
-                        <div class="service-work-vertical card-img-overlay d-flex align-items-end">
-                            <div class="service-work-content text-left text-light">
-                                <span class="btn btn-outline-light rounded-pill mb-lg-3 px-lg-4 light-300">Branding</span>
-                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing</p>
-                            </div>
-                        </div>
-                    </a>
-                </div><!-- End Recent Work -->
-
-            </div>
-        </section>
-        <!-- End Service -->
-        <!-- Start View Work -->
-        <section class="bg-secondary">
-            <div class="container py-5">
-                <div class="row d-flex justify-content-center text-center">
-                    <div class="col-lg-2 col-12 text-light align-items-center">
-                        <i class='display-1 bx bxs-box bx-lg'></i>
-                    </div>
-                    <div class="col-lg-7 col-12 text-light pt-2">
-                        <h3 class="h4 light-300">Great transformations successful</h3>
-                        <p class="light-300">Quis ipsum suspendisse ultrices gravida.</p>
-                    </div>
-                    <div class="col-lg-3 col-12 pt-4">
-                        <a href="#" class="btn btn-primary rounded-pill btn-block shadow px-4 py-2">View Our Work</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End View Work -->
-
-        <!-- Start Recent Work -->
-        <section class="py-5 mb-5">
-            <div class="container">
-                <div class="recent-work-header row text-center pb-5">
-                    <h2 class="col-md-6 m-auto h2 semi-bold-600 py-5">Recent Works</h2>
-                </div>
-                <div class="row gy-5 g-lg-5 mb-4">
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-01.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">Social Media</h3>
-                                    <p class="card-text">Ullamco laboris nisi ut aliquip ex</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-02.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">Web Marketing</h3>
-                                    <p class="card-text">Psum officia anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-03.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">R & D</h3>
-                                    <p class="card-text">Sum dolor sit consencutur</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-04.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">Public Relation</h3>
-                                    <p class="card-text">Lorem ipsum dolor sit amet</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-05.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">Branding</h3>
-                                    <p class="card-text">Put enim ad minim veniam</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                    <!-- Start Recent Work -->
-                    <div class="col-md-4 mb-3">
-                        <a href="#" class="recent-work card border-0 shadow-lg overflow-hidden">
-                            <img class="recent-work-img card-img" src="../clients/img/recent-work-06.jpg" alt="Card image">
-                            <div class="recent-work-vertical card-img-overlay d-flex align-items-end">
-                                <div class="recent-work-content text-start mb-3 ml-3 text-dark">
-                                    <h3 class="card-title light-300">Creative Design</h3>
-                                    <p class="card-text">Mollit anim id est laborum.</p>
-                                </div>
-                            </div>
-                        </a>
-                    </div><!-- End Recent Work -->
-
-                </div>
-            </div>
-        </section>
+        
+        </div>
     <!-- End Recent Work -->
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
@@ -512,17 +272,17 @@
     new Chart(ctx1, {
       type: "line",
       data: {
-        labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9","10","11", "12", "13", "14", "15", "16", "17", "18", "19"],
+        labels: ["1", "2", "3", "4", "5", "6", "7", "8",],
         datasets: [{
-          label: "Mobile apps",
+          label: "HNINDEX",
           tension: 0.4,
           borderWidth: 0,
           pointRadius: 0,
-          borderColor: "#5e72e4",
+          borderColor: "#001f39",
           backgroundColor: gradientStroke1,
           borderWidth: 3,
           fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
+          data: [1100,1300,1200,1342,1220,1400,1565,1475,1490,1420,1600],
           maxBarThickness: 6
 
         }],
