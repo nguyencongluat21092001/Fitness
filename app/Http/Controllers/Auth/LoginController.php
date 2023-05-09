@@ -70,7 +70,7 @@ class LoginController extends Controller
     public function permission_login($email){
         $check = PermissionLoginModel::where('email',$email)->first();
         $random = Library::_get_randon_number();
-        $token = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") .$_SESSION["id"].$email. $random;
+        $token = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") .$_SESSION["id"]. $random;
         $arr = [
             'email'=> $email,
             'user_id'=> $_SESSION["id"],
