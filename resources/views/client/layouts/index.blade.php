@@ -31,12 +31,20 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    .bgft{
+        background-image: url("../clients/img/sequel-background-1.png") !important;
+        width:100%;
+          /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 </style>
 <body>
     <div class="header-one " >
         <div class="container header-one">
         <div class="date-header">
-                Thứ năm, 04/05/2023 02:18:26
+              <span id="time"></span>
         </div>
         <div class="marquee-header">
             <marquee style="padding-top:10px;color:white">
@@ -145,7 +153,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex mt-3 align-items-center" id="navbar-toggler-success">
-                    <div class="" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;">
+                    <div class="" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;margin:auto">
                         <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                             <li class="nav-item ">
                                 <a class="nav-link link-home  rounded-pill px-3 " style="color:white" href="index.html"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
@@ -226,8 +234,8 @@
     <!-- body -->
     @yield('body-client')
     <!-- Start Footer -->
-    <footer class=" pt-4" style="background-color: #152430!important">
-        <div class="container">
+    <footer class="bgft pt-4">
+        <div class="container" style="background:#121d29e0">
             <div class="row py-4">
             <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:7%"> 
             <span style="color:#ff0000d1"><b>Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
@@ -317,7 +325,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="w-100 py-1" style="background: #162d3a;">
+                <div class="w-100 py-1" style="background: #fcfcfc0f;">
                     <div class="container">
                         <div class="row pt-2">
                             <div class="col-lg-6 col-sm-12">
@@ -364,6 +372,45 @@
                 return false;
             });
         });
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        let a;
+        let time;
+        var date = new Date().toLocaleDateString()
+        var dayvn = new Date();
+        // Lấy số thứ tự của ngày hiện tại
+        var current_day = dayvn.getDay();
+        // Biến lưu tên của thứ
+        var day_name = '';
+ 
+        // Lấy tên thứ của ngày hiện tại
+        switch (current_day) {
+        case 0:
+            day_name = "Chủ nhật";
+            break;
+        case 1:
+            day_name = "Thứ hai";
+            break;
+        case 2:
+            day_name = "Thứ ba";
+            break;
+        case 3:
+            day_name = "Thứ tư";
+            break;
+        case 4:
+            day_name = "Thứ năm";
+            break;
+        case 5:
+            day_name = "Thứ sau";
+            break;
+        case 6:
+            day_name = "Thứ bảy";
+        }
+        setInterval(() => {
+        a = new Date();
+        time = day_name + ', ngày ' +date + ' '+ a.getHours() + ':' + a.getMinutes() + ':' + a.getSeconds();
+        document.getElementById('time').innerHTML = time;
+        }, 1000);
     </script>
     <!-- Templatemo -->
     <script src="../clients/js/templatemo.js"></script>

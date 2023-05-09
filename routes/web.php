@@ -24,9 +24,9 @@ use Illuminate\Support\Facades\Auth;
 //     // return view('auth.login');
 // });
 Route::get('/', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
-Route::get('/login', function () {
-    return view('auth.signin');
-});
+// Route::get('/login', function () {
+//     return view('auth.signin');
+// });
 Route::get('/register', function () {
     return view('auth.register');
 });
@@ -121,15 +121,17 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 });
 // route phía người dùng
-Route::prefix('/client')->group(function () {
-        // Trang chủ Admin
+Route::middleware('permissionCheckLoginClient')->group(function () {
+    Route::prefix('/client')->group(function () {
+        // Trang chủ client
         Route::get('/home/index', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
         Route::get('/home/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
         Route::get('/home/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
         Route::get('/home/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
         Route::get('/home/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
+    });
 });
-Auth::routes();
+// Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 
