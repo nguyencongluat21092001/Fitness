@@ -237,11 +237,11 @@
     <footer class="bgft pt-4">
         <div class="container" style="background:#121d29e0">
             <div class="row py-4">
-            <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:7%"> 
-            <span style="color:#ff0000d1"><b>Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
+            <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:4%"> 
+            <span style="color:#ff0000d1"><b style="font-family: auto;color:#ff000091;font-weight: 600;animation: lights 10s 750ms linear infinite;">Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
             </h2>
 
-                <div class="col-lg-5 col-md-4 my-sm-0 mt-2">
+                <div class="col-lg-5 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
                     <a class="navbar-brand" href="index.html">
                         <h3 class="h5 text-light light-300"><i class="fas fa-address-book"></i> Liên hệ</h3>
                     </a>
@@ -264,7 +264,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 my-sm-0 mt-2">
+                <div class="col-lg-4 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
                     <a class="navbar-brand" href="index.html">
                         <h2 class="h5 text-light light-300"><i class="fas fa-handshake"></i> Đồng hành</h2>
                     </a>
@@ -307,7 +307,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-2">
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
                     <h2 class="h5 pb-lg-3 text-light light-300"><i class="fas fa-cloud-download-alt"></i> Tải App</h2>
                     <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
                         
