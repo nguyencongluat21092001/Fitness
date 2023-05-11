@@ -45,6 +45,20 @@ class HomeController extends Controller
         $datas['category'] = $category;
         return view('client.home.home',$datas);
     }
+    
+     /**
+     * load màn hình biểu đồ nến
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function loadListChartNen(Request $request)
+    { 
+        $arrInput = $request->input();
+        $data = $this->homeService->loadListChartNen($arrInput);
+        return view("client.chart.index", $data);
+    }
      /**
      * load màn hình danh sách lấy chỉ số thị trường
      *

@@ -90,4 +90,15 @@ class HomeService
             return $data;
         }
     }
+     /**
+     * load màn hình danh sách lấy top chỉ số thị trường
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function loadListChartNen($arrInput){
+    //    dd($arrInput);
+       return $arrInput;
+    }
 }

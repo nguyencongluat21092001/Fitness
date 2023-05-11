@@ -66,10 +66,80 @@
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: #D62929;
     }
+    .tv-lightweight-charts{
+      width: 100%;
+      padding-right: var(--bs-gutter-x, 0.5rem) !important;
+      padding-left: var(--bs-gutter-x,0.5rem)!important;
+      margin-right: auto!important;
+      margin-left: auto!important;
+    }
+
 </style>
+
+<!-- top cổ phiếu biến động -->
+<section class="container">
+    <div class="table-responsive">
+        <!-- Màn hình danh sách top chỉ số tài chính-->
+        <div id="table-container-loadListTop"></div>
+    </div>
+</section>
+<!-- tra cứu cổ phiếu -->
+<section class="container">
+    <div class="pt-1 pb-3 d-lg-flex gx-5">
+            <div class="col-lg-12">
+                <form action="" method="POST" id="frmLoadlist_list">
+                    <h2 class="h4 py-2 typo-space-line">Biểu đồ nến</h2>
+                    <div class="home_index_vnindex">
+                        <div class="home_index_child py-2">
+                            <div class="col-md-2">
+                                <select class="form-control input-sm chzn-select" name="type_code"
+                                    id="type_code">
+                                    <option value="VNINDEX">VNINDEX</option>
+                                    <option value="HNX30">HNX30</option>
+                                    <option value="HNXINDEX">HNXINDEX</option>
+                                    <option value="UPINDEX">UPINDEX</option>
+                                    <option value="VN30">VN30</option>
+                                    <option value="VN100">VN100</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="padding-left:10px">
+                                <select class="form-control input-sm chzn-select" name="type_code"
+                                    id="type_code">
+                                    @foreach($codeBank as $key => $value)
+                                        <option value="{{$key}}">{{$value}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="padding-left:10px">
+                                <select class="form-control input-sm chzn-select" name="limit"
+                                    id="limit">
+                                    <option value="10">Hiển thị 10</option>
+                                    <option value="30">Hiển thị 30</option>
+                                    <option value="50">Hiển thị 50</option>
+                                </select>
+                            </div>
+                            @include("client.chart.index");
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+    </div>
+</section>
+        
+
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Home.js') }}"></script>
         <!-- Start Banner Hero -->
-        <div class="banner-wrapper">
+  <div class="banner-wrapper">
+          <!-- biểu đồ nến -->
+          <script src="https://unpkg.com/lightweight-charts@3.4.0/dist/lightweight-charts.standalone.production.js"></script>
+        <!-- <form action="" method="POST" id="frmLoadlist_chart_nen">
+          <section class="container">
+              <div class="table-responsive">
+                  <div id="table-container-chart_nen"></div>
+              </div>
+          </section>
+        </form> -->
         <!-- top cổ phiếu biến động -->
         <section class="container">
             <div class="table-responsive">
@@ -78,7 +148,7 @@
             </div>
         </section>
         <!-- biểu đồ + băng ron đăng ký tk -->
-        <section class="container">
+        <!-- <section class="container">
             <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4">
                     <div class="card z-index-2 h-100">
@@ -134,7 +204,8 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
+        
         <!-- tra cứu cổ phiếu -->
         <section class="container">
             <div class="pt-1 pb-3 d-lg-flex gx-5">
@@ -243,6 +314,7 @@
                                 </div>
                                 <div id="table-blog-container"></div>
                         </form>
+                        
                         <!-- End Our Work -->
                     </div>
             </div>

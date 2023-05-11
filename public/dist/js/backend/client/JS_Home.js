@@ -27,6 +27,7 @@ JS_Home.prototype.loadIndex = function () {
     var myClass = this;
     var oForm = 'form#frmLoadlist_list_tap1';
     var oFormBlog = 'form#frmLoadlist_blog';
+    myClass.loadListChartNen();
     //lấy 4 chỉ số đứng top
     myClass.loadListTop();
     //lấy tất cả chỉ số theo tiêu thức lọc
@@ -35,6 +36,8 @@ JS_Home.prototype.loadIndex = function () {
     myClass.loadListBlog(oFormBlog);
     //lấy chỉ số chứng khoán ngân hàng
     myClass.loadListTap1(oForm);
+
+    
     $('form#frmAdd').find('#btn_create').click(function () {
         myClass.store('form#frmAdd');
     })
@@ -95,6 +98,28 @@ JS_Home.prototype.loadList = function () {
  *
  * @return void
  */
+JS_Home.prototype.loadListChartNen = function () {
+    var myClass = this;
+    var oForm = 'form#frmLoadlist_chart_nen';
+    var url = this.urlPath + '/loadListChartNen';
+    var data = $(oForm).serialize();
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: data,
+        success: function (arrResult) {
+            $("#table-container-chart_nen").html(arrResult);
+            myClass.loadevent(oForm);
+        }
+    });
+}
+/**
+ * Load màn hình chỉ số top
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
 JS_Home.prototype.loadListTop = function () {
     var myClass = this;
     var oForm = 'form#frmLoadlist_list';
@@ -103,7 +128,6 @@ JS_Home.prototype.loadListTop = function () {
         url: url,
         type: "GET",
         success: function (arrResult) {
-            console.log(arrResult)
             $("#table-container-loadListTop").html(arrResult);
             myClass.loadevent(oForm);
         }
@@ -163,7 +187,6 @@ JS_Home.prototype.loadListTap1 = function (oForm, numberPage = 1, perPage = 15) 
         // cache: true,
         data: data,
         success: function (arrResult) {
-            console.log(arrResult)
             $("#table-container-bank").html(arrResult);
             // phan trang
             $(oForm).find('.main_paginate .pagination a').click(function () {

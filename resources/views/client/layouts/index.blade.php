@@ -21,11 +21,15 @@
     <link rel="stylesheet" href="../clients/css/templatemo.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../clients/css/custom.css">
+    <script src="https://unpkg.com/lightweight-charts@3.4.0/dist/lightweight-charts.standalone.production.js"></script>
+    
 </head>
 <style>
     .bgs{
-        background-image: url("../clients/img/background2.jpg") !important;
+        /* background-image: url("../clients/img/background2.jpg") !important; */
         width:100%;
+        background:#6e0009;
+
           /* Center and scale the image nicely */
         background-position: center;
         background-repeat: no-repeat;
@@ -41,6 +45,7 @@
     }
 </style>
 <body>
+    
     <div class="header-one " >
         <div class="container header-one">
         <div class="date-header">
@@ -126,112 +131,89 @@
     <div class="bgs">
         <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand h1" style="width: 25%;">
+                <a class="navbar-brand h1" style="width: 12%;">
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                     <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
-                    <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
+                    <img class="card-img " style="height:70%" src="../clients/img/LogoFinTop_red.png" alt="Card image">
                 </a>
                 <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">     
-                <h1 style="font-family: auto;color:#ff000091;font-weight: 600; animation: lights 5s 750ms linear infinite;">Tài chính & Đầu tư</h1>          
+                <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;">Tài chính & Đầu tư</h1>          
                 </div>
-                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                
-                <form action="#" method="get">
+                <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
+                <!-- <form action="#" method="get">
                         <div class="input-group py-3">
                             <input name="email" type="text" class="form-control rounded-end" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" style="width:350px">
                             <button class="btn text-white btn-lg rounded-start px-lg-4" type="submit" style="background:#22314b"><i class="fas fa-search"></i></button>
                         </div>
                     </form>
-                </div>
+                </div> -->
                 
                 
             </div>
         </nav>
-        <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow" > 
-            
-            <div class="container d-flex justify-content-between align-items-center">
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex mt-3 align-items-center" id="navbar-toggler-success">
-                    <div class="" style="background: rgba(255, 255, 255, 0.1);border-radius: 50px;margin:auto">
-                        <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
-                            <li class="nav-item ">
-                                <a class="nav-link link-home  rounded-pill px-3 " style="color:white" href="index.html"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="about.html"><i class="fas fa-coins"></i> CHỨNG KHOÁN FINTOP</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> BÀI VIẾT</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> PHÂN TÍCH</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="about.html"><i class="fas fa-globe-asia"></i> GIỚI THIỆU FINTOP</a>
-                            </li>
-                            <!-- <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link rounded-pill px-3 dropdown-toggle " style="color:white" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>DỊCH VỤ</a>
-                                <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown" style="background:#c8d9ffd6">
-                                    <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                            <p>
-                                                Cẩm nang NĐT
-                                            </p>
-                                    </a>
-                                    <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                            <p>
-                                                Dịch vụ mua bán
-                                            </p>
-                                    </a>
-                                    <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                            <p>
-                                                Dịch vụ tư vấn
-                                            </p>
-                                    </a>
-                                </div>
-                            </li> -->
-                            <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN</a>
-                            </li>
-                            <!-- <li class="nav-item">
-                                <a class="nav-link rounded-pill px-3" style="color:white" href="contact.html">HỖ TRỢ</a>
-                            </li> -->
-                        </ul>
-                    </div>
+       
+       
+    </div>
+    <nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background:#8d1313"> 
+        <div class="container d-flex justify-content-between align-items-center">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex mt-3 align-items-center" id="navbar-toggler-success"> -->
+                <div class="" style="border-radius: 50px;margin:auto">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                        <li class="nav-item ">
+                            <a class="nav-link link-home   px-3 " style="color:white" href="index.html"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-globe-asia"></i> GIỚI THIỆU FINTOP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link  px-3" style="color:white" href="about.html"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> PHÂN TÍCH</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN</a>
+                        </li>
+                        <!-- <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link rounded-pill px-3 dropdown-toggle " style="color:white" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>DỊCH VỤ</a>
+                            <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown" style="background:#c8d9ffd6">
+                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
+                                        <p>
+                                            Cẩm nang NĐT
+                                        </p>
+                                </a>
+                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
+                                        <p>
+                                            Dịch vụ mua bán
+                                        </p>
+                                </a>
+                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
+                                        <p>
+                                            Dịch vụ tư vấn
+                                        </p>
+                                </a>
+                            </div>
+                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN</a>
+                        </li>
+                        <!-- <li class="nav-item">
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="contact.html">HỖ TRỢ</a>
+                        </li> -->
+                    </ul>
                 </div>
-                
-            </div>
-        </nav>
-    </div>
-   
-
-    <div class="menul_small">
-            <div class="text-center">
-                <span class="menu-center">
-                    <a>CHỈ SỐ</a>
-                </span>
-                <span class="menu-center">
-                    <a>THỊ TRƯỜNG</a>
-                </span>
-                <span class="menu-center">
-                    <a>BÀI VIẾT</a>
-                </span>
-                <span class="menu-center">
-                    <a>DỊCH VỤ</a>
-                </span>
-                <span class="menu-center">
-                    <a>HỖ TRỢ</a>
-                </span>
-                <span class="menu-center">
-                    <a>LIÊN HỆ</a>
-                </span>
-            </div>
-    </div>
-    <!-- body -->
+            <!-- </div> -->
+        </div>
+    </nav>
+    @include("client.layouts.siderbar_child");
+  
     @yield('body-client')
     <!-- Start Footer -->
     <footer class="bgft pt-4">

@@ -194,7 +194,7 @@ footer a.text-light:hover {
 }
 /* header */
 .header-one{
-  background:#152031 !important;
+  background:#5c0202 !important;
   display: flex;
 }
 .date-header{
@@ -216,7 +216,7 @@ footer a.text-light:hover {
 }
 .menul_small{
   width:100%;
-  background: #f1f1f1;  
+  background: #7c0909;  
   margin:auto;
 
 
@@ -275,7 +275,7 @@ to {
 
 /* page home */
 .home_index_vnindex{
-  background:#e2e5e7de;
+  background:#fffffff7;
   border-radius: 1%;
 }
 .home_index_child{
@@ -288,7 +288,7 @@ to {
 /* title */
 @keyframes lights {
   0% {
-    color: hsl(0, 70%, 59%);
+    color: hsl(51, 59%, 50%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.2),
       0 0 0.125em hsla(320, 100%, 60%, 0.3),
@@ -315,7 +315,7 @@ to {
   }
   
   70% {
-    color: hsl(9, 90%, 68%);
+    color: hsl(67, 100%, 59%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.5),
       0 0 0.125em hsla(320, 100%, 60%, 0.5),
@@ -324,7 +324,7 @@ to {
   }
   
   100% {
-    color: hsla(15, 94%, 49%, 0.933);
+    color: hsla(49, 29%, 77%, 0.933);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.2),
       0 0 0.125em hsla(320, 100%, 60%, 0.3),

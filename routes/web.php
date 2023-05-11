@@ -129,6 +129,8 @@ Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('/home/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
         Route::get('/home/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
         Route::get('/home/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
+        Route::get('/home/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
+
     });
 });
 // Auth::routes();
