@@ -7,18 +7,22 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Modules\Core\Ncl\Library;
 use Modules\System\Dashboard\Users\Services\UserService;
 use Modules\System\Dashboard\Users\Services\UserInfoService;
-
+use Modules\System\Dashboard\PermissionLogin\Services\PermissionLoginService;
+use Modules\System\Dashboard\PermissionLogin\Models\PermissionLoginModel;
+use Str;
+use Modules\Base\Library;
 
 class LoginController extends Controller
 {
     public function __construct(
+        PermissionLoginService $permissionLoginService,
         UserInfoService $userInfoService,
         UserService $userService
         )
     {
+        $this->permissionLoginService = $permissionLoginService;
         $this->userInfoService = $userInfoService;
         $this->userService = $userService;
         // parent::__construct();
@@ -52,6 +56,7 @@ class LoginController extends Controller
                 Auth::guard('web')->login($user);
                 return redirect('system/home/index');
             } else if ($user->role == 'USERS') {
+                $checkPrLogin = $this->permission_login($email);
                 Auth::guard('web')->login($user);
                 return redirect('client/home/index');
             }
@@ -61,7 +66,27 @@ class LoginController extends Controller
             return view('auth.signin',compact('data'));
         }
     }
-    
+    // check đăng nhập lưu token đăng nhập 1 nơi
+    public function permission_login($email){
+        $check = PermissionLoginModel::where('email',$email)->first();
+        $random = Library::_get_randon_number();
+        $token = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") .$_SESSION["id"]. $random;
+        $arr = [
+            'email'=> $email,
+            'user_id'=> $_SESSION["id"],
+            'token'=> $token,
+            'ip'=> '1',
+            'created_at'=> date("Y/m/d H:i:s"),
+            'updated_at'=> date("Y/m/d H:i:s"),
+        ];
+        if(isset($check->email)){
+            PermissionLoginModel::where('email',$email)->update($arr);
+        }else{
+            $arr['id'] = (string)Str::uuid();
+            PermissionLoginModel::create($arr);
+        }
+        $_SESSION["token"] = $token;
+    }
     public function logout (Request $request)
     {
         session_unset();
