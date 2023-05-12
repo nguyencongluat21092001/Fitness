@@ -10,6 +10,7 @@ class CateModel extends Model
     protected $table = 'cates';
     public $incrementing = false;
     public $timestamps = false;
+    public $sortable = ['order'];
 
     protected $fillable = [
         'id',

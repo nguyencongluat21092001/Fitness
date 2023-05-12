@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Modules\System\Dashboard\Category\Services\CateService;
 use DB;
+use Modules\System\Dashboard\Category\Services\CategoryService;
 
 /**
  * Quản trị danh mục
@@ -16,9 +17,11 @@ class CateController extends Controller
 {
 
     public function __construct(
-        CateService $CateService
+        CateService $CateService,
+        CategoryService $categoryService
     ){
         $this->CateService = $CateService;
+        $this->categoryService = $categoryService;
     }
 
     /**
@@ -113,9 +116,34 @@ class CateController extends Controller
     {
         $arrInput = $request->input();
         $data = array();
-        $param = $arrInput;
-        $objResult = $this->CateService->filter($param);
+        $arrInput['sort'] = 'order';
+        $arrInput['sortType'] = 1;
+        $objResult = $this->CateService->filter($arrInput);
         $data['datas'] = $objResult;
         return view("dashboard.category.cate.loadlist", $data)->render();
+    }
+    /**
+     * Cập nhật thông tin màn hình index
+     */
+    public function updateCategory(Request $request)
+    {
+        $arrInput = $request->all();
+        $data = $this->CateService->_updateCategory($arrInput, $arrInput['id']);
+        return $data;
+    }
+    /**
+     * Cập nhật trạng thái
+     */
+    public function changeStatusCate(Request $request)
+    {
+        $arrInput = $request->all();
+        $cate = $this->CateService->where('id', $arrInput['id']);
+        if(!empty($cate->first())){
+            $this->categoryService->where('cate', $cate->first()->code)->update(['status' => $arrInput['status']]);
+            $cate->update(['status' => $arrInput['status']]);
+            return array('success' => true, 'message' => 'Cập nhật thành công!');
+        }else{
+            return array('success' => false, 'message' => 'Không tìm thấy dữ liệu!');
+        }
     }
 }

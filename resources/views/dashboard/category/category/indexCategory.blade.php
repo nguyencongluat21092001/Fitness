@@ -6,34 +6,33 @@
         <div class="row">
             <form action="" method="POST" id="frmCategoryCate_index">
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                <div class="breadcrumb-input-fix d-sm-flex align-items-center justify-content-between">
-                    <ol class="">
-                        <!-- <li class="breadcrumb-item"><a href="">Danh sách thể loại </a></li>
-                        <li class="breadcrumb-item active">Thể loại</li> -->
+                <div class="breadcrumb-input-fix d-sm-flex align-items-center">
+                    <span>
                         <a href="{{ URL::asset('/system/category/index') }}">
                             <button class="btn btn-light btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
                             data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Danh mục</button>
                         </a>
+                    </span>
+                    <span>
                         <a>
                              &nbsp;
                             <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
                             data-original-title="Thêm danh mục"><i class="fas fa-list-alt"></i> Thể loại</button>
                         </a>
-                            
-                    </ol>
+                    </span>
                    
                 </div>
                 <section class="content-wrapper">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <div class="row form-group" style="text-align: center;">
+                            <div class="row form-group">
                                  <div class="col-md-3">
                                     @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'STAFF')
                                     <div class="breadcrumb-input-right">
                                         <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
                                             data-original-title="Thêm thể loại"><i class="fas fa-plus"></i></button>
-                                        <button class="btn btn-warning shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
-                                            data-original-title="SỬa thể loại"><i class="far fa-edit"></i></i></button>
+                                        {{-- <button class="btn btn-warning shadow-sm" id="btn_edit" type="button"data-toggle="tooltip"
+                                            data-original-title="SỬa thể loại"><i class="far fa-edit"></i></i></button> --}}
                                         <button class="btn btn-danger shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
                                             data-original-title="Xóa thể loại"><i class="fas fa-trash-alt"></i></i></button>
                                     </div>
@@ -42,7 +41,6 @@
                                 <div class="col-md-2">
                                     <select class="form-control input-sm chzn-select" name="cate"
                                         id="cate">
-                                        <option value=''>-- Chọn danh mục --</option>
                                         @foreach($data['cate'] as $item){
                                             <option value="{{$item['code_cate']}}">{{$item['name']}}</option>
                                         }
@@ -70,7 +68,7 @@
     <div id="dialogconfirm"></div>
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
-        var baseUrl = '{{ url('') }}';
+        var baseUrl = "{{ url('') }}";
         var JS_CategoryCate = new JS_CategoryCate(baseUrl, 'system', 'category');
         jQuery(document).ready(function($) {
             JS_CategoryCate.loadIndex(baseUrl);

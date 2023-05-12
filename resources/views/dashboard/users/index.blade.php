@@ -1,4 +1,7 @@
 @extends('dashboard.layouts.index')
+@section('css')
+<link rel="stylesheet" href="../dist/css/backend/user.min.css">
+@endsection
 @section('body')
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_User.js') }}"></script>
 

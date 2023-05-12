@@ -141,25 +141,13 @@ JS_DataFinancial.prototype.store = function (oFormCreate) {
         data: data,
         success: function (arrResult) {
             if (arrResult['success'] == true) {
-                Swal.fire({
-                    position: 'top-start',
-                    icon: 'success',
-                    title: 'Cập nhật thành công',
-                    showConfirmButton: false,
-                    timer: 3000
-                  })
-               $('#editmodal').modal('hide');
-               $('#changeUpdateModal').modal('hide');
-               myClass.loadList(oForm);
-               var loadding = NclLib.successLoadding();
+                NclLib.alertMessageBackend('success', 'Thông báo', 'Cập nhật thành công');
+                $('#editmodal').modal('hide');
+                $('#changeUpdateModal').modal('hide');
+                myClass.loadList(oForm);
+                var loadding = NclLib.successLoadding();
             } else {
-                Swal.fire({
-                    position: 'top-start',
-                    icon: 'error',
-                    title: 'Cập nhật thất bại',
-                    showConfirmButton: false,
-                    timer: 3000
-                  })
+                NclLib.alertMessageBackend('danger', 'Lỗi', 'Cập nhật thất bại');
             }
         }
     });
@@ -245,15 +233,7 @@ JS_DataFinancial.prototype.delete = function (oForm) {
         }
     });
     if (listitem == '') {
-        Swal.fire({
-            position: 'top-start',
-            icon: 'warning',
-            title: 'Bạn chưa chọn đối tượng để xóa!',
-            color: '#f5ae67',
-            showConfirmButton: false,
-            width:'30%',
-            timer: 2500
-          })
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Bạn chưa chọn đối tượng để xóa!');
         return false;
     }
     var data = $(oForm).serialize();
@@ -449,12 +429,12 @@ JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = ''
         type: "POST",
         success: function (arrResult) {
             if (arrResult['success'] == true) {
-                NclLib.alerMesageBackend('success', 'Thông báo', arrResult['message']);
+                NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
                 if(column == 'order'){
                     JS_DataFinancial.loadList();
                 }
             } else {
-                NclLib.alerMesageBackend('danger', 'Lỗi', arrResult['message']);
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
                 JS_DataFinancial.loadList();
             }
         }, error: function(e){
@@ -469,61 +449,61 @@ JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = ''
  */
 JS_DataFinancial.prototype.checkValidate = function(){
     if ($("#frmAdd #code_cp").val() == '') {
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', 'Mã cổ phiếu không được để trống!');
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mã cổ phiếu không được để trống!');
         $("#frmAdd #code_cp").focus();
         return false;
     }
     if ($("#frmAdd #exchange").val() == '') {
         var nameMessage = 'Sàn không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #exchange").focus();
         return false;
     }
     if ($("#frmAdd #code_category option:selected").val() == '') {
         var nameMessage = 'Nhóm ngành HĐKD không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #code_category").focus();
         return false;
     }
     if ($("#frmAdd #ratings_TA").val() == '') {
         var nameMessage = 'Xếp hạng không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #ratings_TA").focus();
         return false;
     }
     if ($("#frmAdd #identify_trend").val() == '') {
         var nameMessage = 'Nhận định TA - xu hướng CP không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #identify_trend").focus();
         return false;
     }
     if ($("#frmAdd #act").val() == '') {
         var nameMessage = 'Hành động không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #act").focus();
         return false;
     }
     if ($("#frmAdd #trading_price_range").val() == '') {
         var nameMessage = 'Vùng giá giao dịch không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #trading_price_range").focus();
         return false;
     }
     if ($("#frmAdd #stop_loss_price_zone").val() == '') {
         var nameMessage = 'Vùng giá cắt lỗ không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #stop_loss_price_zone").focus();
         return false;
     }
     if ($("#frmAdd #ratings_FA").val() == '') {
         var nameMessage = 'Xếp hạng không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #ratings_FA").focus();
         return false;
     }
     if ($("#frmAdd #order").val() == '') {
         var nameMessage = 'Số thứ tự không được để trống!';
-        NclLib.alerMesageBackend('warning', 'Cảnh báo', nameMessage);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         $("#frmAdd #order").focus();
         return false;
     }

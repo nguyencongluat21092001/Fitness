@@ -89,16 +89,12 @@ JS_Category.prototype.store = function (oFormCreate) {
     var data = $(oFormCreate).serialize();
     if ($("#name").val() == '') {
         var nameMessage = 'Tên danh mục không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         return false;
     }
     if ($("#code_cate").val() == '') {
         var nameMessage = 'Mã danh mục không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         return false;
     }
     $.ajax({
@@ -108,17 +104,13 @@ JS_Category.prototype.store = function (oFormCreate) {
         success: function (arrResult) {
             if (arrResult['success'] == true) {
                   var nameMessage = 'Cập nhật thành công!';
-                  var icon = 'success';
-                  var color = '#f5ae67';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                  NclLib.alertMessageBackend('success', 'Thông báo', nameMessage);
                   $('#editmodal').modal('hide');
                   myClass.loadList(oFormCreate);
 
             } else {
                   var nameMessage = 'Cập nhật thất bại!';
-                  var icon = 'error';
-                  var color = '#f5ae67';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                  NclLib.alertMessageBackend('danger', 'Lỗi', nameMessage);
             }
         }
     });
@@ -187,16 +179,12 @@ JS_Category.prototype.edit = function (oForm) {
     });
     if (listitem == '') {
         var nameMessage = 'Bạn chưa chọn danh mục!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         return false;
     }
     if (i > 1) {
         var nameMessage = 'Bạn chỉ được chọn một thể loại!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         return false;
     }
     $.ajax({
@@ -227,9 +215,7 @@ JS_Category.prototype.delete = function (oForm) {
     });
     if (listitem == '') {
         var nameMessage = 'Bạn chưa chọn danh mục để xóa!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
         return false;
     }
     var data = $(oForm).serialize();
@@ -256,21 +242,145 @@ JS_Category.prototype.delete = function (oForm) {
                     if (arrResult['success'] == true) {
                         if (result.isConfirmed) {
                               var nameMessage = 'Xóa thành công!';
-                              var icon = 'success';
-                              var color = '#f5ae67';
-                              NclLib.alerMesage(nameMessage,icon,color);
+                              NclLib.alertMessageBackend('success', 'Thông báo', nameMessage);
                               myClass.loadList(oForm);
                           }
                     } else {
                         if (result.isConfirmed) {
                               var nameMessage = 'Quá trình xóa đã xảy ra lỗi!';
-                              var icon = 'error';
-                              var color = '#f5ae67';
-                              NclLib.alerMesage(nameMessage,icon,color);
+                              NclLib.alertMessageBackend('danger', 'Lỗi', nameMessage);
                           }
                     }
                 }
             });
         }
       })
+}
+
+/**
+ * Thêm một dòng mới trên danh sách
+ */
+JS_Category.prototype.addrow = function() {
+    var numberRow = $("#body_data tr").length;
+    var id = broofa();
+    var html = '';
+    html += '<tr>';
+    // checkbox
+    html += '<td align="center"><input type="checkbox" name="chk_item_id" value="' + id + '"></td>';
+    // stt
+    html += '<td align="center">' + (parseInt(numberRow) + 1) + '</td>';
+    // code_cate
+    html += '<td class="td_code_cate_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'code_cate\')">';
+    html += '<span id="span_code_cate_' + id + '" class="span_code_cate_' + id + '"></span>';
+    html += '</td>';
+    // name
+    html += '<td class="td_name_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'name\')">';
+    html += '<span id="span_name_' + id + '" class="span_name_' + id + '"></span>';
+    html += '</td>';
+    // decision
+    html += '<td class="td_decision_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'decision\')">';
+    html += '<span id="span_decision_' + id + '" class="span_decision_' + id + '"></span>';
+    html += '</td>';
+    // // order
+    // html += '<td class="td_order_' + id + '" onclick="{select_row(this);}" align="center" ondblclick="click2(\'' + id + '\', \'order\')">';
+    // html += '<span id="span_order_' + id + '" class="span_order_' + id + '">' + parseInt(numberRow) + 1 + '</span>';
+    // html += '</td>';
+    // // status
+    // html += '<td onclick="{select_row(this);}" align="center">';
+    // html += '<label class="custom-control custom-checkbox p-0 m-0 pointer " style="cursor: pointer;">';
+    // html += '<input type="checkbox" hidden class="custom-control-input toggle-status" id="status_' + id + '" data-id="' + id + '" checked>';
+    // html += '<span class="custom-control-indicator p-0 m-0" onclick="JS_Category.changeStatus(\'' + id + '\')"></span>';
+    // html += '</label></td>';
+    // edit
+    html += '<td align="center"><span class="text-cursor text-warning" onclick="JS_Category.edit(\''+id+'\')"><i class="fas fa-edit"></i></span></td>';
+    html += '</tr>';
+    $("#body_data").append(html);
+}
+/**
+ * Tạo một id mới ngẫu nhiên
+ */
+function broofa() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+/**
+ * Sự kiện khi nhấn 2 lần vào dòng td để sửa
+ */
+function click2(id, type) {
+    $(".td_"+type+"_" + id).removeAttr('ondblclick');
+    var text = $("#span_"+type+"_" + id).html();
+    $("#"+type+"_" + id).removeAttr('hidden');
+    $("#span_"+type+"_" + id).html('<textarea name="'+type+'" id="'+type+'_' + id + '" rows="2">'+text+'</textarea>');
+    $("#"+type+"_" + id).focus();
+    $("#span_"+type+"_" + id).removeAttr('id');
+    $("#"+type+"_" + id).focusout(function(){
+        $(".td_"+type+"_" + id).attr('ondblclick', "click2('"+id+"', '"+type+"')");
+        $("#"+type+"_" + id).attr('hidden', true);
+        $(".span_"+type+"_" + id).attr('id', 'span_'+type+'_' + id);
+        $(".span_"+type+"_" + id).html($("#"+type+"_" + id).val());
+        if(text != $(".span_" + type + '_' + id).html()){
+            JS_Category.updateCategory(id, type, $(".span_" + type + '_' + id).html());
+        }
+    })
+}
+/**
+ * Cập nhật khi ở màn hình hiển thị danh sách
+ */
+JS_Category.prototype.updateCategory = function(id, column, value = '') {
+    var myClass = this;
+    var url = myClass.urlPath + '/updateCategory';
+    var data = 'id=' + id;
+    data += '&_token=' + $('#frmCategory_index').find('#_token').val();
+    if(column == 'code_cate'){ data += '&code_cate=' + (column == 'code_cate' ? value : ""); }
+    else if(column == 'name'){ data += '&name=' + value; }
+    else if(column == 'decision'){ data += '&decision=' + value; }
+    else if(column == 'order'){ data += '&order=' + value; }
+    $.ajax({
+        url: url,
+        data: data,
+        type: "POST",
+        success: function (arrResult) {
+            if (arrResult['success'] == true) {
+                NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
+                if(column == 'order'){
+                    JS_Category.loadList();
+                }
+            } else {
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
+                JS_Category.loadList();
+            }
+        }, error: function(e){
+            console.log(e);
+            NclLib.successLoadding();
+        }
+    });
+    $("#" + id).prop('readonly');
+}
+/**
+ * Thay đổi trạng thái
+ */
+JS_Category.prototype.changeStatusCate = function(id){
+    var myClass = this;
+    var url = myClass.urlPath + '/changeStatusCate';
+    var data = '_token=' + $("#frmCategory_index #_token").val();
+    data += '&status=' + ($("#status_" + id).is(":checked") == true ? 0 : 1);
+    data += '&id=' + id;
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        success: function(arrResult){
+            if(arrResult['success'] == true){
+                NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
+            }else{
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
+            }
+            NclLib.successLoadding();
+        }, error: function(e){
+            console.log(e);
+            NclLib.successLoadding();
+        }
+    });
 }

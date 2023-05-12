@@ -17,7 +17,6 @@
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <link href="../assets/css/nucleo-svg.css" rel="stylesheet" />
-    {{-- @yield('css') --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- CSS Files -->
     <link href="../assets/css/dashboard.css?v=2.0.4" rel="stylesheet" />
@@ -29,6 +28,7 @@
     <link rel="stylesheet" href="../assets/chosen/chosen.min.css">
     <link rel="stylesheet" href="../assets/datepicker/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="../assets/css/toast.min.css">
+    @yield('css')
 
     <script src="../assets/js/croppie.js"></script>
     <script rel="stylesheet" src="../assets/css/croppie.css"></script>
@@ -490,6 +490,7 @@
             $('#imageLoading').addClass("loader_bg_of");
         }, 2000)
     </script>
+    @yield('js')
 @endif
 </body>
 </html>

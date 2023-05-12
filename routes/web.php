@@ -75,6 +75,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/delete',[Modules\System\Dashboard\Category\Controllers\CateController::class,'delete']);
             Route::get('/index', [Modules\System\Dashboard\Category\Controllers\CateController::class, 'index']);
             Route::get('/loadList',[Modules\System\Dashboard\Category\Controllers\CateController::class,'loadList']);
+            Route::post('/updateCategory',[Modules\System\Dashboard\Category\Controllers\CateController::class,'updateCategory']);
+            Route::post('/changeStatusCate',[Modules\System\Dashboard\Category\Controllers\CateController::class,'changeStatusCate']);
             //thể loại
             Route::get('/indexCategory', [Modules\System\Dashboard\Category\Controllers\CategoryController::class, 'indexCategory']);
             Route::get('/loadListCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'loadListCategory']);
@@ -82,6 +84,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/createCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'createCategory']);
             Route::post('/editCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'edit']);
             Route::post('/deleteCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'delete']);
+            Route::post('/updateCategoryCate',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'updateCategoryCate']);
+            Route::post('/changeStatusCategoryCate',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'changeStatusCategoryCate']);
         });
         //bài viết 
         Route::prefix('/blog')->group(function () {
