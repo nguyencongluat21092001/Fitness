@@ -163,16 +163,16 @@
                 <div class="" style="border-radius: 50px;margin:auto">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link link-home   px-3 " style="color:white" href="index.html"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
+                            <a class="nav-link link-home   px-3 " style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-globe-asia"></i> GIỚI THIỆU FINTOP</a>
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  px-3" style="color:white" href="about.html"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
+                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> PHÂN TÍCH</a>
@@ -212,7 +212,6 @@
             <!-- </div> -->
         </div>
     </nav>
-    @include("client.layouts.siderbar_child");
   
     @yield('body-client')
     <!-- Start Footer -->
