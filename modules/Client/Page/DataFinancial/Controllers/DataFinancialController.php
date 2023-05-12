@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Dashboard\DataFinancial\Controllers;
+namespace Modules\Client\Page\DataFinancial\Controllers;
 
 use App\Http\Controllers\Controller;
 use Modules\Base\Library;
@@ -32,9 +32,10 @@ class DataFinancialController extends Controller
      */
     public function index(Request $request)
     {
+        // dd('1');
         $getCategory = $this->categoryService->where('cate','DM_DATA_CK')->get()->toArray();
         $data['category'] = $getCategory;
-        return view('dashboard.datafinancial.index',compact('data'));
+        return view('client.datafinancial.home',compact('data'));
     }
     /**
      * load màn hình danh sách
@@ -43,9 +44,10 @@ class DataFinancialController extends Controller
      *
      * @return json $return
      */
-    public function loadList(Request $request)
+    public function loadData(Request $request)
     { 
         $arrInput = $request->input();
+        dd($arrInput);
         if($arrInput['code_category'] == null || $arrInput['code_category'] == ''){
             unset($arrInput['code_category']);
         }

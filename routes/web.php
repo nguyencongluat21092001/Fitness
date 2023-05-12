@@ -132,6 +132,18 @@ Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('/home/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
 
     });
+    Route::prefix('/client/dataFinancial')->group(function () {
+        // Trang chủ client
+        Route::get('/index', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'index']);
+        Route::post('/loadData', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadData']);
+
+        // Route::get('/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
+        // Route::get('/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
+        // Route::get('/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
+        // Route::get('/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
+        // Route::get('/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
+
+    });
 });
 // Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
