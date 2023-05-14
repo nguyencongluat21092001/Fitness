@@ -1,4 +1,4 @@
-<nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background:#8d1313"> 
+<nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background: #00000075;"> 
     <div class="container d-flex justify-content-between align-items-center link-home">
         <!-- <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

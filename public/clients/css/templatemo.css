@@ -276,28 +276,30 @@ to {
 /* page home */
 .home_index_vnindex{
   background:#fffffff7;
-  border-radius: 1%;
+  border-radius: 5px;
 }
 .home_index_child{
   margin: 20px;
   display: flex;
+  border-radius: 5px;
+
 }
 .active-menuClient{
-  background: #88d5ff54;
+  background: #e9efffb5;
 }
 /* title */
 @keyframes lights {
   0% {
-    color: hsl(51, 59%, 50%);
+    color: #fbf195;
     text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.2),
+      0 0 1em hsla(324, 19%, 95%, 0.823),
       0 0 0.125em hsla(320, 100%, 60%, 0.3),
       -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
       1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
   }
   
   30% { 
-    color: hsl(230, 80%, 90%);
+    color: hsl(52.99deg 100% 66.32%);
     text-shadow:
       0 0 1em hsl(330, 100%, 100%),
       0 0 0.125em hsla(320, 100%, 60%, 0.5),
@@ -306,7 +308,7 @@ to {
   }
   
   40% { 
-    color: hsl(230, 100%, 95%);
+    color: hsl(41.91deg 100% 92.05%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.5),
       0 0 0.125em hsla(320, 100%, 90%, 0.5),
@@ -315,7 +317,7 @@ to {
   }
   
   70% {
-    color: hsl(67, 100%, 59%);
+    color: hsl(51.4deg 100% 76.78%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.5),
       0 0 0.125em hsla(320, 100%, 60%, 0.5),
@@ -324,10 +326,10 @@ to {
   }
   
   100% {
-    color: hsla(49, 29%, 77%, 0.933);
+    color: #f8ed80;
     text-shadow:
-      0 0 1em hsla(320, 100%, 50%, 0.2),
-      0 0 0.125em hsla(320, 100%, 60%, 0.3),
+      0 0 1em hsl(319, 17%, 82%),
+      0 0 0.125em hsla(320, 100%, 96%, 0.803),
       1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
       -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
   }

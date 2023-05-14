@@ -47,38 +47,50 @@ class DataFinancialController extends Controller
     public function loadData(Request $request)
     { 
         $arrInput = $request->input();
-        dd($arrInput);
-        if($arrInput['code_category'] == null || $arrInput['code_category'] == ''){
-            unset($arrInput['code_category']);
-        }
-        if($arrInput['act'] == null || $arrInput['act'] == ''){
-            unset($arrInput['act']);
-        }
         $data = array();
         $param = $arrInput;
         $objResult = $this->DataFinancialService->filter($param);
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("dashboard.datafinancial.loadlist", $data)->render();
+        return view("client.datafinancial.dataFintop", $data)->render();
     }
-    /**
-     * Load màn hình them thông tin
+     /**
+     * tra cứu cổ phiếu
      *
      * @param Request $request
      *
-     * @return view
+     * @return json $return
      */
-    public function changeUpdate(Request $request)
-    {
-        $input = $request->all();
-        $getCategory = $this->categoryService->where('cate','DM_DATA_CK')->get()->toArray();
-        $data['category'] = $getCategory;
-        if($input['id'] != null || $input['id'] != ''){
-            $dataFinacial = $this->DataFinancialService->where('id',$input['id'])->get();
-            $data['datas'] = $dataFinacial;
+    public function searchDataCP(Request $request)
+    { 
+        $arrInput = $request->input();
+        $result = $this->DataFinancialService->where('code_cp',$arrInput['code_cp'])->first();
+        if(!isset($result)){
+            $data=[
+                'status' => 2,
+                'message' => 'Không tồn tại mã cổ phiếu '.$arrInput['code_cp'].'!',
+            ];
+            return response()->json($data);
         }
-        return view('dashboard.datafinancial.changeEdit',compact('data'));
+        $getCategory = $this->categoryService->where('code_category',$result->code_category)->first();
+        $data = [
+            'id'=>$arrInput['id'],
+            'code_cp'=>$result->code_cp,
+            'exchange'=>$result->exchange,
+            'code_category'=>isset($getCategory->name_category)?$getCategory->name_category:'',
+            'ratings_TA'=>$result->ratings_TA,
+            'identify_trend'=>$result->identify_trend,
+            'act'=>$result->act,
+            'trading_price_range'=>$result->trading_price_range,
+            'stop_loss_price_zone'=>$result->stop_loss_price_zone,
+            'ratings_FA'=>$result->ratings_FA,
+            'url_link'=>$result->url_link,
+            'status'=>$result->status,
+            'created_at'=>$result->created_at,
+            'updated_at'=>$result->updated_at
+        ];
+        return response()->json($data);
     }
     /**
      * them thông tin
@@ -87,30 +99,34 @@ class DataFinancialController extends Controller
      *
      * @return view
      */
-    public function create (Request $request)
+    public function fireAntChart (Request $request)
     {
         $input = $request->input();
-        $create = $this->DataFinancialService->store($input); 
-        return array('success' => true, 'message' => 'Cập nhật thành công');
+        return view('client.datafinancial.fireAntChart');
     }
-
      /**
-     * Xóa
+     * index tín hiệu mua
      *
      * @param Request $request
      *
-     * @return Array
+     * @return view
      */
-    public function delete(Request $request)
+    public function signalIndex (Request $request)
     {
-        $input = $request->all();
-        $listids = trim($input['listitem'], ",");
-        $ids = explode(",", $listids);
-        foreach ($ids as $id) {
-            if ($id) {
-                $this->DataFinancialService->where('id',$id)->delete();
-            }
-        }
-        return array('success' => true, 'message' => 'Xóa thành công');
+        return view('client.datafinancial.signal');
+    }
+     /**
+     * danh sách tín hiệu mua
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function loadList_signal (Request $request)
+    {
+        $arrInput = $request->input();
+        $result['datas'] = $this->DataFinancialService->where('status','on')->get();
+        // dd($result);
+        return view('client.datafinancial.loadlist-signal',$result);
     }
 }

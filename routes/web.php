@@ -125,7 +125,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 });
 // route phía người dùng
-Route::middleware('permissionCheckLoginClient')->group(function () {
+// Route::middleware('permissionCheckLoginClient')->group(function () {
     Route::prefix('/client')->group(function () {
         // Trang chủ client
         Route::get('/home/index', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
@@ -140,6 +140,11 @@ Route::middleware('permissionCheckLoginClient')->group(function () {
         // Trang chủ client
         Route::get('/index', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'index']);
         Route::post('/loadData', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadData']);
+        Route::post('/fireAntChart', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'fireAntChart']);
+        Route::post('/searchDataCP', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'searchDataCP']);
+        // tín hiệu mua
+        Route::get('/signalIndex', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'signalIndex']);
+        Route::post('/loadList_signal', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadList_signal']);
 
         // Route::get('/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
         // Route::get('/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
@@ -148,7 +153,7 @@ Route::middleware('permissionCheckLoginClient')->group(function () {
         // Route::get('/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
 
     });
-});
+// });
 // Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);

@@ -7,7 +7,7 @@
     <base href="{{ asset('') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="../clients/img/apple-icon.png">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="../clients/img/LogoFinTop_red.png">
     <!-- Load Require CSS -->
     {{-- @yield('css') --}}
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -25,10 +25,18 @@
     
 </head>
 <style>
+    body{
+        background-image: url("../clients/img/RE4wHfE.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        background-position: 40% -200px;
+        background-attachment: fixed;
+    }
     .bgs{
         /* background-image: url("../clients/img/background2.jpg") !important; */
         width:100%;
-        background:#6e0009;
+        background:#700e13;
 
           /* Center and scale the image nicely */
         background-position: center;
@@ -45,7 +53,6 @@
     }
 </style>
 <body>
-    
     <div class="header-one " >
         <div class="container header-one">
         <div class="date-header">
@@ -131,13 +138,14 @@
     <div class="bgs">
         <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand h1" style="width: 12%;">
+                <a class="navbar-brand h1" style="width: 12%;margin-left:10%">
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                     <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
                     <img class="card-img " style="height:70%" src="../clients/img/LogoFinTop_red.png" alt="Card image">
                 </a>
-                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">     
-                <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;">Tài chính & Đầu tư</h1>          
+                
+                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white:margin:auto">     
+                     <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài chính & Đầu tư</h1>          
                 </div>
                 <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
                 <!-- <form action="#" method="get">
@@ -154,7 +162,7 @@
        
        
     </div>
-    <nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background:#8d1313"> 
+    <nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background:#0000008a"> 
         <div class="container d-flex justify-content-between align-items-center">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -180,39 +188,14 @@
                         <li class="nav-item">
                             <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN</a>
                         </li>
-                        <!-- <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link rounded-pill px-3 dropdown-toggle " style="color:white" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>DỊCH VỤ</a>
-                            <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown" style="background:#c8d9ffd6">
-                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                        <p>
-                                            Cẩm nang NĐT
-                                        </p>
-                                </a>
-                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                        <p>
-                                            Dịch vụ mua bán
-                                        </p>
-                                </a>
-                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
-                                        <p>
-                                            Dịch vụ tư vấn
-                                        </p>
-                                </a>
-                            </div>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN</a>
                         </li>
-                        <!-- <li class="nav-item">
-                            <a class="nav-link rounded-pill px-3" style="color:white" href="contact.html">HỖ TRỢ</a>
-                        </li> -->
                     </ul>
                 </div>
             <!-- </div> -->
         </div>
     </nav>
-  
     @yield('body-client')
     <!-- Start Footer -->
     <footer class="bgft pt-4">
@@ -393,13 +376,13 @@
         document.getElementById('time').innerHTML = time;
         }, 1000);
     </script>
+    <link rel="stylesheet" href="../assets/css/sweetalert2.min.css"/>
+    <script src="../assets/js/sweetalert2.min.js"></script>
     <!-- Templatemo -->
     <script src="../clients/js/templatemo.js"></script>
     <!-- Custom -->
     <script src="../clients/js/custom.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
-
 </body>
-
 </html>
 
