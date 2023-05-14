@@ -142,10 +142,10 @@ JS_DataFinancial.prototype.store = function (oFormCreate) {
         success: function (arrResult) {
             if (arrResult['success'] == true) {
                 NclLib.alertMessageBackend('success', 'Thông báo', 'Cập nhật thành công');
-                // $('#editmodal').modal('hide');
-                // $('#changeUpdateModal').modal('hide');
-                // myClass.loadList(oForm);
-                // var loadding = NclLib.successLoadding();
+                $('#editmodal').modal('hide');
+                $('#changeUpdateModal').modal('hide');
+                myClass.loadList(oForm);
+                var loadding = NclLib.successLoadding();
             } else {
                 NclLib.alertMessageBackend('danger', 'Lỗi', 'Cập nhật thất bại');
             }
