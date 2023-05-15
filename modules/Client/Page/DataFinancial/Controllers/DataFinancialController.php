@@ -129,4 +129,30 @@ class DataFinancialController extends Controller
         // dd($result);
         return view('client.datafinancial.loadlist-signal',$result);
     }
+     /**
+     * Khuyến nghị vip
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function recommendationsIndex (Request $request)
+    {
+        return view('client.datafinancial.recommendations.index');
+    }
+     /**
+     * list khuyến nghị vip
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function loadList_recommendations (Request $request)
+    {
+        $arrInput = $request->input();
+        $result['datas'] = $this->DataFinancialService->where('status','on')->get();
+        // dd($result);
+        return view('client.datafinancial.recommendations.loadlist');
+    }
+    
 }

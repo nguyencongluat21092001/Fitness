@@ -26,7 +26,7 @@
 </head>
 <style>
     body{
-        background-image: url("../clients/img/RE4wHfE.jpg");
+        background-image: url("../clients/img/RE4wwu9.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
@@ -149,8 +149,8 @@
                 </div>
                 <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
                 <!-- <form action="#" method="get">
-                        <div class="input-group py-3">
-                            <input name="email" type="text" class="form-control rounded-end" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" style="width:350px">
+                        <div class="input-group pt-4">
+                            <input name="email" type="text" class="form-control" placeholder="Tìm kiếm..." aria-label="Tìm kiếm" style="width:350px;border-radius:50px">
                             <button class="btn text-white btn-lg rounded-start px-lg-4" type="submit" style="background:#22314b"><i class="fas fa-search"></i></button>
                         </div>
                     </form>

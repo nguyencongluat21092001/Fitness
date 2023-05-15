@@ -11,7 +11,7 @@
                         <a class="nav-link link-signal px-3" style="color:black" href="{{ URL::asset('/client/dataFinancial/signalIndex') }}"> Tín hiệu mua</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link link-recommendations px-3" style="color:black" href="about.html"> Khuyến nghị VIP</a>
+                        <a class="nav-link link-recommendations px-3" style="color:black" href="{{ URL::asset('/client/dataFinancial/recommendationsIndex') }}"> Khuyến nghị VIP</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link  px-3" style="color:black" href="about.html"> Danh mục FinTop</a>

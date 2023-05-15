@@ -145,7 +145,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         // tín hiệu mua
         Route::get('/signalIndex', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'signalIndex']);
         Route::post('/loadList_signal', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadList_signal']);
-
+        // khuyến nghị vip
+        Route::get('/recommendationsIndex', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'recommendationsIndex']);
+        Route::post('/loadList_recommendations', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadList_recommendations']);
         // Route::get('/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
         // Route::get('/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
         // Route::get('/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
