@@ -15,7 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->string('code_blog');
             $table->string('title',1000)->nullable();
-            $table->string('decision',2000)->nullable();
+            $table->text('decision')->nullable();
             $table->string('rate',5)->nullable();
             $table->timestamps();
         });

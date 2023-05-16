@@ -71,6 +71,7 @@ JS_CategoryCate.prototype.add = function (oForm) {
         success: function (arrResult) {
             $('#editmodalCategory').html(arrResult);
             $('#editmodalCategory').modal('show');
+            $("#status").attr('checked', true);
             myClass.loadevent(oForm);
 
         }
@@ -185,6 +186,10 @@ JS_CategoryCate.prototype.edit = function (id) {
         type: "POST",
         data: data,
         success: function (arrResult) {
+            if(arrResult['success'] == false){
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
+                return false;
+            }
             $('#editmodalCategory').html(arrResult);
             $('#editmodalCategory').modal('show');
             $('form#frmAddCategory').find('#btn_create').click(function () {

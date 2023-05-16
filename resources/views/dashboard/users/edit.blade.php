@@ -94,6 +94,8 @@
 							<input hidden type="file" name="avatar" id="avatar" onchange="readURL(this)"><br>
 							@if(!empty($data['avatar']))
 							<img id="show_img" src="{{url('/file-image/avatar/')}}/{{$data['avatar']}}" alt="Image" style="width:150px">
+							@else
+							<img id="show_img" hidden alt="Image" style="width:150px">
 							@endif
 						</div>
 					</div>
@@ -157,6 +159,7 @@
 			reader.onload = function (e) {
 			$('#show_img').attr('src', e.target.result).width(150);
 			};
+			$("#show_img").removeAttr('hidden');
 
 			reader.readAsDataURL(input.files[0]);
 		}

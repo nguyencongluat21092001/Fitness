@@ -24,14 +24,14 @@ class CategoryController extends Controller
         $this->CategoryService = $CategoryService;
     }
     
-     /**
+    /**
      * khởi tạo dữ, Load các file js, css của đối tượng
      *
      * @return view
      */
     public function indexCategory(Request $request)
     {
-        $getCate = $this->CateService->where('current_status','1')->get()->toArray();
+        $getCate = $this->CateService->where('status','1')->get()->toArray();
         $data['cate'] = $getCate;
         return view('dashboard.category.category.indexCategory',compact('data'));
     }
@@ -66,7 +66,8 @@ class CategoryController extends Controller
         $input = $request->all();
         $getCate = $this->CateService->where('status','1')->get();
         $data['cates'] = $getCate;
-        $data['order'] = $this->CategoryService->select('id')->count();
+        $data['dataCate'] = $input['cate'];
+        $data['order'] = $this->CategoryService->select('id')->where('cate', $input['cate'])->count() + 1;
         return view('dashboard.category.category.edit',$data);
     }
     /**
@@ -92,6 +93,10 @@ class CategoryController extends Controller
     public function edit(Request $request)
     {
         $input = $request->all();
+        $cates = $this->CateService->where('id', $input['id'])->first();
+        if(empty($cates)){
+            return array('success' => false, 'message' => 'Không tồn tại đối tượng!');
+        }
         $category = $this->CategoryService->where('id', $input['id'])->first();
         $data['cates'] = $this->CateService->select('*')->where('status','1')->get();
         $data['datas'] = $category;

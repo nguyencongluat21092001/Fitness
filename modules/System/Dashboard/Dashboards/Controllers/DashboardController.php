@@ -43,6 +43,9 @@ class DashboardController extends Controller
         // return view('dashboard.users.index',compact('strJsCss'));
         return view('dashboard.dashboards.index');
     }
+    public function fileManager(){
+        return view('dashboard.file-manager');
+    }
 
     /**
      * Load màn hình thêm mới người dùng

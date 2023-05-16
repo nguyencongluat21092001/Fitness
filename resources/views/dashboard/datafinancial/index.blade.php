@@ -55,11 +55,11 @@
             </form>
         </div>
     </div>
-    <div class="modal fade" id="editmodal" role="dialog"></div>
-    <div class="modal" id="changeUpdateModal" role="dialog"></div>
+    <div class="modal fade" id="editmodal" data-backdrop="static" role="dialog"></div>
+    <div class="modal fade" id="changeUpdateModal" data-backdrop="static" role="dialog"></div>
 
-    <div class="modal" id="videomodal" role="dialog"></div>
-    <div class="modal " id="addfile" role="dialog"></div>
+    <div class="modal" id="videomodal" data-backdrop="static" role="dialog"></div>
+    <div class="modal " id="addfile" data-backdrop="static" role="dialog"></div>
 
     <div id="dialogconfirm"></div>
     <script src='../assets/js/jquery.js'></script>

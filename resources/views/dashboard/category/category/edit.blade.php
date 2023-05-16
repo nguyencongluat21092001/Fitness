@@ -20,7 +20,7 @@
                             @if(!empty($cates))
                                 @foreach($cates as $item)
                                     <option 
-                                    @if(isset($datas) && $item->code_cate == $datas->cate) selected @endif
+                                    @if((isset($datas) && $item->code_cate == $datas->cate) || (isset($dataCate) && $dataCate == $item->code_cate)) selected @endif
                                     value="{{$item['code_cate']}}">{{$item['name']}}</option>
                                 @endforeach
                             @endif
@@ -63,7 +63,7 @@
                 <div class="row form-group" id="div_hinhthucgiai">
                     <span class="col-md-3 control-label required">Trạng thái</span>
                     <div class="col-md-8">
-                        <input type="checkbox" value="{{isset($datas->status) ? $datas->status : ''}}" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}}/>
+                        <input type="checkbox" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}}/>
                         <span for="is_checkbox_status">Hoạt động</span> <br>
                     </div>
                 </div>

@@ -25,13 +25,15 @@ class CategoryService extends Service
 
     public function store($input){
         $categories = $this->repository->select('*')->get();
+        if(isset($input['order']) && !empty($input['order'])){
+            $this->updateOrder($input);
+        }
         if($input['id'] != ''){
             $arrData = [
                 'cate'=> $input['cate'] ,
                 'name_category'=> $input['name_category'] ,
                 'code_category'=> $input['code_category'] ,
                 'decision'=> $input['decision'] ,
-                'current_status'=> !empty($input['is_checkbox_status'])?$input['is_checkbox_status']:null ,
                 'order' => isset($input['order']) && !empty($input['order']) ? trim($input['order']) : count($categories) + 1,
                 'status' => isset($input['status']) && !empty($input['status']) ? 1 : 0,
             ];
@@ -43,7 +45,6 @@ class CategoryService extends Service
                 'name_category'=> $input['name_category'] ,
                 'code_category'=> $input['code_category'] ,
                 'decision'=> $input['decision'] ,
-                'current_status'=> !empty($input['is_checkbox_status'])?$input['is_checkbox_status']:null ,
                 'order' => isset($input['order']) && !empty($input['order']) ? trim($input['order']) : count($categories) + 1,
                 'status' => isset($input['status']) && !empty($input['status']) ? 1 : 0,
             ];
@@ -61,7 +62,7 @@ class CategoryService extends Service
             $this->updateOrder($input);
         }
         $CategorySingle = $this->repository->where('id', $id)->first();
-        $categories = $this->repository->select('*')->get();
+        $categories = $this->repository->where('cate', $input['cate'])->get();
         $cate = isset($CategorySingle) && !empty($CategorySingle->cate) ? $CategorySingle->cate : "";
         $code_category = isset($CategorySingle) && !empty($CategorySingle->code_category) ? $CategorySingle->code_category : "";
         $name_category = isset($CategorySingle) && !empty($CategorySingle->name_category) ? $CategorySingle->name_category : "";
@@ -83,7 +84,7 @@ class CategoryService extends Service
             $this->repository->where('id',$id)->update($param);
             return array('success' => true, 'message' => 'Cập nhật thành công!');
         }else{
-            // $param['status'] = 1;
+            $param['status'] = 1;
             $param['id'] = $id;
             $this->repository->insert($param);
             return array('success' => true, 'message' => 'Thêm mới thành công!');

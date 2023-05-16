@@ -62,7 +62,7 @@ class BlogService extends Service
                 'user_id' => $_SESSION['id'],
                 'code_blog' => $code_blog,
                 'code_category' => $input['code_category'],
-                'status' => $input['is_checkbox_status'],
+                'status' => isset($input['status']) ? 1 : 0,
                 'created_at' => date("Y/m/d"),
                 'updated_at' => date("Y/m/d")
             ];

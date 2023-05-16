@@ -22589,6 +22589,18 @@ hr.horizontal.gray-light {
   height: calc(100vh - 160px);
 }
 
+.navbar-vertical.navbar-expand-xs .navbar-collapse::-webkit-scrollbar {
+  width: 0.4rem;
+}
+.navbar-vertical.navbar-expand-xs .navbar-collapse::-webkit-scrollbar-thumb {
+  background: #29314f;
+  border-radius: 0.2rem;
+}
+.dark-version .navbar-vertical.navbar-expand-xs .navbar-collapse::-webkit-scrollbar-thumb {
+  background: #fff;
+  border-radius: 0.2rem;
+}
+
 .navbar-vertical.navbar-expand-xs>[class*="container"] {
   flex-direction: column;
   align-items: stretch;
@@ -25307,6 +25319,14 @@ p {
 
 .dark-version label {
   color: rgba(255, 255, 255, 0.8);
+}
+
+.dark-version .label-upload {
+  background-color: #fff;
+  color: #000 !important;
+  padding: 0.5rem;
+  border-radius: 0.5em;
+  cursor: pointer;
 }
 
 .dark-version .list-group-item,

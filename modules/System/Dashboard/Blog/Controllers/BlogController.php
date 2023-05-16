@@ -81,8 +81,8 @@ class BlogController extends Controller
      */
     public function createForm(Request $request)
     {
-        $input = $request->all();        
-        $category = $this->categoryService->where('cate','DM_BLOG')->get()->toArray();
+        $input = $request->all();
+        $category = $this->categoryService->where('cate','DM_BLOG')->orderBy('order')->get()->toArray();
         $data['category'] = $category;
         return view('dashboard.blog.edit',compact('data'));
     }
