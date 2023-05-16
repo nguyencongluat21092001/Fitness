@@ -39,22 +39,12 @@
             
             <tbody id="body_data">
             @php $id = 1; @endphp
-                <tr id="code_1"></tr>
-                <tr id="code_2"></tr>
-                <tr>
+                <tr id="code_1">
                     <td  style="vertical-align: middle;color:#83beff" align="center">
                         <span >1</span>
                     </td>
                     <td class="td_code_cp_1" style="vertical-align: middle;" align="center" ondblclick="click2('1', 'code_cp',this)">
                         <span id="span_code_cp_1" class="span_code_cp_1">-</span>
-                    </td>
-                </tr>
-                <tr>
-                    <td  style="vertical-align: middle;color:#83beff" align="center">
-                        <span >1</span>
-                    </td>
-                    <td class="td_code_cp_2" style="vertical-align: middle;" align="center" ondblclick="click2('2', 'code_cp',this)">
-                        <span id="span_code_cp_2" class="span_code_cp_2">-</span>
                     </td>
                 </tr>
             </tbody>
