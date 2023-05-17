@@ -1,26 +1,4 @@
-<style>
-    p  {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 25px;
-        -webkit-line-clamp: 3;
-        height: 75px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-    }
-    .card-title{
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: 25px;
-        -webkit-line-clamp: 3;
-        height: 75px;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-    }
-    .scrollbar{
 
-    }
-</style>
 <div class="card h-100">
     <div class="card-header pb-0 px-3">
         <div class="row">
@@ -65,13 +43,4 @@
         </div>
     </div>
 </div>
- <!-- <div style="width:100%" class="row">
-    <tfoot>
-        <tr>
-            <td colspan="10">
-                {{$datas->links('pagination.phantrang-client')}}
-            </td>
-        </tr>
-    </tfoot>
-    </div> -->
 

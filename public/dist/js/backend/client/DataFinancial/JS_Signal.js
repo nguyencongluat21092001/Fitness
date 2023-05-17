@@ -13,6 +13,7 @@ function JS_Signal(baseUrl, module, controller) {
 JS_Signal.prototype.loadIndex = function () {
     var myClass = this;
     NclLib.menuActive('.link-signal');
+    NclLib.menuActive_child('.link-signal');
     var oForm = 'form#frmLoadlist_signal';
     myClass.loadList(oForm);
 }

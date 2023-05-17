@@ -27,6 +27,9 @@ JS_Home.prototype.loadIndex = function () {
     var myClass = this;
     var oForm = 'form#frmLoadlist_list_tap1';
     var oFormBlog = 'form#frmLoadlist_blog';
+    NclLib.menuActive('.link-index');
+    NclLib.menuActive_child('.link-index');
+
     myClass.loadListChartNen();
     //lấy 4 chỉ số đứng top
     myClass.loadListTop();

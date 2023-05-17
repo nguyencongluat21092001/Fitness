@@ -240,7 +240,7 @@ footer a.text-light:hover {
 .animate-charcter
 {
 text-transform: uppercase;
-background-image: linear-gradient( -225deg, #ffffff 0%, #6bfbff 29%, #55c4ff 67%, #ffffff 100% );
+background-image: linear-gradient( -225deg, #000000 0%, #00ff4d 29%, #ff6c00 67%, #000000 100% );
 background-clip: border-box;
 background-size: 200% auto;
 color: #fff;
@@ -275,7 +275,7 @@ to {
 
 /* page home */
 .home_index_vnindex{
-  background:#fffffff7;
+  background:#ffffff8a;
   border-radius: 5px;
 }
 .home_index_child{
@@ -285,7 +285,11 @@ to {
 
 }
 .active-menuClient{
-  background: #e9efffb5;
+  background: #ffffff;
+  color: #00b609 !important;
+}
+.active-menuClient_background{
+  background: #00000014;
 }
 /* title */
 @keyframes lights {
@@ -340,5 +344,9 @@ to {
   bottom: 0;
   width: 100%;
   max-height: 600px;
+}
+.container{
+    padding-right: var(--bs-gutter-x,.0rem);
+    padding-left: var(--bs-gutter-x,.0rem);
 }
 

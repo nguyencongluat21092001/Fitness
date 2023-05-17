@@ -2,51 +2,53 @@
 @section('body-client')
 @include('client.dataFinancial.siderbar_child')
 <!-- tra cứu cổ phiếu -->
-<section class="container">
-    <div class="pt-1 pb-3 d-lg-flex gx-5">
-    <div class="col-lg-12">
-        <form action="" method="POST" id="frmLoadlist_data">
-            <div class="home_index_vnindex" style="background:#ffffff91 !important">
-                <!-- Chú giải xếp hạng TA/FA -->
-                <div class="home_index_child" style="background:#ffffff91 !important">
-                    <div class="col-lg-12" style="padding:10px;">
-                        <h class="h4 py-2"><i class="fas fa-search"></i> <span style="font-family: auto;">Tra cứu cổ phiếu</span></h>
-                        <div class="table-responsive py-2">
-                            <!-- Màn hình danh sách -->
-                            <div id="table-container-data"></div>
+<div class="banner-wrapper">
+    <section class="container">
+        <div class=" pb-3 d-lg-flex gx-5">
+        <div class="col-lg-12">
+            <form action="" method="POST" id="frmLoadlist_data">
+                <div class="home_index_vnindex pt-1 pb-2" style="background:#ffffff91 !important;border-radius:0px !important">
+                    <!-- Chú giải xếp hạng TA/FA -->
+                    <div class="home_index_child" style="background:#ffffff91 !important">
+                        <div class="col-lg-12" style="padding:10px;">
+                            <h class="h4 py-2"><i class="fas fa-search"></i> <span style="font-family: auto;">Tra cứu cổ phiếu</span></h>
+                            <div class="table-responsive py-2">
+                                <!-- Màn hình danh sách -->
+                                <div id="table-container-data"></div>
+                            </div>
+                            <h class="h5 py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i style="color:#3ac500" class="far fa-eye"></i>
                         </div>
-                        <h class="h5 py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i style="color:#3ac500" class="far fa-eye"></i>
+                    </div>
+                    <!-- biểu đồ FireAnt -->
+                    <div class="home_index_child " style="background:#ffffff91 !important">
+                        <div class="col-lg-12" style="padding:10px;">
+                            <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;"> Biểu đồ</span> </h> <br>
+                            <p>Nguồn theo: fireant</p>
+                            <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
-                 <!-- biểu đồ FireAnt -->
-                 <div class="home_index_child" style="background:#ffffff91 !important">
-                    <div class="col-lg-12" style="padding:10px;">
-                        <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;"> Biểu đồ</span> </h> <br>
-                        <p>Nguồn theo: fireant</p>
-                        <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
-                            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen>
-                        </iframe>
+            </form>
+        </div>
+    </section>
+    <!-- tra cứu cổ phiếu -->
+    <!-- <section class="container">
+        <div class="pt-1 pb-3 d-lg-flex gx-5">
+        <div class="col-lg-12">
+            <form action="" method="POST" id="frmLoadlist_data">
+                <div class="home_index_child" style="background:#ffffff91 !important">
+                    <div class="col-lg-12" style="padding:10px">
+                        <h2 class="h5 py-2">Ghi chú tra cứu </h2>
+                        <img  style="width:100%;" src="../clients/img/noteDataFintop.png" alt="Card image">
                     </div>
                 </div>
-            </div>
-        </form>
-    </div>
-</section>
-<!-- tra cứu cổ phiếu -->
-<!-- <section class="container">
-    <div class="pt-1 pb-3 d-lg-flex gx-5">
-    <div class="col-lg-12">
-        <form action="" method="POST" id="frmLoadlist_data">
-            <div class="home_index_child" style="background:#ffffff91 !important">
-                <div class="col-lg-12" style="padding:10px">
-                    <h2 class="h5 py-2">Ghi chú tra cứu </h2>
-                    <img  style="width:100%;" src="../clients/img/noteDataFintop.png" alt="Card image">
-                </div>
-            </div>
-        </form>
-    </div>
-</section> -->
+            </form>
+        </div>
+    </section> -->
+</div>
 <div class="modal" id="editmodal_fireAnt" role="dialog"></div>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\DataFinancial\JS_DataFinancial.js') }}"></script>
     <script src='../assets/js/jquery.js'></script>

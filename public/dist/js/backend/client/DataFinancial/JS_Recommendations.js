@@ -13,6 +13,7 @@ function JS_Recommendations(baseUrl, module, controller) {
 JS_Recommendations.prototype.loadIndex = function () {
     var myClass = this;
     NclLib.menuActive('.link-recommendations');
+    NclLib.menuActive_child('.link-recommendations');
     var oForm = 'form#frmLoadlist_recommendations';
     myClass.loadList(oForm);
 }

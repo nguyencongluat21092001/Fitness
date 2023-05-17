@@ -8,10 +8,10 @@
             <div class="" style="border-radius:50%;margin:auto">
                 <ul class=" navbar-nav d-flex justify-content-between mx-xl-5 text-dark">
                     <li class="nav-item link-home">
-                        <a class="nav-link  px-3 " style="color:white" href="index.html"><i class="fa-solid fa-house-chimney"></i>Thông tin chung</a>
+                        <a class="nav-link link-index  px-3 " style="" href="index.html"><i class="fab fa-microblog"></i> Thông tin chung</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  px-3" style="color:white" href="about.html"> Thông tin FinTop</a>
+                        <a class="nav-link link-Fintop px-3" style="" href="about.html"><i class="fas fa-spa"></i> Thông tin FinTop</a>
                     </li>
                 </ul>
             </div>

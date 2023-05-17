@@ -1,4 +1,11 @@
-
+<style>
+#messages {
+  overflow: auto;
+  bottom: 0;
+  width: 100%;
+  max-height: 600px;
+}
+</style>
     <div id="form_chat">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="chat">
@@ -55,24 +62,4 @@
             <span id="message-infor"></span>
         </div>
     </div>
-<style>
-/* #chatbox-history {
-  overflow: none;
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border: 1px solid #ccc;
-} */
-#messages {
-  overflow: auto;
-  bottom: 0;
-  width: 100%;
-  max-height: 600px;
-}
-/* #messages div {
-  border: 1px solid #e2e4e3;
-  margin: 5px;
-  padding: 10px;
-  background: #fafafa;
-} */
-</style>
+

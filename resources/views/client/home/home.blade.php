@@ -74,6 +74,9 @@
       margin-right: auto!important;
       margin-left: auto!important;
     }
+    .card{
+      background:#ffffff26 !important;
+    }
 
 </style>
 
@@ -84,20 +87,12 @@
         <div id="table-container-loadListTop"></div>
     </div>
 </section>
-        
-
-<script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Home.js') }}"></script>
-        <!-- Start Banner Hero -->
-  <div class="banner-wrapper">
-          <!-- biểu đồ nến -->
-          <script src="https://unpkg.com/lightweight-charts@3.4.0/dist/lightweight-charts.standalone.production.js"></script>
-        <!-- <form action="" method="POST" id="frmLoadlist_chart_nen">
-          <section class="container">
-              <div class="table-responsive">
-                  <div id="table-container-chart_nen"></div>
-              </div>
-          </section>
-        </form> -->
+      <!-- Start Banner Hero -->
+    <div class="banner-wrapper">
+        <div class="table-responsive">
+            <!-- Màn hình danh sách top chỉ số tài chính-->
+            <div id="table-container-loadListTop"></div>
+        </div>
         <!-- top cổ phiếu biến động -->
         <section class="container">
             <div class="table-responsive">
@@ -105,72 +100,13 @@
                 <div id="table-container-loadListTop"></div>
             </div>
         </section>
-        <!-- biểu đồ + băng ron đăng ký tk -->
-        <!-- <section class="container">
-            <div class="row mt-4">
-                <div class="col-lg-7 mb-lg-0 mb-4">
-                    <div class="card z-index-2 h-100">
-                        <div class="card-header pb-0 pt-3 bg-transparent">
-                        <h6 class="text-capitalize">Biểu đồ thị trường</h6>
-                        <p class="text-sm mb-0">
-                            <i class="fa fa-arrow-up text-success"></i>
-                            <span class="font-weight-bold">Tháng 5</span> năm 2023
-                        </p>
-                        </div>
-                        <div class="card-body p-3">
-                        <div class="chart">
-                            <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-5">
-                <div class="card card-carousel overflow-hidden h-100 p-0">
-                    <div id="carouselExampleCaptions" class="carousel slide h-100" data-bs-ride="carousel">
-                    <div class="carousel-inner border-radius-lg h-100">
-                        <div class="carousel-item h-100 active" style="background-image: url('./assets/img/carousel-1.jpg');
-                        background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-camera-compact text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Get started with Argon</h5>
-                            <p>There’s nothing I really wanted to do in life that I wasn’t able to get good at.</p>
-                        </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-2.jpg');
-                        background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-bulb-61 text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Faster way to create web pages</h5>
-                            <p>That’s my skill. I’m not really specifically talented at anything except for the ability to learn.</p>
-                        </div>
-                        </div>
-                        <div class="carousel-item h-100" style="background-image: url('./assets/img/carousel-3.jpg');
-                        background-size: cover;">
-                        <div class="carousel-caption d-none d-md-block bottom-0 text-start start-0 ms-5">
-                            <div class="icon icon-shape icon-sm bg-white text-center border-radius-md mb-3">
-                            <i class="ni ni-trophy text-dark opacity-10"></i>
-                            </div>
-                            <h5 class="text-white mb-1">Share with us your design tips!</h5>
-                            <p>Don’t be afraid to be wrong because you can’t learn anything from a compliment.</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        
         <!-- tra cứu cổ phiếu -->
-        <section class="container">
-            <div class="pt-1 pb-3 d-lg-flex gx-5">
+        <section class="container" style="background:#ffffff8a">
+            <div class="pt-3 pb-3 d-lg-flex gx-5">
                     <div class="col-lg-4">
                         <form action="" method="POST" id="frmLoadlist_list">
-                            <h2 class="h4 py-2 typo-space-line">Chỉ số thị trường</h2>
                             <div class="home_index_vnindex">
+                            <h2 class="h4 py-2"> <span style="padding-left:5%">Chỉ số thị trường</span> </h2>
                                 <div class="home_index_child py-2">
                                     <div class="col-md-6">
                                         <select class="form-control input-sm chzn-select" name="type_code"
@@ -212,10 +148,10 @@
                                 </div>
                             </div>
                         </form>
-                        <div class="card mb-4">
+                        <div class="card mb-4 pt-3">
                             <form action="" method="POST" id="frmLoadlist_Bank">
-                                <h2 class="h4 py-2 typo-space-line">Chứng khoán ngân hàng</h2>
                                 <div class="home_index_vnindex">
+                                <h2 class="h4 py-2 "><span style="padding-left:5%">Chứng khoán ngân hàng</span> </h2>
                                     <div class="home_index_child py-2">
                                         <div class="col-md-6">
                                             <select class="form-control input-sm chzn-select" name="type_code"
@@ -247,9 +183,10 @@
                     </div>
                     <div class="col-lg-8" style="padding-left:10px">
                         <!-- Start Our Work -->
-                        <h2 class="h4 typo-space-line py-2">Bài viết nổi bật</h2>
-                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#e2e5e7de;border-radius: 0.25em;">
+                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#ffffff8a;border-radius: 0.25em;">
                                 <!-- Màn hình danh sách -->
+                                <h2 class="h4 py-2"><span style="padding-left:2%">Bài viết nổi bật</span> </h2>
+
                                 <div class="home_index_child py-2">
                                     <div class="col-md-3">
                                         <select class="form-control input-sm chzn-select" name="category"
@@ -277,9 +214,9 @@
                     </div>
             </div>
         </section>
-        
-        </div>
+    </div>
     <!-- End Recent Work -->
+    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Home.js') }}"></script>
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = '{{ url('') }}';

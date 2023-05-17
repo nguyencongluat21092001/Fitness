@@ -9,11 +9,11 @@
         margin-left: calc(var(--bs-gutter-x)/ -2);
     }
 </style>
-<!-- <marquee> -->
+<marquee>
     <div class="row_convert py-3">
         @foreach($datas as $item)
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="padding-left:10px">
-            <div class="card" style="background: #535f7e;">
+            <div class="card" style="background: #ffffffa8 !important;">
                 <div class="card-body p-3">
                 <div class="row_convert">
                 <div class="col-1">
@@ -30,8 +30,8 @@
                 </div>
                     <div class="col-11">
                         <div class="numbers">
-                            <span style="color:#ffffffba">Mã cổ phiếu: <span style="color:#83beff">{{$item['symbol']}}</span></span> <br>
-                            <span style="color:#ffffffba">Biến động:
+                            <span style="">Mã cổ phiếu: <span style="color:#061639">{{$item['symbol']}}</span></span> <br>
+                            <span style="">Biến động:
                                 <span class="animate-charcter">
                                     {{$item['value']}}
                                 </span> 
@@ -49,5 +49,5 @@
         </div>
         @endforeach
     </div>
-<!-- </marquee> -->
+</marquee>
 

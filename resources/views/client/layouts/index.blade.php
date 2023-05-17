@@ -26,7 +26,7 @@
 </head>
 <style>
     body{
-        background-image: url("../clients/img/RE4wwu9.jpg");
+        background-image: url("../clients/img/image_nui.jpeg");
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
@@ -44,7 +44,7 @@
         background-size: cover;
     }
     .bgft{
-        background-image: url("../clients/img/sequel-background-1.png") !important;
+        /* background-image: url("../clients/img/sequel-background-1.png") !important; */
         width:100%;
           /* Center and scale the image nicely */
         background-position: center;
@@ -76,7 +76,7 @@
         </div>
         <div class="user-login-header">
             <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
-                <ul class="navbar-nav">
+                <ul class="navbar-nav pt-2">
                             <!-- Authentication Links -->
                     @guest
                     <div style="display:flex">
@@ -198,14 +198,16 @@
     </nav>
     @yield('body-client')
     <!-- Start Footer -->
-    <footer class="bgft pt-4">
-        <div class="container" style="background:#121d29e0">
+    <footer class="bgft pt-4" style="background:#121d29bf">
+        <div class="container" >
             <div class="row py-4">
-            <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:4%"> 
-            <span style="color:#ff0000d1"><b style="font-family: auto;color:#ff000091;font-weight: 600;animation: lights 10s 750ms linear infinite;">Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
+                <div style="pamadding-left:2%">
+                    <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:4%;"> 
+                     <span style="color:#ff0000d1"><b style="font-family: auto;color:#ff000091;font-weight: 600;animation: lights 10s 750ms linear infinite;">Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
+                </div>
             </h2>
 
-                <div class="col-lg-5 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
+                <div class="col-lg-5 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
                     <a class="navbar-brand" href="index.html">
                         <h3 class="h5 text-light light-300"><i class="fas fa-address-book"></i> Liên hệ</h3>
                     </a>
@@ -228,7 +230,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
+                <div class="col-lg-4 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
                     <a class="navbar-brand" href="index.html">
                         <h2 class="h5 text-light light-300"><i class="fas fa-handshake"></i> Đồng hành</h2>
                     </a>
@@ -271,7 +273,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-2"style="padding-top:20px">
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
                     <h2 class="h5 pb-lg-3 text-light light-300"><i class="fas fa-cloud-download-alt"></i> Tải App</h2>
                     <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
                         

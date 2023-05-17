@@ -34,6 +34,10 @@ NclLib.prototype.alertMessageBackend = function(type, label, message, s = 30000)
 NclLib.prototype.menuActive = function(nameMenu){
   $(nameMenu).addClass("active-menuClient");
 }
+// add class hiển thị đang ở page nào 
+NclLib.prototype.menuActive_child = function(nameMenu_child){
+  $(nameMenu_child).addClass("active-menuClient_background");
+}
 
 NclLib = new NclLib();
 
