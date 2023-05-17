@@ -13,6 +13,33 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row form-group">
+                                <div class="col-lg-12" style="padding:10px;">
+                                    <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;" > Biểu đồ</span> </h> <br>
+                                    <p>Nguồn theo: fireant</p>
+                                    <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
+                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <form action="" method="POST" id="frmDataFinancial_index">
+                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+                <!-- <div class="breadcrumb-input-fix d-sm-flex align-items-center justify-content-between">
+                    <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
+                    data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Cẩm nang</button>
+                </div> -->
+                <section class="content-wrapper">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row form-group">
                             <div class="col-md-3">
                             <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
                             data-original-title="Thêm cổ phiếu"><i class="fas fa-plus"></i></button>

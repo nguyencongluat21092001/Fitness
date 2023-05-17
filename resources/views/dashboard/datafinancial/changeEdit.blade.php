@@ -21,7 +21,7 @@
     @csrf
     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="id" id="id" value="{{isset($datas->id)?$datas->id:''}}">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-xl" style="padding-top: 13%;">
         <div class="modal-content card">
             <div class="modal-header">
                 <h5 class="modal-title">Cập nhật cổ phiếu</h5>

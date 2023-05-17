@@ -1,6 +1,5 @@
 @extends('client.layouts.index')
 @section('body-client')
-@include('client.home.siderbar_child')
 <style>
     header
     {

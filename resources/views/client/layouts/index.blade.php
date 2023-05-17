@@ -46,6 +46,7 @@
     .bgft{
         /* background-image: url("../clients/img/sequel-background-1.png") !important; */
         width:100%;
+        background:#731b1bde !important;
           /* Center and scale the image nicely */
         background-position: center;
         background-repeat: no-repeat;
@@ -145,7 +146,9 @@
                 </a>
                 
                 <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white:margin:auto">     
-                     <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài chính & Đầu tư</h1>          
+                     <!-- <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>           -->
+                     <h1 style="font-family: auto;font-weight: 600;color:#fff079;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>          
+
                 </div>
                 <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
                 <!-- <form action="#" method="get">
@@ -169,7 +172,7 @@
             </button>
             <!-- <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex mt-3 align-items-center" id="navbar-toggler-success"> -->
                 <div class="" style="border-radius: 50px;margin:auto">
-                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                    <ul class="nav navbar-nav d-flex justify-content-between text-center text-dark">
                         <li class="nav-item ">
                             <a class="nav-link link-home   px-3 " style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
                         </li>
@@ -180,16 +183,16 @@
                             <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU</a>
+                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> PHÂN TÍCH</a>
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> BÁO CÁO PHÂN TÍCH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN</a>
+                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN ĐẦU TƯ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN</a>
+                            <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN ĐẦU TƯ A-Z</a>
                         </li>
                     </ul>
                 </div>
