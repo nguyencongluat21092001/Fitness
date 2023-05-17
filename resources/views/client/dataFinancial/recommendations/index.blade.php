@@ -17,7 +17,7 @@
                             <!-- Màn hình danh sách -->
                             <div id="table-container-recommendations"></div>
                         </div>
-                        <h class="h5 py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i style="color:#3ac500" class="far fa-eye"></i>
+                        <!-- <h class="h5 py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i style="color:#3ac500" class="far fa-eye"></i> -->
                     </div>
                 </div>
             </div>

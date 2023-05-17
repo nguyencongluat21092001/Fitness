@@ -145,11 +145,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
     });
     Route::prefix('/client/dataFinancial')->group(function () {
-        // Trang chủ client
+        // Tra cứu cổ phiếu
         Route::get('/index', [ClientDataFinancialController::class, 'index']);
         Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
         Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
         Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
+        Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
+
         // tín hiệu mua
         Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
         Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);

@@ -293,3 +293,31 @@ JS_DataFinancial.prototype.searchDataCP = function(oFormData) {
         }
     });
 }
+/**
+ * Hàm hiển thị modal ghi chú
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_DataFinancial.prototype.noteTaFa = function () {
+    var url = this.urlPath + '/noteTaFa';
+    // var myClass = this;
+    var oForm = 'form#frmDataFinancial_index';
+
+    var data = $(oForm).serialize();
+    // data += '&_token=' +  $('#_token').val();
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        //cache: true,
+        data: data,
+        success: function (arrResult) {
+            $('#editmodal_noteTaFa').html(arrResult);
+            $('#editmodal_noteTaFa').modal('show');
+            // myClass.loadevent(oForm);
+
+        }
+    });
+}

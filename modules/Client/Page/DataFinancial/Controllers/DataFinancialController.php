@@ -105,6 +105,18 @@ class DataFinancialController extends Controller
         return view('client.datafinancial.fireAntChart');
     }
      /**
+     * hiển thị ghi chú
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function noteTaFa (Request $request)
+    {
+        $input = $request->input();
+        return view('client.datafinancial.noteTaFa');
+    }
+     /**
      * index tín hiệu mua
      *
      * @param Request $request
