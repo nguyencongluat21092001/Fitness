@@ -76,7 +76,7 @@
         </div>
         <div class="user-login-header">
             <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
-                <ul class="navbar-nav pt-2">
+                <ul class="navbar-nav pt-1">
                             <!-- Authentication Links -->
                     @guest
                     <div style="display:flex">
@@ -180,7 +180,7 @@
                             <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
+                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> PHÂN TÍCH</a>
