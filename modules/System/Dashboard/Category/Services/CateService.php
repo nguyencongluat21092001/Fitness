@@ -25,12 +25,14 @@ class CateService extends Service
     }
 
     public function store($input){
+        $cates = $this->repository->select('id')->get();
         if($input['id'] != ''){
             $arrData = [
                 'name'=>$input['name'],
                 'code_cate'=>$input['code_cate'],
                 'decision'=>$input['decision'],
-                'current_status'=>$input['is_checkbox_status']
+                'order'=> isset($input['order']) && !empty($input['order']) ? $input['order'] :count($cates) + 1,
+                'status'=> isset($input['status']) && !empty($input['status']) ? 1 : 0,
             ];
             $create = $this->CateRepository->where('id',$input['id'])->update($arrData);
         }else{
@@ -39,7 +41,8 @@ class CateService extends Service
                 'name'=>$input['name'],
                 'code_cate'=>$input['code_cate'],
                 'decision'=>$input['decision'],
-                'current_status'=>isset($input['is_checkbox_status']) ? $input['is_checkbox_status'] : ''
+                'order'=> count($cates) + 1,
+                'status'=> isset($input['status']) && !empty($input['status']) ? 1 : 0,
             ];
             $create = $this->CateRepository->create($arrData);
         }
@@ -89,7 +92,7 @@ class CateService extends Service
             $this->repository->where('id',$id)->update($param);
             return array('success' => true, 'message' => 'Cập nhật thành công!');
         }else{
-            // $param['status'] = 1;
+            $param['status'] = 1;
             $param['id'] = $id;
             $this->repository->insert($param);
             return array('success' => true, 'message' => 'Thêm mới thành công!');

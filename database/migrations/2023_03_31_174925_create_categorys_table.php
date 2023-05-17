@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('name_category')->nullable();
             $table->string('code_category');
             $table->string('decision')->nullable();
-            $table->string('current_status')->nullable();
             $table->integer('order');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

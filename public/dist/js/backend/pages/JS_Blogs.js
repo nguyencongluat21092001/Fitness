@@ -1,5 +1,4 @@
-function JS_Blogs
-(baseUrl, module, controller) {
+function JS_Blogs(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
@@ -12,11 +11,11 @@ function JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.loadIndex = function () {
+JS_Blogs.prototype.loadIndex = function () {
     var myClass = this;
     var oForm = 'form#frmBlog_index';
     var oFormCreate = 'form#frmAdd';
+    $('.chzn-select').chosen({ height: '100%', width: '100%' });
     myClass.loadList(oForm);
 
     $(oForm).find('#btn_add').click(function () {
@@ -46,8 +45,7 @@ JS_Blogs
         myClass.delete(oForm)
     });
 }
-JS_Blogs
-.prototype.loadevent = function (oForm) {
+JS_Blogs.prototype.loadevent = function (oForm) {
     var myClass = this;
     $('form#frmAdd').find('#btn_create').click(function () {
         myClass.store('form#frmAdd');
@@ -67,8 +65,7 @@ JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.add = function (oForm) {
+JS_Blogs.prototype.add = function (oForm) {
     var url = this.urlPath + '/createForm';
     var myClass = this;
     var data = $(oForm).serialize();
@@ -80,6 +77,8 @@ JS_Blogs
         success: function (arrResult) {
             $('#editmodal').html(arrResult);
             $('#editmodal').modal('show');
+            $('#status').attr('checked', true);
+            $('.chzn-select').chosen({ height: '100%', width: '100%' });
             myClass.loadevent(oForm);
 
         }
@@ -97,30 +96,25 @@ JS_Blogs.prototype.store = function (oFormCreate) {
     var myClass = this;
     var formdata = new FormData();
     if ($("#code_category").val() == '') {
-        var nameMessage = 'Thể loại không được để trống!';
-        var icon = 'warning';
-        var color = '#344767';
-        NclLib.alerMesage(nameMessage,icon,color);
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Thể loại không được để trống!');
+        $("#code_category").focus();
         return false;
     }
-    is_checkbox_status = ''
-    $('input[name="is_checkbox_status"]:checked').each(function() {
-        is_checkbox_status =  $(this).val();
+    if($("#title").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
+        $("#title").focus();
+        return false;
+    }
+    var status = ''
+    $('input[name="status"]:checked').each(function() {
+        status =  $(this).val();
     });
-    // if (is_checkbox_status == '') {
-    //     var nameMessage = 'Trạng thái không được để trống!';
-    //     var icon = 'warning';
-    //     var color = '#344767';
-    //     NclLib.alerMesage(nameMessage,icon,color);
-    //     return false;
-    // }
     formdata.append('_token', $("#_token").val());
     formdata.append('id', $("#id").val());
     formdata.append('code_category', $("#code_category").val());
-    formdata.append('created_at', $("#created_at").val());
     formdata.append('title', $("#title").val());
-    formdata.append('decision', $("#decision").val());
-    formdata.append('is_checkbox_status', is_checkbox_status);
+    formdata.append('decision', CKEDITOR.instances.decision.getData());
+    formdata.append('status', status);
     $('form#frmAdd input[type=file]').each(function () {
         var count = $(this)[0].files.length;
         for (var i = 0; i < count; i++) {
@@ -138,19 +132,13 @@ JS_Blogs.prototype.store = function (oFormCreate) {
         processData: false,
         success: function (arrResult) {
             if (arrResult['success'] == true) {
-                  var nameMessage = 'Cập nhật thành công!';
-                  var icon = 'success';
-                //   var color = '#344767';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                  NclLib.alertMessageBackend('success', 'Thông báo', 'Cập nhật thành công');
                   $('#editmodal').modal('hide');
                   myClass.loadList(oFormCreate);
 
             } else {
                 var loadding = NclLib.successLoadding();
-                  var nameMessage = 'Cập nhật thất bại!';
-                  var icon = 'error';
-                //   var color = '#344767';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                NclLib.alertMessageBackend('danger', 'Lỗi', 'Cập nhật thất bại!');
             }
         }
     });
@@ -162,15 +150,13 @@ JS_Blogs.prototype.store = function (oFormCreate) {
  *
  * @return void
  */
-JS_Blogs
-.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
+JS_Blogs.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
     var myClass = this;
     var url = this.urlPath + '/loadList';
     var data = 'search=' + $("#search").val();
     data += '&category=' +$("#category").val();
     data += '&offset=' + numberPage;
     data += '&limit=' + perPage;
-    console.log(data)
     $.ajax({
         url: url,
         type: "GET",
@@ -202,8 +188,7 @@ JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.edit = function (oForm) {
+JS_Blogs.prototype.edit = function (oForm) {
     var url = this.urlPath + '/edit';
     var myClass = this;
     var data = $(oForm).serialize();
@@ -247,8 +232,7 @@ JS_Blogs
     });
 }
 // Xoa bài viết
-JS_Blogs
-.prototype.delete = function (oForm) {
+JS_Blogs.prototype.delete = function (oForm) {
     var myClass = this;
     var listitem = '';
     var p_chk_obj = $('#table-data').find('input[name="chk_item_id"]');
@@ -323,8 +307,7 @@ JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.infoBlog = function (id) {
+JS_Blogs.prototype.infoBlog = function (id) {
     var url = this.urlPath + '/infor';
     var myClass = this;
     console.log(id)
@@ -349,8 +332,7 @@ JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.changePass = function (oForm) {
+JS_Blogs.prototype.changePass = function (oForm) {
     var url = this.urlPath + '/changePass';
     var myClass = this;
     var data = 'id=' + $("#id").val();
@@ -375,8 +357,7 @@ JS_Blogs
  *
  * @return void
  */
-JS_Blogs
-.prototype.updatePass = function (oFormCreate) {
+JS_Blogs.prototype.updatePass = function (oFormCreate) {
     var url = this.urlPath + '/updatePass';
     var myClass = this;
     var data = $(oFormCreate).serialize();

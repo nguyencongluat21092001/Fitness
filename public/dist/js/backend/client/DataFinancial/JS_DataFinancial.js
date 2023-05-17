@@ -65,15 +65,12 @@ JS_DataFinancial.prototype.fireAntChart = function () {
  * Thêm một dòng mới trên danh sách
  */
 JS_DataFinancial.prototype.addrow = function(arrResult) {
-    console.log(arrResult)
-    var numberRow = $("#body_data tr").length;
     var id = broofa();
     var html = '';
-    // html += '<tr style="background:#ffffffb0">';
     // stt
-    html += '<td style="vertical-align: middle;" align="center">' + (parseInt(numberRow) + 1) + '</td>';
+    html += '<td style="vertical-align: middle;" align="center">' + arrResult.id + '</td>';
      // code_cp
-    html += '<td style="vertical-align: middle;" align="center" class="td_code_cp_' + arrResult.id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + arrResult.id + '\', \'code_cp\')">';
+    html += '<td style="vertical-align: middle;" align="center" class="td_code_cp_' + arrResult.id + '" ondblclick="click2(\'' + arrResult.id + '\', \'code_cp\')">';
     html += '<span id="span_code_cp_' + arrResult.id + '" class="span_code_cp_' + arrResult.id + '">'+arrResult.code_cp+'</span>';
     html += '</td>';
     // exchange
@@ -111,7 +108,18 @@ JS_DataFinancial.prototype.addrow = function(arrResult) {
 
     html += '<td style="vertical-align: middle;" align="center"><span class="text-cursor text-warning" onclick="JS_DataFinancial.fireAntChart(\'' + id + '\')"> <i class="far fa-eye"></i></span></td>';
     // html += '</tr>';
-    $('#code_'+arrResult.id).append(html);
+    $('#code_'+arrResult.id).html(html);
+    console.log($("#span_code_cp_"  + (parseInt(arrResult.id) + 1)).html())
+    if($("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() === undefined && $("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() !== '-'){
+        $('#body_data').append(
+            '<tr id="code_' + (parseInt(arrResult.id) + 1) + '">'
+            + '<td style="vertical-align: middle;color:#83beff" align="center">'
+            + '<span>' + (parseInt(arrResult.id) + 1) + '</span></td>'
+            + '<td class="td_code_cp_' + (parseInt(arrResult.id) + 1) + '" style="vertical-align: middle;" align="center" ondblclick="click2(\'' + (parseInt(arrResult.id) + 1) + '\', \'code_cp\',this)">'
+            + '<span id="span_code_cp_' + (parseInt(arrResult.id) + 1) + '" class="span_code_cp_' + (parseInt(arrResult.id) + 1) + '">-</span></td>'
+            + '</tr>'
+        );
+    }
     // JS_DataFinancial.loadEvent();
 }
 /**
@@ -154,7 +162,6 @@ JS_DataFinancial.prototype.loadData = function (oForm) {
     var data = $(oForm).serialize();
     data += '&_token=' +  $('#_token').val();
     data += '&limit=' +  5;
-    console.log(data)
     $.ajax({
         url: url,
         type: "POST",

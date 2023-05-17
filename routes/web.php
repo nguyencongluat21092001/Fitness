@@ -1,9 +1,17 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
-use Modules\System\Dashboard\Users\Controllers\UserController;
+use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
+use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\System\Dashboard\Dashboards\Controllers\DashboardController;
-use Illuminate\Support\Facades\Auth;
+use Modules\System\Dashboard\Blog\Controllers\BlogController;
+use Modules\System\Dashboard\Category\Controllers\CateController;
+use Modules\System\Dashboard\Category\Controllers\CategoryController;
+use Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController;
+use Modules\System\Dashboard\Handbook\Controllers\HandbookController;
+use Modules\System\Dashboard\Home\Controllers\HomeController;
+use Modules\System\Dashboard\Users\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +31,7 @@ use Illuminate\Support\Facades\Auth;
 //     $googleSheet->readGoogleSheet();
 //     // return view('auth.login');
 // });
-Route::get('/', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
+Route::get('/', [ClientHomeController::class, 'index']);
 // Route::get('/login', function () {
 //     return view('auth.signin');
 // });
@@ -33,93 +41,93 @@ Route::get('/register', function () {
 Route::get('/404_notFound', function () {
     return view('dashboard.home.404_notFound');
 })->name('404_notFound');
-Route::post('/system/home', [App\Http\Controllers\Auth\LoginController::class, 'checkLogin'])->name('checkLogin');
-Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('login');
-Route::get('/system/login', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('fromLogin');
-Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+Route::post('/system/home', [LoginController::class, 'checkLogin'])->name('checkLogin');
+Route::get('/login', [LoginController::class, 'logout'])->name('login');
+Route::get('/system/login', [LoginController::class, 'logout'])->name('fromLogin');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware('checkloginAdmin')->group(function () {
         // quản trị người dùng
         Route::prefix('/system/user')->group(function () {
-            Route::get('/index', [Modules\System\Dashboard\Users\Controllers\UserController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\Users\Controllers\UserController::class,'loadList']);
-            Route::post('/edit', [Modules\System\Dashboard\Users\Controllers\UserController::class,'edit']);
-            Route::post('/createForm', [Modules\System\Dashboard\Users\Controllers\UserController::class,'createForm']);
-            Route::post('/create', [Modules\System\Dashboard\Users\Controllers\UserController::class,'create']);
-            Route::post('/delete', [Modules\System\Dashboard\Users\Controllers\UserController::class,'delete']);
+            Route::get('/index', [UserController::class, 'index']);
+            Route::get('/loadList',[UserController::class,'loadList']);
+            Route::post('/edit', [UserController::class,'edit']);
+            Route::post('/createForm', [UserController::class,'createForm']);
+            Route::post('/create', [UserController::class,'create']);
+            Route::post('/delete', [UserController::class,'delete']);
             // Cập nhật mật khẩu
-            Route::get('/changePass', [Modules\System\Dashboard\Users\Controllers\UserController::class,'changePass'])->name('changePass');
-            Route::post('/updatePass', [Modules\System\Dashboard\Users\Controllers\UserController::class,'updatePass'])->name('updatePass');
+            Route::get('/changePass', [UserController::class,'changePass'])->name('changePass');
+            Route::post('/updatePass', [UserController::class,'updatePass'])->name('updatePass');
         });
          //dữ liệu chứng khoán
          Route::prefix('/system/datafinancial')->group(function () {
             //Handbook
-            Route::get('/index', [Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'loadList']);
-            Route::post('/createForm',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'createForm']);
-            Route::post('/create',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'create']);
-            Route::get('/changeUpdate',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'changeUpdate']);
-            Route::post('/edit',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'edit']);
-            Route::post('/delete',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'delete']);
-            Route::post('/updateDataFinancial',[Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController::class,'updateDataFinancial']);
+            Route::get('/index', [DataFinancialController::class, 'index']);
+            Route::get('/loadList',[DataFinancialController::class,'loadList']);
+            Route::post('/createForm',[DataFinancialController::class,'createForm']);
+            Route::post('/create',[DataFinancialController::class,'create']);
+            Route::get('/changeUpdate',[DataFinancialController::class,'changeUpdate']);
+            Route::post('/edit',[DataFinancialController::class,'edit']);
+            Route::post('/delete',[DataFinancialController::class,'delete']);
+            Route::post('/updateDataFinancial',[DataFinancialController::class,'updateDataFinancial']);
         });
     });
     Route::prefix('/system')->group(function () {
         // quản trị danh mục - thể loại
         Route::prefix('/category')->group(function () {
             //Danh mục
-            Route::post('/createForm',[Modules\System\Dashboard\Category\Controllers\CateController::class,'createForm']);
-            Route::post('/create',[Modules\System\Dashboard\Category\Controllers\CateController::class,'create']);
-            Route::post('/edit',[Modules\System\Dashboard\Category\Controllers\CateController::class,'edit']);
-            Route::post('/delete',[Modules\System\Dashboard\Category\Controllers\CateController::class,'delete']);
-            Route::get('/index', [Modules\System\Dashboard\Category\Controllers\CateController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\Category\Controllers\CateController::class,'loadList']);
-            Route::post('/updateCategory',[Modules\System\Dashboard\Category\Controllers\CateController::class,'updateCategory']);
-            Route::post('/changeStatusCate',[Modules\System\Dashboard\Category\Controllers\CateController::class,'changeStatusCate']);
+            Route::post('/createForm',[CateController::class,'createForm']);
+            Route::post('/create',[CateController::class,'create']);
+            Route::post('/edit',[CateController::class,'edit']);
+            Route::post('/delete',[CateController::class,'delete']);
+            Route::get('/index', [CateController::class, 'index']);
+            Route::get('/loadList',[CateController::class,'loadList']);
+            Route::post('/updateCategory',[CateController::class,'updateCategory']);
+            Route::post('/changeStatusCate',[CateController::class,'changeStatusCate']);
             //thể loại
-            Route::get('/indexCategory', [Modules\System\Dashboard\Category\Controllers\CategoryController::class, 'indexCategory']);
-            Route::get('/loadListCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'loadListCategory']);
-            Route::post('/createFormCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'createFormCategory']);
-            Route::post('/createCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'createCategory']);
-            Route::post('/editCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'edit']);
-            Route::post('/deleteCategory',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'delete']);
-            Route::post('/updateCategoryCate',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'updateCategoryCate']);
-            Route::post('/changeStatusCategoryCate',[Modules\System\Dashboard\Category\Controllers\CategoryController::class,'changeStatusCategoryCate']);
+            Route::get('/indexCategory', [CategoryController::class, 'indexCategory']);
+            Route::get('/loadListCategory',[CategoryController::class,'loadListCategory']);
+            Route::post('/createFormCategory',[CategoryController::class,'createFormCategory']);
+            Route::post('/createCategory',[CategoryController::class,'createCategory']);
+            Route::post('/editCategory',[CategoryController::class,'edit']);
+            Route::post('/deleteCategory',[CategoryController::class,'delete']);
+            Route::post('/updateCategoryCate',[CategoryController::class,'updateCategoryCate']);
+            Route::post('/changeStatusCategoryCate',[CategoryController::class,'changeStatusCategoryCate']);
         });
         //bài viết 
         Route::prefix('/blog')->group(function () {
-            Route::get('/index', [Modules\System\Dashboard\Blog\Controllers\BlogController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\Blog\Controllers\BlogController::class,'loadList']);
-            Route::post('/edit', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'edit']);
-            Route::post('/createForm', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'createForm']);
-            Route::post('/create', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'create']);
-            Route::post('/delete', [Modules\System\Dashboard\Blog\Controllers\BlogController::class,'delete']);
-            Route::get('/infor',[Modules\System\Dashboard\Blog\Controllers\BlogController::class,'infor']);
+            Route::get('/index', [BlogController::class, 'index']);
+            Route::get('/loadList',[BlogController::class,'loadList']);
+            Route::post('/edit', [BlogController::class,'edit']);
+            Route::post('/createForm', [BlogController::class,'createForm']);
+            Route::post('/create', [BlogController::class,'create']);
+            Route::post('/delete', [BlogController::class,'delete']);
+            Route::get('/infor',[BlogController::class,'infor']);
 
         });
         // 
-        Route::get('/dashboard', [Modules\System\Dashboard\Dashboards\Controllers\DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
         //Cập nhật giao diện sáng tối
-        Route::get('/userInfo/index', [Modules\System\Dashboard\Users\Controllers\UserController::class, 'indexUserInfo'])->name('userInfoIndex');
-        Route::post('/userInfo/editColorView', [Modules\System\Dashboard\Users\Controllers\UserController::class, 'editColorView']);
+        Route::get('/userInfo/index', [UserController::class, 'indexUserInfo'])->name('userInfoIndex');
+        Route::post('/userInfo/editColorView', [UserController::class, 'editColorView']);
         // Trang chủ Admin
         Route::prefix('/home')->group(function () {
-            Route::get('/index', [Modules\System\Dashboard\Home\Controllers\HomeController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'loadList']);
-            Route::get('/loadListTap1',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'loadListTap1'])->name('loadListTap1');
-            Route::get('/realTimeData',[Modules\System\Dashboard\Home\Controllers\HomeController::class,'realTimeData'])->name('realTimeData');
+            Route::get('/index', [HomeController::class, 'index']);
+            Route::get('/loadList',[HomeController::class,'loadList']);
+            Route::get('/loadListTap1',[HomeController::class,'loadListTap1'])->name('loadListTap1');
+            Route::get('/realTimeData',[HomeController::class,'realTimeData'])->name('realTimeData');
         });
         //Cẩm nâng
         Route::prefix('/handbook')->group(function () {
             //Handbook
-            Route::get('/index', [Modules\System\Dashboard\Handbook\Controllers\HandbookController::class, 'index']);
-            Route::get('/loadList',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'loadList'])->name('loadList');
-            Route::post('/createForm',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'createForm']);
-            Route::post('/create',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'create'])->name('create');
-            Route::post('/edit',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'edit'])->name('edit');
-            Route::post('/delete',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'delete'])->name('delete');
-            Route::get('/seeVideo',[Modules\System\Dashboard\Handbook\Controllers\HandbookController::class,'seeVideo'])->name('seeVideo');
+            Route::get('/index', [HandbookController::class, 'index']);
+            Route::get('/loadList',[HandbookController::class,'loadList'])->name('loadList');
+            Route::post('/createForm',[HandbookController::class,'createForm']);
+            Route::post('/create',[HandbookController::class,'create'])->name('create');
+            Route::post('/edit',[HandbookController::class,'edit'])->name('edit');
+            Route::post('/delete',[HandbookController::class,'delete'])->name('delete');
+            Route::get('/seeVideo',[HandbookController::class,'seeVideo'])->name('seeVideo');
         });
        
     });
@@ -128,26 +136,26 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 // Route::middleware('permissionCheckLoginClient')->group(function () {
     Route::prefix('/client')->group(function () {
         // Trang chủ client
-        Route::get('/home/index', [Modules\Client\Page\Home\Controllers\HomeController::class, 'index']);
-        Route::get('/home/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
-        Route::get('/home/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
-        Route::get('/home/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
-        Route::get('/home/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
-        Route::get('/home/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
+        Route::get('/home/index', [ClientHomeController::class, 'index']);
+        Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
+        Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
+        Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
+        Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
+        Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
 
     });
     Route::prefix('/client/dataFinancial')->group(function () {
         // Trang chủ client
-        Route::get('/index', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'index']);
-        Route::post('/loadData', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadData']);
-        Route::post('/fireAntChart', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'fireAntChart']);
-        Route::post('/searchDataCP', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'searchDataCP']);
+        Route::get('/index', [ClientDataFinancialController::class, 'index']);
+        Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
+        Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
+        Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
         // tín hiệu mua
-        Route::get('/signalIndex', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'signalIndex']);
-        Route::post('/loadList_signal', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadList_signal']);
+        Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
+        Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
         // khuyến nghị vip
-        Route::get('/recommendationsIndex', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'recommendationsIndex']);
-        Route::post('/loadList_recommendations', [Modules\Client\Page\DataFinancial\Controllers\DataFinancialController::class, 'loadList_recommendations']);
+        Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
+        Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
         // Route::get('/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
         // Route::get('/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
         // Route::get('/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);

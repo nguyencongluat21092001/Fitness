@@ -68,8 +68,12 @@ class CateController extends Controller
     public function edit(Request $request)
     {
         $input = $request->all();
-        $data = $this->CateService->editCategory($input);
-        return view('dashboard.category.cate.edit',compact('data'));
+        $cates = $this->CateService->where('id', $input['id'])->first();
+        if(empty($cates)){
+            return array('success' => false, 'message' => 'Không tồn tại đối tượng!');
+        }
+        $data['datas'] = $this->CateService->where('id', $input['id'])->first();
+        return view('dashboard.category.cate.edit', $data);
     }
 
     /**
