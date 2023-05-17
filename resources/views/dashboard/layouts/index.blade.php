@@ -37,7 +37,6 @@
     <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
 
-
 </head>
 @if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE' || $_SESSION['role'] == 'STAFF')
     @if ($_SESSION['color_view'] == 1)
@@ -55,7 +54,7 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 ps " id="sidenav-main" style="background:#1d2440 !important">
         <div class="sidenav-header">
         <i class="fas fa-times cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html " target="_blank">
+        <a class="navbar-brand m-0" href="{{url('')}}" target="_blank">
             <img src="../clients\img\LogoFinTop_red.png" class="navbar-brand-imgh-120" alt="main_logo" style="width:80%;padding-left:20%">
             <span class="ms-1 font-weight-bold"></span>
         </a>
@@ -484,6 +483,7 @@
     <script src='../assets/js/jquery.js'></script>
     <script type="text/jscript" src="../assets/chosen/chosen.min.js"></script>
     <script type="text/jscript" src="../assets/datepicker/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="../assets/ckeditor/ckeditor.js"></script>
     <script type="text/jscript" src="../assets/js/toast.min.js"></script>
     <script>
         setTimeout(() => {

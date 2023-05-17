@@ -18,7 +18,6 @@ class CategoryModel extends Model
         'name_category',
         'code_category',
         'decision',
-        'current_status',
         'order',
         'status',
         'created_at',

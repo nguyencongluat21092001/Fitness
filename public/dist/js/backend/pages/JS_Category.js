@@ -66,11 +66,11 @@ JS_Category.prototype.add = function (oForm) {
     $.ajax({
         url: url,
         type: "POST",
-        //cache: true,
         data: data,
         success: function (arrResult) {
             $('#editmodal').html(arrResult);
             $('#editmodal').modal('show');
+            $("#status").attr('checked', true);
             myClass.loadevent(oForm);
 
         }
@@ -123,7 +123,6 @@ JS_Category.prototype.store = function (oFormCreate) {
  * @return void
  */
 JS_Category.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) {
-    console.log(112);
     var myClass = this;
     var url = this.urlPath + '/loadList';
     var data = 'search=' + $("#search").val();
@@ -160,41 +159,23 @@ JS_Category.prototype.loadList = function (oForm, numberPage = 1, perPage = 15) 
  *
  * @return void
  */
-JS_Category.prototype.edit = function (oForm) {
+JS_Category.prototype.edit = function (id) {
     var url = this.urlPath + '/edit';
     var myClass = this;
-    var data = $(oForm).serialize();
-    var listitem = '';
-    var i = 0;
-    var p_chk_obj = $('#table-data').find('input[name="chk_item_id"]');
-    $(p_chk_obj).each(function () {
-        if ($(this).is(':checked')) {
-            if (listitem !== '') {
-                listitem += ',' + $(this).val();
-            } else {
-                listitem = $(this).val();
-            }
-            i++;
-        }
-    });
-    if (listitem == '') {
-        var nameMessage = 'Bạn chưa chọn danh mục!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
-    if (i > 1) {
-        var nameMessage = 'Bạn chỉ được chọn một thể loại!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
+    var data = '_token=' + $('#frmCategory_index #_token').val();
+    data += '&id=' + id;
     $.ajax({
         url: url,
         type: "POST",
         data: data,
         success: function (arrResult) {
+            if(arrResult['success'] == false){
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
+                return false;
+            }
             $('#editmodal').html(arrResult);
             $('#editmodal').modal('show');
-            myClass.loadevent(oForm);
+            myClass.loadevent('form#frmAdd');
 
         }
     });
@@ -256,7 +237,6 @@ JS_Category.prototype.delete = function (oForm) {
         }
       })
 }
-
 /**
  * Thêm một dòng mới trên danh sách
  */
@@ -281,16 +261,16 @@ JS_Category.prototype.addrow = function() {
     html += '<td class="td_decision_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'decision\')">';
     html += '<span id="span_decision_' + id + '" class="span_decision_' + id + '"></span>';
     html += '</td>';
-    // // order
-    // html += '<td class="td_order_' + id + '" onclick="{select_row(this);}" align="center" ondblclick="click2(\'' + id + '\', \'order\')">';
-    // html += '<span id="span_order_' + id + '" class="span_order_' + id + '">' + parseInt(numberRow) + 1 + '</span>';
-    // html += '</td>';
-    // // status
-    // html += '<td onclick="{select_row(this);}" align="center">';
-    // html += '<label class="custom-control custom-checkbox p-0 m-0 pointer " style="cursor: pointer;">';
-    // html += '<input type="checkbox" hidden class="custom-control-input toggle-status" id="status_' + id + '" data-id="' + id + '" checked>';
-    // html += '<span class="custom-control-indicator p-0 m-0" onclick="JS_Category.changeStatus(\'' + id + '\')"></span>';
-    // html += '</label></td>';
+    // order
+    html += '<td class="td_order_' + id + '" onclick="{select_row(this);}" align="center" ondblclick="click2(\'' + id + '\', \'order\')">';
+    html += '<span id="span_order_' + id + '" class="span_order_' + id + '">' + (parseInt(numberRow) + 1) + '</span>';
+    html += '</td>';
+    // status
+    html += '<td onclick="{select_row(this);}" align="center">';
+    html += '<label class="custom-control custom-checkbox p-0 m-0 pointer " style="cursor: pointer;">';
+    html += '<input type="checkbox" hidden class="custom-control-input toggle-status" name="status" id="status_' + id + '" data-id="' + id + '" checked>';
+    html += '<span class="custom-control-indicator p-0 m-0" onclick="JS_Category.changeStatus(\'' + id + '\')"></span>';
+    html += '</label></td>';
     // edit
     html += '<td align="center"><span class="text-cursor text-warning" onclick="JS_Category.edit(\''+id+'\')"><i class="fas fa-edit"></i></span></td>';
     html += '</tr>';

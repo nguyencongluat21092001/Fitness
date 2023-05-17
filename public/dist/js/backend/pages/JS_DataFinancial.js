@@ -212,6 +212,21 @@ JS_DataFinancial.prototype.edit = function (id) {
             $('.chzn-select').chosen({ height: '100%', width: '100%' });
             $('#status').attr('checked', true);
             $('#editmodal').modal('show');
+            $('form#frmAdd').find('#add_link').click(function () {
+                myClass.add_link();
+                $("#choose_link").click(function(){
+                    if($("#input_link").val() !== ''){
+                        $("#url_link").val($("#input_link").val());
+                        $("#show_link").removeAttr('hidden').attr('href', $("#input_link").val());
+                        $("#changeUpdateModal").html('');
+                        $("#changeUpdateModal").modal('hide');
+                    }
+                });
+                $(".close_add_link").click(function(){
+                    $("#changeUpdateModal").html('');
+                    $("#changeUpdateModal").modal('hide');
+                });
+            })
             $('form#frmAdd').find('#btn_create').click(function () {
                 myClass.store('form#frmAdd');
             })
@@ -304,6 +319,30 @@ JS_DataFinancial.prototype.seeVideo = function (id) {
             $('#videomodal').modal('show');
         }
     });
+}
+/**
+ * Thêm link
+ */
+JS_DataFinancial.prototype.add_link = function(){
+    var html = '';
+    html += '<div class="modal-dialog modal-lg" style="width:50%">';
+    html += '<div class="modal-content card">';
+    html += '<div class="modal-header">';
+    html += '<h5 class="modal-title">Cập nhật cổ phiếu</h5>';
+    html += '<button type="button" class="btn btn-sm close_add_link" style="background: #f1f2f2;">X</button>';
+    html += '</div>';
+    html += '<div class="modal-body">';
+
+    // html += '<a href="" id="show_link"></a>';
+    html += '<input type="text" class="form-control" id="input_link">';
+    html += '<button class="btn btn-primary" id="choose_link">Chọn</button>';
+
+    html += '</div>';
+    html += '</div>';
+    html += '</div>';
+    $("#changeUpdateModal").html(html);
+    $("#changeUpdateModal").modal('show');
+
 }
 /**
  * Thêm một dòng mới trên danh sách

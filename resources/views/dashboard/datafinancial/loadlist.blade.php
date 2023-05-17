@@ -58,7 +58,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                        {{$data->code_cp}}
                     </td> -->
                     <td class="td_code_cp_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'code_cp')">
-                       <span id="span_code_cp_{{$id}}" value="" class="span_code_cp_{{$id}}">{{$data->code_cp}}</span>
+                       <span id="span_code_cp_{{$id}}" class="span_code_cp_{{$id}}">{{$data->code_cp}}</span>
                     </td>
                     <td class="td_exchange_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'exchange')">
                        <span id="span_exchange_{{$id}}" class="span_exchange_{{$id}}">{{$data->exchange}}</span>
@@ -91,7 +91,8 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td class="td_ratings_FA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_FA')">
                        <span id="span_ratings_FA_{{$id}}" class="span_ratings_FA_{{$id}}">{{$data->ratings_FA}}</span>
                     </td>
-                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}"><i class="fas fa-link"></i>
+                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}">
+                        <a href="{{$data->url_link}}" target="_blank"><i class="fas fa-link"></i></a>
                     </td>
                     <td class="text-center" style="vertical-align: middle;">
                         <span class="text-cursor text-warning" onclick="JS_DataFinancial.edit('{{$id}}')"><i class="fas fa-edit"></i></span>
