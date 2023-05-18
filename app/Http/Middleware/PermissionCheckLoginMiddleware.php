@@ -26,6 +26,6 @@ class PermissionCheckLoginMiddleware
             }
             return redirect()->route('login');
         };
-        // return redirect()->route('404_notFound');
+        return redirect()->route('404_notFound');
     }
 }
