@@ -106,7 +106,7 @@
                                 </span>
                             </span>
                             <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ URL::asset('/system/userInfo/index') }}">
+                                <a class="dropdown-item" href="{{ URL::asset('/client/infor/index') }}">
                                         <p>
                                             {{ __('Thông tin cá nhân') }}
                                         </p>
@@ -177,7 +177,7 @@
                             <a class="nav-link link-home   px-3 " style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
+                            <a class="nav-link link-introduce px-3" style="color:white" href="{{ URL::asset('/client/introduce/index') }}"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>

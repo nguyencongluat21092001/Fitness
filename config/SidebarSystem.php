@@ -33,11 +33,29 @@ return [
         'a'    => 'nav-link link-blog',
         'href' => '/system/blog/index',
     ],
+    'buysignal' => [
+        'name' => 'Quản trị tín hiệu mua',
+        'icon' => 'far fa-chart-bar',
+        'a'    => 'nav-link link-buysignal',
+        'href' => '/system/buysignal/index',
+    ],
+    'approvepayment' => [
+        'name' => 'Phê duyệt thanh toán',
+        'icon' => 'fas fa-money-check-alt',
+        'a'    => 'nav-link link-approvepayment',
+        'href' => '/system/approvepayment/index',
+    ],
     'handbook' => [
         'name' => 'Cẩm nang cho nhà đầu tư',
         'icon' => 'fas fa-medkit',
         'a'    => 'nav-link link-handbook',
         'href' => '/system/handbook/index',
+    ],
+    'report' => [
+        'name' => 'Báo cáo KPI',
+        'icon' => 'fas fa-hand-holding-usd',
+        'a'    => 'nav-link link-report',
+        'href' => '/system/report/index',
     ],
    ],
   //role 3
@@ -105,7 +123,5 @@ return [
         'a'    => 'nav-link link-handbook',
         'href' => '/system/handbook/index',
     ],
-  ]
-    
-    
+  ] 
 ];

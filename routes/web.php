@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
 use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
+use Modules\Client\Page\Introduce\Controllers\IntroduceController;
+use Modules\Client\Page\Infor\Controllers\InforController;
 use Modules\System\Dashboard\Dashboards\Controllers\DashboardController;
 use Modules\System\Dashboard\Blog\Controllers\BlogController;
 use Modules\System\Dashboard\Category\Controllers\CateController;
@@ -133,17 +135,20 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     });
 });
 // route phía người dùng
-// Route::middleware('permissionCheckLoginClient')->group(function () {
-    Route::prefix('/client')->group(function () {
-        // Trang chủ client
-        Route::get('/home/index', [ClientHomeController::class, 'index']);
-        Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
-        Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
-        Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
-        Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
-        Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
+Route::prefix('/client')->group(function () {
+    // Trang chủ client
+    Route::get('/home/index', [ClientHomeController::class, 'index']);
+    Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
+    Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
+    Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
+    Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
+    Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
 
-    });
+});
+//giới thiệu
+Route::get('/client/introduce/index', [IntroduceController::class, 'index']);
+Route::middleware('permissionCheckLoginClient')->group(function () {
+    Route::get('/client/infor/index', [InforController::class, 'index']);
     Route::prefix('/client/dataFinancial')->group(function () {
         // Tra cứu cổ phiếu
         Route::get('/index', [ClientDataFinancialController::class, 'index']);
@@ -151,22 +156,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
         Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
         Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
-
         // tín hiệu mua
         Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
         Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
         // khuyến nghị vip
         Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
         Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
-        // Route::get('/loadList',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadList']);
-        // Route::get('/loadListBlog',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListBlog']);
-        // Route::get('/loadListTap1',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTap1']);
-        // Route::get('/loadListTop',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListTop']);
-        // Route::get('/loadListChartNen',[Modules\Client\Page\Home\Controllers\HomeController::class,'loadListChartNen']);
-
     });
-// });
-Auth::routes();
+});
+// Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 

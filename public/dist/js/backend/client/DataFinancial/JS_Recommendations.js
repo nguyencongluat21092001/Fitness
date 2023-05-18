@@ -34,7 +34,7 @@ JS_Recommendations.prototype.loadList = function (oForm) {
         data: data,
         success: function (arrResult) {
             $("#table-container-recommendations").html(arrResult);
-            $('#messages').scrollTop($('#messages')[0].scrollHeight);
+            // $('#messages').scrollTop($('#messages')[0].scrollHeight);
           
             setTimeout(function() { 
                 JS_Recommendations.loadList(oForm)
