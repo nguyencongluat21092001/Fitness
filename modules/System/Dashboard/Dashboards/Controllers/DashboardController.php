@@ -41,7 +41,7 @@ class DashboardController extends Controller
         // $strJsCss = json_encode($arrResult);
         // dd($strJsCss);
         // return view('dashboard.users.index',compact('strJsCss'));
-        return view('dashboard.dashboards.index');
+        return view('dashboard.home.index');
     }
     public function fileManager(){
         return view('dashboard.file-manager');
