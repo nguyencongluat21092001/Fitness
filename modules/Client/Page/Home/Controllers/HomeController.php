@@ -41,8 +41,10 @@ class HomeController extends Controller
     {
         $datas['codeBank'] = config('codeBank.BANK');
         $cate = $this->cateService->where('code_cate','DM_BLOG')->first();
-        $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
-        $datas['category'] = $category;
+        if(!empty($cate)){
+            $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
+        }
+        $datas['category'] = isset($category) ? $category : [];
         return view('client.home.home',$datas);
     }
     

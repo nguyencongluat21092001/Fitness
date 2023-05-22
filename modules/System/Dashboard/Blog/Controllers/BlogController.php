@@ -41,8 +41,10 @@ class BlogController extends Controller
     public function index(Request $request)
     {
         $cate = $this->cateService->where('code_cate','DM_BLOG')->first();
-        $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
-        $data['category'] = $category;
+        if(!empty($cate)){
+            $category = $this->categoryService->select('code_category','name_category')->where('cate',$cate->code_cate)->get()->toArray();
+        }
+        $data['category'] = isset($category) ? $category : [];
         return view('dashboard.blog.index',compact('data'));
     }
     /**

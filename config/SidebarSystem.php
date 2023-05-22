@@ -33,11 +33,11 @@ return [
         'a'    => 'nav-link link-blog',
         'href' => '/system/blog/index',
     ],
-    'buysignal' => [
-        'name' => 'Quản trị tín hiệu mua',
-        'icon' => 'far fa-chart-bar',
-        'a'    => 'nav-link link-buysignal',
-        'href' => '/system/buysignal/index',
+    'signal' => [
+        'name' => 'Tín hiệu mua',
+        'icon' => 'fas fa-signal',
+        'a'    => 'nav-link link-signal',
+        'href' => '/system/signal/index',
     ],
     'approvepayment' => [
         'name' => 'Phê duyệt thanh toán',

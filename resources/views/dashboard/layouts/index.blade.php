@@ -353,6 +353,7 @@
             </div>
         </div>
     <!--   Core JS Files   -->
+    <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript" src="{{ URL::asset('..\assets\js\Js_Main.js') }}"></script>
         @if($_SESSION["color_view"] == 1)
         <script type="text/javascript">
@@ -479,7 +480,6 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     {{--<script src="../assets/js/dashboard.min.js?v=2.0.4"></script>--}}
     <!-- <script src="../assets/js/argon-dashboard.js"></script> -->
-    <script src='../assets/js/jquery.js'></script>
     <script type="text/jscript" src="../assets/chosen/chosen.min.js"></script>
     <script type="text/jscript" src="../assets/datepicker/bootstrap-datepicker.min.js"></script>
     <script type="text/javascript" src="../assets/ckeditor/ckeditor.js"></script>

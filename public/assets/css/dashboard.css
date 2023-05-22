@@ -21673,12 +21673,15 @@ fieldset:disabled .btn {
   transition: box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
+.dark-version label,
+.dark-version .form-label {
+  color: #f7f7f7;
+}
 label,
 .form-label {
   font-size: 0.75rem;
   font-weight: 700;
   margin-bottom: 0.5rem;
-  color: #f7f7f7;
   margin-left: 0.25rem;
 }
 
@@ -22586,7 +22589,7 @@ hr.horizontal.gray-light {
 .navbar-vertical.navbar-expand-xs .navbar-collapse {
   display: block;
   overflow: auto;
-  height: calc(100vh - 160px);
+  height: calc(100vh - 240px);
 }
 
 .navbar-vertical.navbar-expand-xs .navbar-collapse::-webkit-scrollbar {
