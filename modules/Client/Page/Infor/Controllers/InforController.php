@@ -34,7 +34,7 @@ class InforController extends Controller
         $user_infor = $this->userInfoService->where('user_id', $users->id)->first();
         $users['user_infor'] = $user_infor;
         $data['datas'] = $users;
-        return view('client.Infor.index', $data);
+        return view('client.infor.index', $data);
     }
 
      /**
