@@ -172,7 +172,7 @@ Route::prefix('/client')->group(function () {
 });
 //giới thiệu
 Route::get('/client/introduce/index', [IntroduceController::class, 'index']);
-Route::middleware('permissionCheckLoginClient')->group(function () {
+// Route::middleware('permissionCheckLoginClient')->group(function () {
     Route::get('/client/infor/index', [InforController::class, 'index']);
     Route::prefix('/client/dataFinancial')->group(function () {
         // Tra cứu cổ phiếu
@@ -188,8 +188,8 @@ Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
         Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
     });
-});
-// Auth::routes();
+// });
+Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 
