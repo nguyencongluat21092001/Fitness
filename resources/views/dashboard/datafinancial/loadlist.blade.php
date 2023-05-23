@@ -63,9 +63,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td class="td_exchange_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'exchange')">
                        <span id="span_exchange_{{$id}}" class="span_exchange_{{$id}}">{{$data->exchange}}</span>
                     </td>
-                    <td class="td_code_category_{{$id}}" style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'code_category')">
-                    <span id="span_code_category_{{$id}}" class="span_code_category_{{$id}}">{{!empty($data->category) ? $data->category->name_category : ''}}</span>
-                    </td>
+                    <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}">{{!empty($data->category) ? $data->category->name_category : ''}}</td>
                     <td style="vertical-align: middle;white-space: inherit;" align="center">
                        {{$data->Users->name}}
                     </td>

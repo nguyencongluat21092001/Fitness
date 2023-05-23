@@ -32,25 +32,25 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Tên</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{isset($datas->name) ? $datas->name : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Địa chỉ Email</p>
-                                            <input class="form-control" type="email" value="">
+                                            <input class="form-control" type="email" value="{{isset($datas->email) ? $datas->email : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Ngày sinh</p>
-                                            <input class="form-control" type="date" value="">
+                                            <input class="form-control" type="date" value="{{isset($datas->dateBirth) ? $datas->dateBirth : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Số điện thoại</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{isset($datas->phone) ? $datas->phone : ''}}">
                                             </div>
                                         </div>
                                         </div>
@@ -60,25 +60,25 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Địa chỉ</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{isset($datas->address) ? $datas->address : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Công ty</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{isset($datas->user_infor->company) ? $datas->user_infor->company : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Chức vụ</p>
-                                            <input class="form-control" type="text" value="">
+                                            <input class="form-control" type="text" value="{{isset($datas->user_infor->position) ? $datas->user_infor->position : ''}}">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                             <p for="example-text-input" class="form-control-label">Gia nhập ngày</p>
-                                            <input class="form-control" type="date" value="">
+                                            <input class="form-control" type="date" value="{{isset($datas->user_infor->date_join) ? $datas->user_infor->date_join : ''}}">
                                             </div>
                                         </div>
                                         </div>
@@ -102,7 +102,7 @@
                                     <div class="col-4 col-lg-4 order-lg-2">
                                         <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                         <a href="javascript:;">
-                                            <img src="../assets/img/team-2.jpg" class="rounded-circle img-fluid border border-2 border-white">
+                                            <img src="{{url('file-image/avatar')}}/{{$datas->avatar}}" class="rounded-circle img-fluid border border-2 border-white">
                                         </a>
                                         </div>
                                     </div>

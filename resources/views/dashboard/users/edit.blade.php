@@ -76,20 +76,26 @@
 				{{-- Quyền truy cập --}}
 				<div class="row form-group" id="div_hinhthucgiai">
 					<span class="col-md-3 control-label required">Quyền truy cập</span>
-					<div class="col-md-8">
+					<div class="col-md-5">
 						@if(!empty($data['role']))
-						<input type="radio" value="ADMIN" name="is_checkbox_role" id="is_checkbox_role_admin" {{!empty($data['role']) && $data['role'] == 'ADMIN' ? 'checked' : ''}} />
-						<label for="is_checkbox_role_admin">Quản trị hệ thống</label> <br>
-						<input type="radio" value="MANAGE" name="is_checkbox_role" id="is_checkbox_role_manage" {{!empty($data['role']) && $data['role'] == 'MANAGE' ? 'checked' : ''}} />
-						<label for="is_checkbox_role_manage">Quản lý</label><br>
-						<input type="radio" value="STAFF" name="is_checkbox_role" id="is_checkbox_role_staff" {{!empty($data['role']) && $data['role'] == 'STAFF' ? 'checked' : ''}} />
-						<label for="is_checkbox_role_staff">Nhân viên</label><br>
-						<input type="radio" value="USERS" name="is_checkbox_role" id="is_checkbox_role_user" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}} />
-						<label for="is_checkbox_role_user">Người dùng</label><br>
+						<input type="radio" value="ADMIN" name="role" id="role_admin" {{!empty($data['role']) && $data['role'] == 'ADMIN' ? 'checked' : ''}} />
+						<label for="role_admin">Quản trị hệ thống</label> <br>
+						<input type="radio" value="MANAGE" name="role" id="role_manage" {{!empty($data['role']) && $data['role'] == 'MANAGE' ? 'checked' : ''}} />
+						<label for="role_manage">Quản lý</label><br>
+						<input type="radio" value="STAFF" name="role" id="role_staff" {{!empty($data['role']) && $data['role'] == 'STAFF' ? 'checked' : ''}} />
+						<label for="role_staff">Nhân viên</label><br>
+						<input type="radio" value="USERS" name="role" id="role_user" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}} />
+						<label for="role_user">Người dùng</label><br>
 						@endif
+					</div>
+					<div class="col-md-4">
+						<label for="">Trạng thái</label><br>
+						<input type="checkbox" id="status" name="status" {{isset($data['status']) && $data['status'] == 1 ? 'checked' : ''}}>
+						<label for="status">Hoạt động</label>
 					</div>
 					<div class="modal-body">
 						<div>
+							<label>Chọn ảnh đại diện</label><br>
 							<label for="avatar" class="label-upload">Chọn ảnh</label>
 							<input hidden type="file" name="avatar" id="avatar" onchange="readURL(this)"><br>
 							@if(!empty($data['avatar']))
