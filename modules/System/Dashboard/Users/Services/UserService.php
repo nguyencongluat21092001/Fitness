@@ -48,7 +48,8 @@ class UserService extends Service
                 'phone'=>$input['phone'],
                 'email'=>$input['email'],
                 'dateBirth'=>$input['dateBirth'],
-                'role'=>$input['is_checkbox_role']
+                'role'=>$input['role'],
+                "status" => isset($input['status']) ? 1 : 0,
             ];
              // nếu có ảnh mới thì cập nhật
              if(!empty($arrFile)){

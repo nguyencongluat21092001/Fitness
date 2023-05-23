@@ -109,8 +109,7 @@ JS_DataFinancial.prototype.addrow = function(arrResult) {
     html += '<td style="vertical-align: middle;" align="center"><span class="text-cursor text-warning" onclick="JS_DataFinancial.fireAntChart(\'' + id + '\')"> <i class="far fa-eye"></i></span></td>';
     // html += '</tr>';
     $('#code_'+arrResult.id).html(html);
-    console.log($("#span_code_cp_"  + (parseInt(arrResult.id) + 1)).html())
-    if($("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() === undefined && $("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() !== '-'){
+    if($("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() === undefined && $("#span_code_cp_" + (parseInt(arrResult.id) + 1)).html() !== '-' && (parseInt(arrResult.id) + 1) <= 5){
         $('#body_data').append(
             '<tr id="code_' + (parseInt(arrResult.id) + 1) + '">'
             + '<td style="vertical-align: middle;color:#83beff" align="center">'

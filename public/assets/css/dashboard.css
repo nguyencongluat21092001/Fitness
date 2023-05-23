@@ -25324,6 +25324,13 @@ p {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.label-upload {
+  border: 1px solid #344767;
+  color: #000 !important;
+  padding: 0.5rem;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
 .dark-version .label-upload {
   background-color: #fff;
   color: #000 !important;

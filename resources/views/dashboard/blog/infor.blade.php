@@ -67,7 +67,7 @@
                             <span class="col-sm-6 col-lg-6 text-decoration-none project marketing social business">
 
                             <!-- <div class="service-work overflow-hidden card mb-5 mx-5 mt-5 m-sm-0" style="padding-top:10px"> -->
-                                <div class="card-img-top" style="width:350px,margin-top:30px;padding-top:20px">
+                                <div class="card-img-top" style="width:350px;margin-top:30px;padding-top:20px">
                                 <img  src="{{url('/file-image-client/blogs/')}}/{{$value['name_image']}}" alt="Image"
                                      style="height: 150px;width: 150px;object-fit: cover;">
                                 </div>

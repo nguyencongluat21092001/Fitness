@@ -57,13 +57,28 @@ JS_DataFinancial.prototype.loadIndex = function () {
         myClass.delete(oForm)
     });
 }
-JS_DataFinancial.prototype.loadevent = function (oForm) {
+JS_DataFinancial.prototype.loadevent = function () {
     var myClass = this;
     $('form#frmAdd').find('#btn_create').click(function () {
         myClass.store('form#frmAdd');
     })
     $('form#frmVideo').find('#btn_create').click(function () {
         myClass.store('form#frmVideo');
+    })
+    $('form#frmAdd').find('#add_link').click(function () {
+        myClass.add_link();
+        $("#choose_link").click(function(){
+            if($("#input_link").val() !== ''){
+                $("#url_link").val($("#input_link").val());
+                $("#show_link").removeAttr('hidden').attr('href', $("#input_link").val());
+                $("#editmodal").html('');
+                $("#editmodal").modal('hide');
+            }
+        });
+        $(".close_add_link").click(function(){
+            $("#changeUpdateModal").html('');
+            $("#changeUpdateModal").modal('hide');
+        });
     })
 }
 /**
@@ -85,7 +100,7 @@ JS_DataFinancial.prototype.add = function (oForm) {
         success: function (arrResult) {
             $('#editmodal').html(arrResult);
             $('#editmodal').modal('show');
-            myClass.loadevent(oForm);
+            myClass.loadevent();
 
         }
     });
@@ -111,9 +126,9 @@ JS_DataFinancial.prototype.changeUpdate = function (id) {
         //cache: true,
         data: data,
         success: function (arrResult) {
-            $('#changeUpdateModal').html(arrResult);
-            $('#changeUpdateModal').modal('show');
-            myClass.loadevent(oForm);
+            $('#editmodal').html(arrResult);
+            $('#editmodal').modal('show');
+            myClass.loadevent();
 
         }
     });
@@ -186,7 +201,7 @@ JS_DataFinancial.prototype.loadList = function (oForm, numberPage = 1, perPage =
             });
             $(oForm).find('#cbo_nuber_record_page').val(perPage);
             var loadding = NclLib.successLoadding();
-            myClass.loadevent(oForm);
+            myClass.loadevent();
         }
     });
 }
@@ -212,21 +227,7 @@ JS_DataFinancial.prototype.edit = function (id) {
             $('.chzn-select').chosen({ height: '100%', width: '100%' });
             $('#status').attr('checked', true);
             $('#editmodal').modal('show');
-            $('form#frmAdd').find('#add_link').click(function () {
-                myClass.add_link();
-                $("#choose_link").click(function(){
-                    if($("#input_link").val() !== ''){
-                        $("#url_link").val($("#input_link").val());
-                        $("#show_link").removeAttr('hidden').attr('href', $("#input_link").val());
-                        $("#changeUpdateModal").html('');
-                        $("#changeUpdateModal").modal('hide');
-                    }
-                });
-                $(".close_add_link").click(function(){
-                    $("#changeUpdateModal").html('');
-                    $("#changeUpdateModal").modal('hide');
-                });
-            })
+            myClass.loadevent();
             $('form#frmAdd').find('#btn_create').click(function () {
                 myClass.store('form#frmAdd');
             })
@@ -365,9 +366,7 @@ JS_DataFinancial.prototype.addrow = function() {
     html += '<span id="span_exchange_' + id + '" class="span_exchange_' + id + '"></span>';
     html += '</td>';
     // code_category
-    html += '<td class="td_code_category_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'code_category\')">';
-    html += '<span id="span_code_category_' + id + '" class="span_code_category_' + id + '"></span>';
-    html += '</td>';
+    html += '<td></td>';
     // user_id
     html += '<td></td>';
     // created_at

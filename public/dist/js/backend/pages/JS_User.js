@@ -108,15 +108,17 @@ JS_User.prototype.store = function (oFormCreate) {
     formdata.append('_token', $("#_token").val());
     formdata.append('id', $("#id").val());
     formdata.append('name', $("#name").val());
-    formdata.append('code', $("#code").val());
-    formdata.append('address', $("#address").val());
-    formdata.append('phone', $("#phone").val());
     formdata.append('email', $("#email").val());
     formdata.append('dateBirth', $("#dateBirth").val());
+    formdata.append('phone', $("#phone").val());
+    formdata.append('address', $("#address").val());
     formdata.append('company', $("#company").val());
     formdata.append('position', $("#position").val());
     formdata.append('date_join', $("#date_join").val());
-    formdata.append('is_checkbox_role', is_checkbox_role);
+    formdata.append('role', $("input[name=role]:checked").val());
+    if($("#frmAdd #status").is(':checked')){
+        formdata.append('status', 1);
+    }
     $('form#frmAdd input[type=file]').each(function () {
         var count = $(this)[0].files.length;
         for (var i = 0; i < count; i++) {
@@ -134,19 +136,13 @@ JS_User.prototype.store = function (oFormCreate) {
         processData: false,
         success: function (arrResult) {
             if (arrResult['success'] == true) {
-                  var nameMessage = 'Cập nhật thành công!';
-                  var icon = 'success';
-                //   var color = '#f5ae67';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                  NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
                   $('#editmodal').modal('hide');
                   myClass.loadList(oFormCreate);
 
             } else {
-                var loadding = NclLib.successLoadding();
-                  var nameMessage = 'Cập nhật thất bại!';
-                  var icon = 'error';
-                //   var color = '#f5ae67';
-                  NclLib.alerMesage(nameMessage,icon,color);
+                NclLib.successLoadding();
+                NclLib.alerMesage('danger', 'Lỗi', 'Cập nhật thất bại');
             }
         }
     });

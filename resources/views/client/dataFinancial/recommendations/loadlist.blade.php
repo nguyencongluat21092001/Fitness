@@ -5,6 +5,11 @@
   width: 100%;
   max-height: 600px;
 }
+@media(max-width: 400px){
+    .avatarHidden{
+        display: none;
+    }
+}
 </style>
     <div id="form_chat">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
@@ -12,7 +17,7 @@
             <div  id="messages">
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -30,7 +35,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -48,7 +53,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -66,7 +71,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -84,7 +89,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -102,7 +107,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
@@ -120,7 +125,7 @@
                 </div>
                 <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
                     <img src="../clients/img/LogoFinTop_red.png"
-                        alt="avatar 1" style="width: 30px; height: 100%;">
+                        alt="avatar 1" style="width: 30px; height: 100%;" class="avatarHidden">
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:80%;font-family:auto">
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
