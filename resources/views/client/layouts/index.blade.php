@@ -25,6 +25,9 @@
     
 </head>
 <style>
+    b,span,strong{
+        font-size:14px;
+    }
     body{
         background-image: url("../clients/img/image_nui.jpeg");
         background-repeat: no-repeat;
@@ -139,15 +142,15 @@
     <div class="bgs">
         <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow">
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand h1" style="width: 12%;margin-left:10%">
+                <a class="navbar-brand h1" style="width: 10%;margin-left:10%">
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                     <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
-                    <img class="card-img " style="height:70%" src="../clients/img/LogoFinTop_red.png" alt="Card image">
+                    <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
                 </a>
                 
                 <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white:margin:auto">     
                      <!-- <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>           -->
-                     <h1 style="font-family: auto;font-weight: 600;color:#fff079;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>          
+                     <h1 style="font-family: auto;font-weight: 600;color:#fff079;font-size: 50px;margin-left:15%">Tài Chính & Đầu Tư</h1>          
 
                 </div>
                 <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
@@ -174,25 +177,25 @@
                 <div class="" style="border-radius: 50px;margin:auto">
                     <ul class="nav navbar-nav d-flex justify-content-between text-center text-dark">
                         <li class="nav-item ">
-                            <a class="nav-link link-home   px-3 " style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
+                            <a class="nav-link link-home" style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-introduce px-3" style="color:white" href="{{ URL::asset('/client/introduce/index') }}"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
+                            <a class="nav-link link-introduce" style="color:white" href="{{ URL::asset('/client/introduce/index') }}"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
+                            <a class="nav-link" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link link-datafinancial  px-3" style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
+                            <a class="nav-link link-datafinancial " style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> BÁO CÁO PHÂN TÍCH</a>
+                            <a class="nav-link" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> BÁO CÁO PHÂN TÍCH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link px-3" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN ĐẦU TƯ</a>
+                            <a class="nav-link" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN ĐẦU TƯ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link rounded-pill px-3" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN ĐẦU TƯ A-Z</a>
+                            <a class="nav-link rounded-pill" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN ĐẦU TƯ A-Z</a>
                         </li>
                     </ul>
                 </div>

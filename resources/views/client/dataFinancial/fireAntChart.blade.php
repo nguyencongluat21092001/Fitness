@@ -42,7 +42,6 @@
             <section class="container">
                 <div class="home_index_vnindex" > 
                 <h2 style="border-radius:5px" class="h5 py-2">Thông tin cổ phiếu</h2>
-
                     <div class="home_index_child py-2" style="background:#ff00000d;border-radius:5px">
                         <div class="col-md-6" >
                             <div class="scrollbar" id="style-1" style="padding-right:10px">

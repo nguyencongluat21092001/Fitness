@@ -3,7 +3,7 @@
 namespace Modules\System\Dashboard\Users\Controllers;
 
 use App\Http\Controllers\Controller;
-use Modules\System\Dashboard\Users\Services\userInfoService;
+use Modules\System\Dashboard\Users\Services\UserInfoService;
 use Modules\System\Dashboard\Users\Services\UserService;
 use Modules\System\Helpers\PaginationHelper;
 use Illuminate\Support\Facades\Auth;
