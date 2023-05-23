@@ -22,7 +22,7 @@
     left: -9999px;
     z-index: 1010;
     width: 100%;
-    border: 1px solid #ff9f00;
+    border: 1px solid #5e72e4;
     border-top: 0;
     background: #fff;
     /* box-shadow: 0 4px 5px rgba(0, 0, 0, .15) */
@@ -187,7 +187,7 @@
 }
  
 .chosen-container .chosen-results::-webkit-scrollbar-thumb {
-    background: #ff9f00;
+    background: #5e72e4;
     border-radius: 0.2rem;
 }
 
@@ -351,7 +351,7 @@
 
 .chosen-container-active.chosen-with-drop .chosen-single,
 .chosen-container-active.chosen-with-drop .chosen-choices {
-    border: 1px solid #ff9f00;
+    border: 1px solid #5e72e4;
     -moz-border-radius-bottomright: 0;
     border-bottom-right-radius: 0;
     -moz-border-radius-bottomleft: 0;

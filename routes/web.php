@@ -6,6 +6,7 @@ use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as Cli
 use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
+use Modules\System\Dashboard\ApprovePayment\Controllers\ApprovePaymentController;
 use Modules\System\Dashboard\Dashboards\Controllers\DashboardController;
 use Modules\System\Dashboard\Blog\Controllers\BlogController;
 use Modules\System\Dashboard\Category\Controllers\CateController;
@@ -13,6 +14,7 @@ use Modules\System\Dashboard\Category\Controllers\CategoryController;
 use Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController;
 use Modules\System\Dashboard\Handbook\Controllers\HandbookController;
 use Modules\System\Dashboard\Home\Controllers\HomeController;
+use Modules\System\Dashboard\Signal\Controllers\SignalController;
 use Modules\System\Dashboard\Users\Controllers\UserController;
 
 /*
@@ -131,6 +133,29 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/delete',[HandbookController::class,'delete'])->name('delete');
             Route::get('/seeVideo',[HandbookController::class,'seeVideo'])->name('seeVideo');
         });
+        //Tín hiệu mua
+        Route::prefix('signal')->group(function(){
+            Route::get('index', [SignalController::class, 'index']);
+            Route::post('loadList', [SignalController::class, 'loadList']);
+            Route::get('create', [SignalController::class, 'create']);
+            Route::get('edit', [SignalController::class, 'edit']);
+            Route::post('update', [SignalController::class, 'update']);
+            Route::post('delete', [SignalController::class, 'delete']);
+            Route::post('updateSignal', [SignalController::class, 'updateSignal']);
+            Route::post('changeStatusSignal', [SignalController::class, 'changeStatusSignal']);
+        });
+        //Tín hiệu mua
+        Route::prefix('approvepayment')->group(function(){
+            Route::get('index', [ApprovePaymentController::class, 'index']);
+            Route::post('loadList', [ApprovePaymentController::class, 'loadList']);
+            Route::get('create', [ApprovePaymentController::class, 'create']);
+            Route::get('edit', [ApprovePaymentController::class, 'edit']);
+            Route::post('update', [ApprovePaymentController::class, 'update']);
+            Route::post('delete', [ApprovePaymentController::class, 'delete']);
+            Route::post('updateApprovePayment', [ApprovePaymentController::class, 'updateApprovePayment']);
+            Route::post('changeStatusApprovePayment', [ApprovePaymentController::class, 'changeStatusApprovePayment']);
+            Route::get('getUserVIP', [ApprovePaymentController::class, 'getUserVIP']);
+        });
        
     });
 });
@@ -164,7 +189,7 @@ Route::get('/client/introduce/index', [IntroduceController::class, 'index']);
         Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
     });
 // });
-// Auth::routes();
+Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 
