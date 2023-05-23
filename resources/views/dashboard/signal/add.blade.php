@@ -21,8 +21,8 @@
                     <div class="col-md-8">
                         <select name="type" id="type" class="form-control chzn-select">
                             <option value="">--Chọn loại--</option>
-                            <option @if($datas->type == 'MUA') selected @endif value="MUA">Mua</option>
-                            <option @if($datas->type == 'BAN') selected @endif value="BAN">Bán</option>
+                            <option @if(isset($datas->type) && $datas->type == 'MUA') selected @endif value="MUA">Mua</option>
+                            <option @if(isset($datas->type) && $datas->type == 'BAN') selected @endif value="BAN">Bán</option>
                         </select>
                     </div>
                 </div>

@@ -7,6 +7,7 @@ use Modules\Base\Library;
 use Illuminate\Http\Request;
 use Modules\System\Dashboard\DataFinancial\Services\DataFinancialService;
 use Modules\System\Dashboard\Category\Services\CategoryService;
+use Modules\System\Dashboard\Signal\Services\SignalService;
 use DB;
 
 /**
@@ -18,9 +19,11 @@ class DataFinancialController extends Controller
 {
 
     public function __construct(
+        SignalService $SignalService,
         DataFinancialService $DataFinancialService,
         CategoryService $categoryService
-    ){
+    ){;
+        $this->SignalService = $SignalService;
         $this->DataFinancialService = $DataFinancialService;
         $this->categoryService = $categoryService;
     }
@@ -162,9 +165,9 @@ class DataFinancialController extends Controller
     public function loadList_recommendations (Request $request)
     {
         $arrInput = $request->input();
-        $result['datas'] = $this->DataFinancialService->where('status','on')->get();
+        $result['datas'] = $this->SignalService->where('status','1')->get();
         // dd($result);
-        return view('client.dataFinancial.recommendations.loadlist');
+        return view('client.dataFinancial.recommendations.loadlist',$result);
     }
     
 }

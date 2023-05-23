@@ -29,7 +29,7 @@
         font-size:14px;
     }
     body{
-        background-image: url("../clients/img/image_nui.jpeg");
+        background-image: url("../clients/img/bgctys.jpg");
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
