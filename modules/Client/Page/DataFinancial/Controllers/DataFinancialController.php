@@ -35,7 +35,7 @@ class DataFinancialController extends Controller
         // dd('1');
         $getCategory = $this->categoryService->where('cate','DM_DATA_CK')->get()->toArray();
         $data['category'] = $getCategory;
-        return view('client.datafinancial.home',compact('data'));
+        return view('client.dataFinancial.home',compact('data'));
     }
     /**
      * load màn hình danh sách
@@ -53,7 +53,7 @@ class DataFinancialController extends Controller
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("client.datafinancial.dataFintop", $data)->render();
+        return view("client.dataFinancial.dataFintop", $data)->render();
     }
      /**
      * tra cứu cổ phiếu
@@ -102,7 +102,7 @@ class DataFinancialController extends Controller
     public function fireAntChart (Request $request)
     {
         $input = $request->input();
-        return view('client.datafinancial.fireAntChart');
+        return view('client.dataFinancial.fireAntChart');
     }
      /**
      * hiển thị ghi chú
@@ -114,7 +114,7 @@ class DataFinancialController extends Controller
     public function noteTaFa (Request $request)
     {
         $input = $request->input();
-        return view('client.datafinancial.noteTaFa');
+        return view('client.dataFinancial.noteTaFa');
     }
      /**
      * index tín hiệu mua
@@ -125,7 +125,7 @@ class DataFinancialController extends Controller
      */
     public function signalIndex (Request $request)
     {
-        return view('client.datafinancial.signal');
+        return view('client.dataFinancial.signal');
     }
      /**
      * danh sách tín hiệu mua
@@ -139,7 +139,7 @@ class DataFinancialController extends Controller
         $arrInput = $request->input();
         $result['datas'] = $this->DataFinancialService->where('status','on')->get();
         // dd($result);
-        return view('client.datafinancial.loadlist-signal',$result);
+        return view('client.dataFinancial.loadlist-signal',$result);
     }
      /**
      * Khuyến nghị vip
@@ -150,7 +150,7 @@ class DataFinancialController extends Controller
      */
     public function recommendationsIndex (Request $request)
     {
-        return view('client.datafinancial.recommendations.index');
+        return view('client.dataFinancial.recommendations.index');
     }
      /**
      * list khuyến nghị vip
@@ -164,7 +164,7 @@ class DataFinancialController extends Controller
         $arrInput = $request->input();
         $result['datas'] = $this->DataFinancialService->where('status','on')->get();
         // dd($result);
-        return view('client.datafinancial.recommendations.loadlist');
+        return view('client.dataFinancial.recommendations.loadlist');
     }
     
 }
