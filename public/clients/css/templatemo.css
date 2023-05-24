@@ -294,7 +294,7 @@ to {
 /* title */
 @keyframes lights {
   0% {
-    color: #fbf195;
+    color: #ffe600;
     text-shadow:
       0 0 1em hsla(324, 19%, 95%, 0.823),
       0 0 0.125em hsla(320, 100%, 60%, 0.3),
@@ -303,7 +303,7 @@ to {
   }
   
   30% { 
-    color: hsl(52.99deg 100% 66.32%);
+    color: hsl(28.06deg 100% 50%);
     text-shadow:
       0 0 1em hsl(330, 100%, 100%),
       0 0 0.125em hsla(320, 100%, 60%, 0.5),
@@ -312,7 +312,7 @@ to {
   }
   
   40% { 
-    color: hsl(41.91deg 100% 92.05%);
+    color: hsl(0deg 0% 100%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.5),
       0 0 0.125em hsla(320, 100%, 90%, 0.5),
@@ -321,7 +321,7 @@ to {
   }
   
   70% {
-    color: hsl(51.4deg 100% 76.78%);
+    color: hsl(0deg 0% 100%);
     text-shadow:
       0 0 1em hsla(320, 100%, 50%, 0.5),
       0 0 0.125em hsla(320, 100%, 60%, 0.5),
@@ -330,7 +330,7 @@ to {
   }
   
   100% {
-    color: #f8ed80;
+    color: #ffe802;
     text-shadow:
       0 0 1em hsl(319, 17%, 82%),
       0 0 0.125em hsla(320, 100%, 96%, 0.803),
