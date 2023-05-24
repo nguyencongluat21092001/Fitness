@@ -15,12 +15,12 @@ JS_DataFinancial.prototype.loadIndex = function () {
     NclLib.menuActive('.link-index');
     NclLib.menuActive_child('.link-index');
     // $('.chzn-select').chosen({ height: '100%', width: '100%' });
-    var oForm = 'form#frmLoadlist_FinTop';
+    var oForm = 'form#frmSearchCP';
     var oFormData = 'form#frmLoadlist_data';
     myClass.index();
     myClass.loadData(oFormData);
-    $(oFormData).find('#search_code_CP').click(function () {
-            myClass.searchDataCP(oFormData);        
+    $(oForm).find('#search_code_CP').click(function () {
+            myClass.searchDataCP(oForm);        
     });
 }
 JS_DataFinancial.prototype.loadevent = function (oForm) {
@@ -159,8 +159,8 @@ JS_DataFinancial.prototype.loadData = function (oForm) {
     var myClass = this;
     var url = this.urlPath + '/loadData';
     var data = $(oForm).serialize();
-    data += '&_token=' +  $('#_token').val();
     data += '&limit=' +  5;
+    console.log(1,data,oForm)
     $.ajax({
         url: url,
         type: "POST",

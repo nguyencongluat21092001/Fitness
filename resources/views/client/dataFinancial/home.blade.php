@@ -6,6 +6,7 @@
         <div class=" pb-3 d-lg-flex gx-5">
         <div class="col-lg-12">
             <form action="" method="POST" id="frmLoadlist_data">
+             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="home_index_vnindex pt-1 pb-2" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- Chú giải xếp hạng TA/FA -->
                     <div class="home_index_child" style="background:#ffffff91 !important">
