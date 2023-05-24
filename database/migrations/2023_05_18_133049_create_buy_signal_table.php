@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('type')->nullable(); // (có 2 loại 1.Mua (code category = MUA và BAN )) - ví dụ : Mua
             $table->string('target')->nullable(); // mục tiêu (vachar) - ví dụ (60 - 62 - 64)
             $table->string('stop_loss')->nullable(); // dừng lỗ -  ví dụ (  54-55.6)
+            $table->string('price_buy')->nullable(); // giá mua
             $table->integer('order')->nullable(); // thu tu
             $table->string('status')->nullable(); // trạng thai (on off)
             $table->timestamps(); //  ngày thêm , sửa

@@ -12,8 +12,8 @@ function JS_DataFinancial(baseUrl, module, controller) {
  */
 JS_DataFinancial.prototype.loadIndex = function () {
     var myClass = this;
-    NclLib.menuActive('.link-search');
-    NclLib.menuActive_child('.link-search');
+    NclLib.menuActive('.link-index');
+    NclLib.menuActive_child('.link-index');
     // $('.chzn-select').chosen({ height: '100%', width: '100%' });
     var oForm = 'form#frmLoadlist_FinTop';
     var oFormData = 'form#frmLoadlist_data';

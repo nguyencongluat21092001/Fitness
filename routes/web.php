@@ -161,6 +161,11 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 });
 // route phía người dùng
 Route::prefix('/client')->group(function () {
+    $arrModules = config('menuClient');
+        $this->arrModules = $arrModules;
+    view()->composer('*', function ($view) {
+        $view->with('menuItems', $this->arrModules);
+    });
     // Trang chủ client
     Route::get('/home/index', [ClientHomeController::class, 'index']);
     Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
@@ -169,31 +174,29 @@ Route::prefix('/client')->group(function () {
     Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
     Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
 
-});
-//giới thiệu
-Route::get('/client/introduce/index', [IntroduceController::class, 'index']);
-// Route::middleware('permissionCheckLoginClient')->group(function () {
-    Route::get('/client/infor/index', [InforController::class, 'index']);
-    Route::prefix('/client/dataFinancial')->group(function () {
-        // Tra cứu cổ phiếu
-        Route::get('/index', [ClientDataFinancialController::class, 'index']);
-        Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
-        Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
-        Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
-        Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
-        // tín hiệu mua
-        Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
-        Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
-        // khuyến nghị vip
-        Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
-        Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
+    Route::get('introduce/index', [IntroduceController::class, 'index']);
+    // Route::middleware('permissionCheckLoginClient')->group(function () {
+        Route::get('infor/index', [InforController::class, 'index']);
+        Route::prefix('datafinancial')->group(function () {
+            // Tra cứu cổ phiếu
+            Route::get('/index', [ClientDataFinancialController::class, 'index']);
+            Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
+            Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
+            Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
+            Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
+            // tín hiệu mua
+            Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
+            Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
+            // khuyến nghị vip
+            Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
+            Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
         
-        // Danh mục Fintop
-        Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
-        Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
-
-    });
-// });
+            // Danh mục Fintop
+            Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
+            Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
+        });
+    // });
+});
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);

@@ -10,13 +10,13 @@
             <form id="frmAdd">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="_id" id="_id" value="{{!empty($datas->id) ? $datas->id : ''}}">
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Tiêu đề</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->title) ? $datas->title : ''}}" name="title" id="title" placeholder="Nhập tiêu đề..." />
                     </div>
                 </div>
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Loại tín hiệu</span>
                     <div class="col-md-8">
                         <select name="type" id="type" class="form-control chzn-select">
@@ -26,25 +26,31 @@
                         </select>
                     </div>
                 </div>
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Mục tiêu</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->target) ? $datas->target : ''}}" name="target" id="target" placeholder="Nhập mục tiêu..." />
                     </div>
                 </div>
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Dừng lỗ</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->stop_loss) ? $datas->stop_loss : ''}}" name="stop_loss" id="stop_loss" placeholder="Nhập dùng lỗ..." />
                     </div>
                 </div>
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
+                    <span class="col-md-3 control-label required">Giá mua</span>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" value="{{isset($datas->price_buy) ? $datas->price_buy : ''}}" name="price_buy" id="price_buy" placeholder="Nhập dùng lỗ..." />
+                    </div>
+                </div>
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Thứ tự</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->order) ? $datas->order : $order}}" name="order" id="order" placeholder="Nhập thứ tự..." />
                     </div>
                 </div>
-                <div class="row form-group" id="div_hinhthucgiai">
+                <div class="row form-group">
                     <span class="col-md-3 control-label required">Trạng thái</span>
                     <div class="col-md-8">
                         <input type="checkbox" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}} />
