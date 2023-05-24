@@ -33,7 +33,7 @@
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = '{{ url('') }}';
-        var JS_CategoryFintop = new JS_CategoryFintop(baseUrl, 'client', 'dataFinancial');
+        var JS_CategoryFintop = new JS_CategoryFintop(baseUrl, 'client', 'datafinancial');
         $(document).ready(function($) {
             JS_CategoryFintop.loadIndex(baseUrl);
         })
