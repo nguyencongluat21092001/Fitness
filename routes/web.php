@@ -195,7 +195,7 @@ Route::prefix('/client')->group(function () {
             Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
             Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
         });
-    // });
+// });
 });
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

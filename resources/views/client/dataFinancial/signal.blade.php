@@ -27,7 +27,7 @@
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
-        var JS_Signal = new JS_Signal(baseUrl, 'client', 'dataFinancial');
+        var JS_Signal = new JS_Signal(baseUrl, 'client', 'datafinancial');
         $(document).ready(function($) {
             JS_Signal.loadIndex(baseUrl);
         })

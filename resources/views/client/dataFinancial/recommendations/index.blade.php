@@ -28,7 +28,7 @@
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
-        var JS_Recommendations = new JS_Recommendations(baseUrl, 'client', 'dataFinancial');
+        var JS_Recommendations = new JS_Recommendations(baseUrl, 'client', 'datafinancial');
         $(document).ready(function($) {
             JS_Recommendations.loadIndex(baseUrl);
         })
