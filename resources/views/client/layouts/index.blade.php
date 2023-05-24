@@ -64,13 +64,13 @@
     }
 </style>
 <body>
-    <div class="header-one " >
+    <div class="header-one ">
         <div class="container header-one">
         <div class="date-header">
               <span id="time"></span>
         </div>
         <div class="marquee-header">
-            <marquee style="padding-top:10px;color:white">
+            <marquee style="color:white">
                 <span>
                 Chúng ta có thể gặp nhiều thất bại nhưng chúng ta không được bị đánh bại – Maya Angelou.
                 </span> 
@@ -87,21 +87,21 @@
         </div>
         <div class="user-login-header">
             <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex" id="navbar-toggler-success"> -->
-                <ul class="navbar-nav pt-1">
+                <ul class="navbar-nav">
                             <!-- Authentication Links -->
                     @guest
-                    <div style="display:flex">
+                    <div style="display:flex;">
                             <div>
                                 @if (Route::has('login'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('login') }}"style="color:white">{{ __('Đăng nhập') }}</a>
+                                        <a class="nav-link" href="{{ route('login') }}"style="color:white;padding:0px"><span>{{ __('Đăng nhập') }}</span> </a>
                                     </li> 
                                 @endif
                         </div>
                         <div style="padding-left:10px">
                                 @if (Route::has('register'))
                                     <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('register') }}"style="color:white">{{ __('Đăng ký') }}</a>
+                                        <a class="nav-link" href="{{ route('register') }}"style="color:white;padding:0px"><span>{{ __('Đăng ký') }}</span> </a>
                                     </li>
                                 @endif
                         </div>
@@ -147,9 +147,9 @@
     </div>
     <!-- bg-white -->
     <div class="bgs">
-        <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow">
+        <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow" style="padding:0px !important">
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand h1" style="width: 10%;margin-left:10%">
+                <a class="navbar-brand h1" style="width: 7%;margin-left:10%">
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                     <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
                     <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
@@ -157,7 +157,7 @@
                 
                 <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white;margin:auto">     
                      <!-- <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>           -->
-                     <h1 style="font-family: auto;font-weight: 600;color:#fff079;font-size: 50px;margin-left:15%">Tài Chính & Đầu Tư</h1>          
+                     <h1 style="font-family: auto;font-weight: 500;color:#fff079;font-size: 65px;margin-left:12%">Tài Chính & Đầu Tư</h1>          
 
                 </div>
                 <!-- <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white">                 -->
