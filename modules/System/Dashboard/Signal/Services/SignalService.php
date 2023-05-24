@@ -28,6 +28,7 @@ class SignalService extends Service
             "type" => isset($input['type']) ? $input['type'] : '',
             "target" => isset($input['target']) ? $input['target'] : '',
             "stop_loss" => isset($input['stop_loss']) ? $input['stop_loss'] : '',
+            "price_buy" => isset($input['price_buy']) ? $input['price_buy'] : '',
             "order" => isset($input['order']) ? $input['order'] : count($signals) + 1,
             "status" => isset($input['status']) ? 1 : 0,
         ];
@@ -56,6 +57,7 @@ class SignalService extends Service
         $type = !empty($signalSingle) ? $signalSingle->type : '';
         $target = !empty($signalSingle) ? $signalSingle->target : '';
         $stop_loss = !empty($signalSingle) ? $signalSingle->stop_loss : '';
+        $price_buy = !empty($signalSingle) ? $signalSingle->price_buy : '';
         $status = isset($signalSingle->status) && $signalSingle->status !== null ? $signalSingle->status : 1;
         $order = isset($signalSingle) && !empty($signalSingle->order) ? $signalSingle->order : count($signals) + 1;
         $param = [
@@ -64,6 +66,7 @@ class SignalService extends Service
             'type' => isset($input['type']) ? $input['type'] : $type,
             'target' => isset($input['target']) ? $input['target'] : $target,
             'stop_loss' => isset($input['stop_loss']) ? $input['stop_loss'] : $stop_loss,
+            'price_buy' => isset($input['price_buy']) ? $input['price_buy'] : $price_buy,
             'order' => isset($input['order']) ? $input['order'] : $order,
             'status' => isset($input['status']) ? 1 : $status,
         ];

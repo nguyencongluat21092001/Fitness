@@ -286,6 +286,10 @@ JS_Signal.prototype.addrow = function() {
         html += '<td class="td_stop_loss_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'stop_loss\')">';
         html += '<span id="span_stop_loss_' + id + '" class="span_stop_loss_' + id + '"></span>';
         html += '</td>';
+        // price_buy
+        html += '<td class="td_price_buy_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'price_buy\')">';
+        html += '<span id="span_price_buy_' + id + '" class="span_price_buy_' + id + '"></span>';
+        html += '</td>';
         // order
         html += '<td class="td_order_' + id + '" onclick="{select_row(this);}" align="center" ondblclick="click2(\'' + id + '\', \'order\')">';
         html += '<span id="span_order_' + id + '" class="span_order_' + id + '">' + (parseInt(numberRow) + 1) + '</span>';
@@ -339,7 +343,7 @@ JS_Signal.prototype.updateSignal = function(id, column, value = '') {
         var url = myClass.urlPath + '/updateSignal';
         var data = 'id=' + id;
         data += '&_token=' + $('#frmSignal_index').find('#_token').val();
-        if (column == 'title') { data += '&title=' + (column == 'title' ? value : ""); } else if (column == 'type') { data += '&type=' + value; } else if (column == 'target') { data += '&target=' + value; } else if (column == 'stop_loss') { data += '&stop_loss=' + value; } else if (column == 'order') { data += '&order=' + value; }
+        if (column == 'title') { data += '&title=' + (column == 'title' ? value : ""); } else if (column == 'type') { data += '&type=' + value; } else if (column == 'target') { data += '&target=' + value; } else if (column == 'stop_loss') { data += '&stop_loss=' + value; } else if (column == 'price_buy') { data += '&price_buy=' + value; } else if (column == 'order') { data += '&order=' + value; }
         $.ajax({
             url: url,
             data: data,
