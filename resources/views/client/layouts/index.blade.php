@@ -55,6 +55,13 @@
         background-repeat: no-repeat;
         background-size: cover;
     }
+    #menuClient{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
 </style>
 <body>
     <div class="header-one " >
@@ -148,7 +155,7 @@
                     <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
                 </a>
                 
-                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white:margin:auto">     
+                <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex mt-3" id="navbar-toggler-success" style="color:white;margin:auto">     
                      <!-- <h1 style="font-family: auto;font-weight: 600; animation: lights 5s 750ms linear infinite;font-size: 70px;margin-left:10%">Tài Chính & Đầu Tư</h1>           -->
                      <h1 style="font-family: auto;font-weight: 600;color:#fff079;font-size: 50px;margin-left:15%">Tài Chính & Đầu Tư</h1>          
 
@@ -168,38 +175,14 @@
        
        
     </div>
-    <nav id="main_nav" class=" navbar-expand-lg navbar-light shadow" style="background:#0000008a"> 
+    <nav id="menuClient" class=" navbar-expand-lg navbar-light shadow" style="background:#0000008a"> 
         <div class="container d-flex justify-content-between align-items-center">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <!-- <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex mt-3 align-items-center" id="navbar-toggler-success"> -->
-                <div class="" style="border-radius: 50px;margin:auto">
-                    <ul class="nav navbar-nav d-flex justify-content-between text-center text-dark">
-                        <li class="nav-item ">
-                            <a class="nav-link link-home" style="color:white" href="{{ URL::asset('/client/home/index') }}"><i class="fa-solid fa-house-chimney"></i><i class="fas fa-home"></i> TRANG CHỦ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-introduce" style="color:white" href="{{ URL::asset('/client/introduce/index') }}"><i class="fas fa-globe-asia"></i> GIỚI THIỆU</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color:white" href="work.html"><i class="far fa-newspaper"></i> ĐẶC QUYỀN HỘI VIÊN</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link link-datafinancial " style="color:white" href="{{ URL::asset('/client/dataFinancial/index') }}"><i class="fas fa-coins"></i> DỮ LIỆU FINTOP</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color:white" href="about.html"><i class="fas fa-hand-holding-usd"></i> BÁO CÁO PHÂN TÍCH</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" style="color:white" href="about.html"><i class="fas fa-book-medical"></i> THƯ VIỆN ĐẦU TƯ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link rounded-pill" style="color:white" href="work.html"><i class="far fa-question-circle"></i> HƯỚNG DẪN ĐẦU TƯ A-Z</a>
-                        </li>
-                    </ul>
-                </div>
-            <!-- </div> -->
+            <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex align-items-center" id="navbar-toggler-success">
+                @include('client.layouts.menu')
+            </div>
         </div>
     </nav>
     @yield('body-client')

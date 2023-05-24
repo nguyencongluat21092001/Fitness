@@ -1,15 +1,17 @@
 <div class="table-responsive pmd-card pmd-z-depth ">
     <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
         <colgroup>
+            <col width="3%">
             <col width="5%">
-            <col width="5%">
-            <col width="15%">
-            <col width="25%">
-            <col width="10%">
+            <col width="14%">
             <col width="15%">
             <col width="10%">
             <col width="10%">
-            <col width="5%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="10%">
+            <col width="3%">
         </colgroup>
         <thead>
             <tr>
@@ -21,6 +23,7 @@
                 <td align="center"><b>Loại</b></td>
                 <td align="center"><b>Mục tiêu</b></td>
                 <td align="center"><b>Dừng lỗ</b></td>
+                <td align="center"><b>Giá mua</b></td>
                 <td align="center"><b>Sắp xếp</b></td>
                 <td align="center"><b>Trạng thái</b></td>
                 <td align="center"><b><span onclick="JS_Signal.addrow()" class="text-cursor text-primary"><i class="fas fa-plus-square"></i></span></b></td>
@@ -47,6 +50,9 @@
                         <td class="td_stop_loss_{{$id}}" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'stop_loss')">
                             <span id="span_stop_loss_{{$id}}" class="span_stop_loss_{{$id}}">{{ $data->stop_loss }}</span>
                         </td>
+                        <td class="td_price_buy_{{$id}}" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'price_buy')">
+                            <span id="span_price_buy_{{$id}}" class="span_price_buy_{{$id}}">{{ $data->price_buy }}</span>
+                        </td>
                         <td class="text-center td_order_{{$id}}" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'order')">
                             <span id="span_order_{{$id}}" class="span_order_{{$id}}">{{ $data->order }}</span>
                         </td>
@@ -64,11 +70,11 @@
         <tfoot>
             @if(count($datas) > 0)
             <tr class="fw-bold" id="pagination">
-                <td colspan="10">{{$datas->links('pagination.phantrang')}}</td>
+                <td colspan="20">{{$datas->links('pagination.phantrang')}}</td>
             </tr>
             @else
             <tr id="pagination" align="center">
-                <td colspan="10">Không tìm thấy dữ liệu!</td>
+                <td colspan="20">Không tìm thấy dữ liệu!</td>
             </tr>
             @endif
         </tfoot>

@@ -1,6 +1,5 @@
 @extends('client.layouts.index')
 @section('body-client')
-@include('client.dataFinancial.siderbar_child')
 <!-- tra cứu cổ phiếu -->
 <div class="banner-wrapper">
     <section class="container">
@@ -54,7 +53,7 @@
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\DataFinancial\JS_DataFinancial.js') }}"></script>
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
-        var baseUrl = '{{ url('') }}';
+        var baseUrl = "{{ url('') }}";
         var JS_DataFinancial = new JS_DataFinancial(baseUrl, 'client', 'dataFinancial');
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);
