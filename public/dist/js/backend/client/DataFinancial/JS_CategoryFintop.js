@@ -12,8 +12,8 @@ function JS_CategoryFintop(baseUrl, module, controller) {
  */
 JS_CategoryFintop.prototype.loadIndex = function () {
     var myClass = this;
-    NclLib.menuActive('.link-categoryFintop');
-    NclLib.menuActive_child('.link-categoryFintop');
+    NclLib.menuActive('.link-categoryFintopIndex');
+    NclLib.menuActive_child('.link-categoryFintopIndex');
     var oForm = 'form#frmLoadlist_recommendations';
     myClass.loadList(oForm);
 }

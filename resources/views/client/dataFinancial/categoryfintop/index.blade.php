@@ -1,6 +1,5 @@
 @extends('client.layouts.index')
 @section('body-client')
-@include('client.dataFinancial.siderbar_child')
 <section class="container">
         <div class=" pb-3 d-lg-flex gx-5">
         <div class="col-lg-12">
