@@ -200,13 +200,13 @@ footer a.text-light:hover {
 .date-header{
   color: white;
   width: 20%;
-  margin: 10px;
+  /* margin: 10px; */
 }
 .marquee-header{
   width: 60%;
 }
 .user-login-header{
-  width: 15%;
+  /* width: 15%; */
   padding-left: 20px;
 }
 /*text color */
@@ -348,5 +348,11 @@ to {
 .container{
     padding-right: var(--bs-gutter-x,.0rem);
     padding-left: var(--bs-gutter-x,.0rem);
+}
+.navbar-light .navbar-nav .nav-link{
+  font-size: 14px;
+}
+a{
+  font-size: 14px;
 }
 
