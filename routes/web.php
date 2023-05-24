@@ -190,10 +190,13 @@ Route::prefix('/client')->group(function () {
             // khuyến nghị vip
             Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
             Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
+        
+            // Danh mục Fintop
+            Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
+            Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
         });
     // });
 });
-//giới thiệu
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
