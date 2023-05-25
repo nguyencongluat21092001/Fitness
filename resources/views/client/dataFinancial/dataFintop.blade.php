@@ -24,7 +24,7 @@
             <thead>
                 <tr style="background:#92241a;color:white">
                     <td style="white-space: inherit;vertical-align: middle" align="center"><b>STT</b></td>
-                    <td style="white-space: inherit;vertical-align: middle" align="center"><b> </i>Nhập mã cổ phiếu</b> <br> <i class="fas fa-angle-double-down"></td>
+                    <td style="white-space: inherit;vertical-align: middle;background: #00ad34;animation: lights 2s 750ms linear infinite;" align="center"><b> </i>Nhập mã cổ phiếu</b> <br> <i class="fas fa-angle-double-down"></td>
                     <td style="white-space: inherit;vertical-align: middle" align="center"><b>Sàn</b></td>
                     <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhóm nghành HĐKD</b></td>
                     <td style="white-space: inherit;vertical-align: middle" align="center"><b>Thời gian cập nhật</b></td>
