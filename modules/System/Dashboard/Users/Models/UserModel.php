@@ -20,7 +20,8 @@ class UserModel extends Model
         'avatar',
         'password',
         'dateBirth',
-        'role'
+        'role',
+        'status',
     ];
 
     public function filter($query, $param, $value)

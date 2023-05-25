@@ -113,7 +113,7 @@ class UserController extends Controller
     {
         $input = $request->input();
         $create = $this->userService->store($input,$_FILES); 
-        return array('success' => true, 'message' => 'Cập nhật thành công');
+        return $create;
     }
     /**
      * Load màn hình chỉnh sửa thông tin người dùng
@@ -203,6 +203,20 @@ class UserController extends Controller
             return array('success' => true, 'message' => 'Mật khẩu của bạn đã được thay đổi');
         } else {
             return array('success' => false, 'message' => 'Mật khẩu cũ chưa chính xác!');
+        }
+    }
+    /**
+     * Cập nhật trạng thái
+     */
+    public function changeStatus(Request $request)
+    {
+        $input = $request->all();
+        $users = $this->userService->where('id', $input['id'])->first();
+        if(!empty($users)){
+            $users->update(['status' => $input['status']]);
+            return array('success' => true, 'message' => 'Cập nhật thành công!');
+        }else{
+            return array('success' => false, 'message' => 'Không tìm thấy dữ liệu!');
         }
     }
 }
