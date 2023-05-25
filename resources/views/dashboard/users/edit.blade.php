@@ -77,7 +77,6 @@
 				<div class="row form-group" id="div_hinhthucgiai">
 					<span class="col-md-3 control-label required">Quyền truy cập</span>
 					<div class="col-md-5">
-						@if(!empty($data['role']))
 						<input type="radio" value="ADMIN" name="role" id="role_admin" {{!empty($data['role']) && $data['role'] == 'ADMIN' ? 'checked' : ''}} />
 						<label for="role_admin">Quản trị hệ thống</label> <br>
 						<input type="radio" value="MANAGE" name="role" id="role_manage" {{!empty($data['role']) && $data['role'] == 'MANAGE' ? 'checked' : ''}} />
@@ -86,7 +85,6 @@
 						<label for="role_staff">Nhân viên</label><br>
 						<input type="radio" value="USERS" name="role" id="role_user" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}} />
 						<label for="role_user">Người dùng</label><br>
-						@endif
 					</div>
 					<div class="col-md-4">
 						<label for="">Trạng thái</label><br>

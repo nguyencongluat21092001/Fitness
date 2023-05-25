@@ -15,10 +15,12 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                 <td align="center"><b>STT</b></td>
                 <td align="center"><b>Thông tin người dùng</b></td>
                 <td align="center"><b>Ảnh đại diện</b></td>
+                <td align="center"><b>Trạng thái</b></td>
             </tr>
         </thead>
         <tbody>
             @foreach ($datas as $key => $data)
+            @php $id = $data['id']; @endphp
                 <tr>
                     <td style="width:5%;vertical-align: middle;" align="center"><input type="checkbox" name="chk_item_id"
                             value="{{ $data['id'] }}"></td>
@@ -36,6 +38,12 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     </td>
                     <td style="width:20%;vertical-align: middle;" align="center" onclick="{select_row(this);}">
                         <img  src="{{url('/file-image/avatar/')}}/{{$data['avatar']}}" alt="Image" style="height: 150px;width: 150px;object-fit: cover;">
+                    </td>
+                    <td onclick="{select_row(this);}" align="center">
+                        <label class="custom-control custom-checkbox p-0 m-0 pointer " style="cursor: pointer;">
+                            <input type="checkbox" hidden class="custom-control-input toggle-status" id="status_{{$id}}" data-id="{{$id}}" {{ $data->status == 1 ? 'checked' : '' }}>
+                            <span class="custom-control-indicator p-0 m-0" onclick="JS_User.changeStatus('{{$id}}')"></span>
+                        </label>
                     </td>
                 </tr>
             @endforeach

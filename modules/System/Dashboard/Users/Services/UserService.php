@@ -31,6 +31,7 @@ class UserService extends Service
      * cập nhật người dùng
      */
     public function store($input,$file){
+        $password = '123';
         try{
             $image_old = null;
             if($input['id'] != ''){
@@ -74,13 +75,15 @@ class UserService extends Service
                     $arrInfo['user_id'] = $getUser->id;
                     $create = $this->UserInfoService->create($arrInfo);
                 }
+                return array('success' => true, 'message' => 'Cập nhật thành công');
             }else{
-                $arrData['password'] = Hash::make($input['password']);
+                $arrData['password'] = Hash::make($password);
                 $createUser = $this->UserRepository->create($arrData);
                 $getUser = $this->UserRepository->where('email',$input['email'])->first();
                 $arrInfo['id']=(string)Str::uuid();
                 $arrInfo['user_id'] = $getUser->id;
                 $create = $this->UserInfoService->create($arrInfo);
+                return array('success' => true, 'message' => 'Thêm mới thành công');
             }
             
             return true;
