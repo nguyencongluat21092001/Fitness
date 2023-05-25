@@ -384,6 +384,32 @@ JS_User.prototype.updatePass = function (oFormCreate) {
     });
 }
 /**
+ * Thay đổi trạng thái
+ */
+JS_User.prototype.changeStatus = function(id){
+    var myClass = this;
+    var url = myClass.urlPath + '/changeStatus';
+    var data = '_token=' + $("#frmUsers_index #_token").val();
+    data += '&status=' + ($("#status_" + id).is(":checked") == true ? 0 : 1);
+    data += '&id=' + id;
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        success: function(arrResult){
+            if(arrResult['success'] == true){
+                NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
+            }else{
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
+            }
+            NclLib.successLoadding();
+        }, error: function(e){
+            console.log(e);
+            NclLib.successLoadding();
+        }
+    });
+}
+/**
  * Check Validate
  */
 JS_User.prototype.checkValidate = function(){

@@ -21,6 +21,12 @@ return [
         'a'    => 'nav-link link-category',
         'href' => '/system/category/index',
     ],
+    'recommended' => [
+        'name' => 'Danh mục khuyến nghị',
+        'icon' => 'fas fa-list-alt',
+        'a'    => 'nav-link link-recommended',
+        'href' => '/system/recommended/index',
+    ],
     'datafinancial' => [
         'name' => 'Dữ liệu chứng khoán',
         'icon' => 'fas fa-coins',

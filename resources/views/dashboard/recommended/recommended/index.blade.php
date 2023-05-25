@@ -1,23 +1,22 @@
 @extends('dashboard.layouts.index')
 @section('body')
-    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_CategoryCate.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Recommended.js') }}"></script>
     {{-- <link  href="../assets/css/argon-dashboard.css?v=2.0.4" rel="stylesheet" /> --}}
     <div class="container-fluid">
         <div class="row">
-            <form action="" method="POST" id="frmCategoryCate_index">
+            <form action="" method="POST" id="frmRecommended_index">
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <div class="breadcrumb-input-fix d-sm-flex align-items-center">
                     <span>
                         <a href="{{ URL::asset('/system/recommended/index') }}">
-                            <button class="btn btn-light btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
-                            data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Danh mục</button>
+                            <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
+                            data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Danh mục khuyến nghị</button>
                         </a>
                     </span>
-                    <span>
-                        <a>
-                             &nbsp;
-                            <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
-                            data-original-title="Thêm danh mục"><i class="fas fa-list-alt"></i> Thể loại</button>
+                    <span class="ms-3">
+                        <a href="{{ URL::asset('/system/effectiveness/index') }}">
+                            <button class="btn btn-light btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
+                            data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Hiệu quả danh mục</button>
                         </a>
                     </span>
                    
@@ -38,15 +37,6 @@
                                     </div>
                                     @endif
                                  </div>
-                                <div class="col-md-2">
-                                    <select class="form-control input-sm chzn-select" name="cate"
-                                        id="cate">
-                                        @foreach($data['cate'] as $item){
-                                            <option value="{{$item['code_cate']}}">{{$item['name']}}</option>
-                                        }
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="input-group" style="width:40%;height:10%">
                                     <!-- <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span> -->
@@ -55,23 +45,23 @@
                                 <button style="width:8%" id="txt_search" name="txt_search" type="button" class="btn btn-dark"><i class="fas fa-search"></i></button>
                             </div>
                             <!-- Màn hình danh sách -->
-                            <div class="row" id="table-container-category" style="padding-top:10px"></div>
+                            <div class="row" id="table-container-recommended" style="padding-top:10px"></div>
                         </div>
                     </div>
                 </section>
             </form>
         </div>
     </div>
-    <div class="modal fade" id="editmodalCategory" role="dialog"></div>
+    <div class="modal fade" id="editmodalRecommended" role="dialog"></div>
     <div class="modal " id="addfile" role="dialog"></div>
 
     <div id="dialogconfirm"></div>
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
-        var JS_CategoryCate = new JS_CategoryCate(baseUrl, 'system', 'category');
+        var JS_Recommended = new JS_Recommended(baseUrl, 'system', 'recommended');
         jQuery(document).ready(function($) {
-            JS_CategoryCate.loadIndex(baseUrl);
+            JS_Recommended.loadIndex(baseUrl);
         })
     </script>
 @endsection
