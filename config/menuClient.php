@@ -52,7 +52,7 @@ return [
         'role' => false,
         'child' => false,
     ],
-    'ab2' => [
+    'library' => [
         'name' => 'THƯ VIỆN ĐẦU TƯ',
         'icon' => 'fas fa-book-medical',
         'role' => false,
