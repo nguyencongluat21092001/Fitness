@@ -6,6 +6,7 @@ use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as Cli
 use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
+use Modules\Client\Page\Library\Controllers\LibraryController;
 use Modules\System\Dashboard\ApprovePayment\Controllers\ApprovePaymentController;
 use Modules\System\Dashboard\Dashboards\Controllers\DashboardController;
 use Modules\System\Dashboard\Blog\Controllers\BlogController;
@@ -16,6 +17,7 @@ use Modules\System\Dashboard\Handbook\Controllers\HandbookController;
 use Modules\System\Dashboard\Home\Controllers\HomeController;
 use Modules\System\Dashboard\Signal\Controllers\SignalController;
 use Modules\System\Dashboard\Users\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -195,7 +197,12 @@ Route::prefix('/client')->group(function () {
             Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
             Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
         });
-// });
+    // });
+    // Thư viện đầu tư
+    Route::get('/library/index', [LibraryController::class, 'index']);
+    Route::post('/library/loadList',[LibraryController::class,'loadList']);
+    Route::get('/library/seeVideo',[LibraryController::class,'seeVideo']);
+
 });
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

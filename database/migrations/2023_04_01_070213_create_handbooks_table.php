@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name_handbook')->nullable();
             $table->string('category_handbook');
             $table->string('type_handbook');
-            $table->string('url_link')->nullable();
+            $table->text('url_link')->nullable();
             $table->string('decision')->nullable();
             $table->string('current_status')->nullable();
             $table->timestamps();
