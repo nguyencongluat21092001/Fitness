@@ -17,6 +17,8 @@ class CateModel extends Model
         'name',
         'code_cate',
         'decision',
+        'order',
+        'status',
         'created_at',
         'updated_at'
     ];
