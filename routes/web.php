@@ -12,8 +12,10 @@ use Modules\System\Dashboard\Blog\Controllers\BlogController;
 use Modules\System\Dashboard\Category\Controllers\CateController;
 use Modules\System\Dashboard\Category\Controllers\CategoryController;
 use Modules\System\Dashboard\DataFinancial\Controllers\DataFinancialController;
+use Modules\System\Dashboard\Effective\Controllers\EffectiveController;
 use Modules\System\Dashboard\Handbook\Controllers\HandbookController;
 use Modules\System\Dashboard\Home\Controllers\HomeController;
+use Modules\System\Dashboard\Recommended\Controllers\RecommendedController;
 use Modules\System\Dashboard\Signal\Controllers\SignalController;
 use Modules\System\Dashboard\Users\Controllers\UserController;
 
@@ -61,6 +63,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/create', [UserController::class,'create']);
             Route::post('/delete', [UserController::class,'delete']);
             // Cập nhật mật khẩu
+            Route::post('/changeStatus', [UserController::class,'changeStatus']);
             Route::get('/changePass', [UserController::class,'changePass'])->name('changePass');
             Route::post('/updatePass', [UserController::class,'updatePass'])->name('updatePass');
         });
@@ -98,6 +101,29 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/deleteCategory',[CategoryController::class,'delete']);
             Route::post('/updateCategoryCate',[CategoryController::class,'updateCategoryCate']);
             Route::post('/changeStatusCategoryCate',[CategoryController::class,'changeStatusCategoryCate']);
+        });
+        // quản trị danh mục khuyến nghị
+        Route::prefix('/recommended')->group(function () {
+            //Danh mục khuyến nghị
+            Route::get('/index', [RecommendedController::class, 'index']);
+            Route::post('/add',[RecommendedController::class,'add']);
+            Route::post('/create',[RecommendedController::class,'create']);
+            Route::post('/edit',[RecommendedController::class,'edit']);
+            Route::post('/delete',[RecommendedController::class,'delete']);
+            Route::get('/loadList',[RecommendedController::class,'loadList']);
+            Route::post('/updateColumn',[RecommendedController::class,'updateColumn']);
+            Route::post('/changeStatus',[RecommendedController::class,'changeStatus']);
+        });
+        Route::prefix('/effectiveness')->group(function () {
+            // Hiệu quả danh mục
+            Route::get('/index', [EffectiveController::class, 'index']);
+            Route::post('/add',[EffectiveController::class,'add']);
+            Route::post('/create',[EffectiveController::class,'create']);
+            Route::post('/edit',[EffectiveController::class,'edit']);
+            Route::post('/delete',[EffectiveController::class,'delete']);
+            Route::get('/loadList',[EffectiveController::class,'loadList']);
+            Route::post('/updateColumn',[EffectiveController::class,'updateColumn']);
+            Route::post('/changeStatus',[EffectiveController::class,'changeStatus']);
         });
         //bài viết 
         Route::prefix('/blog')->group(function () {

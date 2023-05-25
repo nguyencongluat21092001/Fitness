@@ -1,26 +1,30 @@
 <?php
 
-namespace Modules\System\Dashboard\Category\Models;
+namespace Modules\System\Dashboard\Effective\Models;
 
 use Illuminate\Database\Eloquent\Model;
 // use Modules\Core\Ncl\Http\BaseModel;
 
-class CateModel extends Model
+class EffectiveModel extends Model
 {
-    protected $table = 'cates';
+    protected $table = 'effectiveness';
     public $incrementing = false;
     public $timestamps = false;
-    public $sortable = ['order'];
 
     protected $fillable = [
         'id',
-        'name',
-        'code_cate',
-        'decision',
-        'order',
+        'code_cp',
+        'code_category',
+        'percent_of_assets',
+        'closing_percentage',
+        'price',
+        'date_close',
+        'price_close',
+        'profit_and_loss',
+        'note',
         'status',
         'created_at',
-        'updated_at'
+        'updated_at',
     ];
 
     public function filter($query, $param, $value)
@@ -30,9 +34,9 @@ class CateModel extends Model
                 $this->value = $value;
                 // dd($this->value);
                 return $query->where(function ($query) {
-                    $query->where('name', 'like', '%' . $this->value . '%')
-                          ->orWhere('code_cate','like', '%' . $this->value . '%')
-                          ->orWhere('decision','like', '%' . $this->value . '%');
+                    // $query->where('name', 'like', '%' . $this->value . '%')
+                    //       ->orWhere('code_cate','like', '%' . $this->value . '%')
+                    //       ->orWhere('decision','like', '%' . $this->value . '%');
                 });
                 return $query;
             // case 'role':
