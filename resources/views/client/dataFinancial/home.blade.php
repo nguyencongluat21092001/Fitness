@@ -11,19 +11,19 @@
                     <!-- Chú giải xếp hạng TA/FA -->
                     <div class="home_index_child" style="background:#ffffff91 !important">
                         <div class="col-lg-12" style="padding:10px;">
-                            <h class=" py-2"><i class="fas fa-search"></i> <span style="font-size:16px;font-family: auto;">Tra cứu cổ phiếu</span></h>
+                        <h1 class="h5 "> I. TRA CỨU CỔ PHIẾU <i class="fas fa-search"></i></h1>
                             <div class="table-responsive py-2">
                                 <!-- Màn hình danh sách -->
                                 <div id="table-container-data"></div>
                             </div>
-                            <h class="py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i onclick="JS_DataFinancial.noteTaFa()" style="color:#3ac500" class="far fa-eye"></i>
+                            <i class="py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </i> <i onclick="JS_DataFinancial.noteTaFa()" style="color:#3ac500" class="far fa-eye"></i>
                         </div>
                     </div>
                     <!-- biểu đồ FireAnt -->
                     <div class="home_index_child " style="background:#ffffff91 !important">
                         <div class="col-lg-12" style="padding:10px;">
-                            <h class=" py-2"><i class="far fa-chart-bar"></i>. <span style="font-size:16px;font-family: auto;" > Biểu đồ</span> </h> <br>
-                            <p>Nguồn theo: fireant</p>
+                        <h1 class="h5 "> II. BIỂU ĐỒ <i class="far fa-chart-bar"></i></h1>
+                            <p>Nguồn theo: Fireant</p>
                             <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 allowfullscreen>
