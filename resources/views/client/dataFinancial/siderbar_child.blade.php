@@ -14,7 +14,7 @@
                         <a class="nav-link link-recommendations px-3" style="color:black" href="{{ URL::asset('/client/dataFinancial/recommendationsIndex') }}"><i class="fas fa-comments-dollar"></i> Khuyến nghị VIP</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link  px-3" style="color:black" href="about.html"><i class="fas fa-sitemap"></i> Danh mục FinTop</a>
+                        <a class="nav-link link-categoryFintop  px-3" style="color:black" href="{{ URL::asset('/client/dataFinancial/categoryFintopIndex') }}"><i class="fas fa-sitemap"></i> Danh mục FinTop</a>
                     </li>
                 </ul>
             </div>

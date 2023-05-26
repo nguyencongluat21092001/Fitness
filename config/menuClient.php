@@ -39,7 +39,7 @@ return [
                 'icon' => 'fas fa-comments-dollar',
                 'role' => false,
             ],
-            'cate' => [
+            'categoryFintopIndex' => [
                 'name' => 'Danh mục FinTop',
                 'icon' => 'fas fa-sitemap',
                 'role' => false,

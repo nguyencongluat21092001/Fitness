@@ -1,4 +1,4 @@
-function JS_Recommendations(baseUrl, module, controller) {
+function JS_CategoryFintop(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
@@ -10,10 +10,10 @@ function JS_Recommendations(baseUrl, module, controller) {
  *
  * @return void
  */
-JS_Recommendations.prototype.loadIndex = function () {
+JS_CategoryFintop.prototype.loadIndex = function () {
     var myClass = this;
-    NclLib.menuActive('.link-recommendationsIndex');
-    NclLib.menuActive_child('.link-recommendationsIndex');
+    NclLib.menuActive('.link-categoryFintopIndex');
+    NclLib.menuActive_child('.link-categoryFintopIndex');
     var oForm = 'form#frmLoadlist_recommendations';
     myClass.loadList(oForm);
 }
@@ -24,7 +24,7 @@ JS_Recommendations.prototype.loadIndex = function () {
  *
  * @return void
  */
-JS_Recommendations.prototype.loadList = function (oForm) {
+JS_CategoryFintop.prototype.loadList = function (oForm) {
     var myClass = this;
     var url = this.urlPath + '/loadList_recommendations';
     var data = $(oForm).serialize();
@@ -37,7 +37,7 @@ JS_Recommendations.prototype.loadList = function (oForm) {
             // $('#messages').scrollTop($('#messages')[0].scrollHeight);
           
             setTimeout(function() { 
-                JS_Recommendations.loadList(oForm)
+                JS_CategoryFintop.loadList(oForm)
             }, 30000);
         }
     });

@@ -169,5 +169,30 @@ class DataFinancialController extends Controller
         // dd($result);
         return view('client.dataFinancial.recommendations.loadlist',$result);
     }
+
+      /**
+     * Danh mục Fintop
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function categoryFintopIndex (Request $request)
+    {
+        return view('client.dataFinancial.categoryfintop.index');
+    }
+     /**
+     * list Danh mục FinTop vip
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function loadList_categoryFintop (Request $request)
+    {
+        $arrInput = $request->input();
+        $result['datas'] = $this->SignalService->where('status','1')->get();
+        return view('client.dataFinancial.categoryfintop.loadlist',$result);
+    }
     
 }

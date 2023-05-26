@@ -55,7 +55,7 @@
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
-        var JS_DataFinancial = new JS_DataFinancial(baseUrl, 'client', 'dataFinancial');
+        var JS_DataFinancial = new JS_DataFinancial(baseUrl, 'client', 'datafinancial');
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);
         })
