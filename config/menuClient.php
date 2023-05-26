@@ -13,7 +13,7 @@ return [
         'role' => false,
         'child' => false,
     ],
-    'work' => [
+    'privileges' => [
         'name' => 'ĐẶC QUYỀN HỘI VIÊN',
         'icon' => 'far fa-newspaper',
         'role' => false,

@@ -1,5 +1,6 @@
 <?php
 
+//Client
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
@@ -7,6 +8,9 @@ use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
 use Modules\Client\Page\Library\Controllers\LibraryController;
+use Modules\Client\Page\Privileges\Controllers\PrivilegesController;
+
+//Dashboard
 use Modules\System\Dashboard\ApprovePayment\Controllers\ApprovePaymentController;
 use Modules\System\Dashboard\Dashboards\Controllers\DashboardController;
 use Modules\System\Dashboard\Blog\Controllers\BlogController;
@@ -228,6 +232,8 @@ Route::prefix('/client')->group(function () {
     Route::get('/library/index', [LibraryController::class, 'index']);
     Route::post('/library/loadList',[LibraryController::class,'loadList']);
     Route::get('/library/seeVideo',[LibraryController::class,'seeVideo']);
+    // Đặc quyền hội viên
+    Route::get('/privileges/index', [PrivilegesController::class, 'index']);
 
 });
 Auth::routes();
