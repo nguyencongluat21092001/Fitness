@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\System\Dashboard\HandBook\Services;
+namespace Modules\System\Dashboard\Handbook\Services;
 
 use Illuminate\Support\Facades\Hash;
 use Modules\Base\Service;
