@@ -36,11 +36,6 @@ JS_CategoryFintop.prototype.loadList_vip = function (oForm) {
         data: data,
         success: function (arrResult) {
             $("#table-container-categoryFintop_vip").html(arrResult);
-            // $('#messages').scrollTop($('#messages')[0].scrollHeight);
-          
-            setTimeout(function() { 
-                JS_CategoryFintop.loadList(oForm)
-            }, 30000);
         }
     });
 }
@@ -62,11 +57,6 @@ JS_CategoryFintop.prototype.loadList_basic = function (oForm) {
         data: data,
         success: function (arrResult) {
             $("#table-container-categoryFintop_basic").html(arrResult);
-            // $('#messages').scrollTop($('#messages')[0].scrollHeight);
-          
-            setTimeout(function() { 
-                JS_CategoryFintop.loadList(oForm)
-            }, 30000);
         }
     });
 }
