@@ -140,8 +140,7 @@ class DataFinancialController extends Controller
     public function loadList_signal (Request $request)
     {
         $arrInput = $request->input();
-        $result['datas'] = $this->DataFinancialService->where('status','on')->get();
-        // dd($result);
+        $result['datas'] = $this->DataFinancialService->where('status','1')->get();
         return view('client.dataFinancial.loadlist-signal',$result);
     }
      /**
