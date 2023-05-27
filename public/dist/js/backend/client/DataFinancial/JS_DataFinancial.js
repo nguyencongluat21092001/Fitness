@@ -160,7 +160,6 @@ JS_DataFinancial.prototype.loadData = function (oForm) {
     var url = this.urlPath + '/loadData';
     var data = $(oForm).serialize();
     data += '&limit=' +  5;
-    console.log(1,data,oForm)
     $.ajax({
         url: url,
         type: "POST",

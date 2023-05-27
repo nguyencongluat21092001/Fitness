@@ -108,7 +108,7 @@ JS_System_Security.prototype.checkF12_OnWay = function () {
                         (function () {})[listchan[13]](listchan[20])()
                         
                     } else {
-                        debugger;
+                        // debugger;
                     };
                     chanf12(++dataf)
                 }(0))

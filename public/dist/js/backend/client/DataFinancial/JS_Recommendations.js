@@ -2,7 +2,6 @@ function JS_Recommendations(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-datafinancial');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 /**
@@ -12,6 +11,7 @@ function JS_Recommendations(baseUrl, module, controller) {
  */
 JS_Recommendations.prototype.loadIndex = function () {
     var myClass = this;
+    NclLib.menuActive('.link-datafinancial');
     NclLib.menuActive('.link-recommendationsIndex');
     NclLib.menuActive_child('.link-recommendationsIndex');
     var oForm = 'form#frmLoadlist_recommendations';
@@ -39,6 +39,33 @@ JS_Recommendations.prototype.loadList = function (oForm) {
             setTimeout(function() { 
                 JS_Recommendations.loadList(oForm)
             }, 30000);
+        }
+    });
+}
+/**
+ * Load màn hình danh sách box tất cả các trang
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_Recommendations.prototype.loadList_box = function () {
+    var myClass = this;
+    var oForm = 'form#frmLoadlist_box';
+    var url = this.urlPath + '/loadList_recommendations';
+    var data = $(oForm).serialize();
+    data += '&type='+ 'box';
+    $.ajax({
+        url: url,
+        type: "POST",
+        data: data,
+        success: function (arrResult) {
+            $("#table-container-box").html(arrResult);
+            // $('#messages').scrollTop($('#messages')[0].scrollHeight);
+          
+            setTimeout(function() { 
+                JS_Recommendations.loadList_box(oForm)
+            }, 50000);
         }
     });
 }

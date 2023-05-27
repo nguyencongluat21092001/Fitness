@@ -63,6 +63,28 @@
         right: 0;
     }
 </style>
+<script src="../clients/js/jquery.min.js"></script>
+
+<script type="text/javascript">
+        $('.button').click(function() {
+            $('.menu .items span').toggleClass('active');
+            $('.menu .button').toggleClass('active');
+        });
+
+        $(document).ready(function() {
+            // $('#textbox1').val(this.checked);
+            $('#checkbox1').change(function() {
+                if (this.checked) {
+                    $('#pDetails').removeClass("hidden");
+                    $('#pDetails').addClass("transform");
+                } else {
+                    $('#pDetails').removeClass("transform");
+                    $('#pDetails').addClass("hidden");
+                }
+
+            });
+        });
+    </script>
 <body>
     <div class="header-one ">
         <div class="container header-one">
@@ -186,6 +208,9 @@
         </div>
     </nav>
     @yield('body-client')
+    {{-- chat --}}
+    @include('client.layouts.chat')
+    {{-- end-chat --}}
     <!-- Start Footer -->
     <footer class="bgft pt-4" style="background:#121d29bf">
         <div class="container" >
@@ -308,6 +333,7 @@
     <!-- Isotope -->
     <script src="../clients/js/isotope.pkgd.js"></script>
     <!-- Page Script -->
+
     <script>
         $(window).load(function() {
             // init Isotope

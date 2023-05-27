@@ -225,7 +225,8 @@ Route::prefix('/client')->group(function () {
         
             // Danh mục Fintop
             Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
-            Route::post('/loadList_categoryFintop', [ClientDataFinancialController::class, 'loadList_categoryFintop']);
+            Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
+            Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
         });
     // });
     // Thư viện đầu tư

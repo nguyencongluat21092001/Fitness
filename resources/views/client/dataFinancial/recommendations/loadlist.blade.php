@@ -25,9 +25,10 @@
                        </div>
                        <div style="padding-left:30px">
                         <h4>{{ $data->title }}</h4>
-                        <p>Giá mua: 56.2 - 57.</p>
-                        <p>Mục tiêu: {{ $data->target }}</p>
-                        <p>Dừng lỗ:  {{ $data->stop_loss }}</p>
+                        <span>Giá mua: {{ $data->price_buy }}</span> <br>
+                        <span>Mục tiêu: {{ $data->target }}</span> <br>
+                        <span>Dừng lỗ:  {{ $data->stop_loss }}</span> <br>
+                        <span>Thời gian: {{date('H:i:s d-m-Y', strtotime($data->created_at))}}</span>
                        </div>
                         
                         <!-- <p style="font-size:14px" class="small mb-0">Chào Anh/Chị, chúng tôi có thể hỗ trợ gì cho Anh/chị ạ?</p> -->

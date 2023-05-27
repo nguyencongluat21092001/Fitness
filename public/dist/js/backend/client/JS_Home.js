@@ -6,7 +6,6 @@ function JS_Home(baseUrl, module, controller) {
     this.urlPath = baseUrl + '/' + module + '/' + controller;//Biên public lưu tên module
 }
 JS_Home.prototype.alerMesage = function(nameMessage,icon,color){
-    console.log(nameMessage,icon,color)
     Swal.fire({
         position: 'top-start',
         icon: icon,

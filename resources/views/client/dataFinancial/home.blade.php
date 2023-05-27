@@ -52,6 +52,8 @@
 <div class="modal" id="editmodal_fireAnt" role="dialog"></div>
 <div class="modal" id="editmodal_noteTaFa" role="dialog"></div>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\DataFinancial\JS_DataFinancial.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
+
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
@@ -59,6 +61,10 @@
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);
         })
+        var JS_System_Security = new JS_System_Security();
+            $(document).ready(function($) {
+                JS_System_Security.security();
+            })
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 @endsection
