@@ -58,7 +58,7 @@ class LoginController extends Controller
             } else if ($user->role == 'USERS') {
                 $checkPrLogin = $this->permission_login($email);
                 Auth::guard('web')->login($user);
-                return redirect('client/home/index');
+                return redirect('client/datafinancial/index');
             }
         } else {
             $data['class'] = 'form-control error';
