@@ -9,7 +9,7 @@
         margin-left: calc(var(--bs-gutter-x)/ -2);
     }
 </style>
-<marquee>
+<!-- <marquee> -->
     <div class="row_convert py-3">
         @foreach($datas as $item)
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="padding-left:10px">
@@ -49,5 +49,5 @@
         </div>
         @endforeach
     </div>
-</marquee>
+<!-- </marquee> -->
 

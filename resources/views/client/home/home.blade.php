@@ -182,7 +182,7 @@
                     </div>
                     <div class="col-lg-8" style="padding-left:10px">
                         <!-- Start Our Work -->
-                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#ffffff8a;border-radius: 0.25em;">
+                        <form action="" method="POST" id="frmLoadlist_blog" style="background:#ffffffe8;border-radius: 0.25em;">
                                 <!-- Màn hình danh sách -->
                                 <h2 class="h4 py-2"><span style="padding-left:2%">Bài viết nổi bật</span> </h2>
 
