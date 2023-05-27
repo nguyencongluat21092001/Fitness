@@ -12,8 +12,8 @@
 
 return [
     'financial' => [
-        'api'         => '172.20.10.2:7600/api/',
-        "token"       => "fintopluatnc2023",
+        'api'         => '202.92.5.108:7500/api/',
+        "token"       => "key0000",
         'apiChild' => [
             'list-coin-code' => "list-coin-code", // lấy chỉ số chứng khoán việt Nam 
             'list-top-coin' => "list-top-coin" // lấy top chỉ số chứng khoán việt Nam 

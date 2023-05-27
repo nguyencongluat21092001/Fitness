@@ -35,7 +35,6 @@
     <script type="text/jscript" src="../assets/js/CoreTable.js"></script>
     <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
-
 </head>
 @if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE' || $_SESSION['role'] == 'STAFF')
     @if ($_SESSION['color_view'] == 1)
