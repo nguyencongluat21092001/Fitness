@@ -54,7 +54,7 @@
       margin-left: auto!important;
     }
     .table{
-        border-color: #990000;
+        border-color: #670000;
     }
 </style>
 <div class="scrollbar" id="style-1" style="padding-right:10px;height:600px !important">

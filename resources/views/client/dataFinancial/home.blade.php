@@ -9,7 +9,7 @@
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="home_index_vnindex pt-1 pb-2" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- Chú giải xếp hạng TA/FA -->
-                    <div class="home_index_child" style="background:#ffffff91 !important">
+                    <div class="home_index_child" style="background:#ffffffe6 !important">
                         <div class="col-lg-12" style="padding:10px;">
                         <h1 class="h5 "> I. TRA CỨU CỔ PHIẾU <i class="fas fa-search"></i></h1>
                             <div class="table-responsive py-2">
@@ -20,7 +20,7 @@
                         </div>
                     </div>
                     <!-- biểu đồ FireAnt -->
-                    <div class="home_index_child " style="background:#ffffff91 !important">
+                    <div class="home_index_child " style="background:#ffffffe6 !important">
                         <div class="col-lg-12" style="padding:10px;">
                         <h1 class="h5 "> II. BIỂU ĐỒ <i class="far fa-chart-bar"></i></h1>
                             <p>Nguồn theo: Fireant</p>
