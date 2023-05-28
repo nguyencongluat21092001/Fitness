@@ -54,17 +54,20 @@ class RegisterController extends Controller
             [
                 'name' => 'required',
                 'email' => ['required','email','regex:/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/','unique:users'],
+                'phone' => 'required',
                 'password' => 'required',
-                'password_confirmation'=> 'required',
+                'password_confirmation'=> 'required|confirmed',
             ],
             [
-                'name.required' => 'Dữ liệu không được để trống!',
-                'email.required' => 'Dữ liệu không được để trống!',
+                'name.required' => 'Tên không được để trống!',
+                'email.required' => 'Email không được để trống!',
                 'email.email' => 'Email không đúng định dạng!',
                 'email.regex' => 'Email không đúng định dạng!',
                 'email.unique' => 'Email đã tồn tại!',
-                'password.required' => 'Dữ liệu không được để trống!',
-                'password_confirmation.required' => 'Dữ liệu không được để trống',
+                'phone.required' => 'Số điện thoại không được để trống!',
+                'password.required' => 'Mật khẩu không được để trống!',
+                'password_confirmation.required' => 'Nhập lại mật khẩu không được để trống',
+                'password_confirmation.confirmed' => 'Mật khẩu xác định không khớp',
 
             ]);
     }
