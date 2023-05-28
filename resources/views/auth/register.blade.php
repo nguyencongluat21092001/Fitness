@@ -1,6 +1,14 @@
 @extends('layouts.appSign')
 
 @section('content')
+<style>
+    .hidden{
+        display:none;
+    }
+    .show{
+        display:block;
+    }
+</style>
 <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-7">
@@ -9,9 +17,9 @@
                         <h4>Đăng ký</h4>
                     </div>
                     <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" autocomplete="off">
+                    <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
-
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
                         <div class="row {{!$errors->has('name') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
                                 <input placeholder="Nhập tên..." id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>                    
@@ -28,7 +36,7 @@
 
                         <div class="row {{!$errors->has('phone') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
-                                <input placeholder="Số điện thoại..." id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}">
+                                <input onchange="JS_Register.getFonmPhone()" placeholder="Số điện thoại..." id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}">
                                     @error('phone') <span style="color: red">{{$message}}</span> @enderror
                             </div>
                         </div>
@@ -46,6 +54,17 @@
                             </div>
                         </div>
                         @error('password_confirmation') <span style="color: red">{{$message}}</span> @enderror
+                        <div id="show_Otp" class="row mb-0 hidden">
+                            <div class="col-md-12 " style="display:flex">
+                                <button type="button" onclick="JS_Register.getOtp()" class="btn btn-primary" id="btn_register" style="background-color: #ffae17">
+                                    {{ __('Lấy OTP SMS') }}
+                                </button>
+                                <div class="col-md-7" style="padding-left:5px">
+                                     <input placeholder="Nhập mã OTP..." id="otp" type="text" class="form-control" name="otp" value="{{ old('otp') }}">
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row mb-0">
                             <div class="col-md-12 ">
                                 <button type="submit" class="btn btn-primary" id="btn_register" style="background-color: slategrey">
@@ -60,4 +79,14 @@
             </div>
         </div>
     </div>
+    <div class="modal" id="model_otp" style="" role="dialog"></div>
+    <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Register.js') }}"></script>
+    <script src='../assets/js/jquery.js'></script>
+    <script type="text/javascript">
+        var baseUrl = '{{ url('') }}';
+        var JS_Register = new JS_Register(baseUrl, 'register','send-otp');
+        $(document).ready(function($) {
+            JS_Register.loadIndex(baseUrl);
+        })
+    </script>
 @endsection

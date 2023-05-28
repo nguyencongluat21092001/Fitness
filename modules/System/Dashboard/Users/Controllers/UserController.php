@@ -219,4 +219,12 @@ class UserController extends Controller
             return array('success' => false, 'message' => 'Không tìm thấy dữ liệu!');
         }
     }
+        /**
+     * view form OTP
+     */
+    public function view_OTP(Request $request)
+    {
+        $input = $request->all();
+        return view('auth.otp');
+    }
 }
