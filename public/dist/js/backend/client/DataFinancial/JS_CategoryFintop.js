@@ -27,7 +27,6 @@ JS_CategoryFintop.prototype.loadIndex = function () {
  */
 JS_CategoryFintop.prototype.loadList_vip = function (oForm) {
     var myClass = this;
-    console.log(123)
     var url = this.urlPath + '/loadList_categoryFintop_vip';
     var data = $(oForm).serialize();
     $.ajax({
@@ -48,7 +47,6 @@ JS_CategoryFintop.prototype.loadList_vip = function (oForm) {
  */
 JS_CategoryFintop.prototype.loadList_basic = function (oForm) {
     var myClass = this;
-    console.log(123)
     var url = this.urlPath + '/loadList_categoryFintop_basic';
     var data = $(oForm).serialize();
     $.ajax({
