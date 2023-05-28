@@ -35,7 +35,7 @@
 
                         <div class="row {{!$errors->has('password') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
-                                <input placeholder="Nhập mật khẩu..." id="password" type="password" class="form-control" name="password" password">
+                                <input placeholder="Nhập mật khẩu..." id="password" type="password" class="form-control" name="password" password>
                                    @error('password') <span style="color: red">{{$message}}</span> @enderror
                             </div>
                         </div>
