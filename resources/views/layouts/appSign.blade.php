@@ -72,68 +72,7 @@
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navigation">
-                <ul class="navbar-nav text-md-end" style="text-align: right;">
-                    <!-- <li class="nav-item">
-                        <a class="nav-link me-2" href="../pages/sign-up.html">
-                            <i class="fas fa-user-circle opacity-6  me-1"></i>
-                            Sign Up
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link me-2" href="../pages/sign-in.html">
-                            <i class="fas fa-key opacity-6  me-1"></i>
-                            Sign In
-                        </a>
-                    </li> -->
-                    @guest
-                        @if (Route::has('login'))
-                            <li class="nav-item">
-                                <a class="nav-link me-2" href="{{ route('login') }}">
-                                    <i class="fas fa-user-circle opacity-6  me-1"></i>
-                                    {{ __('Đăng nhập') }}
-                                </a>
-                                {{-- <a class="nav-link" href="{{ route('login') }}">{{ __('Đăng nhập') }}</a> --}}
-                            </li>
-                        @endif
-
-                        @if (Route::has('register'))
-                            <a class="nav-link me-2" href="{{ route('register') }}">
-                                <i class="fas fa-key opacity-6  me-1"></i>
-                                {{ __('Đăng ký') }}
-                            </a>
-                        @endif
-                    @else
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <p style="color:red">
-                                    
-                                    {{ Auth::user()->name }}
-                                </p>
-                                
-                            </a>
-
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                   document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            </div>
-                        </li>
-                    @endguest
-                </ul>
-                <!-- <ul class="navbar-nav d-lg-block d-none">
-                    <li class="nav-item">
-                        <a href="https://www.creative-tim.com/product/argon-dashboard"
-                            class="btn btn-sm mb-0 me-1 bg-gradient-light">Free Download</a>
-                    </li>
-
-                </ul> -->
+                
             </div>
         </div>
     </nav>
@@ -141,14 +80,16 @@
     <!-- End Navbar -->
     <!-- style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;height:800px" -->
     <main class="main-content  mt-0">
-        <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-            style="background:red;background-position: top;height:870px">
+        <div class="page-header align-items-start min-vh-50 pt-5"
+            style="background-image:url('../assets/images/background.jpg');background-position: top;height:100vh">
             
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-10 text-center mx-auto">
-                        <h1 class="text-white mb-2 mt-8 animate-charcter">Welcome!</h1>
+                    <div class="col-lg-10 mx-auto">
+                        <div class="col-md-12 text-center">
+                            <h1 class="text-white mb-2 mt-5 animate-charcter">Welcome!</h1>
+                        </div>
                         @yield('content')
                     </div>
                 </div>

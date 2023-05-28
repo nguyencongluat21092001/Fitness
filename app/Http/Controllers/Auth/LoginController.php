@@ -32,11 +32,11 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
         if($email == '' || $email == null){
-            $data['message'] = "Email không được để trống";
+            $data['email'] = "Email không được để trống";
             return view('auth.signin',compact('data'));
         }
         if($password == '' || $password == null){
-            $data['message'] = "Mật khẩu không được để trống";
+            $data['password'] = "Mật khẩu không được để trống";
             return view('auth.signin',compact('data'));
         }
         if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
@@ -61,7 +61,6 @@ class LoginController extends Controller
                 return redirect('client/datafinancial/index');
             }
         } else {
-            $data['class'] = 'form-control error';
             $data['message'] = "Sai tên đăng nhập hoặc mật khẩu!";
             return view('auth.signin',compact('data'));
         }
