@@ -125,7 +125,7 @@ class RecommendedController extends Controller
         $data = array();
         $objResult = $this->recommendedService->filter($arrInput);
         $data['datas'] = $objResult;
-        return view("dashboard.recommended.recommended.loadlist", $data)->render();
+        return view("dashboard.recommended.recommended.loadList", $data)->render();
     }
     /**
      * Cập nhật thông tin màn hình index

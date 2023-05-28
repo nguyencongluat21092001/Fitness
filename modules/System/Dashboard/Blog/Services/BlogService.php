@@ -30,7 +30,7 @@ class BlogService extends Service
         $this->blogImagesService = $blogImagesService;
         $this->blogDetailService = $blogDetailService;
         $this->blogRepository = $blogRepository;
-        $this->baseDis = public_path("file-image-client\blogs") . "\\";
+        $this->baseDis = public_path("file-image-client/blogs") . "/";
     }
 
     public function repository()

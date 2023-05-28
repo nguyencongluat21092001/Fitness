@@ -40,7 +40,7 @@ return [
         'href' => '/system/blog/index',
     ],
     'signal' => [
-        'name' => 'Tín hiệu mua',
+        'name' => 'Khuyến nghị VIP',
         'icon' => 'fas fa-signal',
         'a'    => 'nav-link link-signal',
         'href' => '/system/signal/index',

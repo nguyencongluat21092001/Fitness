@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\System\Dashboard\HandBook\Services;
+namespace Modules\System\Dashboard\Handbook\Services;
 
 use Illuminate\Support\Facades\Hash;
 use Modules\Base\Service;
-use Modules\System\Dashboard\HandBook\Repositories\HandbookRepository;
+use Modules\System\Dashboard\Handbook\Repositories\HandbookRepository;
 use Str;
 
 class HandbookService extends Service

@@ -20,7 +20,7 @@ class UserService extends Service
         parent::__construct();
         $this->UserInfoService = $UserInfoService;
         $this->UserRepository = $UserRepository;
-        $this->baseDis = public_path("file-image\avatar") . "\\";
+        $this->baseDis = public_path("file-image/avatar") . "/";
     }
 
     public function repository()

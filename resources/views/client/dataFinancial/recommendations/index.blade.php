@@ -9,9 +9,10 @@
             <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
             <div class="home_index_vnindex pt-1 pb-3" style="background:#ffffff91 !important;border-radius:0px !important">
                 <!-- Chú giải xếp hạng TA/FA -->
-                <div class="home_index_child" style="background:#ffffff91 !important;">
+                <div class="home_index_child" style="background:#ffffffe6 !important;">
                     <div class="col-lg-12" style="padding:10px;">
-                        <h class="h4 py-2"> <span style="font-family: auto;">Khuyến nghị vip</span></h>
+                    <h1 class="h5 "> I. KHUYẾN NGHỊ VIP</h1>
+                        <!-- <h class="h4 py-2"> <span style="font-family: auto;">Khuyến nghị vip</span></h> -->
                         <div class="table-responsive py-2">
                             <!-- Màn hình danh sách -->
                             <div id="table-container-recommendations"></div>
@@ -25,6 +26,8 @@
 </section>
 <div class="modal" id="editmodal_fireAnt" role="dialog"></div>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\DataFinancial\JS_Recommendations.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
+
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
@@ -32,5 +35,9 @@
         $(document).ready(function($) {
             JS_Recommendations.loadIndex(baseUrl);
         })
+        // var JS_System_Security = new JS_System_Security();
+        //     $(document).ready(function($) {
+        //         JS_System_Security.security();
+        //     })
     </script>
 @endsection

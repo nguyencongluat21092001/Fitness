@@ -3,6 +3,9 @@
         font-size: 19px;
     }
     td > p { overflow-y:scroll;overflow-x:hidden;} 
+    .table{
+        border-color: #670000
+    }
 </style>
 <form id="frmSearchCP"  role="form" action="" method="POST">
     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">

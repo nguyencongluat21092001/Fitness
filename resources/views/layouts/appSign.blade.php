@@ -1,17 +1,4 @@
-<!--
-=========================================================
-* Argon Dashboard 2 - v2.0.4
-=========================================================
 
-* Product Page: https://www.creative-tim.com/product/argon-dashboard
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://www.creative-tim.com/license)
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
--->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +60,7 @@
         class="navbar navbar-expand-lg position-absolute top-0 z-index-3 w-100 shadow-none my-3 navbar-transparent mt-5">
         <div class="container">
             <a class="navbar-brand font-weight-bolder ms-lg-0 ms-5 text-white" href="{{ url('/') }}">
-                {{ config('app.name', 'Hệ thống dịch vụ') }}
+                Trang chủ
             </a>
             <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false"
@@ -155,7 +142,7 @@
     <!-- style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/signup-cover.jpg'); background-position: top;height:800px" -->
     <main class="main-content  mt-0">
         <div class="page-header align-items-start min-vh-50 pt-5 pb-11 m-3 border-radius-lg"
-            style="background-image: url('../assets/img/image_background1.jpg');background-position: top;height:870px">
+            style="background:red;background-position: top;height:870px">
             
             <span class="mask bg-gradient-dark opacity-6"></span>
             <div class="container">
@@ -165,33 +152,6 @@
                         @yield('content')
                     </div>
                 </div>
-                <!-- <div class="container">
-                     <div class="row" style="background:red:">
-                        <p></p>
-                        <div class="col-lg-8 mb-4 mx-auto text-center">
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-5 me-3 mb-sm-0 mb-2" >
-                                <p style="color: black;">Contact: Mr.Nguyen Cong Luat</p>
-                            </a>
-                        </div>
-                        <div class="col-lg-8 mx-auto text-center mb-4 mt-2">
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                                <span class="text-lg fab fa-dribbble"></span>
-                            </a>
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                                <span class="text-lg fab fa-twitter"></span>
-                            </a>
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                                <span class="text-lg fab fa-instagram"></span>
-                            </a>
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                                <span class="text-lg fab fa-pinterest"></span>
-                            </a>
-                            <a href="javascript:;" target="_blank" class="text-secondary me-xl-4 me-4">
-                                <span class="text-lg fab fa-github"></span>
-                            </a>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
 

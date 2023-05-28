@@ -53,6 +53,9 @@
       margin-right: auto!important;
       margin-left: auto!important;
     }
+    .table{
+        border-color: #670000;
+    }
 </style>
 <div class="scrollbar" id="style-1" style="padding-right:10px;height:600px !important">
   <div class="table-responsive pmd-card pmd-z-depth ">
@@ -71,7 +74,7 @@
               <col width="10%">
           </colgroup> -->
           <thead>
-              <tr style="background:#679e39;color:white;">
+              <tr style="background:#92241a;color:white">
                   <td style="white-space: inherit;vertical-align: middle" align="center"><b>STT</b></td>
                   <td style="white-space: inherit;vertical-align: middle" align="center"><b>Mã CP</b></td>
                   <td style="white-space: inherit;vertical-align: middle" align="center"><b>Sàn</b></td>

@@ -2,6 +2,9 @@
     .title_table{
         font-size:16px !important;
     }
+    .table{
+        border-color: #670000
+    }
 </style>
 <div class="table-responsive pmd-card pmd-z-depth ">
     <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">

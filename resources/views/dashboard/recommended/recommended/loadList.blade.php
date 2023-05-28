@@ -8,7 +8,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
 @endphp --}}
 <div class="table-responsive pmd-card pmd-z-depth ">
     <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
-        <colgroup>
+        <!-- <colgroup>
             <col width="5%">
             <col width="5%">
             <col width="7%">
@@ -24,7 +24,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
             <col width="7%">
             <col width="7%">
             <col width="5%">
-        </colgroup>
+        </colgroup> -->
         <thead>
             <tr>
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><input type="checkbox" name="chk_all_item_id"

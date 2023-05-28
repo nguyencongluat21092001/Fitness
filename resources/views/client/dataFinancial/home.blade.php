@@ -9,21 +9,21 @@
              <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="home_index_vnindex pt-1 pb-2" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- Chú giải xếp hạng TA/FA -->
-                    <div class="home_index_child" style="background:#ffffff91 !important">
+                    <div class="home_index_child" style="background:#ffffffe6 !important">
                         <div class="col-lg-12" style="padding:10px;">
-                            <h class=" py-2"><i class="fas fa-search"></i> <span style="font-size:16px;font-family: auto;">Tra cứu cổ phiếu</span></h>
+                        <h1 class="h5 "> I. TRA CỨU CỔ PHIẾU <i class="fas fa-search"></i></h1>
                             <div class="table-responsive py-2">
                                 <!-- Màn hình danh sách -->
                                 <div id="table-container-data"></div>
                             </div>
-                            <h class="py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </h> <i onclick="JS_DataFinancial.noteTaFa()" style="color:#3ac500" class="far fa-eye"></i>
+                            <i class="py-2">- <span style="font-family: auto;">Chú giải xếp hạng TA/FA</span> : </i> <i onclick="JS_DataFinancial.noteTaFa()" style="color:#3ac500" class="far fa-eye"></i>
                         </div>
                     </div>
                     <!-- biểu đồ FireAnt -->
-                    <div class="home_index_child " style="background:#ffffff91 !important">
+                    <div class="home_index_child " style="background:#ffffffe6 !important">
                         <div class="col-lg-12" style="padding:10px;">
-                            <h class=" py-2"><i class="far fa-chart-bar"></i>. <span style="font-size:16px;font-family: auto;" > Biểu đồ</span> </h> <br>
-                            <p>Nguồn theo: fireant</p>
+                        <h1 class="h5 "> II. BIỂU ĐỒ <i class="far fa-chart-bar"></i></h1>
+                            <p>Nguồn theo: Fireant</p>
                             <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
                                 frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                 allowfullscreen>
@@ -52,6 +52,8 @@
 <div class="modal" id="editmodal_fireAnt" role="dialog"></div>
 <div class="modal" id="editmodal_noteTaFa" role="dialog"></div>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\DataFinancial\JS_DataFinancial.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
+
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = "{{ url('') }}";
@@ -59,6 +61,10 @@
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);
         })
+        var JS_System_Security = new JS_System_Security();
+            $(document).ready(function($) {
+                JS_System_Security.security();
+            })
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 @endsection

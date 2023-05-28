@@ -25,7 +25,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title light-600 text-dark">{{ $data->detailBlog->title }}</h5>
                                         <p class="light-300 ">
-                                            {{ $data->detailBlog->decision }}
+                                            {!! $data->detailBlog->decision !!}
                                         </p>
                                         <span class="text-decoration-none light-300">
                                             Đọc thêm <i class='bx bxs-hand-right ms-1'></i>

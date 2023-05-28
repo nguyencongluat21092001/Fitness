@@ -38,33 +38,7 @@
                     X
                 </button>
             </div>
-            @if(!empty($data['type_handbook'] == 'VIDEO'))
-                <iframe height="620" src="{{$data['url_link']}}?autoplay=1&mute=1" 
-                    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                    allowfullscreen>
-                </iframe>
-                @endif
-                @if(!empty($data['type_handbook'] == 'LINK_LIEN_KET'))
-            <div class="modal-body" style="padding:15px">
-                <div>
-                    <div class="row form-group" id="div_hinhthucgiai">
-                        <label class="col-md-3 control-label required">Đường dẫn (Link) </label>
-                        <div class="col-md-8 ">
-                            <a href="{{$data['url_link']}}"><button type="button" class="btn btn-light" data-bs-dismiss="modal"><i class="fab fa-twitter-square"></i>
-                                <div class="animate-charcter">
-                                {{$data['url_link']}}
-                                </div>
-                            </button></a>
-                        </div>
-                    </div>
-                </div>
-                @endif
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default btn-sm" data-bs-dismiss="modal">
-                        Đóng
-                    </button>
-                </div>
-            </div>
+            {!! $data['url_link'] !!}
         </div>
     </div>
 </form>

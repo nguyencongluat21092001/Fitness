@@ -4,7 +4,7 @@ namespace Modules\Client\Page\Library\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Modules\System\Dashboard\HandBook\Services\HandbookService;
+use Modules\System\Dashboard\Handbook\Services\HandbookService;
 use Modules\System\Dashboard\Category\Services\CategoryService;
 use Modules\System\Dashboard\Category\Services\CateService;
 use Illuminate\Support\Facades\Http;

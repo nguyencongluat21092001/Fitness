@@ -36,7 +36,9 @@ JS_Signal.prototype.loadList = function (oForm) {
         data: data,
         success: function (arrResult) {
             $("#table-container-signal").html(arrResult);
-            myClass.loadList(oForm);
+            setTimeout(function() { 
+                JS_Signal.loadList(oForm)
+            }, 300000);
         }
     });
 }

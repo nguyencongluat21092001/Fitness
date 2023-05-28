@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Modules\System\Dashboard\DataFinancial\Services\DataFinancialService;
 use Modules\System\Dashboard\Category\Services\CategoryService;
 use Modules\System\Dashboard\Signal\Services\SignalService;
+use Modules\System\Dashboard\Effective\Services\EffectiveService;
+use Modules\System\Dashboard\Recommended\Services\RecommendedService;
 use DB;
 
 /**
@@ -19,10 +21,14 @@ class DataFinancialController extends Controller
 {
 
     public function __construct(
+        RecommendedService $recommendedService,
+        EffectiveService $effectiveService,
         SignalService $SignalService,
         DataFinancialService $DataFinancialService,
         CategoryService $categoryService
-    ){;
+    ){
+        $this->recommendedService = $recommendedService;
+        $this->effectiveService = $effectiveService;
         $this->SignalService = $SignalService;
         $this->DataFinancialService = $DataFinancialService;
         $this->categoryService = $categoryService;
@@ -140,8 +146,7 @@ class DataFinancialController extends Controller
     public function loadList_signal (Request $request)
     {
         $arrInput = $request->input();
-        $result['datas'] = $this->DataFinancialService->where('status','on')->get();
-        // dd($result);
+        $result['datas'] = $this->DataFinancialService->where('status','1')->get();
         return view('client.dataFinancial.loadlist-signal',$result);
     }
      /**
@@ -165,9 +170,13 @@ class DataFinancialController extends Controller
     public function loadList_recommendations (Request $request)
     {
         $arrInput = $request->input();
-        $result['datas'] = $this->SignalService->where('status','1')->get();
-        // dd($result);
-        return view('client.dataFinancial.recommendations.loadlist',$result);
+        if(isset($arrInput['type']) && $arrInput['type'] == 'box'){
+            $result['datas'] = $this->SignalService->where('status','1')->orderBy('created_at','desc')->take(3)->get();
+            return view('client.layouts.loadListBox',$result);
+        }else{
+            $result['datas'] = $this->SignalService->where('status','1')->get();
+            return view('client.dataFinancial.recommendations.loadlist',$result);
+        }
     }
 
       /**
@@ -188,10 +197,23 @@ class DataFinancialController extends Controller
      *
      * @return view
      */
-    public function loadList_categoryFintop (Request $request)
+    public function loadList_categoryFintop_vip (Request $request)
     {
         $arrInput = $request->input();
-        $result['datas'] = $this->SignalService->where('status','1')->get();
+        $result['datas'] = $this->recommendedService->where('status','!=','')->get();
+        return view('client.dataFinancial.categoryfintop.loadlist_vip',$result);
+    }
+     /**
+     * list Danh mục FinTop basic
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function loadList_categoryFintop_basic (Request $request)
+    {
+        $arrInput = $request->input();
+        $result['datas'] = $this->effectiveService->where('status','!=','')->get();
         return view('client.dataFinancial.categoryfintop.loadlist',$result);
     }
     
