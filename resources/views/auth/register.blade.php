@@ -8,6 +8,11 @@
     .show{
         display:block;
     }
+    .swal2-title {
+        font-family:'Montserrat', sans-serif;
+        font-size:20px;
+        color:#690000;
+    }
 </style>
 <div class="container">
         <div class="row justify-content-center">
@@ -54,7 +59,7 @@
                             </div>
                         </div>
                         @error('password_confirmation') <span style="color: red">{{$message}}</span> @enderror
-                        <div id="show_Otp" class="row mb-0 hidden">
+                        <!-- <div id="show_Otp" class="row mb-0 hidden"> -->
                             <div class="col-md-12 " style="display:flex">
                                 <button type="button" onclick="JS_Register.getOtp()" class="btn btn-primary" id="btn_register" style="background-color: #ffae17">
                                     {{ __('Lấy OTP SMS') }}
@@ -63,8 +68,8 @@
                                      <input placeholder="Nhập mã OTP..." id="otp" type="text" class="form-control" name="otp" value="{{ old('otp') }}">
                                 </div>
                             </div>
-                        </div>
-
+                            @error('otp') <span style="color: red">{{$message}}</span> @enderror
+                        <!-- </div> -->
                         <div class="row mb-0">
                             <div class="col-md-12 ">
                                 <button type="submit" class="btn btn-primary" id="btn_register" style="background-color: slategrey">

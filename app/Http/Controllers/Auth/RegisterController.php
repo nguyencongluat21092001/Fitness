@@ -8,6 +8,10 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Modules\System\Dashboard\Users\Models\AuthenticationOTPModel;
+use Modules\System\Dashboard\Users\Models\UserModel;
+use Modules\System\Dashboard\Users\Models\UserInfoModel;
+use Illuminate\Support\Facades\Auth;
 use Str;
 class RegisterController extends Controller
 {
@@ -49,7 +53,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make(
+        $validator =  Validator::make(
             $data,
             [
                 'name' => 'required',
@@ -57,6 +61,7 @@ class RegisterController extends Controller
                 'phone' => 'required',
                 'password' => 'required|confirmed',
                 'password_confirmation'=> 'required',
+                // 'otp'=>'required || exists:auth_otp,otp',
             ],
             [
                 'name.required' => 'Tên không được để trống!',
@@ -68,24 +73,26 @@ class RegisterController extends Controller
                 'password.required' => 'Mật khẩu không được để trống!',
                 'password_confirmation.confirmed' => 'Mật khẩu xác định không khớp',
                 'password_confirmation.required' => 'Nhập lại mật khẩu không được để trống',
-
+                // 'otp.required' => 'Mã OTP không được để trống!',
+                // 'otp.exists' => 'Mã OTP không hợp lệ!',
             ]);
+            return $validator;
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-            return User::create([
-                'id' => (string)Str::uuid(),
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'role' => 'USERS',
-            ]);   
+       
+        return User::create([
+            'id' => (string)Str::uuid(),
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'role' => 'USERS',
+        ]);
     }
 }

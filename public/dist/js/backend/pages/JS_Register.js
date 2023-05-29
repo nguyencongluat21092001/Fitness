@@ -37,7 +37,7 @@ JS_Register.prototype.getFonmPhone = function (oForm) {
  */
 JS_Register.prototype.getOtp = function (oForm) {
     var oForm = 'form#frmSend_Otp';
-    var url = this.urlPath + '/view_OTP';
+    var url = this.urlPath + '/sent_OTP';
     var myClass = this;
     var data = $(oForm).serialize();
     $.ajax({
@@ -46,8 +46,24 @@ JS_Register.prototype.getOtp = function (oForm) {
         //cache: true,
         data: data,
         success: function (arrResult) {
-            // $('#model_otp').html(arrResult);
-            // $('#model_otp').modal('show');
+            if (arrResult['success'] == true) {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 's',
+                    title: arrResult.message,
+                    showConfirmButton: false,
+                    background:'rgb(255 238 67 / 87%)',
+                    timer: 5000
+                  })
+          } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: arrResult.message,
+                showConfirmButton: false,
+                timer: 5000
+              })
+          }
 
         }
     });

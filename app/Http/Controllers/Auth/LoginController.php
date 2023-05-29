@@ -88,8 +88,10 @@ class LoginController extends Controller
     }
     public function logout (Request $request)
     {
-        session_unset();
+        // session_unset();
+        session_start();
         Auth::guard('web')->logout();
+        session_destroy();
         return view('auth.signin');
     }
     public function showLoginForm  (Request $request)
