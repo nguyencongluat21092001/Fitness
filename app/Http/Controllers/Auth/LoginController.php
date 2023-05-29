@@ -46,9 +46,11 @@ class LoginController extends Controller
             $_SESSION["role"] = $user->role;
             $_SESSION["id"]   = $getUsers->id;
             $_SESSION["email"]   = $user->email;
+            $_SESSION["name"]   = $user->name;
             $_SESSION["color_view"] = !empty($getInfo->color_view)?$getInfo->color_view:2;
             // kiem tra quyen nguoi dung
-            if ($user->role == 'ADMIN' || $user->role == 'MANAGE' || $user->role == 'STAFF') {
+            if ($user->role == 'ADMIN' || $user->role == 'MANAGE' || $user->role == 'CV_ADMIN'
+             || $user->role == 'CV_PRO' || $user->role == 'CV_BASIC' || $user->role == 'SALE_ADMIN' || $user->role == 'SALE_BASIC') {
                 // menu sidebar
                 $sideBarConfig = config('SidebarSystem');
                 $sideBar = $this->checkPermision($sideBarConfig , $user->role);

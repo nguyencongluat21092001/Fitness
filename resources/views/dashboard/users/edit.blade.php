@@ -77,14 +77,28 @@
 				<div class="row form-group" id="div_hinhthucgiai">
 					<span class="col-md-3 control-label required">Quyền truy cập</span>
 					<div class="col-md-5">
+					     @if ($_SESSION['role'] == 'ADMIN')
 						<input type="radio" value="ADMIN" name="role" id="role_admin" {{!empty($data['role']) && $data['role'] == 'ADMIN' ? 'checked' : ''}} />
 						<label for="role_admin">Quản trị hệ thống</label> <br>
+						@endif
+						@if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE')
 						<input type="radio" value="MANAGE" name="role" id="role_manage" {{!empty($data['role']) && $data['role'] == 'MANAGE' ? 'checked' : ''}} />
-						<label for="role_manage">Quản lý</label><br>
-						<input type="radio" value="STAFF" name="role" id="role_staff" {{!empty($data['role']) && $data['role'] == 'STAFF' ? 'checked' : ''}} />
-						<label for="role_staff">Nhân viên</label><br>
-						<input type="radio" value="USERS" name="role" id="role_user" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}} />
-						<label for="role_user">Người dùng</label><br>
+						<label for="role_manage">Trợ lý CEO</label><br>
+						@endif
+						@if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE' || $_SESSION['role'] == 'CV_ADMIN')
+						<input type="radio" value="CV_ADMIN" name="role" id="role_cv_admin" {{!empty($data['role']) && $data['role'] == 'CV_ADMIN' ? 'checked' : ''}} />
+						<label for="role_cv_admin">CV - Admin</label><br>
+						<input type="radio" value="CV_PRO" name="role" id="role_cv_pro" {{!empty($data['role']) && $data['role'] == 'CV_PRO' ? 'checked' : ''}} />
+						<label for="role_cv_pro">CV - Pro</label><br>
+						<input type="radio" value="CV_BASIC" name="role" id="role_cv_basic" {{!empty($data['role']) && $data['role'] == 'CV_BASIC' ? 'checked' : ''}} />
+						<label for="role_cv_basic">CV - basic</label><br>
+						@endif
+						@if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE' || $_SESSION['role'] == 'CV_ADMIN' || $_SESSION['role'] == 'SALE_ADMIN')
+						<input type="radio" value="SALE_ADMIN" name="role" id="role_sale_admin" {{!empty($data['role']) && $data['role'] == 'SALE_ADMIN' ? 'checked' : ''}} />
+						<label for="role_sale_admin">Sale - Admin</label><br>
+						<input type="radio" value="SALE_BASIC" name="role" id="role_Sale" {{!empty($data['role']) && $data['role'] == 'SALE_BASIC' ? 'checked' : ''}} />
+						<label for="role_Sale">Sale</label><br>
+						@endif
 					</div>
 					<div class="col-md-4">
 						<label for="">Trạng thái</label><br>

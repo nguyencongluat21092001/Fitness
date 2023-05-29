@@ -36,7 +36,7 @@
     <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
 </head>
-@if ($_SESSION['role'] == 'ADMIN' || $_SESSION['role'] == 'MANAGE' || $_SESSION['role'] == 'STAFF')
+ @if ($_SESSION['role'] != 'USERS') 
     @if ($_SESSION['color_view'] == 1)
         <body class="g-sidenav-show dark-version">
     @else
@@ -147,7 +147,7 @@
                                         <span id="navbarDropdown" class="dropdown-toggle" href="#" role="button"
                                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             <span>
-                                            {{ Auth::user()->name }}
+                                            {{ $_SESSION['name'] }}
                                             </span>
                                         </span>
 
@@ -375,91 +375,6 @@
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
-    {{--
-    <script>
-        var ctx1 = document.getElementById("chart-line").getContext("2d");
-
-        var gradientStroke1 = ctx1.createLinearGradient(0, 230, 0, 50);
-
-        gradientStroke1.addColorStop(1, 'rgba(94, 114, 228, 0.2)');
-        gradientStroke1.addColorStop(0.2, 'rgba(94, 114, 228, 0.0)');
-        gradientStroke1.addColorStop(0, 'rgba(94, 114, 228, 0)');
-        new Chart(ctx1, {
-        type: "line",
-        data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-            datasets: [{
-            label: "Mobile apps",
-            tension: 0.4,
-            borderWidth: 0,
-            pointRadius: 0,
-            borderColor: "#5e72e4",
-            backgroundColor: gradientStroke1,
-            borderWidth: 3,
-            fill: true,
-            data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-            maxBarThickness: 6
-
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-            legend: {
-                display: false,
-            }
-            },
-            interaction: {
-            intersect: false,
-            mode: 'index',
-            },
-            scales: {
-            y: {
-                grid: {
-                drawBorder: false,
-                display: true,
-                drawOnChartArea: true,
-                drawTicks: false,
-                borderDash: [5, 5]
-                },
-                ticks: {
-                display: true,
-                padding: 10,
-                color: '#fbfbfb',
-                font: {
-                    size: 11,
-                    family: "Open Sans",
-                    style: 'normal',
-                    lineHeight: 2
-                },
-                }
-            },
-            x: {
-                grid: {
-                drawBorder: false,
-                display: false,
-                drawOnChartArea: false,
-                drawTicks: false,
-                borderDash: [5, 5]
-                },
-                ticks: {
-                display: true,
-                color: '#ccc',
-                padding: 20,
-                font: {
-                    size: 11,
-                    family: "Open Sans",
-                    style: 'normal',
-                    lineHeight: 2
-                },
-                }
-            },
-            },
-        },
-        });
-    </script>
-    --}}
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -489,6 +404,6 @@
         }, 2000)
     </script>
     @yield('js')
-@endif
+    @endif
 </body>
 </html>
