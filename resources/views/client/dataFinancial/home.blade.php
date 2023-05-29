@@ -61,10 +61,10 @@
         $(document).ready(function($) {
             JS_DataFinancial.loadIndex(baseUrl);
         })
-        var JS_System_Security = new JS_System_Security();
-            $(document).ready(function($) {
-                JS_System_Security.security();
-            })
+        // var JS_System_Security = new JS_System_Security();
+        //     $(document).ready(function($) {
+        //         JS_System_Security.security();
+        //     })
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 @endsection

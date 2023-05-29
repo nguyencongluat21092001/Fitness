@@ -79,20 +79,6 @@ class RecommendedController extends Controller
         return view('dashboard.recommended.recommended.edit', $data);
     }
 
-    /**
-     * Chỉnh sửa thông tin người dùng
-     *
-     * @param Request $request
-     *
-     * @return Array $respone
-     */
-    public function update(Request $request)
-    {
-        $input = $request->input();
-        $respone = $this->recommendedService->updateOrCreateCategory($input);
-        return $respone;
-    }
-
      /**
      * Xóa danh mục
      *

@@ -50,7 +50,28 @@ return [
         'name' => 'BÁO CÁO PHÂN TÍCH',
         'icon' => 'fas fa-hand-holding-usd',
         'role' => false,
-        'child' => false,
+        'child' => [
+            'index' => [
+                'name' => 'Tổng hợp thị trường',
+                'icon' => 'fas fa-search-dollar',
+                'role' => false,
+            ],
+            'session' => [
+                'name' => 'Tổng kết phiên',
+                'icon' => 'fas fa-calendar-alt',
+                'role' => false,
+            ],
+            'industry' => [
+                'name' => 'Phân tích ngành',
+                'icon' => 'fas fa-industry',
+                'role' => false,
+            ],
+            'stock' => [
+                'name' => 'Phân tích cổ phiếu',
+                'icon' => 'fas fa-chart-line',
+                'role' => false,
+            ],
+        ],
     ],
     'library' => [
         'name' => 'THƯ VIỆN ĐẦU TƯ',

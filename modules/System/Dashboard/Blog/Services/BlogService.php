@@ -63,8 +63,8 @@ class BlogService extends Service
                 'code_blog' => $code_blog,
                 'code_category' => $input['code_category'],
                 'status' => isset($input['status']) ? 1 : 0,
-                'created_at' => date("Y/m/d"),
-                'updated_at' => date("Y/m/d")
+                'created_at' => date("Y/m/d H:i:s"),
+                'updated_at' => date("Y/m/d H:i:s")
             ];
             $arrBlogDetails = [
                 'title'=>$input['title'],
@@ -89,8 +89,8 @@ class BlogService extends Service
                             'name'=> $name[1],
                             'name_image'=> $imageValue,
                             'order_image'=> $i,
-                            'created_at' => date("Y/m/d"),
-                            'updated_at' => date("Y/m/d")
+                            'created_at' => date("Y/m/d H:i:s"),
+                            'updated_at' => date("Y/m/d H:i:s")
                         ];
                         $createImage = $this->blogImagesService->create($arrImages);
                         $i++;
@@ -116,8 +116,8 @@ class BlogService extends Service
                             'name'=> $name[1],
                             'name_image'=> $imageValue,
                             'order_image'=> $i,
-                            'created_at' => date("Y/m/d"),
-                            'updated_at' => date("Y/m/d")
+                            'created_at' => date("Y/m/d H:i:s"),
+                            'updated_at' => date("Y/m/d H:i:s")
                         ];
                         $createImage = $this->blogImagesService->create($arrImages);
                         $i++;

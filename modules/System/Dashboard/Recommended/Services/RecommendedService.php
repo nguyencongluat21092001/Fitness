@@ -21,12 +21,18 @@ class RecommendedService extends Service
     }
 
     public function store($input){
+        $price_range = '';
+        foreach($input as $key => $value){
+            if(strpos($key, 'price_range') !== false){
+                $price_range .= ',' . $value;
+            }
+        }
         $arrData = [
             'code_cp' => isset($input['code_cp']) ? $input['code_cp'] : '',
             'code_category' => isset($input['code_category']) ? $input['code_category'] : '',
             'percent_of_assets' => isset($input['percent_of_assets']) ? $input['percent_of_assets'] : '',
             'price' => isset($input['price']) ? $input['price'] : '',
-            'price_range' => isset($input['price_range']) ? $input['price_range'] : '',
+            'price_range' => trim($price_range, ','),
             'current_price' => isset($input['current_price']) ? $input['current_price'] : '',
             'profit_and_loss' => isset($input['profit_and_loss']) ? $input['profit_and_loss'] : '',
             'act' => isset($input['act']) ? $input['act'] : '',
