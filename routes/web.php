@@ -3,6 +3,7 @@
 //Client
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use Modules\Client\Page\About\Controllers\AboutController;
 use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
 use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
@@ -228,6 +229,25 @@ Route::prefix('/client')->group(function () {
             Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
             Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
             Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
+        });
+        Route::prefix('about')->group(function () {
+            // Tra cứu cổ phiếu
+            Route::get('/index', [AboutController::class, 'index']);
+            Route::post('/loadData', [AboutController::class, 'loadData']);
+            Route::post('/fireAntChart', [AboutController::class, 'fireAntChart']);
+            Route::post('/searchDataCP', [AboutController::class, 'searchDataCP']);
+            Route::get('/noteTaFa', [AboutController::class, 'noteTaFa']);
+            // tín hiệu mua
+            Route::get('/signalIndex', [AboutController::class, 'signalIndex']);
+            Route::post('/loadList_signal', [AboutController::class, 'loadList_signal']);
+            // khuyến nghị vip
+            Route::get('/recommendationsIndex', [AboutController::class, 'recommendationsIndex']);
+            Route::post('/loadList_recommendations', [AboutController::class, 'loadList_recommendations']);
+        
+            // Danh mục Fintop
+            Route::get('/categoryFintopIndex', [AboutController::class, 'categoryFintopIndex']);
+            Route::post('/loadList_categoryFintop_vip', [AboutController::class, 'loadList_categoryFintop_vip']);
+            Route::post('/loadList_categoryFintop_basic', [AboutController::class, 'loadList_categoryFintop_basic']);
         });
     // });
     // Thư viện đầu tư

@@ -32,36 +32,46 @@
             <div class="card-body">
                 <table class="table  table-bordered table-striped table-condensed dataTable no-footer">
                     <colgroup>
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
-                        <col width="9%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
+                        <col width="7%">
                     </colgroup>
                     <thead>
                         <tr>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Mã CP</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhóm nghành</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>% Tài sản</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Giá mua</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá mục tiêu</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Giá hiện tại</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Lãi/Lỗ</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Khuyến nghị hành động</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Dừng lỗ</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>% Chốt</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Ghi chú</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>#</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Mã CP</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Nhóm nghành</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>% Tài sản</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Giá mua</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" colspan="3"><b>Vùng giá mục tiêu</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Giá hiện tại</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Lãi/Lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Khuyến nghị hành động</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Dừng lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>% Chốt</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Ghi chú</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>#</b></td>
+                        </tr>
+                        <tr>
+                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 1</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 2</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 3</b></td>
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $price_range = isset($datas) ? explode(',', trim($datas->price_range, ',')) : '';
+                        @endphp
                         <tr>
                             <td style="vertical-align: middle;" align="center"><input id="code_cp" name="code_cp" type="text" value="{{isset($datas->code_cp)?$datas->code_cp:''}}" class="form-control"></td>
                             <td style="vertical-align: middle;">
@@ -75,7 +85,9 @@
                             </td>
                             <td style="vertical-align: middle;" align="center"><input id="percent_of_assets" name="percent_of_assets" type="text" value="{{isset($datas->percent_of_assets)?$datas->percent_of_assets:''}}" class="form-control"></td>
                             <td style="vertical-align: middle;" align="center"><input id="price" name="price" type="text" value="{{isset($datas->price)?$datas->price:''}}" class="form-control"></td>
-                            <td style="vertical-align: middle;" align="center"><input id="price_range" name="price_range" type="text" value="{{isset($datas->price_range)?$datas->price_range:''}}" class="form-control"></td>
+                            @for($i = 0; $i < 3; $i++)
+                            <td style="vertical-align: middle;" align="center"><input id="price_range_{{$i}}" name="price_range_{{$i}}" type="text" value="{{ isset($price_range[$i]) ? $price_range[$i] : '' }}" class="form-control"></td>
+                            @endfor
                             <td style="vertical-align: middle;" align="center"><input id="current_price" name="current_price" type="text" value="{{isset($datas->current_price)?$datas->current_price:''}}" class="form-control"></td>
                             <td style="vertical-align: middle;" align="center"><input id="profit_and_loss" name="profit_and_loss" type="text" value="{{isset($datas->profit_and_loss)?$datas->profit_and_loss:''}}" class="form-control"></td>
                             <td style="vertical-align: middle;" align="center"><input id="act" name="act" type="text" value="{{isset($datas->act)?$datas->act:''}}" class="form-control"></td>
