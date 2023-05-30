@@ -141,6 +141,9 @@ class UserController extends Controller
     public function delete(Request $request)
     {
         $input = $request->all();
+        if($_SESSION['role'] != 'ADMIN' && $_SESSION['role'] != 'MANAGE' && $_SESSION['role'] != 'CV_ADMIN'){
+            return array('success' => false, 'message' => 'Rất tiếc! bạn ko có quyền. Vui lòng liên hệ hỗ trợ FinTop.');
+        }
         $listids = trim($input['listitem'], ",");
         $ids = explode(",", $listids);
         foreach ($ids as $id) {
