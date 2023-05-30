@@ -1,7 +1,6 @@
 @extends('client.layouts.index')
 @section('body-client')
 <style>
-    
 </style>
 <div class="banner-wrapper">
     <section class="container">
@@ -12,7 +11,7 @@
                 <div class="home_index_vnindex pt-1 pb-2" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- Chú giải xếp hạng TA/FA -->
                     <div class="home_index_child" style="background:#ffffffc7 !important">
-                        <div class="col-lg-12" style="padding:10px;">
+                        <div class="col-lg-9" style="padding:10px;">
                             <h class=" py-2"><i class="fas fa-search"></i> <span style="font-size:18px;font-family: auto;">CẨM NANG CHO NHÀ ĐẦU TƯ	</span></h>
                             <div class="row form-group pt-2" style="text-align: center;">
                                 <div class="col-md-5">
@@ -36,6 +35,35 @@
                             <div class="table-responsive py-2 pt-3">
                                 <!-- Màn hình danh sách -->
                                 <div id="table-container-library"></div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3" style="padding:10px;">
+                            <h class=" py-2"> <span style="font-size:18px;font-family: auto;">	</span></h>
+                            <div class="row form-group pt-2" style="text-align: center;">
+                                <div class="col-md-12">
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-book-open"></i> Cẩm nang cho nhà đầu tư</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-chart-line"></i> Chứng khoán thế giới</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-globe-europe"></i> Chỉ số hàng hóa</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-coins"></i> Coins</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fab fa-viacoin"></i> Forex</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-money-check"></i> Tin kinh tế</button>
+                                    </div>
+                                    <div style="padding:2%;">
+                                         <button style="width:100%;text-align: left" id="txt_search" name="txt_search" type="button" class="btn btn-light"><i class="fas fa-globe-asia"></i> Tin thế giới</button>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
