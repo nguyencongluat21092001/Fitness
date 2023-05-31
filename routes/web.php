@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 use Modules\Client\Page\About\Controllers\AboutController;
 use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
+use Modules\Client\Page\Des\Controllers\DesController;
 use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
@@ -233,21 +234,23 @@ Route::prefix('/client')->group(function () {
         Route::prefix('about')->group(function () {
             // Tra cứu cổ phiếu
             Route::get('/index', [AboutController::class, 'index']);
-            Route::post('/loadData', [AboutController::class, 'loadData']);
-            Route::post('/fireAntChart', [AboutController::class, 'fireAntChart']);
-            Route::post('/searchDataCP', [AboutController::class, 'searchDataCP']);
-            Route::get('/noteTaFa', [AboutController::class, 'noteTaFa']);
-            // tín hiệu mua
-            Route::get('/signalIndex', [AboutController::class, 'signalIndex']);
-            Route::post('/loadList_signal', [AboutController::class, 'loadList_signal']);
-            // khuyến nghị vip
-            Route::get('/recommendationsIndex', [AboutController::class, 'recommendationsIndex']);
-            Route::post('/loadList_recommendations', [AboutController::class, 'loadList_recommendations']);
-        
-            // Danh mục Fintop
-            Route::get('/categoryFintopIndex', [AboutController::class, 'categoryFintopIndex']);
-            Route::post('/loadList_categoryFintop_vip', [AboutController::class, 'loadList_categoryFintop_vip']);
-            Route::post('/loadList_categoryFintop_basic', [AboutController::class, 'loadList_categoryFintop_basic']);
+            Route::get('/loadListTHTT', [AboutController::class, 'loadListTHTT']);
+            Route::prefix('/session')->group(function(){
+                Route::get('', [AboutController::class, 'session']);
+                Route::get('/loadListTKP', [AboutController::class, 'loadListTKP']);
+            });
+            Route::prefix('/industry')->group(function(){
+                Route::get('', [AboutController::class, 'industry']);
+                Route::get('/loadListPTN', [AboutController::class, 'loadListPTN']);
+            });
+            Route::prefix('/stock')->group(function(){
+                Route::get('', [AboutController::class, 'stock']);
+                Route::get('/loadListPTCP', [AboutController::class, 'loadListPTCP']);
+            });
+            Route::post('/reader', [AboutController::class, 'reader']);
+        });
+        Route::prefix('des')->group(function () {
+            Route::get('index', [DesController::class, 'index']);
         });
     // });
     // Thư viện đầu tư

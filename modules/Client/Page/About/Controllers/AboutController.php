@@ -4,8 +4,10 @@ namespace Modules\Client\Page\About\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\System\Dashboard\Blog\Services\BlogDetailService;
+use Modules\System\Dashboard\Blog\Services\BlogImagesService;
+use Modules\System\Dashboard\Blog\Services\BlogService;
 use Modules\System\Dashboard\Category\Services\CategoryService;
-use Modules\System\Dashboard\Category\Services\CateService;
 
 /**
  * cẩm nang
@@ -16,9 +18,15 @@ class AboutController extends Controller
 {
 
     public function __construct(
-        CategoryService $categoryService
+        CategoryService $categoryService,
+        BlogService $blogService,
+        BlogDetailService $blogDetailService,
+        BlogImagesService $blogImagesService
     ){
         $this->categoryService = $categoryService;
+        $this->blogService = $blogService;
+        $this->blogDetailService = $blogDetailService;
+        $this->blogImagesService = $blogImagesService;
     }
 
     /**
@@ -35,174 +43,120 @@ class AboutController extends Controller
         return view('client.about.home',$data);
     }
     /**
-     * load màn hình danh sách
+     * Danh sách Tổng hợp thị trường
      *
      * @param Request $request
      *
      * @return json $return
      */
-    public function loadData(Request $request)
+    public function loadListTHTT(Request $request)
     { 
         $arrInput = $request->input();
         $data = array();
         $param = $arrInput;
-        $objResult = $this->aboutService->filter($param);
+        $param['sort'] = 'created_at';
+        $objResult = $this->blogService->filter($param);
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("client.about.dataFintop", $data)->render();
+        return view("client.about.loadlistTHTT", $data)->render();
     }
-     /**
-     * tra cứu cổ phiếu
+    /**
+     * khởi tạo dữ liệu
+     *
+     * @return view
+     */
+    public function session(Request $request)
+    {
+        return view('client.about.session');
+    }
+    /**
+     * Danh sách Tổng kết phiên
      *
      * @param Request $request
      *
      * @return json $return
      */
-    public function searchDataCP(Request $request)
+    public function loadListTKP(Request $request)
     { 
         $arrInput = $request->input();
-        $result = $this->aboutService->where('code_cp',$arrInput['code_cp'])->first();
-        if(!isset($result)){
-            $data=[
-                'status' => 2,
-                'message' => 'Không tồn tại mã cổ phiếu '.$arrInput['code_cp'].'!',
-            ];
-            return response()->json($data);
-        }
-        $getCategory = $this->categoryService->where('code_category',$result->code_category)->first();
-        $data = [
-            'id'=>$arrInput['id'],
-            'code_cp'=>$result->code_cp,
-            'exchange'=>$result->exchange,
-            'code_category'=>isset($getCategory->name_category)?$getCategory->name_category:'',
-            'ratings_TA'=>$result->ratings_TA,
-            'identify_trend'=>$result->identify_trend,
-            'act'=>$result->act,
-            'trading_price_range'=>$result->trading_price_range,
-            'stop_loss_price_zone'=>$result->stop_loss_price_zone,
-            'ratings_FA'=>$result->ratings_FA,
-            'url_link'=>$result->url_link,
-            'status'=>$result->status,
-            'created_at'=>$result->created_at,
-            'updated_at'=>$result->updated_at
-        ];
-        return response()->json($data);
+        $data = array();
+        $param = $arrInput;
+        $param['sort'] = 'created_at';
+        $objResult = $this->blogService->filter($param);
+        $data['datas'] = $objResult;
+        $data['param'] = $param;
+        $data['pagination'] = $data['datas']->links('pagination.default');
+        return view("client.about.loadlistTKP", $data)->render();
     }
     /**
-     * them thông tin
-     *
-     * @param Request $request
+     * khởi tạo dữ liệu
      *
      * @return view
      */
-    public function fireAntChart (Request $request)
+    public function industry(Request $request)
     {
-        $input = $request->input();
-        return view('client.about.fireAntChart');
+        return view('client.about.industry');
     }
-     /**
-     * hiển thị ghi chú
+    /**
+     * Danh sách Tổng kết phiên
      *
      * @param Request $request
      *
-     * @return view
+     * @return json $return
      */
-    public function noteTaFa (Request $request)
-    {
-        $input = $request->input();
-        return view('client.about.noteTaFa');
-    }
-     /**
-     * index tín hiệu mua
-     *
-     * @param Request $request
-     *
-     * @return view
-     */
-    public function signalIndex (Request $request)
-    {
-        return view('client.about.signal');
-    }
-     /**
-     * danh sách tín hiệu mua
-     *
-     * @param Request $request
-     *
-     * @return view
-     */
-    public function loadList_signal (Request $request)
-    {
+    public function loadListPTN(Request $request)
+    { 
         $arrInput = $request->input();
-        $result['datas'] = $this->aboutService->where('status','1')->get();
-        return view('client.about.loadlist-signal',$result);
+        $data = array();
+        $param = $arrInput;
+        $param['sort'] = 'created_at';
+        $objResult = $this->blogService->filter($param);
+        $data['datas'] = $objResult;
+        $data['param'] = $param;
+        $data['pagination'] = $data['datas']->links('pagination.default');
+        return view("client.about.loadListPTN", $data)->render();
     }
-     /**
-     * Khuyến nghị vip
-     *
-     * @param Request $request
+    /**
+     * khởi tạo dữ liệu
      *
      * @return view
      */
-    public function recommendationsIndex (Request $request)
+    public function stock(Request $request)
     {
-        return view('client.about.recommendations.index');
+        return view('client.about.stock');
     }
-     /**
-     * list khuyến nghị vip
+    /**
+     * Danh sách Tổng kết phiên
      *
      * @param Request $request
      *
-     * @return view
+     * @return json $return
      */
-    public function loadList_recommendations (Request $request)
-    {
+    public function loadListPTCP(Request $request)
+    { 
         $arrInput = $request->input();
-        if(isset($arrInput['type']) && $arrInput['type'] == 'box'){
-            $result['datas'] = $this->SignalService->where('status','1')->orderBy('created_at','desc')->take(3)->get();
-            return view('client.layouts.loadListBox',$result);
-        }else{
-            $result['datas'] = $this->SignalService->where('status','1')->get();
-            return view('client.about.recommendations.loadlist',$result);
-        }
+        $data = array();
+        $param = $arrInput;
+        $param['sort'] = 'created_at';
+        $objResult = $this->blogService->filter($param);
+        $data['datas'] = $objResult;
+        $data['param'] = $param;
+        $data['pagination'] = $data['datas']->links('pagination.default');
+        return view("client.about.loadListPTCP", $data)->render();
     }
-
-      /**
-     * Danh mục Fintop
-     *
-     * @param Request $request
-     *
-     * @return view
+    /**
+     * Đọc bài viết
      */
-    public function categoryFintopIndex (Request $request)
+    public function reader(Request $request)
     {
-        return view('client.about.categoryfintop.index');
-    }
-     /**
-     * list Danh mục FinTop vip
-     *
-     * @param Request $request
-     *
-     * @return view
-     */
-    public function loadList_categoryFintop_vip (Request $request)
-    {
-        $arrInput = $request->input();
-        $result['datas'] = $this->recommendedService->where('status','!=','')->get();
-        return view('client.about.categoryfintop.loadlist_vip',$result);
-    }
-     /**
-     * list Danh mục FinTop basic
-     *
-     * @param Request $request
-     *
-     * @return view
-     */
-    public function loadList_categoryFintop_basic (Request $request)
-    {
-        $arrInput = $request->input();
-        $result['datas'] = $this->effectiveService->where('status','!=','')->get();
-        return view('client.about.categoryfintop.loadlist',$result);
+        $blog = $this->blogService->where('id', $request->id)->first();
+        $blogDetail = $this->blogDetailService->where('code_blog', $blog->code_blog)->first();
+        $blogImage = $this->blogImagesService->where('code_blog', $blog->code_blog)->first();
+        $data['datas']['blog'] = $blog;
+        $data['datas']['blogDetail'] = $blogDetail;
+        $data['datas']['blogImage'] = $blogImage;
+        return view("client.about.reader", $data)->render();
     }
     
 }

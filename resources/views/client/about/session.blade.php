@@ -79,8 +79,26 @@
   }
 </style>
 
+<!-- top cổ phiếu biến động -->
+<section class="container">
+  <div class="table-responsive">
+    <!-- Màn hình danh sách top chỉ số tài chính-->
+    <div id="table-container-loadListTop"></div>
+  </div>
+</section>
 <!-- Start Banner Hero -->
 <div class="banner-wrapper">
+  <div class="table-responsive">
+    <!-- Màn hình danh sách top chỉ số tài chính-->
+    <div id="table-container-loadListTop"></div>
+  </div>
+  <!-- top cổ phiếu biến động -->
+  <section class="container">
+    <div class="table-responsive">
+      <!-- Màn hình danh sách top chỉ số tài chính-->
+      <div id="table-container-loadListTop"></div>
+    </div>
+  </section>
   <!-- tra cứu cổ phiếu -->
   <section class="container" style="background:#ffffff8a">
     <div class="pt-3 pb-3 d-lg-flex gx-5">
@@ -101,7 +119,7 @@
 <script src='../assets/js/jquery.js'></script>
 <script type="text/javascript">
   var baseUrl = "{{ url('') }}";
-  var JS_About = new JS_About(baseUrl, 'client', 'about');
+  var JS_About = new JS_About(baseUrl, 'client/about', 'session');
   $(document).ready(function($) {
     JS_About.loadIndex(baseUrl);
   })

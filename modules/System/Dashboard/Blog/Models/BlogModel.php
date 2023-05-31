@@ -11,6 +11,7 @@ class BlogModel extends Model
     protected $table = 'blogs';
     public $incrementing = false;
     public $timestamps = false;
+    public $sortable = ['created_at'];
 
     protected $fillable = [
         'id',
