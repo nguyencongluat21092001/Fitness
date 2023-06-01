@@ -181,7 +181,7 @@
                         <div class="col-md-12" >
                             <h2 style="border-radius:5px" class="h5 py-2">Biểu đồ fireant</h2>
                             <div class="row form-group" id="div_hinhthucgiai">
-                                <label class="col-md-2 control-label required">Nguồn theo: <a href="https://fireant.vn/dashboard"></i>
+                                <label class="col-md-2 control-label required">Nguồn theo: <a href="https://fireant.vn/charts"></i>
                                         <div class="animate-charcter">
                                             FireAnt
                                         </div>

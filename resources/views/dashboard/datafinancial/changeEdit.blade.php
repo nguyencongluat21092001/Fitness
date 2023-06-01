@@ -17,19 +17,37 @@
         transform: none;
     }
 </style>
-<form id="frmAdd" role="form" action="" method="POST" enctype="multipart/form-data">
+
+<form id="frmAdd" role="form" action="" method="POST" enctype="multipart/form-data" >
     @csrf
     <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
     <input type="hidden" name="id" id="id" value="{{isset($datas->id)?$datas->id:''}}">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content card">
             <div class="modal-header">
-                <h5 class="modal-title">Cập nhật cổ phiếu</h5>
+                <h5 class="modal-title">Cập nhật cổ phiếu </h5>
+                <span>Nguồn theo: fireant</span>
                 <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
                     X
                 </button>
             </div>
             <div class="card-body">
+            <section class="content-wrapper">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row form-group">
+                                <div class="col-lg-12" style="padding:2px;">
+                                    <!-- <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;" > Biểu đồ</span> </h> <br> -->
+                                    <!-- <p>Nguồn theo: fireant</p> -->
+                                    <iframe style="width:100%" height="420" src="https://fireant.vn/charts" 
+                                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                        allowfullscreen>
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <table class="table  table-bordered table-striped table-condensed dataTable no-footer">
                     <thead>
                         <tr>

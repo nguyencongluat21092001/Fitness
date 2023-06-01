@@ -13,10 +13,10 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row form-group">
-                                <div class="col-lg-12" style="padding:10px;">
-                                    <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;" > Biểu đồ</span> </h> <br>
+                                <div class="col-lg-12" style="padding:2px;">
+                                    <!-- <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;" > Biểu đồ</span> </h> <br> -->
                                     <p>Nguồn theo: fireant</p>
-                                    <iframe style="width:100%" height="620" src="https://fireant.vn/dashboard" 
+                                    <iframe style="width:100%" height="420" src="https://fireant.vn/charts" 
                                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                         allowfullscreen>
                                     </iframe>

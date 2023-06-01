@@ -282,4 +282,16 @@ class UserController extends Controller
             return $data;
         }
     }
+      /**
+     * hiển thị modal đổi mật khẩu
+     *
+     * @param Request $request
+     *
+     * @return view
+     */
+    public function registerIntroduce(Request $request)
+    {
+        $input = $request->all();
+        return view('auth.register');
+    }
 }
