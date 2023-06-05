@@ -34,7 +34,6 @@ class InforController extends Controller
      */
     public function index(Request $request)
     {
-        dd(Auth::user());
         $users = $this->userService->where('id', $_SESSION['id'])->first();
         $user_infor = $this->userInfoService->where('user_id', $_SESSION['id'])->first();
         $users['user_infor'] = $user_infor;

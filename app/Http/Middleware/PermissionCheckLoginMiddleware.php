@@ -18,7 +18,7 @@ class PermissionCheckLoginMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        session_start() ;
+        // session_start() ;
         if(Auth::check() && ($_SESSION["role"] == 'ADMIN' || $_SESSION["role"] == 'USERS')){
             $PermissionLogin = PermissionLoginModel::where('email',$_SESSION["email"])->first();
             if(isset($PermissionLogin) && ($_SESSION['token'] == $PermissionLogin->token)){
