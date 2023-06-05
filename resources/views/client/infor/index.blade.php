@@ -98,11 +98,17 @@
                             <div class="col-md-4">
                                 <div class="card card-profile">
                                     <!-- <img src="../assets/img/bg-profile.jpg" alt="Image placeholder" class="card-img-top"> -->
-                                    <div class="row justify-content-center">
+                                    <div class=" justify-content-center" style="--bs-gutter-x: 1.5rem;
+                                                                                    --bs-gutter-y: 0;
+                                                                                    display: flex;
+                                                                                    flex-wrap: wrap;
+                                                                                    margin-top: calc(var(--bs-gutter-y) * -1);
+                                                                                    margin-right: none !important;
+                                                                                    margin-left: calc(var(--bs-gutter-x)/ -2);">
                                     <div class="col-4 col-lg-4 order-lg-2">
                                         <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                         <a href="javascript:;">
-                                            <img src="{{url('file-image/avatar')}}/{{$datas->avatar}}" class="rounded-circle img-fluid border border-2 border-white">
+                                            <img src="{{url('file-image/avatar')}}/{{$datas->avatar}}" style="height: 150px;width: 150px;object-fit: cover;border-radius:50%">
                                         </a>
                                         </div>
                                     </div>
@@ -136,13 +142,16 @@
                                     </div>
                                     <div class="text-center mt-4">
                                         <h5>
-                                        Mark Davis<span class="font-weight-light">, 35</span>
+                                        {{isset($datas->name) ? $datas->name : ''}}
                                         </h5>
-                                        <div class="h6 font-weight-300">
-                                        <i class="ni location_pin mr-2"></i>Bucharest, Romania
+                                        <div>
+                                        <i class="ni location_pin mr-2"></i>{{isset($datas->phone) ? $datas->phone : ''}}
                                         </div>
                                         <div>
-                                        <i class="ni education_hat mr-2"></i>University of Computer Science
+                                        <i class="ni location_pin mr-2"></i>{{isset($datas->email) ? $datas->email : ''}}
+                                        </div>
+                                        <div class="h6 font-weight-300">
+                                        <i class="ni location_pin mr-2"></i>{{isset($datas->address) ? $datas->address : ''}}
                                         </div>
                                     </div>
                                     </div>

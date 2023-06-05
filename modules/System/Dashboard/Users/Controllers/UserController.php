@@ -292,6 +292,13 @@ class UserController extends Controller
     public function registerIntroduce(Request $request)
     {
         $input = $request->all();
-        return view('auth.register');
+        $checkUser = $this->userService->where('id', $input['user_introduce'])->first();
+        if(!empty($checkUser)){
+            $data['user_introduce'] = $input['user_introduce'];
+            $data['user_introduce_name'] = $checkUser['name'];
+            return view('auth.register',compact('data'));
+        }else{
+            return view('dashboard.home.404_registerUserCode');
+        }
     }
 }

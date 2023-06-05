@@ -51,7 +51,7 @@ class BlogService extends Service
             if($input['id'] != ''){
                 $blog = $this->blogRepository->where('id',$input['id'])->first();
                 $image = $this->blogImagesService->where('code_blog',$blog['code_blog'])->first();
-                $image_old = $image->name_image;
+                $image_old = !empty($image->name_image)?$image->name_image:'';
                 $code_blog = $blog['code_blog'];
             }
             if(isset($file) && $file != []){

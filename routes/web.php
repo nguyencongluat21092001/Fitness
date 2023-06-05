@@ -60,8 +60,8 @@ Route::get('/login', [LoginController::class, 'logout'])->name('login');
 Route::get('/system/login', [LoginController::class, 'logout'])->name('fromLogin');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
-
-Route::get('/register/introduce/{id?}', [UserController::class, 'registerIntroduce']);
+Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
+Route::get('/register', [RegisterController::class, 'registerIntroduce']);
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware('checkloginAdmin')->group(function () {
