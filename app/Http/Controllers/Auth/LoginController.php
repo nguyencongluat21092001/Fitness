@@ -39,13 +39,13 @@ class LoginController extends Controller
             $data['password'] = "Mật khẩu không được để trống";
             return view('auth.signin',compact('data'));
         }
-        if (Auth::guard('web')->attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             $user = Auth::user();
-            $getUsers = $this->userService->where('email',$user->email)->first();
-            $getInfo = $this->userInfoService->where('user_id',$user->id)->first();
+            $getUsers = $this->userService->where('email',$email)->first();
+            $getInfo = $this->userInfoService->where('user_id',$getUsers->id)->first();
             $_SESSION["role"] = $user->role;
             $_SESSION["id"]   = $getUsers->id;
-            $_SESSION["email"]   = $user->email;
+            $_SESSION["email"]   = $email;
             $_SESSION["name"]   = $user->name;
             $_SESSION["color_view"] = !empty($getInfo->color_view)?$getInfo->color_view:2;
             // kiem tra quyen nguoi dung
@@ -91,7 +91,6 @@ class LoginController extends Controller
     public function logout (Request $request)
     {
         // session_unset();
-        session_start();
         Auth::guard('web')->logout();
         Auth::logout();
         $request->session()->invalidate();
