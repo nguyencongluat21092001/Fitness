@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use DB;
 use Modules\System\Dashboard\Users\Services\UserInfoService;
+use Modules\System\Dashboard\Users\Services\UserService;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * thông tinnguowif dùng
@@ -18,8 +20,10 @@ class InforController extends Controller
 {
 
     public function __construct(
+        UserService $userService,
         UserInfoService $userInfoService
     ){
+        $this->userService = $userService;
         $this->userInfoService = $userInfoService;
     }
 
@@ -30,8 +34,9 @@ class InforController extends Controller
      */
     public function index(Request $request)
     {
-        $users = \Auth::user();
-        $user_infor = $this->userInfoService->where('user_id', $users->id)->first();
+        dd(Auth::user());
+        $users = $this->userService->where('id', $_SESSION['id'])->first();
+        $user_infor = $this->userInfoService->where('user_id', $_SESSION['id'])->first();
         $users['user_infor'] = $user_infor;
         $data['datas'] = $users;
         return view('client.infor.index', $data);

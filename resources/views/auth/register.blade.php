@@ -19,12 +19,20 @@
             <div class="col-md-7">
                 <div class="card" style="background:#182d51b0;">
                     <div class="card-header">
-                        <h4>Đăng ký</h4>
+                        <h4>Đăng ký tài khoản
+                            @if(isset($data['user_introduce']))
+                            qua gới thiệu từ nhân viên: 
+                            @endif
+                            @if(isset($data['user_introduce_name']))
+                            {{$data['user_introduce_name']}}
+                            @endif
+                        </h4>
                     </div>
                     <div class="card-body">
                     <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" name="user_introduce" value="{{isset($data['user_introduce']) ? $data['user_introduce'] : ''}}">
                         <div class="row {{!$errors->has('name') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
                                 <input placeholder="Nhập tên..." id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>                    
@@ -69,6 +77,7 @@
                                 </div>
                             </div>
                             @error('otp') <span style="color: red">{{$message}}</span> @enderror
+                            @error('user_introduce') <span style="color: red">{{$message}}</span> @enderror
                         <!-- </div> -->
                         <div class="row mb-0">
                             <div class="col-md-12 ">
@@ -84,6 +93,7 @@
             </div>
         </div>
     </div>
+  <link rel="stylesheet" href="../assets/css/sweetalert2.min.css"/>
     <div class="modal" id="model_otp" style="" role="dialog"></div>
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Register.js') }}"></script>
     <script src='../assets/js/jquery.js'></script>

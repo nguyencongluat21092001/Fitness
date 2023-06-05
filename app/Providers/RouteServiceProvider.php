@@ -18,7 +18,7 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     // public const HOME = '/system/dashboard';
-    public const HOME = '/';
+    public const HOME = '/client/datafinancial/index';
 
 
     /**
@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        session_start();
         $this->configureRateLimiting();
 
         $this->routes(function () {

@@ -13,6 +13,10 @@ use Modules\System\Dashboard\Users\Models\UserModel;
 use Modules\System\Dashboard\Users\Models\UserInfoModel;
 use Illuminate\Support\Facades\Auth;
 use Str;
+use Modules\System\Dashboard\Users\Services\UserService;
+use Modules\System\Dashboard\PermissionLogin\Models\PermissionLoginModel;
+use Modules\Base\Library;
+
 class RegisterController extends Controller
 {
     /*
@@ -40,8 +44,11 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(
+        UserService $userService
+    )
     {
+        $this->userService = $userService;
         $this->middleware('guest');
     }
 
@@ -85,14 +92,48 @@ class RegisterController extends Controller
      * @param  array  $data
      */
     protected function create(array $data)
-    {
-       
-        return User::create([
-            'id' => (string)Str::uuid(),
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'role' => 'USERS',
-        ]);
+    { 
+            $createUser = User::create([
+                'id' => (string)Str::uuid(),
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'user_introduce' => !empty($data['user_introduce'])?$data['user_introduce']:'',
+                'password' => Hash::make($data['password']),
+                'role' => 'USERS',
+            ]);
+            Auth::guard('web')->attempt(['email' => $data['email'], 'password' => $data['password']]);
+            $user = Auth::user();
+
+            $getUsers = $this->userService->where('email',$user->email)->first();
+            $_SESSION["role"] = $user->role;
+            $_SESSION["id"]   = $getUsers->id;
+            $_SESSION["email"]   = $user->email;
+            $_SESSION["name"]   = $user->name;
+            // kiem tra quyen nguoi dung
+            $checkPrLogin = $this->permission_login($data['email']);
+            Auth::guard('web')->login($user);
+            // return redirect('client/datafinancial/index');
+        return $createUser;
+    }
+     // check đăng nhập lưu token đăng nhập 1 nơi
+     public function permission_login($email){
+        $check = PermissionLoginModel::where('email',$email)->first();
+        $random = Library::_get_randon_number();
+        $token = date("Y") . '_' . date("m") . '_' . date("d") . "_" . date("H") . date("i") . date("u") .$_SESSION["id"]. $random;
+        $arr = [
+            'email'=> $email,
+            'user_id'=> $_SESSION["id"],
+            'token'=> $token,
+            'ip'=> '1',
+            'created_at'=> date("Y/m/d H:i:s"),
+            'updated_at'=> date("Y/m/d H:i:s"),
+        ];
+        if(isset($check->email)){
+            PermissionLoginModel::where('email',$email)->update($arr);
+        }else{
+            $arr['id'] = (string)Str::uuid();
+            PermissionLoginModel::create($arr);
+        }
+        $_SESSION["token"] = $token;
     }
 }

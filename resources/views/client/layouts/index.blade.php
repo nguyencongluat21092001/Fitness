@@ -134,7 +134,7 @@
                                 data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <img  src="{{url('/file-image/avatar/')}}/{{ Auth::user()->avatar }}" alt="Image" style="border-radius:50%;height: 30px;width: 30px;object-fit: cover;">
                                 <span style="color:white">
-                                {{ Auth::user()->name }}
+                                {{ isset($_SESSION['name'])?$_SESSION['name']:'' }}
                                 </span>
                             </span>
                             <div  class="dropdown-menu dropdown-menu-end"  aria-labelledby="navbarDropdown">
