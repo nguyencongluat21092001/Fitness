@@ -26,6 +26,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        session_start();
         $this->configureRateLimiting();
 
         $this->routes(function () {

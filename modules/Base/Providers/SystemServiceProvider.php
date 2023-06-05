@@ -40,7 +40,7 @@ class SystemServiceProvider extends ServiceProvider
 
     public function FunctionSystem($layout, $url)
     {
-        session_start();
+        // session_start();
 
 
         // $this->namespace = 'Modules\\' . $layout . '\Controllers';
