@@ -93,6 +93,9 @@ class LoginController extends Controller
         // session_unset();
         session_start();
         Auth::guard('web')->logout();
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         session_destroy();
         return view('auth.signin');
     }
