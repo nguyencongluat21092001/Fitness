@@ -12,6 +12,7 @@ class DataFinancialModel extends Model
     protected $table = 'data_financial';
     public $incrementing = false;
     public $timestamps = false;
+    public $sortable = ['code_category', 'order'];
 
     protected $fillable = [
         'id',
@@ -42,11 +43,15 @@ class DataFinancialModel extends Model
                 });
                 return $query;
             case 'code_category':
-                $query->where('code_category', $value);
-                return $query;
+                if(!empty($value)){
+                    $query->where('code_category', $value);
+                    return $query;
+                }
             case 'act':
-                $query->where('act', $value);
-                return $query;
+                if(!empty($value)){
+                    $query->where('act', $value);
+                    return $query;
+                }
             default:
                 return $query;
         }
