@@ -214,6 +214,7 @@ Route::prefix('/client')->group(function () {
     Route::get('introduce/index', [IntroduceController::class, 'index']);
     // Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('infor/index', [InforController::class, 'index']);
+        Route::post('infor/update', [InforController::class, 'update']);
         // Route::middleware('checkloginDatafinancial')->group(function () {
             Route::prefix('datafinancial')->group(function () {
                 // Tra cứu cổ phiếu
