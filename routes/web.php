@@ -79,7 +79,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/updatePass', [UserController::class,'updatePass'])->name('updatePass');
         });
          //dữ liệu chứng khoán
-         Route::prefix('/system/datafinancial')->group(function () {
+        Route::prefix('/system/datafinancial')->group(function () {
             //Handbook
             Route::get('/index', [DataFinancialController::class, 'index']);
             Route::get('/loadList',[DataFinancialController::class,'loadList']);
@@ -214,25 +214,27 @@ Route::prefix('/client')->group(function () {
     Route::get('introduce/index', [IntroduceController::class, 'index']);
     // Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('infor/index', [InforController::class, 'index']);
-        Route::prefix('datafinancial')->group(function () {
-            // Tra cứu cổ phiếu
-            Route::get('/index', [ClientDataFinancialController::class, 'index']);
-            Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
-            Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
-            Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
-            Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
-            // tín hiệu mua
-            Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
-            Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
-            // khuyến nghị vip
-            Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
-            Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
-        
-            // Danh mục Fintop
-            Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
-            Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
-            Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
-        });
+        // Route::middleware('checkloginDatafinancial')->group(function () {
+            Route::prefix('datafinancial')->group(function () {
+                // Tra cứu cổ phiếu
+                Route::get('/index', [ClientDataFinancialController::class, 'index']);
+                Route::post('/loadData', [ClientDataFinancialController::class, 'loadData']);
+                Route::post('/fireAntChart', [ClientDataFinancialController::class, 'fireAntChart']);
+                Route::post('/searchDataCP', [ClientDataFinancialController::class, 'searchDataCP']);
+                Route::get('/noteTaFa', [ClientDataFinancialController::class, 'noteTaFa']);
+                // tín hiệu mua
+                Route::get('/signalIndex', [ClientDataFinancialController::class, 'signalIndex']);
+                Route::post('/loadList_signal', [ClientDataFinancialController::class, 'loadList_signal']);
+                // khuyến nghị vip
+                Route::get('/recommendationsIndex', [ClientDataFinancialController::class, 'recommendationsIndex']);
+                Route::post('/loadList_recommendations', [ClientDataFinancialController::class, 'loadList_recommendations']);
+            
+                // Danh mục Fintop
+                Route::get('/categoryFintopIndex', [ClientDataFinancialController::class, 'categoryFintopIndex']);
+                Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
+                Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
+            });
+        // });
         Route::prefix('about')->group(function () {
             // Tra cứu cổ phiếu
             Route::get('/index', [AboutController::class, 'index']);

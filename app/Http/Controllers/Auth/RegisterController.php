@@ -101,18 +101,16 @@ class RegisterController extends Controller
                 'password' => Hash::make($data['password']),
                 'role' => 'USERS',
             ]);
-            Auth::guard('web')->attempt(['email' => $data['email'], 'password' => $data['password']]);
+            Auth::attempt(['email' => $data['email'], 'password' => $data['password']]);
             $user = Auth::user();
-
-            $getUsers = $this->userService->where('email',$user->email)->first();
-            $_SESSION["role"] = $user->role;
+            $getUsers = $this->userService->where('email',$data['email'])->first();
+            $_SESSION["role"] = $getUsers->role;
             $_SESSION["id"]   = $getUsers->id;
-            $_SESSION["email"]   = $user->email;
-            $_SESSION["name"]   = $user->name;
+            $_SESSION["email"]   = $data['email'];
+            $_SESSION["name"]   = $getUsers->name;
             // kiem tra quyen nguoi dung
             $checkPrLogin = $this->permission_login($data['email']);
-            Auth::guard('web')->login($user);
-            // return redirect('client/datafinancial/index');
+            Auth::login($user);
         return $createUser;
     }
      // check đăng nhập lưu token đăng nhập 1 nơi

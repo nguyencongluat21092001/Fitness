@@ -223,12 +223,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 
 
-<script type="text/javascript" src="{{ URL::asset('dist/js/backend/pages/JS_System_Security.js') }}"></script>
+<!-- <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_System_Security.js') }}"></script>
 <script>
-    //   var JS_System_Security = new JS_System_Security();
-    //       $(document).ready(function($) {
-    //              JS_System_Security.security();
-    //   })
-</script>
+      var JS_System_Security = new JS_System_Security();
+          $(document).ready(function($) {
+                 JS_System_Security.security();
+      })
+</script> -->
 
 @endsection

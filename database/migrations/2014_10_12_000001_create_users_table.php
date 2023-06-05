@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('dateBirth')->nullable();
             $table->string('avatar')->default('avatar_default.png');
             $table->tinyInteger('status')->nullable();
+            $table->string('user_introduce')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

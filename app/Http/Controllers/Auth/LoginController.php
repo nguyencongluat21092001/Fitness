@@ -55,11 +55,11 @@ class LoginController extends Controller
                 $sideBarConfig = config('SidebarSystem');
                 $sideBar = $this->checkPermision($sideBarConfig , $user->role);
                 $_SESSION["sidebar"] = $sideBar;
-                Auth::guard('web')->login($user);
+                Auth::login($user);
                 return redirect('system/home/index');
             } else if ($user->role == 'USERS') {
                 $checkPrLogin = $this->permission_login($email);
-                Auth::guard('web')->login($user);
+                Auth::login($user);
                 return redirect('client/datafinancial/index');
             }
         } else {
@@ -91,11 +91,9 @@ class LoginController extends Controller
     public function logout (Request $request)
     {
         // session_unset();
-        Auth::guard('web')->logout();
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        session_destroy();
         return view('auth.signin');
     }
     public function showLoginForm  (Request $request)
