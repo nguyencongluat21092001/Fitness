@@ -46,14 +46,16 @@ class DataFinancialController extends Controller
     public function loadList(Request $request)
     { 
         $arrInput = $request->input();
-        if($arrInput['code_category'] == null || $arrInput['code_category'] == ''){
+        if(isset($arrInput['code_category']) && ($arrInput['code_category'] == null || $arrInput['code_category'] == '')){
             unset($arrInput['code_category']);
         }
-        if($arrInput['act'] == null || $arrInput['act'] == ''){
+        if(isset($arrInput['act']) && ($arrInput['act'] == null || $arrInput['act'] == '')){
             unset($arrInput['act']);
         }
         $data = array();
         $param = $arrInput;
+        $param['sort'] = 'code_category,order';
+        $param['sortType'] = 1;
         $objResult = $this->DataFinancialService->filter($param);
         $data['datas'] = $objResult;
         $data['param'] = $param;

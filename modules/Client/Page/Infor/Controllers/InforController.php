@@ -54,4 +54,19 @@ class InforController extends Controller
         $data = $this->homeService->loadList($arrInput);
         return view("client.Introduce.loadlist", $data);
     }
+    
+     /**
+     * Cập nhật thông tin
+     *
+     * @param Request $request
+     *
+     * @return json $return
+     */
+    public function update(Request $request)
+    {
+        $arrInput = $request->input();
+        $data = $this->userInfoService->_update($arrInput);
+        return back();
+    }
+    
 }

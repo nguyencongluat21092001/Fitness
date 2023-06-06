@@ -3,8 +3,7 @@
     <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_DataFinancial.js') }}"></script>
     <div class="container-fluid">
         <div class="row">
-            <form action="" method="POST" id="frmDataFinancial_index">
-                <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
+            <form action="" method="POST">
                 <!-- <div class="breadcrumb-input-fix d-sm-flex align-items-center justify-content-between">
                     <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
                     data-original-title="Thêm danh mục"><i class="fas fa-book-medical"></i> Cẩm nang</button>
@@ -52,9 +51,8 @@
                                     <select class="form-control input-sm chzn-select" name="code_category"
                                         id="code_category">
                                         <option value=''>-- Chọn nhóm ngành HĐKD --</option>
-                                        @foreach($data['category'] as $item){
+                                        @foreach($data['category'] as $item)
                                             <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                        }
                                         @endforeach
                                     </select>
                                 </div>

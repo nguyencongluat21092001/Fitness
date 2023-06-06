@@ -103,12 +103,14 @@ abstract class Repository
         }
 
         // order list
-        $orderBy = $data->has('sort') && in_array($data['sort'], $this->model->sortable) ? $data['sort'] : "";
-
-        if ($orderBy !== "") {
-            $entities = $entities->orderBy($orderBy, $data->has('sortType') && $data['sortType'] == 1 ? 'asc' : 'desc');
+        // dd($data['sort']);
+        if($data->has('sort')){
+            $arrSort = explode(',', $data['sort']);
+            $sortType = $data->has('sortType') && $data['sortType'] == 1 ? 'asc' : 'desc';
+            foreach($arrSort as $key => $value){
+                $entities = $entities->orderBy($value, $sortType);
+            }
         }
-
         $limit = $data->has('limit') ? (int) $data['limit'] : 50;
         if ($limit) {
             return $entities->paginate($limit);

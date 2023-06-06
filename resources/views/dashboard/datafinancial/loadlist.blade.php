@@ -43,6 +43,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá cắt lỗ</b></td>
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng FA</b></td>
                 <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
+                <td style="white-space: inherit;vertical-align: middle" align="center"><b>Thứ tự</b></td>
                 <td><span onclick="JS_DataFinancial.addrow()" class="text-cursor text-primary"><i class="fas fa-plus-square"></i></span></td>
             </tr>
         </thead>
@@ -67,13 +68,11 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td style="vertical-align: middle;white-space: inherit;" align="center">
                        {{$data->Users->name}}
                     </td>
-                    <td class="td_created_at_{{$id}}" style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'created_at')">
-                       <span id="span_created_at_{{$id}}" class="span_created_at_{{$id}}">{{$data->created_at}}</span>
-                    </td>
+                    <td style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}">{{!empty($data->created_at) ? date('d/m/Y', strtotime($data->created_at)) : ''}}</td>
                     <td class="td_ratings_TA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_TA')">
                        <span id="span_ratings_TA_{{$id}}" class="span_ratings_TA_{{$id}}">{{$data->ratings_TA}}</span>
                     </td>
-                    <td class="td_identify_trend_{{$id}}" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'identify_trend')">
+                    <td class="td_identify_trend_{{$id}}" align="center" style="vertical-align: middle;" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'identify_trend')">
                        <span id="span_identify_trend_{{$id}}" class="span_identify_trend_{{$id}}" 
                        style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;white-space: break-spaces;overflow:hidden;" title="{{$data->identify_trend}}">{{$data->identify_trend}}</span>
                     </td>
@@ -91,6 +90,9 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     </td>
                     <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}">
                         <a href="{{$data->url_link}}" target="_blank"><i class="fas fa-link"></i></a>
+                    </td>
+                    <td class="text-center td_order_{{$id}}" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'order')">
+                        <span id="span_order_{{$id}}" class="span_order_{{$id}}">{{ $data->order }}</span>
                     </td>
                     <td class="text-center" style="vertical-align: middle;">
                         <span class="text-cursor text-warning" onclick="JS_DataFinancial.edit('{{$id}}')"><i class="fas fa-edit"></i></span>

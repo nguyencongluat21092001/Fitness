@@ -28,6 +28,7 @@ JS_Home.prototype.loadIndex = function () {
     var oFormBlog = 'form#frmLoadlist_blog';
     NclLib.menuActive('.link-index');
     NclLib.menuActive_child('.link-index');
+    $('.chzn-select').chosen({ height: '100%', width: '100%' });
 
     myClass.loadListChartNen();
     //lấy 4 chỉ số đứng top

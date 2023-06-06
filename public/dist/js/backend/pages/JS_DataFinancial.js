@@ -128,6 +128,7 @@ JS_DataFinancial.prototype.changeUpdate = function (id) {
         success: function (arrResult) {
             $('#editmodal').html(arrResult);
             $('#editmodal').modal('show');
+            $('.chzn-select').chosen({ height: '100%', width: '100%' });
             myClass.loadevent();
 
         }
@@ -370,9 +371,7 @@ JS_DataFinancial.prototype.addrow = function() {
     // user_id
     html += '<td></td>';
     // created_at
-    html += '<td class="td_created_at_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'created_at\')">';
-    html += '<span id="span_created_at_' + id + '" class="span_created_at_' + id + '"></span>';
-    html += '</td>';
+    html += '<td></td>';
     // ratings_TA
     html += '<td class="td_ratings_TA_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'ratings_TA\')">';
     html += '<span id="span_ratings_TA_' + id + '" class="span_ratings_TA_' + id + '"></span>';
@@ -398,8 +397,12 @@ JS_DataFinancial.prototype.addrow = function() {
     html += '<span id="span_ratings_FA_' + id + '" class="span_ratings_FA_' + id + '"></span>';
     html += '</td>';
     // url_link
-    html += '<td class="td_url_link_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'url_link\')">';
-    html += '<span id="span_url_link_' + id + '" class="span_url_link_' + id + '"></span>';
+    html += '<td align="center" class="td_url_link_' + id + '" onclick="{select_row(this);}" ondblclick="click2(\'' + id + '\', \'url_link\')">';
+    html += '<span id="span_url_link_' + id + '" class="span_url_link_' + id + '"><i class="fas fa-link" aria-hidden="true"></i></span>';
+    html += '</td>';
+    // order
+    html += '<td class="td_order_' + id + '" onclick="{select_row(this);}" align="center" ondblclick="click2(\'' + id + '\', \'order\')">';
+    html += '<span id="span_order_' + id + '" class="span_order_' + id + '">' + (parseInt(numberRow) + 1) + '</span>';
     html += '</td>';
     // status
     // html += '<td onclick="{select_row(this);}" align="center">';
@@ -449,10 +452,10 @@ JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = ''
     var myClass = this;
     var url = myClass.urlPath + '/updateDataFinancial';
     var data = 'id=' + id;
-    data += '&_token=' + $('#frmDataFinancial_index').find('#_token').val();
+    data += '&_token=' + $('#frmDataFinancial_index #_token').val();
+    data += '&code_category=' + $('#frmDataFinancial_index #code_category').val();
     if(column == 'code_cp'){ data += '&code_cp=' + (column == 'code_cp' ? value : ""); }
     else if(column == 'exchange') {data += '&exchange=' + value}
-    else if(column == 'code_category') {data += '&code_category=' + value}
     else if(column == 'ratings_TA') {data += '&ratings_TA=' + value}
     else if(column == 'identify_trend') {data += '&identify_trend=' + value}
     else if(column == 'act') {data += '&act=' + value}
@@ -460,7 +463,7 @@ JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = ''
     else if(column == 'stop_loss_price_zone') {data += '&stop_loss_price_zone=' + value}
     else if(column == 'ratings_FA') {data += '&ratings_FA=' + value}
     else if(column == 'url_link') {data += '&url_link=' + value}
-    else if(column == 'status') {data += '&status=' + value}
+    else if(column == 'order') {data += '&order=' + value}
     $.ajax({
         url: url,
         data: data,
@@ -469,11 +472,11 @@ JS_DataFinancial.prototype.updateDataFinancial = function(id, column, value = ''
             if (arrResult['success'] == true) {
                 NclLib.alertMessageBackend('success', 'Thông báo', arrResult['message']);
                 if(column == 'order'){
-                    JS_DataFinancial.loadList();
+                    JS_DataFinancial.loadList('#frmDataFinancial_index');
                 }
             } else {
                 NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
-                JS_DataFinancial.loadList();
+                JS_DataFinancial.loadList('#frmDataFinancial_index');
             }
         }, error: function(e){
             console.log(e);
