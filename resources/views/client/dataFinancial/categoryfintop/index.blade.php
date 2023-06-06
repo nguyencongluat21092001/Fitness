@@ -14,7 +14,7 @@
                                 <!-- Màn hình danh sách -->
                                 <div id="table-container-categoryFintop_vip"></div>
                             </div>
-                            <span>Đăng ký VIP để xem danh mục khuyến nghị VIP FINTOP
+                            <span><i class="fas fa-hand-point-right"></i> Đăng ký VIP để xem danh mục khuyến nghị VIP FINTOP
                             <button style="animation: lights 2s 750ms linear infinite;" type="button" class="btn btn-success">Đăng ký</button>
                             </span>
 
