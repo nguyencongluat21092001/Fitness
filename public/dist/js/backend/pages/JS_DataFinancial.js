@@ -67,12 +67,14 @@ JS_DataFinancial.prototype.loadevent = function () {
     })
     $('form#frmAdd').find('#add_link').click(function () {
         myClass.add_link();
+        $("#editmodal").modal('hide');
         $("#choose_link").click(function(){
             if($("#input_link").val() !== ''){
                 $("#url_link").val($("#input_link").val());
                 $("#show_link").removeAttr('hidden').attr('href', $("#input_link").val());
-                $("#editmodal").html('');
-                $("#editmodal").modal('hide');
+                $("#changeUpdateModal").html('');
+                $("#changeUpdateModal").modal('hide');
+                $("#editmodal").modal('show');
             }
         });
         $(".close_add_link").click(function(){

@@ -85,7 +85,7 @@
                             <td style="width:4%;vertical-align: middle;" align="center"><input id="ratings_FA" name="ratings_FA" type="text" value="{{isset($datas->ratings_FA)?$datas->ratings_FA:''}}" class="form-control"></td>
                             <td style="width:4%;vertical-align: middle;" align="center">
                                 <span id="add_link"><i class="fas fa-marker"></i></span><br>
-                                <a href="" id="show_link" hidden target="_blank" style="color:#fff;text-decoration:underline">Xem</a>
+                                <a href="" id="show_link" hidden target="_blank" style="text-decoration:underline">Xem</a>
                                 <input type="hidden" name="url_link" id="url_link">
                             </td>
                             <td style="width:5%;vertical-align: middle;" align="center">
