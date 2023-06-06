@@ -7,7 +7,7 @@
     }
 </style>
 <div class="table-responsive pmd-card pmd-z-depth pt-2">
-    <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
+    <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer" >
         <thead>
             <tr style="background:#3a760c;color:white">
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>STT</b></td>
@@ -38,31 +38,67 @@
                     </td>
                     <td>{{ !empty($data->created_at) ? date('d/m/Y', strtotime($data->created_at)) : '' }}</td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;background:#ffef6d;color:red">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->percent_of_assets }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->price }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->price_range }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->current_price }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;background:#27ff65;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->profit_and_loss }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->act }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;background:#ffef6d;color:red">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->stop_loss }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;background:#ffef6d;color:red">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->closing_percentage }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
-                        <span>{{ $data->note }}</span>
+                       @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
+                       <span>{{ $data->note }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                 </tr>
             @endforeach

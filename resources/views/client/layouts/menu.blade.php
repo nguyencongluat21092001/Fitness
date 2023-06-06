@@ -15,7 +15,7 @@
                 <ul class="navbar-nav d-flex justify-content-between text-dark">
                     @foreach($value['child'] as $keyChild => $child)
                     <li class="nav-item">
-                        <a class="nav-link link-{{$keyChild}}" style="color:black" href="{{ url('client') }}/{{$key}}/{{$keyChild}}"></i><i class="{{$child['icon']}}"></i> {{$child['name']}}</a>
+                        <a class="nav-link link-{{$keyChild}}" style="color:black;" href="{{ url('client') }}/{{$key}}/{{$keyChild}}"></i><i class="{{$child['icon']}}"></i> {{$child['name']}}</a>
                     </li>
                     @endforeach
                 </ul>

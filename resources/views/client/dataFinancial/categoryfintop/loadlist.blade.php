@@ -7,7 +7,7 @@
     }
 </style>
 <div class="table-responsive pmd-card pmd-z-depth pt-2">
-    <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
+    <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer" >
         <thead>
             <tr style="background:#3a760c;color:white">
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>STT</b></td>

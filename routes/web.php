@@ -215,7 +215,7 @@ Route::prefix('/client')->group(function () {
     // Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
-        // Route::middleware('checkloginDatafinancial')->group(function () {
+        Route::middleware('checkloginDatafinancial')->group(function () {
             Route::prefix('datafinancial')->group(function () {
                 // Tra cứu cổ phiếu
                 Route::get('/index', [ClientDataFinancialController::class, 'index']);
@@ -235,7 +235,7 @@ Route::prefix('/client')->group(function () {
                 Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
                 Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
             });
-        // });
+        });
         Route::prefix('about')->group(function () {
             // Tra cứu cổ phiếu
             Route::get('/index', [AboutController::class, 'index']);

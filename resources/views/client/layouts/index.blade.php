@@ -171,7 +171,7 @@
     </div>
     <!-- bg-white -->
     <div class="bgs">
-        <nav id="main_nav" class="navbar navbar-expand-lg navbar-light shadow" style="padding:0px !important">
+        <nav id="main_nav" class="navbar navbar-expand-lg  shadow" style="padding:0px !important">
             <div class="container d-flex justify-content-between align-items-center">
                 <a class="navbar-brand h1" style="width: 7%;margin-left:10%">
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
@@ -199,7 +199,7 @@
        
        
     </div>
-    <nav id="menuClient" class=" navbar-expand-lg navbar-light shadow" style="background:#0000008a"> 
+    <nav id="menuClient" class=" navbar-expand-lg  shadow" style="background:#0000008a"> 
         <div class="container d-flex justify-content-between align-items-center">
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
