@@ -90,7 +90,7 @@
     <!-- End Content -->
 <script src="../clients/js/jquery.min.js"></script>
 
-<!-- <script>
+<script>
         NclLib.menuActive('.link-privileges');
-</script> -->
+</script>
 @endsection
