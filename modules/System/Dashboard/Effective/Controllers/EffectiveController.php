@@ -125,7 +125,7 @@ class EffectiveController extends Controller
         $data = array();
         $objResult = $this->effectiveService->filter($arrInput);
         $data['datas'] = $objResult;
-        return view("dashboard.recommended.effectiveness.loadlist", $data)->render();
+        return view("dashboard.recommended.effectiveness.loadList", $data)->render();
     }
     /**
      * Cập nhật thông tin màn hình index
