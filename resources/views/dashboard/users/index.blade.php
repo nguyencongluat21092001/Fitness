@@ -39,10 +39,14 @@
                                     <select class="form-control input-sm chzn-select" name="role"
                                         id="role">
                                         <option value=''>-- Quyền hiển thị --</option>
-                                        <option value="ADMIN">Quản trị hệ thống</option>
-                                        <option value="MANAGE">Quản lý</option>
-                                        <option value="STAFF">Nhân viên</option>
-                                        <option value="STAFF">Người dùng</option>
+                                        <option value="ADMIN">Quản trị hệ thống - CEO</option>
+                                        <option value="MANAGE">Trợ lý CEO</option>
+                                        <option value="CV_ADMIN">Leader/TPKD/TPPT</option>
+                                        <option value="CV_PRO">Nhân sự Editor-Pro</option>
+                                        <option value="CV_BASIC">Nhân sự Editor-Basic</option>
+                                        <option value="SALE_ADMIN">Sales Admin</option>
+                                        <option value="SALE_BASIC">Sales basic</option>
+                                        <option value="USERS">Người dùng</option>
                                     </select>
                                 </div>
                                 <div class="input-group" style="width:40%;height:10%">
