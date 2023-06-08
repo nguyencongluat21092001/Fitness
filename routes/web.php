@@ -11,6 +11,8 @@ use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
 use Modules\Client\Page\Library\Controllers\LibraryController;
 use Modules\Client\Page\Privileges\Controllers\PrivilegesController;
+use Modules\Client\Page\UpgradeAcc\Controllers\UpgradeAccController;
+
 
 //Dashboard
 use Modules\System\Dashboard\ApprovePayment\Controllers\ApprovePaymentController;
@@ -265,7 +267,10 @@ Route::prefix('/client')->group(function () {
     // Đặc quyền hội viên
     Route::get('/privileges/index', [PrivilegesController::class, 'index']);
 
+    // Nâng cấp tk 
+    Route::get('/upgradeAcc/index', [UpgradeAccController::class, 'index']);
 });
+ 
 Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);

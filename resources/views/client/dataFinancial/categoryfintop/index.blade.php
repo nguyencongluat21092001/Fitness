@@ -15,7 +15,9 @@
                                 <div id="table-container-categoryFintop_vip"></div>
                             </div>
                             <span><i class="fas fa-hand-point-right"></i> Đăng ký VIP để xem danh mục khuyến nghị VIP FINTOP
-                            <button style="animation: lights 2s 750ms linear infinite;" type="button" class="btn btn-success">Đăng ký</button>
+                           
+                            <button  type="button" class="btn btn-success" href="{{ url('/client/upgradeAcc/index') }}"> <a href="{{ url('/client/upgradeAcc/index') }}" style="animation: lights 2s 750ms linear infinite;">Đăng ký</a></button>
+                            
                             </span>
 
                         </div>
