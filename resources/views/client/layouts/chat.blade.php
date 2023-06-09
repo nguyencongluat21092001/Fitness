@@ -1,20 +1,29 @@
+<?php 
+use Modules\Client\Page\Notification\Models\ReadNotificationModel;
+use Modules\Client\Page\Notification\Models\NotificationModel;
 
+$idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
+$notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
 
+?>
 <form action="" method="POST" id="frmLoadlist_box">
     <div id="form_chat">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-        <section class="icon">
-            <div style="border-radius:50px;background:#25aa33e8;">
-                <label for="checkbox1">
-                <i style="color:#ffd00f;padding:13px" class="far fa-bell fa-3x py-2"></i>
+        <span class="form-group input-group" style="align-items: center;">
+            <div id="alertNotifi" class="form-control alertNotifi" @if(count($notification) <= 0) hidden @endif>
+                <span>Bạn có {{count($notification)}} thông báo mới</span>
+            </div>
+            <div class="input-group-btn" onclick="readNotification()">
+                <label class="icon" for="checkbox1" style="border-radius:50px;background:#25aa33e8;">
+                    <i style="color:#ffd00f;padding:13px" class="far fa-bell fa-3x py-2"></i>
                     <!-- <img width="90px" height="90px" style="background-color: none"
-                        src="https://vcdn.subiz-cdn.com/file/fiqtarohdurccuocnccb-27.png" alt=""> -->
+                    src="https://vcdn.subiz-cdn.com/file/fiqtarohdurccuocnccb-27.png" alt=""> -->
                 </label>
             </div>
             <div>
                 <input hidden type="checkbox" id="checkbox1" checked />
             </div>
-        </section>
+        </span>
         <section class="avenue-messenger transform" id="pDetails">
             <div class="menu">
                 <div class="button" style="padding-right: 15px;padding-top: 5px;">

@@ -34,7 +34,24 @@ return [
     */
 
     'connections' => [
-
+        'pusher' => [
+            'driver' => 'pusher',
+            'key' => env('PUSHER_APP_KEY', '0141c9557203d59309b9'),
+            'secret' => env('PUSHER_APP_SECRET', '1fa991737e6cb8929cea'),
+            'app_id' => env('PUSHER_APP_ID', '1614622'),
+            'options' => [
+                'cluster' => env('PUSHER_APP_CLUSTER'),
+                'useTLS' => true,
+                'encrypted' => true,
+                //'host' => 'local',
+                //'port' => '6001',
+                'scheme' => 'http',
+                'curl_options' => [
+                    CURLOPT_SSL_VERIFYHOST => 0,
+                    CURLOPT_SSL_VERIFYPEER => 0,
+                ],
+            ],
+        ],
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
