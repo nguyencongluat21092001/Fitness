@@ -59,12 +59,12 @@ class SignalService extends Service
             env('PUSHER_APP_ID', '1614622'),
             $options
         );
-        
-        $idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
-        $notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
-        $params['count'] = count($notification);
-        $pusher->trigger('NotificationEvent', 'send-message', $params);
-
+        if(isset($_SESSION['id'])){
+            $idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
+            $notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
+            $params['count'] = count($notification);
+            $pusher->trigger('NotificationEvent', 'send-message', $params);
+        }
         if(isset($input['_id']) && !empty($input['_id'])){
             return array('success' => true, 'message' => 'Cập nhật thành công!');
         }else{
