@@ -731,16 +731,25 @@ a{
     -moz-transition: 0.3s all ease-out 0.1s, transform 0.2s ease-in;
 
 }
-
+#form_chat{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+    z-index: 10;
+}
+.alertNotifi{
+  border: unset;
+  align-items: center;
+  display: flex;
+  height: 36px;
+  border-radius: 18px !important;
+  margin-right: 10px;
+}
 .icon {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
     border-radius: 20px;
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
     margin: auto;
-    z-index: 10;
     /*  transform: translateX(300px);*/
     -webkit-transition: 0.3s all ease-out 0.1s, transform 0.2s ease-in;
     -moz-transition: 0.3s all ease-out 0.1s, transform 0.2s ease-in;

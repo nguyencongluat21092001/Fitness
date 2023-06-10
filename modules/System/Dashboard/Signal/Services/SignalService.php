@@ -3,7 +3,12 @@
 namespace Modules\System\Dashboard\Signal\Services;
 
 use Modules\Base\Service;
+use Modules\Client\Page\Notification\Models\NotificationModel;
+use Modules\Client\Page\Notification\Models\ReadNotificationModel;
+use Modules\System\Dashboard\Signal\Models\SignalModel;
 use Modules\System\Dashboard\Signal\Repositories\SignalRepository;
+use Modules\System\Notifications\SendNotification;
+use Pusher\Pusher;
 
 class SignalService extends Service
 {
@@ -21,6 +26,7 @@ class SignalService extends Service
      */
     public function store($input)
     {
+        $id = (string)\Str::uuid();
         $signals = $this->repository->select('*')->get();
         $params = [
             "user_id" => $_SESSION['id'],
@@ -35,11 +41,33 @@ class SignalService extends Service
         if(isset($input['_id']) && !empty($input['_id'])){
             $params['updated_at'] = date('Y-m-d H:i:s');
             $this->repository->where('id',$input['_id'])->update($params);
-            return array('success' => true, 'message' => 'Cập nhật thành công!');
+            $signalsNoti = $this->repository->where('id', $input['_id'])->first();
         }else{
-            $params['id'] = (string)\Str::uuid();
+            $params['id'] = $id;
             $params['created_at'] = date('Y-m-d H:i:s');
             $this->repository->insert($params);
+            $signalsNoti = $this->repository->where('id', $id)->first();
+        }
+        $signalsNoti->notify(new SendNotification($params));
+        $options = array(
+            'cluster' => 'ap1',
+            'encrypted' => true
+        );
+        $pusher = new Pusher(
+            env('PUSHER_APP_KEY', '0141c9557203d59309b9'),
+            env('PUSHER_APP_SECRET', '1fa991737e6cb8929cea'),
+            env('PUSHER_APP_ID', '1614622'),
+            $options
+        );
+        
+        $idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
+        $notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
+        $params['count'] = count($notification);
+        $pusher->trigger('NotificationEvent', 'send-message', $params);
+
+        if(isset($input['_id']) && !empty($input['_id'])){
+            return array('success' => true, 'message' => 'Cập nhật thành công!');
+        }else{
             return array('success' => true, 'message' => 'Thêm mới thành công!');
         }
     }

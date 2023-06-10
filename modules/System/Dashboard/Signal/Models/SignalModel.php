@@ -3,11 +3,14 @@
 namespace Modules\System\Dashboard\Signal\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Modules\System\Dashboard\Users\Models\UserModel;
 use Modules\System\Helpers\NclLibraryHelper;
 
 class SignalModel extends Model
 {
+    use Notifiable;
+
     protected $table = 'buy_signal';
     public $incrementing = false;
     public $sortable = ['order'];

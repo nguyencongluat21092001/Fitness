@@ -10,6 +10,7 @@ use Modules\Client\Page\Home\Controllers\HomeController as ClientHomeController;
 use Modules\Client\Page\Introduce\Controllers\IntroduceController;
 use Modules\Client\Page\Infor\Controllers\InforController;
 use Modules\Client\Page\Library\Controllers\LibraryController;
+use Modules\Client\Page\Notification\Controllers\ReadNotificationController;
 use Modules\Client\Page\Privileges\Controllers\PrivilegesController;
 use Modules\Client\Page\UpgradeAcc\Controllers\UpgradeAccController;
 
@@ -269,6 +270,8 @@ Route::prefix('/client')->group(function () {
 
     // Nâng cấp tk 
     Route::get('/upgradeAcc/index', [UpgradeAccController::class, 'index']);
+    // Đọc thông báo
+    Route::get('readNotification', [ReadNotificationController::class, 'readNotification']);
 });
  
 Auth::routes();

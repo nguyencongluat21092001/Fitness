@@ -403,6 +403,66 @@
     <!-- Custom -->
     <script src="../clients/js/custom.js"></script>
     <script src="../assets/js/plugins/chartjs.min.js"></script>
+    
+    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+    <script type="text/javascript">
+        var pusher = new Pusher("{{ env('PUSHER_APP_KEY', '0141c9557203d59309b9') }}", {
+            encrypted: true,
+            cluster: "ap1"
+        });
+        var channel = pusher.subscribe('NotificationEvent');
+        channel.bind('send-message', function(data) {
+            console.log(data);
+            var newNotificationHtml = `<div class="card-body">
+            <div class="d-flex flex-row justify-content-start mb-4 avatarMessage">
+            <img src="https://vcdn.subiz-cdn.com/widget-v4/public/assets/img/default_avatar.5b74dc1.png" alt="avatar 1" style="width: 30px; height: 100%;">
+            <div style="padding-left:5px">
+            <div class="p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:100%">
+            <p style="font-size:14px;font-family:auto" class="small mb-0"></p>
+            <h5>${data.title}</h5>
+            <span>Giá mua: ${data.price_buy}</span><br>
+            <span>Mục tiêu: ${data.target}</span><br>
+            <span>Dừng lỗ: ${data.stop_loss}</span><br>
+            <span>Thời gian: `+ formatDate(data.created_at) +`</span><br>
+            <p></p>
+            </div>
+            </div>
+            </div>
+            <div id="messages-content"></div>
+            </div>`;
+
+            $('.testsss').prepend(newNotificationHtml);
+            $("#alertNotifi").attr('class', 'form-control alertNotifi');
+            $("#alertNotifi").html('Bạn có ' + data.count + ' thông báo mới');
+            $("#alertNotifi").removeAttr('hidden');
+        });
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear(),
+                hour = d.getHours(),
+                minute = d.getMinutes(),
+                second = d.getSeconds();
+
+            if (month.length < 2) month = '0' + month;
+            if (day.length < 2) day = '0' + day;
+
+            return hour + ':' + minute + ':' + second + ' ' + day + '-' + day + '-' + day;
+        }
+        function readNotification(){
+            var baseUrl = "{{ url('') }}";
+            var url = baseUrl + '/client/readNotification';
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(){
+                    $("#alertNotifi").html('');
+                    $("#alertNotifi").removeAttr('class');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
 
