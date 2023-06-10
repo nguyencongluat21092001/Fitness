@@ -211,7 +211,9 @@
     </nav>
     @yield('body-client')
     {{-- chat --}}
+    @if(auth::check())
     @include('client.layouts.chat')
+    @endif
     {{-- end-chat --}}
     <!-- Start Footer -->
     <footer class="bgft pt-4" style="background:#121d29bf">
