@@ -215,7 +215,7 @@ Route::prefix('/client')->group(function () {
     Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
 
     Route::get('introduce/index', [IntroduceController::class, 'index']);
-    // Route::middleware('permissionCheckLoginClient')->group(function () {
+    Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
         Route::middleware('checkloginDatafinancial')->group(function () {
@@ -260,7 +260,7 @@ Route::prefix('/client')->group(function () {
         Route::prefix('des')->group(function () {
             Route::get('index', [DesController::class, 'index']);
         });
-    // });
+    });
     // Thư viện đầu tư
     Route::get('/library/index', [LibraryController::class, 'index']);
     Route::post('/library/loadList',[LibraryController::class,'loadList']);
