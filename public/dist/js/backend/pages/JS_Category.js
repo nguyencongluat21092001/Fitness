@@ -2,7 +2,7 @@ function JS_Category(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-category');
+    NclLib.active('.link-category');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 
@@ -109,7 +109,7 @@ JS_Category.prototype.store = function (oFormCreate) {
                   myClass.loadList(oFormCreate);
 
             } else {
-                  var nameMessage = 'Cập nhật thất bại!';
+                  var nameMessage = arrResult['message'];
                   NclLib.alertMessageBackend('danger', 'Lỗi', nameMessage);
             }
         }

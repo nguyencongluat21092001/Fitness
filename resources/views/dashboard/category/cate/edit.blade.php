@@ -28,7 +28,7 @@
                 </div>
                 {{--  Mô tả --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Mô tả</span>
+                    <span class="col-md-3 control-label">Mô tả</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->decision) ? $datas->decision : ''}}" name="decision" id="decision"
                             placeholder="Nhập mô tả..." />
@@ -36,7 +36,7 @@
                 </div>
                 {{--  Thứ tự --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Thứ tự</span>
+                    <span class="col-md-3 control-label">Thứ tự</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->order) ? $datas->order : ''}}" name="order" id="order"
                             placeholder="Nhập thứ tự..." />
@@ -44,7 +44,7 @@
                 </div>
                 {{-- trạng thái --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Trạng thái</span>
+                    <span class="col-md-3 control-label">Trạng thái</span>
                     <div class="col-md-8">
                         <input type="checkbox" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}}/>
                         <label for="status">Hoạt động</label>

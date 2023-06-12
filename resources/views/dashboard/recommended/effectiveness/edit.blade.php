@@ -46,15 +46,15 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>% Chốt</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Mã CP</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhóm nghành</b></td>
-                            {{--<td style="white-space: inherit;vertical-align: middle" align="center"><b>Ngày mua</b></td>--}}
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>% Tài sản</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Giá mua</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Ngày chốt</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Giá chốt</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Lãi/Lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>% Chốt</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Mã CP</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Nhóm nghành</b></td>
+                            {{--<td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Ngày mua</b></td>--}}
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>% Tài sản</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Giá mua</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Ngày chốt</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Giá chốt</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" class="required" align="center"><b>Lãi/Lỗ</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>Ghi chú</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>#</b></td>
                         </tr>

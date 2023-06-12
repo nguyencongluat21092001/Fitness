@@ -2,7 +2,7 @@ function JS_Recommended(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-recommended');
+    NclLib.active('.link-recommended');
     this.urlPath = baseUrl + '/' + module + '/' + controller;//Biên public lưu tên module
 }
 
@@ -87,19 +87,8 @@ JS_Recommended.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var data = $(oFormCreate).serialize();
-    if ($("#code_cate").val() == '') {
-        var nameMessage = 'Danh mục không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
-    if ($("#name_category").val() == '') {
-        var nameMessage = 'Tên thể loại không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
-    if ($("#code_category").val() == '') {
-        var nameMessage = 'Mã thể loại không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+    var check = myClass.checkValidate();
+    if(check == false){
         return false;
     }
     $.ajax({
@@ -114,7 +103,7 @@ JS_Recommended.prototype.store = function (oFormCreate) {
                   $('#addfile').modal('hide');
                   myClass.loadList(oFormCreate);
             } else {
-                  var nameMessage = 'Cập nhật thất bại!';
+                  var nameMessage = arrResult['message'];
                   NclLib.alertMessageBackend('success', 'Thông báo', nameMessage);
             }
         }
@@ -169,6 +158,10 @@ JS_Recommended.prototype.edit = function (id) {
     var myClass = this;
     var data = '_token=' + $('#frmRecommended_index #_token').val();
     data += '&id=' + id;
+    var check = myClass.checkValidate();
+    if(check == false){
+        return false;
+    }
     var i = 0;
     $.ajax({
         url: url,
@@ -414,4 +407,59 @@ JS_Recommended.prototype.changeStatus = function(id){
             NclLib.successLoadding();
         }
     });
+}
+/**
+ * Kiểm tra
+ */
+JS_Recommended.prototype.checkValidate = function(){
+    if($("#code_cp").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mã Cổ phiếu không được để trống!');
+        $("#code_cp").focus();
+        return false;
+    }
+    if($("#code_category").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Nhóm ngành không được để trống!');
+        $("#code_category").focus();
+        return false;
+    }
+    if($("#percent_of_assets").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', '% tài sản không được để trống!');
+        $("#percent_of_assets").focus();
+        return false;
+    }
+    if($("#price").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Giá mua không được để trống!');
+        $("#price").focus();
+        return false;
+    }
+    if($("#price_range_0").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Vùng giá mục tiêu không được để trống!');
+        $("#price_range_0").focus();
+        return false;
+    }
+    if($("#current_price").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Giá hiện tại không được để trống!');
+        $("#current_price").focus();
+        return false;
+    }
+    if($("#profit_and_loss").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Lãi lỗ không được để trống!');
+        $("#profit_and_loss").focus();
+        return false;
+    }
+    if($("#act").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Khuyến nghị hành động không được để trống!');
+        $("#act").focus();
+        return false;
+    }
+    if($("#stop_loss").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Dừng lỗ không được để trống!');
+        $("#stop_loss").focus();
+        return false;
+    }
+    if($("#closing_percentage").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', '% chốt không được để trống!');
+        $("#closing_percentage").focus();
+        return false;
+    }
 }

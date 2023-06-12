@@ -15,25 +15,25 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<p for="example-text-input" class="form-control-label">Tên</p>
+							<p for="example-text-input" class="form-control-label required">Tên</p>
 							<input class="form-control" type="text" value="{{!empty($data['name'])?$data['name']:''}}" name="name" id="name" placeholder="Nhập tên người dùng..." />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<p for="example-text-input" class="form-control-label">Địa chỉ Email</p>
+							<p for="example-text-input" class="form-control-label required">Địa chỉ Email</p>
 							<input class="form-control" type="email" value="{{!empty($data['email'])?$data['email']:''}}" name="email" id="email" placeholder="Nhập email..." />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<p for="example-text-input" class="form-control-label">Ngày sinh</p>
+							<p for="example-text-input" class="form-control-label required">Ngày sinh</p>
 							<input class="form-control" type="date" value="{{!empty($data['dateBirth'])?$data['dateBirth']:''}}" name="dateBirth" id="dateBirth" placeholder="Chọn ngày sinh..." />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<p for="example-text-input" class="form-control-label">Số điện thoại</p>
+							<p for="example-text-input" class="form-control-label required">Số điện thoại</p>
 							<input class="form-control" type="text" value="{{!empty($data['phone'])?$data['phone']:''}}" name="phone" id="phone" placeholder="Nhập số điện thoại..." />
 						</div>
 					</div>

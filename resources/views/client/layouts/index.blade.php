@@ -437,6 +437,7 @@
             $("#alertNotifi").attr('class', 'form-control alertNotifi');
             $("#alertNotifi").html('Bạn có ' + data.count + ' thông báo mới');
             $("#alertNotifi").removeAttr('hidden');
+            $("#icon-bell").addClass('animate');
         });
         function formatDate(date) {
             var d = new Date(date),
@@ -461,6 +462,7 @@
                 success: function(){
                     $("#alertNotifi").html('');
                     $("#alertNotifi").removeAttr('class');
+                    $("#icon-bell").removeClass('animate');
                 }
             });
         }

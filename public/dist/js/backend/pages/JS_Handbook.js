@@ -2,7 +2,7 @@ function JS_Handbook(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-handbook');
+    NclLib.active('.link-handbook');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 

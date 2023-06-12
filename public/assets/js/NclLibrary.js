@@ -31,6 +31,10 @@ NclLib.prototype.alertMessageBackend = function(type, label, message, s = 30000)
     });
 }
 // add class hiển thị đang ở page nào 
+NclLib.prototype.active = function(nameMenu){
+  $(nameMenu).addClass("active");
+}
+// add class hiển thị đang ở page nào 
 NclLib.prototype.menuActive = function(nameMenu){
   $(nameMenu).addClass("active-menuClient");
 }

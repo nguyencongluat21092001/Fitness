@@ -49,21 +49,21 @@
                     </colgroup>
                     <thead>
                         <tr>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Mã CP</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Nhóm nghành</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>% Tài sản</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Giá mua</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Mã CP</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Nhóm nghành</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>% Tài sản</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Giá mua</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center" colspan="3"><b>Vùng giá mục tiêu</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Giá hiện tại</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Lãi/Lỗ</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Khuyến nghị hành động</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Dừng lỗ</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>% Chốt</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Giá hiện tại</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Lãi/Lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Khuyến nghị hành động</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>Dừng lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required" rowspan="2"><b>% Chốt</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>Ghi chú</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center" rowspan="2"><b>#</b></td>
                         </tr>
                         <tr>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 1</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Tar 1</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 2</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>Tar 3</b></td>
                         </tr>
