@@ -2,7 +2,7 @@ function JS_ApprovePayment(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-approvepayment');
+    NclLib.active('.link-approvepayment');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 
@@ -118,14 +118,14 @@ JS_ApprovePayment.prototype.store = function(oFormCreate) {
     var url = this.urlPath + '/update';
     var myClass = this;
     var data = $(oFormCreate).serialize();
-    if ($("#title").val() == '') {
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
-        $("#title").focus();
+    if ($("#role_client").val() == '') {
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Loại VIP không được để trống!');
+        $("#role_client").focus();
         return false;
     }
-    if ($("#target").val() == '') {
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mục tiêu không được để trống!');
-        $("#target").focus();
+    if ($("#user_id").val() == '') {
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Khách hàng không được để trống!');
+        $("#user_id").focus();
         return false;
     }
     if ($("#stop_loss").val() == '') {

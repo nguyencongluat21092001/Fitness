@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <p for="example-text-input" class="form-control-label">Thể loại</p>
+                            <p for="example-text-input" class="form-control-label required">Thể loại</p>
                             <select class="form-control input-sm chzn-select" name="code_category" id="code_category">
                                 <option value=''>-- Chọn thể loại --</option>
                                 @if(!empty($data['code_category']))
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <p for="example-text-input" class="form-control-label">Tiêu đề</p>
+                            <p for="example-text-input" class="form-control-label required">Tiêu đề</p>
                             <input class="form-control" type="text" value="{{!empty($data['title'])?$data['title']:''}}" name="title" id="title" placeholder="Nhập tiêu đề..." />
                         </div>
                     </div>
@@ -41,8 +41,8 @@
                         <label for="upload_image" class="label-upload">Chọn ảnh</label>
                         <input type="file" hidden name="upload_image" id="upload_image" onchange="readURL(this)">
                         <br>
-                        @if(!empty($data['avatar']))
-                        <img id="show_img" src="{{url('/file-image/avatar/')}}/{{$data['avatar']}}" alt="Image" style="width:150px">
+                        @if(!empty($data['image']))
+                        <img id="show_img" src="{{url('/file-image-client/blogs/')}}/{{$data['image'][0]->name_image}}" alt="Image" style="width:150px">
                         @else
                         <img id="show_img" hidden alt="Image" style="width:150px">
                         @endif
@@ -50,7 +50,7 @@
                     {{-- trạng thái --}}
                     <div class="col-md-6">
                         <div class="row form-group" id="div_hinhthucgiai">
-                            <span class="control-label required">Trạng thái</span><br>
+                            <span class="control-label">Trạng thái</span><br>
                             <div>
                                 <input type="checkbox" name="status" id="status" {{(isset($data['status']) && $data['status'] == '1') ? 'checked' : ''}} />
                                 <label for="status">Hoạt động</label> <br>

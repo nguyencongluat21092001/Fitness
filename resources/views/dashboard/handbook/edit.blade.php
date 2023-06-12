@@ -68,7 +68,7 @@
                 </div>
                 {{-- mô tả --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Mô tả</span>
+                    <span class="col-md-3 control-label">Mô tả</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{!empty($data['detail']['decision'])?$data['detail']['decision']:''}}" name="decision" id="decision"
                             placeholder="Nhập mô tả..." />
@@ -77,7 +77,7 @@
                 <div class="preview"></div>
                 {{-- trạng thái --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Trạng thái</span>
+                    <span class="col-md-3 control-label">Trạng thái</span>
                     <div class="col-md-8">
                         @if(!empty($data['detail']['current_status']))
                         <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>

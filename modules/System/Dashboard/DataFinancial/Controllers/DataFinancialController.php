@@ -91,7 +91,7 @@ class DataFinancialController extends Controller
     {
         $input = $request->input();
         $create = $this->DataFinancialService->store($input); 
-        return array('success' => true, 'message' => 'Cập nhật thành công');
+        return $create;
     }
     /**
      * Xóa

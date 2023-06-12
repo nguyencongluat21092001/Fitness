@@ -2,7 +2,7 @@ function JS_DataFinancial(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-datafinancial');
+    NclLib.active('.link-datafinancial');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 
@@ -165,7 +165,7 @@ JS_DataFinancial.prototype.store = function (oFormCreate) {
                 myClass.loadList(oForm);
                 var loadding = NclLib.successLoadding();
             } else {
-                NclLib.alertMessageBackend('danger', 'Lỗi', 'Cập nhật thất bại');
+                NclLib.alertMessageBackend('danger', 'Lỗi', arrResult['message']);
             }
         }
     });

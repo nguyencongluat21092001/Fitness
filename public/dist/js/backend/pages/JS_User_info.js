@@ -2,7 +2,7 @@ function JS_User_info(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-user');
+    NclLib.active('.link-user');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 

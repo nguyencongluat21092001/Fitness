@@ -41,17 +41,17 @@
                 <div class="row form-group">
                     <span class="col-md-3 control-label required">Giá mua</span>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="{{isset($datas->price_buy) ? $datas->price_buy : ''}}" name="price_buy" id="price_buy" placeholder="Nhập dùng lỗ..." />
+                        <input class="form-control" type="text" value="{{isset($datas->price_buy) ? $datas->price_buy : ''}}" name="price_buy" id="price_buy" placeholder="Nhập giá mua..." />
                     </div>
                 </div>
                 <div class="row form-group">
-                    <span class="col-md-3 control-label required">Thứ tự</span>
+                    <span class="col-md-3 control-label">Thứ tự</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->order) ? $datas->order : $order}}" name="order" id="order" placeholder="Nhập thứ tự..." />
                     </div>
                 </div>
                 <div class="row form-group">
-                    <span class="col-md-3 control-label required">Trạng thái</span>
+                    <span class="col-md-3 control-label">Trạng thái</span>
                     <div class="col-md-8">
                         <input type="checkbox" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}} />
                         <label for="status">Hoạt động</label>

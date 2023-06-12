@@ -1,0 +1,303 @@
+<html>
+
+<head>
+    <link rel="shortcut icon" href="favicon.png">
+    <meta property="og:title" content="Google+ Notification Bell" />
+    <meta property="og:image" content="http://ramakrish.in/img/portfolio/bell.jpg" />
+    <meta name="author" content="Ramakrishna V">
+    <title>Google+ Notification Bell</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="jquery-1.9.1.min.js"></script>
+
+    <script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
+    <script
+        type="text/javascript">stLight.options({ publisher: "fdb4a23c-1f99-414a-9fef-bc2e637bfd4e", doNotHash: false, doNotCopy: false, hashAddressBar: false });</script>
+</head>
+<style>
+    body {
+        margin: 0px;
+        padding: 0px;
+        background: #427FED;
+        overflow: hidden;
+    }
+
+    ul,
+    ol {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    .color {
+        background: #e74c3c;
+    }
+
+    .texts {
+        color: #e74c3c !important;
+    }
+
+    .bg {
+        background: #521A14 !important;
+    }
+
+    .banner {
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        background: #082132;
+        color: #ffffff;
+        font-family: Avenir;
+        text-align: center;
+        padding: 15px;
+        box-sizing: border-box;
+        font-weight: lighter;
+        font-size: 13px;
+        z-index: 999;
+
+    }
+
+    .banner a {
+        color: #427FED;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .text {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-family: Avenir;
+        font-size: 30px;
+        font-weight: 100;
+        color: #fff;
+        margin-top: 240px;
+    }
+
+    .texts {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        font-family: Avenir;
+        font-size: 20px;
+        font-weight: 600;
+        color: #fff;
+        margin-top: 320px;
+        cursor: pointer;
+        z-index: 100;
+    }
+
+    .bell {
+        width: 100%;
+        position: relative;
+        margin: 0px auto;
+        margin-top: 250px;
+
+    }
+
+    .bellinner {
+        width: 40px;
+        height: 190px;
+        background-color: transparent;
+        background-image: linear-gradient(90deg, #e0c137 50%, #c7ac34 50%);
+        position: relative;
+        border-radius: 20px;
+        margin: 0 auto;
+    }
+
+    .rounded {
+        width: 20px;
+        height: 20px;
+        border: 4px solid #fecf57;
+        border-radius: 15px;
+        position: absolute;
+        margin-top: -24px;
+        margin-left: 7px;
+    }
+
+    .shell {
+        width: 160px;
+        height: 160px;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        background: #fecf57;
+        position: absolute;
+        margin-left: -57px;
+        cursor: pointer;
+        box-shadow: inset 10px 0px #ECC051;
+    }
+
+    .animate {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -webkit-transition: all 0.2s ease-in-out;
+        animation: road-animates 1s linear infinite;
+        -webkit-animation: swing 1s linear infinite;
+        -moz-animation: swing 1s linear infinite;
+        -o-animation: swing 1s linear infinite;
+        transform-origin: center top;
+        -moz-transform-origin: center top;
+        -webkit-transform-origin: center top;
+    }
+
+    @-webkit-keyframes swing {
+        0% {
+            -webkit-transform: rotateZ(-5deg);
+            transform: rotateZ(-5deg);
+        }
+
+        50% {
+            -webkit-transform: rotateZ(5deg);
+            transform: rotateZ(5deg);
+        }
+
+        100% {
+            transform: rotateZ(-5deg);
+            -webkit-transform: rotateZ(-5deg);
+        }
+    }
+
+    @keyframes swing {
+        0% {
+            transform: rotateZ(-5deg);
+        }
+
+        50% {
+            transform: rotateZ(5deg);
+        }
+
+        100% {
+            transform: rotateZ(-5deg);
+        }
+    }
+
+    @-moz-keyframes swing {
+        0% {
+            transform: rotate(-5deg);
+        }
+
+        50% {
+            transform: rotate(5deg);
+        }
+
+        100% {
+            transform: rotate(-5deg);
+        }
+    }
+
+    .shellbottom {
+        width: 180px;
+        height: 15px;
+        border-radius: 10px;
+        background: #fecf57;
+        position: absolute;
+        margin-top: 155px;
+        margin-left: -10px;
+    }
+
+    .eyes {
+        width: 15px;
+        height: 15px;
+        border-radius: 10px;
+        background: #8d7713;
+        position: absolute;
+        margin-top: 85px;
+        margin-left: 40px;
+        box-shadow: 60px 0px #8d7713;
+        -webkit-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+    }
+
+    .eyesclose {
+        width: 15px;
+        height: 10px;
+        border-radius: 10px;
+        background: transparent;
+        border-top: 3px solid #8d7713;
+        position: absolute;
+        margin-top: 85px;
+        margin-left: 40px;
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        display: none;
+        -webkit-transition: all ease 0.2s;
+        transition: all ease 0.2s;
+    }
+
+    .eyesclose:before {
+        content: "";
+        width: 15px;
+        height: 10px;
+        border-radius: 10px;
+        background: transparent;
+        border-top: 3px solid #8d7713;
+        position: absolute;
+        margin-left: 60px;
+        border-radius: 50%;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+    }
+
+    .mouth {
+        width: 30px;
+        height: 20px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background: #8d7713;
+        position: absolute;
+        margin-top: 120px;
+        margin-left: 63px;
+    }
+
+    .mouthnew {
+        width: 30px;
+        height: 25px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        background: #e74c3c;
+        position: absolute;
+        margin-top: 120px;
+        margin-left: 63px;
+        display: none;
+    }
+</style>
+
+<body>
+
+    <div class="text">Ring the Bell !!!</div>
+
+    <div class="bell">
+        <div class="bellinner">
+            <div class="rounded"></div>
+            <div class="shell animate">
+                <div class="shellbottom"></div>
+                <div class="eyes"></div>
+                <div class="eyesclose"></div>
+                <div class="mouth"></div>
+                <div class="mouthnew"></div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <script>
+        $(document).ready(function () {
+            $(".shell").click(function () {
+
+                $(".eyes").toggle();
+                $(".eyesclose").toggle();
+                $(".mouth").toggle();
+                $(".mouthnew").toggle();
+                $("body").toggleClass("color");
+                $(".banner a").toggleClass("texts");
+                $(".banner").toggleClass("bg")
+            });
+
+        });
+    </script>
+</body>
+
+</html>

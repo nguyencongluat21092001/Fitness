@@ -25,6 +25,10 @@ class CategoryService extends Service
 
     public function store($input){
         $categories = $this->repository->select('*')->get();
+        $countCategory = $this->repository->where('code_category', $input['code_category'])->where('cate', $input['cate'])->count();
+        if($countCategory > 0){
+            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+        }
         if(isset($input['order']) && !empty($input['order'])){
             $this->updateOrder($input);
         }
@@ -51,7 +55,7 @@ class CategoryService extends Service
             $create = $this->CategoryRepository->create($arrData);
         }
         
-        return $create;
+        return array('success' => true, 'message' => 'Cập nhật thành công');
     }
     /**
      * Cập nhật và thêm mới màn hình danh sách

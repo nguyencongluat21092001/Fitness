@@ -24,6 +24,10 @@ class DataFinancialService extends Service
     }
 
     public function store($input){
+        $dataFinancials = $this->repository->select('*')->where('code_cp', $input['code_cp'])->count();
+        if($dataFinancials > 0){
+            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+        }
         if($input['id'] != ''){
             $arrData = [
                 "user_id" => $_SESSION['id'],
@@ -63,7 +67,7 @@ class DataFinancialService extends Service
             $create = $this->DataFinancialRepository->create($arrData);
         }
         
-        return $create;
+        return array('success' => true, 'message' => 'Cập nhật thành công');
     }
     public function edit($arrInput){
         $getUserInfor = $this->repository->where('id',$arrInput['chk_item_id'])->first()->toArray();

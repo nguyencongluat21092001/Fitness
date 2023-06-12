@@ -2,7 +2,7 @@ function JS_Signal(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-signal');
+    NclLib.active('.link-signal');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 
@@ -97,19 +97,8 @@ JS_Signal.prototype.store = function(oFormCreate) {
         var url = this.urlPath + '/update';
         var myClass = this;
         var data = $(oFormCreate).serialize();
-        if ($("#title").val() == '') {
-            NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
-            $("#title").focus();
-            return false;
-        }
-        if ($("#target").val() == '') {
-            NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mục tiêu không được để trống!');
-            $("#target").focus();
-            return false;
-        }
-        if ($("#stop_loss").val() == '') {
-            NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Dừng lỗ không được để trống!');
-            $("#stop_loss").focus();
+        var check = myClass.checkValidate();
+        if(check == false){
             return false;
         }
         $.ajax({
@@ -398,4 +387,34 @@ JS_Signal.prototype.changeStatusSignal = function(id) {
  */
 JS_Signal.prototype.search = function(){
     JS_Signal.loadList();
+}
+/**
+ * Check
+ */
+JS_Signal.prototype.checkValidate = function(){
+    if($("#title").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
+        $("#title").focus();
+        return false;
+    }
+    if($("#type").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Loại tín hiệu không được để trống!');
+        $("#type").focus();
+        return false;
+    }
+    if($("#target").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mục tiêu không được để trống!');
+        $("#target").focus();
+        return false;
+    }
+    if($("#stop_loss").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Dừng lỗ không được để trống!');
+        $("#stop_loss").focus();
+        return false;
+    }
+    if($("#price_buy").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Giá mua không được để trống!');
+        $("#price_buy").focus();
+        return false;
+    }
 }

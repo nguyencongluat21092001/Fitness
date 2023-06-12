@@ -2,7 +2,7 @@ function JS_CategoryCate(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-category');
+    NclLib.active('.link-category');
     this.urlPath = baseUrl + '/' + module + '/' + controller;//Biên public lưu tên module
 }
 
@@ -123,7 +123,7 @@ JS_CategoryCate.prototype.store = function (oFormCreate) {
                   $('#editmodalCategory').modal('hide');
                   myClass.loadList(oFormCreate);
             } else {
-                  var nameMessage = 'Cập nhật thất bại!';
+                  var nameMessage = arrResult['message'];
                   var icon = 'error';
                   var color = '#f5ae67';
                   NclLib.alerMesage(nameMessage,icon,color);

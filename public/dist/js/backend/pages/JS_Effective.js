@@ -2,7 +2,7 @@ function JS_Effective(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-recommended');
+    NclLib.active('.link-recommended');
     this.urlPath = baseUrl + '/' + module + '/' + controller;//Biên public lưu tên module
 }
 
@@ -87,19 +87,8 @@ JS_Effective.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var data = $(oFormCreate).serialize();
-    if ($("#code_cate").val() == '') {
-        var nameMessage = 'Danh mục không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
-    if ($("#name_category").val() == '') {
-        var nameMessage = 'Tên thể loại không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
-        return false;
-    }
-    if ($("#code_category").val() == '') {
-        var nameMessage = 'Mã thể loại không được để trống!';
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', nameMessage);
+    var check = myClass.checkValidate();
+    if(check == false){
         return false;
     }
     $.ajax({
@@ -170,6 +159,10 @@ JS_Effective.prototype.edit = function (id) {
     var data = '_token=' + $('#frmRecommended_index #_token').val();
     data += '&id=' + id;
     var i = 0;
+    var check = myClass.checkValidate();
+    if(check == false){
+        return false;
+    }
     $.ajax({
         url: url,
         type: "POST",
@@ -404,4 +397,49 @@ JS_Effective.prototype.changeStatus = function(id){
             NclLib.successLoadding();
         }
     });
+}
+/**
+ * Kiểm tra
+ */
+JS_Effective.prototype.checkValidate = function(){
+    if($("#closing_percentage").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', '% Chốt không được để trống!');
+        $("#closing_percentage").focus();
+        return false;
+    }
+    if($("#code_cp").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mã cổ phiếu không được để trống!');
+        $("#code_cp").focus();
+        return false;
+    }
+    if($("#code_category").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Nhóm ngành không được để trống!');
+        $("#code_category").focus();
+        return false;
+    }
+    if($("#percent_of_assets").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', '% Tài sản không được để trống!');
+        $("#percent_of_assets").focus();
+        return false;
+    }
+    if($("#price").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Giá mua không được để trống!');
+        $("#price").focus();
+        return false;
+    }
+    if($("#date_close").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Ngày chốt không được để trống!');
+        $("#date_close").focus();
+        return false;
+    }
+    if($("#price_close").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Giá chốt không được để trống!');
+        $("#price_close").focus();
+        return false;
+    }
+    if($("#profit_and_loss").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Lãi lỗ không được để trống!');
+        $("#profit_and_loss").focus();
+        return false;
+    }
 }
