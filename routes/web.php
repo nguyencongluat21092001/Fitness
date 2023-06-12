@@ -215,10 +215,10 @@ Route::prefix('/client')->group(function () {
     Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
 
     Route::get('introduce/index', [IntroduceController::class, 'index']);
-    Route::middleware('permissionCheckLoginClient')->group(function () {
+    // Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
-        Route::middleware('checkloginDatafinancial')->group(function () {
+        // Route::middleware('checkloginDatafinancial')->group(function () {
             Route::prefix('datafinancial')->group(function () {
                 // Tra cứu cổ phiếu
                 Route::get('/index', [ClientDataFinancialController::class, 'index']);
@@ -238,7 +238,7 @@ Route::prefix('/client')->group(function () {
                 Route::post('/loadList_categoryFintop_vip', [ClientDataFinancialController::class, 'loadList_categoryFintop_vip']);
                 Route::post('/loadList_categoryFintop_basic', [ClientDataFinancialController::class, 'loadList_categoryFintop_basic']);
             });
-        });
+        // });
         Route::prefix('about')->group(function () {
             // Tra cứu cổ phiếu
             Route::get('/index', [AboutController::class, 'index']);
@@ -260,7 +260,7 @@ Route::prefix('/client')->group(function () {
         Route::prefix('des')->group(function () {
             Route::get('index', [DesController::class, 'index']);
         });
-    });
+    // });
     // Thư viện đầu tư
     Route::get('/library/index', [LibraryController::class, 'index']);
     Route::post('/library/loadList',[LibraryController::class,'loadList']);

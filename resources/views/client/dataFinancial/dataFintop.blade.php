@@ -39,17 +39,25 @@
                     <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
                 </tr>
             </thead>
-            
             <tbody id="body_data">
-            @php $id = 1; @endphp
-                <tr id="code_1">
-                    <td  style="vertical-align: middle;color:#83beff" align="center">
-                        <span >1</span>
-                    </td>
-                    <td class="td_code_cp_1" style="vertical-align: middle;" align="center" ondblclick="click2('1', 'code_cp',this)">
-                        <span id="span_code_cp_1" class="span_code_cp_1">-</span>
-                    </td>
-                </tr>
+                @if(auth::check())
+                    @php $id = 1; @endphp
+                    <tr id="code_1">
+                        <td  style="vertical-align: middle;color:#83beff" align="center">
+                            <span >1</span>
+                        </td>
+                        <td class="td_code_cp_1" style="vertical-align: middle;" align="center" ondblclick="click2('1', 'code_cp',this)">
+                            <span id="span_code_cp_1" class="span_code_cp_1">-</span>
+                        </td>
+                    </tr>
+                @else
+                    <span><i class="fas fa-hand-point-right"></i> Đăng nhập để tra cứu cổ phiếu
+                                
+                        <button  type="button" class="btn btn-success" href="{{ url('/login') }}"> <a href="{{ url('/login') }}" style="animation: lights 2s 750ms linear infinite;">Đăng nhập</a></button>
+                    
+                    </span>
+                    <p></p>
+                @endif
             </tbody>
         </table>
     <!-- </div> -->

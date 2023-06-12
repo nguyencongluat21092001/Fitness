@@ -16,7 +16,9 @@
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Ngày mua</b></td>
                 <td align="center" style="white-space: inherit; vertical-align: middle;background:#ffef6d;color:red"><b>% Tài sản</b></td>
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Giá mua</b></td>
-                <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Vùng giá mục tiêu</b></td>
+                <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Vùng giá mục tiêu (TA1)</b></td>
+                <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Vùng giá mục tiêu (TA2)</b></td>
+                <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Vùng giá mục tiêu (TA3)</b></td>
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Giá hiện tại</b></td>
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Lãi/Lỗ</b></td>
                 <td align="center" style="white-space: inherit; vertical-align: middle;"><b>Khuyến nghị hành động</b></td>
@@ -31,7 +33,11 @@
                 <tr>
                     <td align="center" >{{ $key + 1 }}</td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->code_cp }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
                         <span>{{ $data->code_category }}</span>
@@ -53,7 +59,21 @@
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
                         @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
-                        <span>{{ $data->price_range }}</span>
+                        <span>{{ $data->ta1 }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
+                    </td>
+                    <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
+                        <span>{{ $data->ta2 }}</span>
+                        @else
+                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
+                        @endif
+                    </td>
+                    <td align="center" style="white-space: inherit; vertical-align: middle;">
+                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
+                        <span>{{ $data->ta3 }}</span>
                         @else
                         <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
                         @endif
@@ -73,11 +93,7 @@
                         @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;">
-                        @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')
                         <span>{{ $data->act }}</span>
-                        @else
-                        <span style="color:#00a25f"><i class="fas fa-eye-slash"></i></span>
-                        @endif
                     </td>
                     <td align="center" style="white-space: inherit; vertical-align: middle;background:#ffef6d;color:red">
                         @if(isset($_SESSION['role']) && $_SESSION['role'] == 'VIP')

@@ -77,8 +77,9 @@
               </tr>
           </thead>
             <tbody id="body_data">
+            @if(auth::check())
             @foreach ($datas as $key => $data)
-                @php $id = $data->id; @endphp
+                 @php $id = $data->id; @endphp
                 <tr>
                         <td style="width: 5%;vertical-align: middle;" align="center">{{$key + 1}}</td>
                         <td style="width: 5%;vertical-align: middle;" class="td_code_cp_{{$id}}" align="center">
@@ -117,6 +118,15 @@
                         </td>
                     </tr>
                 @endforeach
+                @else
+                    <span><i class="fas fa-hand-point-right"></i> Đăng nhập xem tín hiệu mua
+                                
+                        <button  type="button" class="btn btn-success" href="{{ url('/login') }}"> <a href="{{ url('/login') }}" style="animation: lights 2s 750ms linear infinite;">Đăng nhập</a></button>
+                    
+                    </span>
+                    <p></p>
+                @endif
+                
             </tbody>
       </table>
   </div>
