@@ -93,7 +93,7 @@ class CategoryController extends Controller
     public function edit(Request $request)
     {
         $input = $request->all();
-        $cates = $this->CateService->where('id', $input['id'])->first();
+        $cates = $this->CategoryService->where('id', $input['id'])->first();
         if(empty($cates)){
             return array('success' => false, 'message' => 'Không tồn tại đối tượng!');
         }

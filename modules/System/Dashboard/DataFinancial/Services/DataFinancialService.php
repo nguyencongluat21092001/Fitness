@@ -24,10 +24,6 @@ class DataFinancialService extends Service
     }
 
     public function store($input){
-        $dataFinancials = $this->repository->select('*')->where('code_cp', $input['code_cp'])->count();
-        if($dataFinancials > 0){
-            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
-        }
         if($input['id'] != ''){
             $arrData = [
                 "user_id" => $_SESSION['id'],
@@ -47,6 +43,10 @@ class DataFinancialService extends Service
             ];
             $create = $this->DataFinancialRepository->where('id',$input['id'])->update($arrData);
         }else{
+            $dataFinancials = $this->repository->select('*')->where('code_cp', $input['code_cp'])->count();
+            if($dataFinancials > 0){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
             $arrData = [
                 'id'=>(string)Str::uuid(),
                 "user_id" => $_SESSION['id'],

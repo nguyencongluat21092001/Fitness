@@ -25,10 +25,6 @@ class CategoryService extends Service
 
     public function store($input){
         $categories = $this->repository->select('*')->get();
-        $countCategory = $this->repository->where('code_category', $input['code_category'])->where('cate', $input['cate'])->count();
-        if($countCategory > 0){
-            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
-        }
         if(isset($input['order']) && !empty($input['order'])){
             $this->updateOrder($input);
         }
@@ -43,6 +39,10 @@ class CategoryService extends Service
             ];
             $create = $this->CategoryRepository->where('id',$input['id'])->update($arrData);
         }else{
+            $countCategory = $this->repository->where('code_category', $input['code_category'])->where('cate', $input['cate'])->count();
+            if($countCategory > 0){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
             $arrData = [
                 'id'=>(string)Str::uuid(),
                 'cate'=> $input['cate'] ,

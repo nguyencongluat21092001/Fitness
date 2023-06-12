@@ -71,6 +71,7 @@ JS_Effective.prototype.add = function (oForm) {
             $('#addfile').html(arrResult);
             $('#addfile').modal('show');
             $("#status").attr('checked', true);
+            $('.chzn-select').chosen({ height: '100%', width: '100%' });
             myClass.loadevent(oForm);
 
         }
@@ -103,8 +104,8 @@ JS_Effective.prototype.store = function (oFormCreate) {
                   $('#addfile').modal('hide');
                   myClass.loadList(oFormCreate);
             } else {
-                  var nameMessage = 'Cập nhật thất bại!';
-                  NclLib.alertMessageBackend('success', 'Thông báo', nameMessage);
+                  var nameMessage = arrResult['message'];
+                  NclLib.alertMessageBackend('danger', 'Thông báo', nameMessage);
             }
         }
     });
@@ -159,10 +160,6 @@ JS_Effective.prototype.edit = function (id) {
     var data = '_token=' + $('#frmRecommended_index #_token').val();
     data += '&id=' + id;
     var i = 0;
-    var check = myClass.checkValidate();
-    if(check == false){
-        return false;
-    }
     $.ajax({
         url: url,
         type: "POST",
@@ -174,6 +171,7 @@ JS_Effective.prototype.edit = function (id) {
             }
             $('#addfile').html(arrResult);
             $('#addfile').modal('show');
+            $('.chzn-select').chosen({ height: '100%', width: '100%' });
             $('form#frmAdd').find('#btn_create').click(function () {
                 myClass.store('form#frmAdd');
             })

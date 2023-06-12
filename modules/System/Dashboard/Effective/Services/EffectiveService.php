@@ -40,12 +40,16 @@ class EffectiveService extends Service
             $arrData['updated_at'] = date('Y-m-d H:i:s');
             $create = $Recommendations->update($arrData);
         }else{
+            $Recommendations = $this->repository->select('*')->where('code_category', $input['code_category'])->count();
+            if($Recommendations > 0){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
             $arrData['created_at'] = date('Y-m-d H:i:s');
             $arrData['id'] = (string)Str::uuid();
             $create = $this->repository->create($arrData);
         }
         
-        return $create;
+        return array('success' => true, 'message' => 'Cập nhật thành công');
     }
     /**
      * Cập nhật và thêm mới màn hình danh sách
