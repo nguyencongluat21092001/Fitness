@@ -27020,7 +27020,10 @@ pre[class*="language-"] {
 
 
 /*---------------------------- preloader area ----------------------------*/
-
+.required::after{
+  content: " *";
+  color: red;
+}
 .loader_bg {
   position: fixed;
   z-index: 9999999;

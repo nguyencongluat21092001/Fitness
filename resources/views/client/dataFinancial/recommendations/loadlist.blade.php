@@ -6,7 +6,7 @@
   max-height: 600px;
 }
 </style>
-    <div id="form_chat">
+    <div id="">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <div class="chat">
             <div  id="messages">
@@ -15,9 +15,9 @@
                     <img src="../clients/img/LogoFinTop_red.png"
                         alt="avatar 1" style="width: 30px; height: 100%;">
                     @if($data->type == 'MUA')
-                    <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #2a3546;color:#ffd743;width:80%;font-family:auto">
+                    <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #2a3546;color:#ffd743;width:100%;font-family:auto">
                     @else
-                    <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #861515;color:white;width:80%;font-family:auto">
+                    <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #861515;color:white;width:100%;font-family:auto">
                     @endif
                        <div style="width:30%">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"

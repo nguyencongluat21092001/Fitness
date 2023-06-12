@@ -51,15 +51,15 @@
                 <table class="table  table-bordered table-striped table-condensed dataTable no-footer">
                     <thead>
                         <tr>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Mã CP</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Sàn</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhóm nghành HĐKD</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng TA</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Nhận định Ta - Xu hướng CP</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Hành động</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá giao dịch</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Vùng giá cắt lỗ</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Xếp hạng FA</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Mã CP</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Sàn</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Nhóm nghành HĐKD</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Xếp hạng TA</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Nhận định Ta - Xu hướng CP</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Hành động</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Vùng giá giao dịch</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Vùng giá cắt lỗ</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Xếp hạng FA</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>#</b></td>
                         </tr>

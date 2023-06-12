@@ -51,7 +51,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Nội dung</p>
-                      <textarea style="height:150px" class="form-control" type="text" disabled>{{$dataInfor['decision']}}</textarea>
+                      <textarea style="height:150px" class="form-control" disabled>{{ $dataInfor['decision'] }}</textarea>
                     </div>
                   </div>
                 </div>

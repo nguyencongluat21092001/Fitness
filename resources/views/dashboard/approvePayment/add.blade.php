@@ -36,19 +36,19 @@
                     </div>
                 </div>
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Người giới thiệu</span>
+                    <span class="col-md-3 control-label">Người giới thiệu</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->user_id_introduce) ? $datas->user_id_introduce : ''}}" name="user_id_introduce" id="user_id_introduce" placeholder="Email hoặc Số điện thoại" />
                     </div>
                 </div>
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Thứ tự</span>
+                    <span class="col-md-3 control-label">Thứ tự</span>
                     <div class="col-md-8">
                         <input class="form-control" type="text" value="{{isset($datas->order) ? $datas->order : $order}}" name="order" id="order" placeholder="Nhập thứ tự" />
                     </div>
                 </div>
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Trạng thái</span>
+                    <span class="col-md-3 control-label">Trạng thái</span>
                     <div class="col-md-8">
                         <label for="status">
                             <input type="checkbox" name="status" id="status" {{isset($datas->status) && $datas->status == 1 ? 'checked' : ''}} /> Hoạt động

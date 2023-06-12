@@ -2,7 +2,7 @@ function JS_Blogs(baseUrl, module, controller) {
     this.module = module;
     this.baseUrl = baseUrl;
     this.controller = controller;
-    NclLib.menuActive('.link-blog');
+    NclLib.active('.link-blog');
     this.urlPath = baseUrl + '/' + module + '/' + controller;
 }
 
@@ -95,14 +95,8 @@ JS_Blogs.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var formdata = new FormData();
-    if ($("#code_category").val() == '') {
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Thể loại không được để trống!');
-        $("#code_category").focus();
-        return false;
-    }
-    if($("#title").val() == ''){
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
-        $("#title").focus();
+    var check = myClass.checkValidate();
+    if(check == false){
         return false;
     }
     var status = ''
@@ -404,4 +398,24 @@ JS_Blogs.prototype.updatePass = function (oFormCreate) {
         }
     });
     
+}
+/**
+ * Check
+ */
+JS_Blogs.prototype.checkValidate = function(){
+    if($("#code_category").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Thể loại không được để trống!');
+        $("#code_category").focus();
+        return false;
+    }
+    if($("#title").val() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Tiêu đề không được để trống!');
+        $("#title").focus();
+        return false;
+    }
+    if(CKEDITOR.instances.decision.getData() == ''){
+        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Nội dung không được để trống!');
+        $("#decision").focus();
+        return false;
+    }
 }

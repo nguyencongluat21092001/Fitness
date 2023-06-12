@@ -2,20 +2,84 @@
 use Modules\Client\Page\Notification\Models\ReadNotificationModel;
 use Modules\Client\Page\Notification\Models\NotificationModel;
 
-$idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
-$notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
+if(isset($_SESSION['id'])){
+    $idRead = ReadNotificationModel::select('notification_id')->where('user_id', $_SESSION['id'])->get()->toArray();
+    $notification = NotificationModel::select('*')->whereNotIn('id', $idRead)->get();
+}
 
 ?>
+<style>
+    .animate {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        -moz-transition: all 0.2s ease-in-out;
+        -webkit-transition: all 0.2s ease-in-out;
+        animation: road-animates 1s linear infinite;
+        -webkit-animation: swing 1s linear infinite;
+        -moz-animation: swing 1s linear infinite;
+        -o-animation: swing 1s linear infinite;
+        transform-origin: center top;
+        -moz-transform-origin: center top;
+        -webkit-transform-origin: center top;
+    }
+
+    @-webkit-keyframes swing {
+        0% {
+            -webkit-transform: rotateZ(-5deg);
+            transform: rotateZ(-5deg);
+        }
+
+        50% {
+            -webkit-transform: rotateZ(5deg);
+            transform: rotateZ(5deg);
+        }
+
+        100% {
+            transform: rotateZ(-5deg);
+            -webkit-transform: rotateZ(-5deg);
+        }
+    }
+
+    @keyframes swing {
+        0% {
+            transform: rotateZ(-5deg);
+        }
+
+        50% {
+            transform: rotateZ(5deg);
+        }
+
+        100% {
+            transform: rotateZ(-5deg);
+        }
+    }
+
+    @-moz-keyframes swing {
+        0% {
+            transform: rotate(-5deg);
+        }
+
+        50% {
+            transform: rotate(5deg);
+        }
+
+        100% {
+            transform: rotate(-5deg);
+        }
+    }
+</style>
 <form action="" method="POST" id="frmLoadlist_box">
     <div id="form_chat">
         <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
         <span class="form-group input-group" style="align-items: center;">
+            @if(isset($notification))
             <div id="alertNotifi" class="form-control alertNotifi" @if(count($notification) <= 0) hidden @endif>
                 <span>Bạn có {{count($notification)}} thông báo mới</span>
             </div>
+            @endif
             <div class="input-group-btn" onclick="readNotification()">
                 <label class="icon" for="checkbox1" style="border-radius:50px;background:#25aa33e8;">
-                    <i style="color:#ffd00f;padding:13px" class="far fa-bell fa-3x py-2"></i>
+                    <i style="color:#ffd00f;padding:13px" id="icon-bell" class="far fa-bell fa-3x py-2 @if(isset($notification) && count($notification) > 0) animate @endif "></i>
                     <!-- <img width="90px" height="90px" style="background-color: none"
                     src="https://vcdn.subiz-cdn.com/file/fiqtarohdurccuocnccb-27.png" alt=""> -->
                 </label>

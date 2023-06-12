@@ -57,7 +57,7 @@ class RecommendedController extends Controller
     {
         $input = $request->input();
         $create = $this->recommendedService->store($input); 
-        return array('success' => true, 'message' => 'Cập nhật thành công');
+        return $create;
     }
     /**
      * Load màn hình chỉnh sửa thông tin danh mục
