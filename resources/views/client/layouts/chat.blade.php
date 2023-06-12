@@ -80,15 +80,14 @@ if(isset($_SESSION['id'])){
             <div class="input-group-btn" onclick="readNotification()">
                 <label class="icon" for="checkbox1" style="border-radius:50px;background:#25aa33e8;">
                     <i style="color:#ffd00f;padding:13px" id="icon-bell" class="far fa-bell fa-3x py-2 @if(isset($notification) && count($notification) > 0) animate @endif "></i>
-                    <!-- <img width="90px" height="90px" style="background-color: none"
-                    src="https://vcdn.subiz-cdn.com/file/fiqtarohdurccuocnccb-27.png" alt=""> -->
                 </label>
             </div>
-            <div>
+            <!-- <div>
                 <input hidden type="checkbox" id="checkbox1" checked />
-            </div>
+            </div> -->
         </span>
-        <section class="avenue-messenger transform" id="pDetails">
+        
+        <section class="avenue-messenger " id="pDetails">
             <div class="menu">
                 <div class="button" style="padding-right: 15px;padding-top: 5px;">
                     <div>

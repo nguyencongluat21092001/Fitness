@@ -13,7 +13,7 @@
         <main class="main-content position-relative border-radius-lg ">
             <div class="container-fluid py-4">
             
-            <div class="row mt-4">
+            <!-- <div class="row mt-4">
                 <div class="col-lg-7 mb-lg-0 mb-4" id="frmLoadlist_list">
                     <div class="card ">
                         <div class="card-header pb-0 p-3">
@@ -24,7 +24,7 @@
                                 <div class="col-md-3">
                                     <select class="form-control input-sm chzn-select" name="type_code"
                                         id="type_code">
-                                        <!-- <option value=''>-- Loại --</option> -->
+                                        <option value=''>-- Loại --</option>
                                         <option value="VNINDEX">VNINDEX</option>
                                         <option value="VPB">VPB</option>
                                         <option value="HNXINDEX">HNXINDEX</option>
@@ -41,11 +41,11 @@
                                     <input class="form-control input-sm" type="date" id="toDate" name="toDate" 
                                         value="<?php echo (new DateTime())->format('Y-m-d');?>"  min="2010-01-01" max="2030-12-31">  
                                 </div>
-                                <!-- <div class="input-group" style="width:40%;height:10%">
+                                <div class="input-group" style="width:40%;height:10%">
                                     <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>
                                     <input id="search" name="search" type="text" class="form-control" placeholder="Tìm kiếm...">
-                                </div> -->
+                                </div>
                             </div>
                             <div class="row form-group" style="text-align: center;">
                                 <div class="col-md-3">
@@ -63,7 +63,6 @@
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <!-- Màn hình danh sách -->
                             <div id="table-container" style="padding-top:10px"></div>
                         </div>
                     </div>
@@ -75,25 +74,24 @@
                     </div>
                     <div class="card-body p-3">
                         <div class="row form-group">
-                                <!-- <div class="col-md-4">
+                                <div class="col-md-4">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-warning">H.động mạnh nhất</button>
-                                </div> -->
-                                <!-- <div class="col-md-3">
+                                </div>
+                                <div class="col-md-3">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-secondary">% Tăng</button>
                                 </div>
                                 <div class="col-md-3">
                                    <button id="txt_search" name="txt_search" type="button" class="btn btn-secondary">% Hạ</button>
-                                </div> -->
+                                </div>
                             </div>
                         </div>
-                         <!-- Màn hình danh sách -->
                          <div id="table-tap1-container" style="padding-top:10px"></div>
                     </div>
                 </div>
                 </div>
-            </div>
+            </div> -->
                 <!-- content -->
-            <!-- <div class="container-fluid py-4">
+            <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-lg-8">
                 <div class="row">
@@ -403,7 +401,7 @@
                     </div>
                 </div>
                 </div>
-            </div> -->
+            </div>
         </main>
     </form>
     
