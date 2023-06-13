@@ -25,10 +25,7 @@ class CateService extends Service
     }
 
     public function store($input){
-        $cates = $this->repository->select('*')->where('code_cate', $input['code_cate'])->count();
-        if($cates > 0){
-            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
-        }
+        $cates = $this->repository->select('*')->get();
         if($input['id'] != ''){
             $arrData = [
                 'name'=>$input['name'],
@@ -39,6 +36,10 @@ class CateService extends Service
             ];
             $create = $this->CateRepository->where('id',$input['id'])->update($arrData);
         }else{
+            $countCate = $this->repository->select('*')->where('code_cate', $input['code_cate'])->count();
+            if($countCate > 0){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
             $arrData = [
                 'id'=>(string)Str::uuid(),
                 'name'=>$input['name'],
@@ -50,7 +51,7 @@ class CateService extends Service
             $create = $this->CateRepository->create($arrData);
         }
         
-        return array('success' => false, 'message' => 'Cập nhật thành công!');
+        return array('success' => true, 'message' => 'Cập nhật thành công!');
     }
     public function loadList($arrInput){
         $data = array();

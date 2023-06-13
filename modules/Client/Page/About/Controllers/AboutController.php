@@ -37,7 +37,7 @@ class AboutController extends Controller
     public function index(Request $request)
     {
         // dd('1');
-        $categories = $this->categoryService->where('cate','DM_BLOG')->where('code_category', 'BAO_CAO_THTT')->get();
+        $categories = $this->categoryService->where('cate','DM_BLOG')->where('code_category', 'BAO_CAO_THTT')->where('status', 1)->get();
         // dd($categories);
         $data['categories'] = $categories;
         return view('client.about.home',$data);
@@ -59,7 +59,7 @@ class AboutController extends Controller
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("client.about.loadlistTHTT", $data)->render();
+        return view("client.about.loadListTHTT", $data)->render();
     }
     /**
      * khởi tạo dữ liệu
@@ -87,7 +87,7 @@ class AboutController extends Controller
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("client.about.loadlistTKP", $data)->render();
+        return view("client.about.loadListTKP", $data)->render();
     }
     /**
      * khởi tạo dữ liệu

@@ -86,6 +86,7 @@ class BlogController extends Controller
         $input = $request->all();
         $category = $this->categoryService->where('cate','DM_BLOG')->orderBy('order')->get()->toArray();
         $data['category'] = $category;
+        $data['code'] = $input['category'];
         return view('dashboard.blog.edit',compact('data'));
     }
     /**

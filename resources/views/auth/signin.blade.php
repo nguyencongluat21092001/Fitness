@@ -1,10 +1,10 @@
-@extends('layouts.appSign')
+@extends('client.layouts.index')
 
-@section('content')
-    <div class="container">
+@section('body-client')
+    <div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <div class="card" style="background:#182d51b0;">
+                <div class="card" style="background:#fff;">
                     <div class="card-header">
                         <h4>Đăng nhập</h4>
                     </div>
@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="row mb-0">
-                                <div class="col-md-12">
+                                <div class="col-md-12" style="display: flex;justify-content: space-between;">
                                     <button type="submit" class="btn btn-primary" style="background-color: slategrey">
                                         {{ __('Đăng nhập') }}
                                     </button>
@@ -46,9 +46,11 @@
                                         </a>
                                     @endif
                                 </div>
+                                {{--
                                 <div class="col-md-12">
                                     <span class="text-white">Bạn chưa có tài khoản? <i><a href="{{route('register')}}" style="color:#8b9ac5">Đăng ký ngay</a></i></span>
                                 </div>
+                                --}}
                             </div>
                         </form>
                     </div>

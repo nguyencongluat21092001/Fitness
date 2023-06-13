@@ -16,17 +16,13 @@
                             <p for="example-text-input" class="form-control-label required">Thể loại</p>
                             <select class="form-control input-sm chzn-select" name="code_category" id="code_category">
                                 <option value=''>-- Chọn thể loại --</option>
-                                @if(!empty($data['code_category']))
-                                @foreach($data['category'] as $item){
-                                <option {{!empty($data['code_category'] == $item['code_category']) ? 'selected' :''}} value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                }
+                                @foreach($data['category'] as $item)
+
+                                <option @if((isset($data['code']) && $data['code'] == $item['code_category']) || 
+                                        (isset($data['code_category']) && $data['code_category'] == $item['code_category'])) selected @endif 
+                                        value="{{$item['code_category']}}">{{$item['name_category']}}</option>
+                                
                                 @endforeach
-                                @else
-                                @foreach($data['category'] as $item){
-                                <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                }
-                                @endforeach
-                                @endif
                             </select>
                         </div>
                     </div>

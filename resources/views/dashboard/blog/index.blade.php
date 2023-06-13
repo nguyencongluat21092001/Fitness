@@ -35,9 +35,8 @@
                                     <select class="form-control input-sm chzn-select" name="category"
                                         id="category">
                                         <option value=''>-- Chọn thể loại --</option>
-                                        @foreach($data['category'] as $item){
+                                        @foreach($data['category'] as $item)
                                             <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                        }
                                         @endforeach
                                     </select>
                                 </div>

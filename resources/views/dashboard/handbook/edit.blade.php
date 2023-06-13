@@ -18,16 +18,14 @@
                             id="category_handbook">
                             <option value=''>-- Chọn loại cẩm nang --</option>
                             @if(!empty($data['detail']['category_handbook']))
-                                @foreach($data['category'] as $item){
+                                @foreach($data['category'] as $item)
                                     <option 
                                     {{!empty($data['detail']['category_handbook'] == $item['code_category']) ? 'selected' :''}}
                                     value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                }
                                 @endforeach
                             @else 
-                                @foreach($data['category'] as $item){
+                                @foreach($data['category'] as $item)
                                     <option value="{{$item['code_category']}}">{{$item['name_category']}}</option>
-                                }
                                 @endforeach
                             @endif
                         </select>

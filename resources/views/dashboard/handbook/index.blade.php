@@ -31,9 +31,8 @@
                                     <select class="form-control input-sm chzn-select" name="cate"
                                         id="cate">
                                         <option value=''>-- Chọn loại cẩm nang --</option>
-                                        @foreach($data['category'] as $item){
+                                        @foreach($data['category'] as $item)
                                             <option value="{{$item['code_category']}}">{{$item['decision']}}</option>
-                                        }
                                         @endforeach
                                     </select>
                                 </div>

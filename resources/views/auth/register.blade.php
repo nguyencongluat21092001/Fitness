@@ -1,6 +1,6 @@
-@extends('layouts.appSign')
+@extends('client.layouts.index')
 
-@section('content')
+@section('body-client')
 <style>
     .hidden{
         display:none;
@@ -14,10 +14,10 @@
         color:#690000;
     }
 </style>
-<div class="container">
+<div class="container mt-5 mb-5">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <div class="card" style="background:#182d51b0;">
+                <div class="card" style="background:#fff;">
                     <div class="card-header">
                         <h4>Đăng ký tài khoản
                             @if(isset($data['user_introduce']))
@@ -72,19 +72,21 @@
                                 <button type="button" onclick="JS_Register.getOtp()" class="btn btn-primary" id="btn_register" style="background-color: #ffae17">
                                     {{ __('Lấy OTP SMS') }}
                                 </button>
-                                <div class="col-md-7" style="padding-left:5px">
+                                <div class="col-md-10" style="padding-left:5px">
                                      <input placeholder="Nhập mã OTP..." id="otp" type="text" class="form-control" name="otp" value="{{ old('otp') }}">
                                 </div>
                             </div>
                             @error('otp') <span style="color: red">{{$message}}</span> @enderror
                             @error('user_introduce') <span style="color: red">{{$message}}</span> @enderror
                         <!-- </div> -->
-                        <div class="row mb-0">
-                            <div class="col-md-12 ">
+                        <div class="row mb-0 mt-1">
+                            <div class="col-md-12 text-center">
                                 <button type="submit" class="btn btn-primary" id="btn_register" style="background-color: slategrey">
                                     {{ __('Đăng ký') }}
                                 </button>
+                                {{--
                                 <span class="btn text-white">Bạn đã có tài khoản? <i><a href="{{route('login')}}" style="color:#8b9ac5">Đăng nhập</a></i></span>
+                                --}}
                             </div>
                         </div>
                     </form>
