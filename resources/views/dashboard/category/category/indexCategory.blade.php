@@ -41,9 +41,8 @@
                                 <div class="col-md-2">
                                     <select class="form-control input-sm chzn-select" name="cate"
                                         id="cate">
-                                        @foreach($data['cate'] as $item){
+                                        @foreach($data['cate'] as $item)
                                             <option value="{{$item['code_cate']}}">{{$item['name']}}</option>
-                                        }
                                         @endforeach
                                     </select>
                                 </div>

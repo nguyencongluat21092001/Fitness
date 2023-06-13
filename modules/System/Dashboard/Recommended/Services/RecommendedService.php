@@ -27,10 +27,6 @@ class RecommendedService extends Service
                 $price_range .= ',' . $value;
             }
         }
-        $Recommendations = $this->repository->select('*')->where('code_category', $input['code_category'])->count();
-        if($Recommendations > 0){
-            return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
-        }
         $arrData = [
             'code_cp' => isset($input['code_cp']) ? $input['code_cp'] : '',
             'code_category' => isset($input['code_category']) ? $input['code_category'] : '',
@@ -53,6 +49,10 @@ class RecommendedService extends Service
             $arrData['updated_at'] = date('Y-m-d H:i:s');
             $create = $Recommendations->update($arrData);
         }else{
+            $Recommendations = $this->repository->select('*')->where('code_category', $input['code_category'])->count();
+            if($Recommendations > 0){
+                return array('success' => false, 'message' => 'Mã đối tượng đã tồn tại!');
+            }
             $arrData['created_at'] = date('Y-m-d H:i:s');
             $arrData['id'] = (string)Str::uuid();
             $create = $this->repository->create($arrData);
