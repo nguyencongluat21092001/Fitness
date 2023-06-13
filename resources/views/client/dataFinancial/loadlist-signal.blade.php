@@ -56,8 +56,17 @@
     .table{
         border-color: #670000;
     }
+    .table-responsive.pmd-card.pmd-z-depth{
+      height: 100%;
+      max-height: 600px;
+    }
+    #style-1 #table-data thead tr td{
+      position: sticky;
+      top: 0;
+      background: #92241a;
+    }
 </style>
-<div class="scrollbar" id="style-1" style="padding-right:10px;">
+<div id="style-1" style="padding-right:10px;">
   <div class="table-responsive pmd-card pmd-z-depth table-container">
       <table id="table-data" class="table  table-bordered table-striped table-condensed dataTable no-footer">
           <thead>
