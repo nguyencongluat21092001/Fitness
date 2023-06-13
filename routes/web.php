@@ -270,6 +270,8 @@ Route::prefix('/client')->group(function () {
 
     // Nâng cấp tk 
     Route::get('/upgradeAcc/index', [UpgradeAccController::class, 'index']);
+    Route::get('/upgradeAcc/viewForm', [UpgradeAccController::class, 'registerVip']);
+
     // Đọc thông báo
     Route::get('readNotification', [ReadNotificationController::class, 'readNotification']);
 });

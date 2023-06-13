@@ -58,7 +58,7 @@
                                         <li><i class="bx bxs-circle me-2"></i>Danh mục đầu tư V.I.P FinTop</li>
                                     </ul>
                                     <div class="pricing-table-footer pt-5 pb-2">
-                                        <a class="btn rounded-pill px-4 btn-outline-light light-300" style="background:#00a313;color:#007b14;animation: lights 2s 750ms linear infinite;">Đăng ký</a>
+                                        <a onclick="JS_UpgradeAcc.viewForm()" class="btn rounded-pill px-4 btn-outline-light light-300" style="background:#00a313;color:#007b14;animation: lights 2s 750ms linear infinite;">Đăng ký</a>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +165,7 @@
     </section>
 </section>
 <script src="../clients/js/jquery.min.js"></script>
-<div class="modal" id="videomodal" role="dialog"></div>
+<div class="modal" id="formmodal" role="dialog"></div>
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_UpgradeAcc.js') }}"></script>
 <script type="text/javascript">
     var baseUrl = '{{ url('') }}';

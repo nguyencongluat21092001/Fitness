@@ -5,6 +5,7 @@ namespace Modules\Client\Page\UpgradeAcc\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Modules\System\Dashboard\Users\Services\UserService;
 use DB;
 
 /**
@@ -15,10 +16,12 @@ use DB;
 class UpgradeAccController extends Controller
 {
 
-    public function __construct(){
+    public function __construct(
+        UserService $userService
+    ){
+        $this->userService = $userService;
     }
-
-    /**
+     /**
      * load màn hình 
      *
      * @return view
@@ -34,6 +37,9 @@ class UpgradeAccController extends Controller
      */
     public function registerVip(Request $request)
     {
-        return view('client.upgradeAcc.registerVip');
+        $account = $this->userService->find($_SESSION['id']);
+        $data = $account;
+        $data['time_register'] = date('d-m-Y');
+        return view('client.upgradeAcc.registerVip',compact('data'));
     }
 }

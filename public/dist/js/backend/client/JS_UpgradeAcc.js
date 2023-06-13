@@ -12,8 +12,8 @@ function JS_UpgradeAcc(baseUrl, module, controller) {
  */
 JS_UpgradeAcc.prototype.loadIndex = function () {
     var myClass = this;
-    // var oForm = 'form#frmLoadlist_library';
-    myClass.loadList(oForm);
+    var oForm = 'form#frmLoadlist_library';
+    // myClass.loadList(oForm);
     // $(oForm).find('#txt_search').click(function () {
     //     /* ENTER PRESSED*/
     //         var page = $(oForm).find('#limit').val();
@@ -23,26 +23,26 @@ JS_UpgradeAcc.prototype.loadIndex = function () {
         
     // });
 }
-/**
- * Load màn hình danh sách
- *
- * @param oForm (tên form)
- *
- * @return void
- */
-JS_UpgradeAcc.prototype.loadList = function (oForm) {
-    var myClass = this;
-    var url = this.urlPath + '/loadList';
-    var data = $(oForm).serialize();
-    $.ajax({
-        url: url,
-        type: "POST",
-        data: data,
-        success: function (arrResult) {
-            $("#table-container-library").html(arrResult);
-        }
-    });
-}
+// /**
+//  * Load màn hình danh sách
+//  *
+//  * @param oForm (tên form)
+//  *
+//  * @return void
+//  */
+// JS_UpgradeAcc.prototype.loadList = function (oForm) {
+//     var myClass = this;
+//     var url = this.urlPath + '/loadList';
+//     var data = $(oForm).serialize();
+//     $.ajax({
+//         url: url,
+//         type: "POST",
+//         data: data,
+//         success: function (arrResult) {
+//             $("#table-container-library").html(arrResult);
+//         }
+//     });
+// }
 /**
  * Hàm hiển thị modal
  *
@@ -50,8 +50,8 @@ JS_UpgradeAcc.prototype.loadList = function (oForm) {
  *
  * @return void
  */
-JS_UpgradeAcc.prototype.seeVideo = function (id) {
-    var url = this.urlPath + '/seeVideo';
+JS_UpgradeAcc.prototype.viewForm = function (id) {
+    var url = this.urlPath + '/viewForm';
     var myClass = this;
     var data = 'id=' + id;
     $.ajax({
@@ -60,8 +60,8 @@ JS_UpgradeAcc.prototype.seeVideo = function (id) {
         //cache: true,
         data: data,
         success: function (arrResult) {
-            $('#videomodal').html(arrResult);
-            $('#videomodal').modal('show');
+            $('#formmodal').html(arrResult);
+            $('#formmodal').modal('show');
         }
     });
 }
