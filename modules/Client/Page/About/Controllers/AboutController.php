@@ -115,7 +115,7 @@ class AboutController extends Controller
         $data['datas'] = $objResult;
         $data['param'] = $param;
         $data['pagination'] = $data['datas']->links('pagination.default');
-        return view("client.about.loadlistPTN", $data)->render();
+        return view("client.about.loadListPTN", $data)->render();
     }
     /**
      * khởi tạo dữ liệu
