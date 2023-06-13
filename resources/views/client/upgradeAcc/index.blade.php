@@ -165,17 +165,13 @@
     </section>
 </section>
 <script src="../clients/js/jquery.min.js"></script>
-
-<script>
-        NclLib.menuActive('.link-privileges');
-</script>
 <div class="modal" id="videomodal" role="dialog"></div>
-<script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_Library.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_UpgradeAcc.js') }}"></script>
 <script type="text/javascript">
     var baseUrl = '{{ url('') }}';
-    var JS_Library = new JS_Library(baseUrl, 'client', 'library');
+    var JS_UpgradeAcc = new JS_UpgradeAcc(baseUrl, 'client', 'upgradeAcc');
     $(document).ready(function($) {
-        JS_Library.loadIndex(baseUrl);
+        JS_UpgradeAcc.loadIndex(baseUrl);
     })
 </script>
 @endsection

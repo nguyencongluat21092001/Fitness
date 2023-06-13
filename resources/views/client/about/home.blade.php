@@ -89,6 +89,7 @@
       </div>
       <div class="col-lg-8" style="background: #fff">
       <form id="frmLoadlist_blog">
+        <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="table-blog-container"></div>
       </form>
       </div>
