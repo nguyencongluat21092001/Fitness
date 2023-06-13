@@ -1,4 +1,5 @@
 <style>
+    
     .unit-edit span {
         font-size: 19px;
     }
@@ -9,6 +10,7 @@
 
     @media (min-width: 1200px) {
         .modal-xl {
+            padding-left: 20%;
             --bs-modal-width: 1740px !important;
         }
     }
@@ -24,13 +26,13 @@
     <input type="hidden" name="id" id="id" value="{{isset($datas->id)?$datas->id:''}}">
     <div class="modal-dialog modal-xl modal-dialog-centered">
         <div class="modal-content card">
-            <div class="modal-header">
+            <!-- <div class="modal-header" style="padding:0px">
                 <h5 class="modal-title">Cập nhật cổ phiếu </h5>
                 <span>Nguồn theo: fireant</span>
                 <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
                     X
                 </button>
-            </div>
+            </div> -->
             <div class="card-body">
             <section class="content-wrapper">
                     <div class="panel panel-default">
@@ -39,10 +41,11 @@
                                 <div class="col-lg-12" style="padding:2px;">
                                     <!-- <h class="h4 py-2"><i class="far fa-chart-bar"></i>. <span style="font-family: auto;" > Biểu đồ</span> </h> <br> -->
                                     <!-- <p>Nguồn theo: fireant</p> -->
-                                    <iframe style="width:100%" height="420" src="https://fireant.vn/charts" 
+                                    <iframe style="width:100%" height="500" src="https://fireant.vn/charts" 
                                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                                         allowfullscreen>
                                     </iframe>
+                                    <span>Nguồn theo: fireant</span>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +63,7 @@
                             <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Vùng giá giao dịch</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Vùng giá cắt lỗ</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center" class="required"><b>Xếp hạng FA</b></td>
-                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>Phân tích DN FA</b></td>
+                            <td style="white-space: inherit;vertical-align: middle" align="center"><b>PTDN FA</b></td>
                             <td style="white-space: inherit;vertical-align: middle" align="center"><b>#</b></td>
                         </tr>
                     </thead>
@@ -93,8 +96,15 @@
                                 <button id="btn_create" type="button" class="btn btn-success" title="Xem trực tuyến"><i class="fas fa-thumbs-up"></i></button>
                             </td>
                         </tr>
+                      
                     </tbody>
                 </table>
+                <div class="modal-header" style="padding:0px">
+                    <h5 class="modal-title">Cập nhật cổ phiếu </h5>
+                    <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
+                        Đóng
+                    </button>
+                </div>
             </div>
         </div>
     </div>

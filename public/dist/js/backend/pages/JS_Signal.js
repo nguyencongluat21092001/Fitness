@@ -397,11 +397,11 @@ JS_Signal.prototype.checkValidate = function(){
         $("#title").focus();
         return false;
     }
-    if($("#type").val() == ''){
-        NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Loại tín hiệu không được để trống!');
-        $("#type").focus();
-        return false;
-    }
+    // if($("#type").val() == ''){
+    //     NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Loại tín hiệu không được để trống!');
+    //     $("#type").focus();
+    //     return false;
+    // }
     if($("#target").val() == ''){
         NclLib.alertMessageBackend('warning', 'Cảnh báo', 'Mục tiêu không được để trống!');
         $("#target").focus();
