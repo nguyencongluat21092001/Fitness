@@ -27,4 +27,13 @@ class UpgradeAccController extends Controller
     {
         return view('client.upgradeAcc.index');
     }
+    /**
+     * Hiển thị màn hình nâng cấp
+     *
+     * @return view
+     */
+    public function registerVip(Request $request)
+    {
+        return view('client.upgradeAcc.registerVip');
+    }
 }
