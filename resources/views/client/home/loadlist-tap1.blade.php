@@ -76,8 +76,6 @@
             <h6 class="mb-0">Chỉ số</h6>
             </div>
             <div class="col-md-6 d-flex justify-content-end align-items-center">
-            <i class="far fa-calendar-alt me-2"></i>
-            <small>Chủ nhật , 07-05-2023</small>
             </div>
         </div>
         </div>

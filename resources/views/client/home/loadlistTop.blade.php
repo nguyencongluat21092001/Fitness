@@ -13,7 +13,7 @@
     <div class="row_convert py-3">
         @foreach($datas as $item)
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="padding-left:10px">
-            <div class="card" style="background: #ffffffa8 !important;">
+            <div class="card" style="background: #000000a8 !important;">
                 <div class="card-body p-3">
                 <div class="row_convert">
                 <div class="col-1">
@@ -29,8 +29,8 @@
                     </span>
                 </div>
                     <div class="col-11">
-                        <div class="numbers">
-                            <span style="">Mã cổ phiếu: <span style="color:#061639">{{$item['symbol']}}</span></span> <br>
+                        <div class="numbers" style="color:red">
+                            <span style="">Mã cổ phiếu: <span style="color:#03ff00">{{$item['symbol']}}</span></span> <br>
                             <span style="">Biến động:
                                 <span class="animate-charcter">
                                     {{$item['value']}}
