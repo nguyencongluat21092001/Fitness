@@ -289,16 +289,30 @@ class UserController extends Controller
      *
      * @return view
      */
-    public function registerIntroduce(Request $request)
+    public function registerIntroduce(Request $request ,$id)
     {
         $input = $request->all();
-        $checkUser = $this->userService->where('id', $input['user_introduce'])->first();
+        $checkUser = $this->userService->where('id', $id)->first();
         if(!empty($checkUser)){
-            $data['user_introduce'] = $input['user_introduce'];
+            $data['user_introduce'] = $checkUser['id'];
             $data['user_introduce_name'] = $checkUser['name'];
+            $data['user_introduce_id'] = $checkUser['id'];
             return view('auth.register',compact('data'));
         }else{
             return view('dashboard.home.404_registerUserCode');
+        }
+    }
+     /**
+    * lấy thông tin nhân viên giới thiệu
+    */
+    public function getUser(Request $request)
+    {
+        $input = $request->all();
+        $selectUser = $this->userService->where('id',$input['code_introduce'])->first();
+        if(isset($selectUser)){
+            return array('success' => true,'data' => $selectUser, 'message' => 'Nhân viên giới thiệu: '.$selectUser->name);
+        }else{
+            return array('success' => false, 'message' => 'Mã nhân viên không chính xác , vui lòng thử lại!!!!');
         }
     }
 }
