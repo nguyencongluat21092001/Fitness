@@ -124,3 +124,46 @@ JS_Register.prototype.store = function (oFormCreate) {
         }
     });
 }
+/**
+ * lấy thông tin nhân viên giới thiệu
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_Register.prototype.getUser = function (oForm) {
+    var oForm = 'form#frmSend_Otp';
+    var url = this.urlPath + '/getUser';
+    var myClass = this;
+    var data = $(oForm).serialize();
+    $.ajax({
+        url: url,
+        type: "POST",
+        //cache: true,
+        data: data,
+        success: function (arrResult) {
+            if (arrResult['success'] == true) {
+                console.log(arrResult)
+                var html = '<span>Gới thiệu từ nhân viên: '+ arrResult['data']['name'] + '</span>';
+                $("#iss").append(html);
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 's',
+                    title: arrResult.message,
+                    showConfirmButton: false,
+                    background:'#06ff00',
+                    timer: 3000
+                  })
+          } else {
+            Swal.fire({
+                position: 'top-end',
+                icon: 's',
+                title: arrResult.message,
+                showConfirmButton: false,
+                timer: 3000
+              })
+          }
+
+        }
+    });
+}

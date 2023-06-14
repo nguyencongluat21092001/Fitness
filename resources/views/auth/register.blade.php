@@ -20,60 +20,78 @@
                 <div class="card" style="background:#fff;">
                     <div class="card-header">
                         <h4>Đăng ký tài khoản
-                            @if(isset($data['user_introduce']))
-                            qua gới thiệu từ nhân viên: 
-                            @endif
-                            @if(isset($data['user_introduce_name']))
-                            {{$data['user_introduce_name']}}
-                            @endif
+                            <div>
+                                <span>
+                                @if(isset($data['user_introduce']))
+                                Giới thiệu từ nhân viên: 
+                                @endif
+                                @if(isset($data['user_introduce_name']))
+                                {{$data['user_introduce_name']}}
+                                @endif
+                                </span>
+                            </div>
+                            <div id="iss"></div>
                         </h4>
                     </div>
                     <div class="card-body">
                     <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                        <input type="hidden" name="user_introduce" value="{{isset($data['user_introduce']) ? $data['user_introduce'] : ''}}">
                         <div class="row {{!$errors->has('name') ? 'mb-3' : ''}}">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <input placeholder="Nhập tên..." id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" autofocus>                    
                                 @error('name') <span style="color: red">{{$message}}</span> @enderror
                             </div>
-                        </div>
-
-                        <div class="row {{!$errors->has('email') ? 'mb-3' : ''}}">
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <input placeholder="Nhập địa chỉ email..." id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
                                     @error('email') <span style="color: red">{{$message}}</span> @enderror
                             </div>
                         </div>
 
+                        <!-- <div class="row {{!$errors->has('email') ? 'mb-3' : ''}}">
+                            <div class="col-md-6">
+                                <input placeholder="Nhập địa chỉ email..." id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
+                                    @error('email') <span style="color: red">{{$message}}</span> @enderror
+                            </div>
+                        </div> -->
+
                         <div class="row {{!$errors->has('phone') ? 'mb-3' : ''}}">
-                            <div class="col-md-12">
+                            <div class="col-md-4">
                                 <input onchange="JS_Register.getFonmPhone()" placeholder="Số điện thoại..." id="phone" type="phone" class="form-control" name="phone" value="{{ old('phone') }}">
                                     @error('phone') <span style="color: red">{{$message}}</span> @enderror
                             </div>
+                            <div class="col-md-4">
+                                <input placeholder="Nhập mật khẩu..." id="password" type="password" class="form-control" name="password" password>
+                                   @error('password') <span style="color: red">{{$message}}</span> @enderror
+                            </div>
+                            <div class="col-md-4">
+                                <input placeholder="Nhập lại mật khẩu..." id="password-confirm" type="password" class="form-control" name="password_confirmation" password>
+                                @error('password_confirmation') <span style="color: red">{{$message}}</span> @enderror
+                            </div>
                         </div>
 
-                        <div class="row {{!$errors->has('password') ? 'mb-3' : ''}}">
+                        <!-- <div class="row {{!$errors->has('password') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
                                 <input placeholder="Nhập mật khẩu..." id="password" type="password" class="form-control" name="password" password>
                                    @error('password') <span style="color: red">{{$message}}</span> @enderror
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="row {{!$errors->has('password_confirmation') ? 'mb-3' : ''}}">
+                        <!-- <div class="row {{!$errors->has('password_confirmation') ? 'mb-3' : ''}}">
                             <div class="col-md-12">
                                 <input placeholder="Nhập lại mật khẩu..." id="password-confirm" type="password" class="form-control" name="password_confirmation" password>
                             </div>
-                        </div>
-                        @error('password_confirmation') <span style="color: red">{{$message}}</span> @enderror
+                        </div> -->
                         <!-- <div id="show_Otp" class="row mb-0 hidden"> -->
                             <div class="col-md-12 " style="display:flex">
                                 <button type="button" onclick="JS_Register.getOtp()" class="btn btn-primary" id="btn_register" style="background-color: #ffae17">
                                     {{ __('Lấy OTP SMS') }}
                                 </button>
-                                <div class="col-md-10" style="padding-left:5px">
+                                <div class="col-md-4" style="padding-left:5px">
                                      <input placeholder="Nhập mã OTP..." id="otp" type="text" class="form-control" name="otp" value="{{ old('otp') }}">
+                                </div>
+                                <div class="col-md-6" style="padding-left:5px">
+                                     <input onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
                                 </div>
                             </div>
                             @error('otp') <span style="color: red">{{$message}}</span> @enderror

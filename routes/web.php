@@ -52,9 +52,9 @@ Route::get('/', [ClientHomeController::class, 'index']);
 // Route::get('/login', function () {
 //     return view('auth.signin');
 // });
-Route::get('/register', function () {
-    return view('auth.register');
-});
+// Route::get('/register', function () {
+//     return view('auth.register');
+// });
 Route::get('/404_notFound', function () {
     return view('dashboard.home.404_notFound');
 })->name('404_notFound');
@@ -63,8 +63,15 @@ Route::get('/login', [LoginController::class, 'logout'])->name('login');
 Route::get('/system/login', [LoginController::class, 'logout'])->name('fromLogin');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
-Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
+// Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
 Route::get('/register', [RegisterController::class, 'registerIntroduce']);
+
+
+Route::get('/dangky/{id}', [UserController::class, 'registerIntroduce']);
+
+// Lấy mã nhân viên giới thiệu
+Route::post('register/send-otp/getUser', [UserController::class, 'getUser']);
+
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::middleware('checkloginAdmin')->group(function () {
