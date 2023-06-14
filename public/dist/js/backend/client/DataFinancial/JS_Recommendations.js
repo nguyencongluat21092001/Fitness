@@ -36,9 +36,9 @@ JS_Recommendations.prototype.loadList = function (oForm) {
             $("#table-container-recommendations").html(arrResult);
             // $('#messages').scrollTop($('#messages')[0].scrollHeight);
           
-            setTimeout(function() { 
-                JS_Recommendations.loadList(oForm)
-            }, 30000);
+            // setTimeout(function() { 
+            //     JS_Recommendations.loadList(oForm)
+            // }, 300000);
         }
     });
 }
@@ -65,7 +65,7 @@ JS_Recommendations.prototype.loadList_box = function () {
           
             setTimeout(function() { 
                 JS_Recommendations.loadList_box(oForm)
-            }, 50000);
+            }, 500000);
         }
     });
 }
