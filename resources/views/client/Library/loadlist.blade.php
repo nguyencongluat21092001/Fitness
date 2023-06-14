@@ -37,14 +37,11 @@
             @endforeach
         </tbody>
     </table>
-
-    <tfoot>
-        <tr>
-            <td colspan="10">
-                {{$datas->links('pagination.phantrang')}}
-            </td>
-        </tr>
-    </tfoot>
+    <div class="paginate">
+        @if(count($datas) > 0)
+        {{$datas->links('pagination.blog')}}
+        @endif
+    </div>
 </div>
 <!-- <div class="modal" id="videomodal" role="dialog"></div> -->
 

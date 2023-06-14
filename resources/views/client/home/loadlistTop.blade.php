@@ -13,7 +13,7 @@
     <div class="row_convert py-3">
         @foreach($datas as $item)
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4" style="padding-left:10px">
-            <div class="card" style="background: #000000a8 !important;">
+            <div class="card" style="background: #0c1223d9 !important;">
                 <div class="card-body p-3">
                 <div class="row_convert">
                 <div class="col-1">
