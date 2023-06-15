@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="form-wrapper">
                                             <label for="">Tên nhân viên</label>
-                                            <input placeholder="Tên nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
+                                            <input placeholder="Tên nhân viên giới thiệu..."  type="text" class="form-control"  value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
                                         </div>
                                     </div>
                                     <div class="checkbox">

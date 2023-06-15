@@ -309,6 +309,9 @@ class UserController extends Controller
     {
         $input = $request->all();
         $selectUser = $this->userService->where('id',$input['code_introduce'])->first();
+        if($input['code_introduce'] == ''){
+            return '';
+        }
         if(isset($selectUser)){
             return array('success' => true,'data' => $selectUser, 'message' => 'Nhân viên giới thiệu: '.$selectUser->name);
         }else{

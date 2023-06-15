@@ -151,10 +151,10 @@ JS_Register.prototype.getUser = function (oForm) {
                     icon: 's',
                     title: arrResult.message,
                     showConfirmButton: false,
-                    background:'#06ff00',
+                    // background:'#06ff00',
                     timer: 3000
                   })
-          } else {
+          } else if (arrResult['success'] == false) {
             Swal.fire({
                 position: 'top-end',
                 icon: 's',
