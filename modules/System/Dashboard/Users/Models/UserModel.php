@@ -22,6 +22,7 @@ class UserModel extends Model
         'dateBirth',
         'role',
         'status',
+        'id_personnel'
     ];
 
     public function filter($query, $param, $value)
@@ -30,11 +31,14 @@ class UserModel extends Model
             case 'search':
                 $this->value = $value;
                 return $query->where(function ($query) {
-                    $query->where('name', 'like', '%' . $this->value . '%');
-                });
+                    $query->where('name', 'like', '%' . $this->value . '%')
+                          ->orWhere('id_personnel', 'like', '%' . $this->value . '%')
+                          ->orWhere('phone', 'like', '%' . $this->value . '%')
+                          ->orWhere('email', 'like', '%' . $this->value . '%');
+                });       
                 return $query;
             case 'role':
-                $query->where('role', $value);
+                $query->whereIn('role', $value);
                 return $query;
             default:
                 return $query;

@@ -115,6 +115,7 @@ JS_User.prototype.store = function (oFormCreate) {
     formdata.append('company', $("#company").val());
     formdata.append('position', $("#position").val());
     formdata.append('date_join', $("#date_join").val());
+    formdata.append('id_personnel', $("#id_personnel").val());
     formdata.append('role', $("input[name=role]:checked").val());
     if($("#frmAdd #status").is(':checked')){
         formdata.append('status', 1);

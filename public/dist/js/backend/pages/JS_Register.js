@@ -144,8 +144,10 @@ JS_Register.prototype.getUser = function (oForm) {
         success: function (arrResult) {
             if (arrResult['success'] == true) {
                 console.log(arrResult)
-                var html = '<span>Gới thiệu từ nhân viên: '+ arrResult['data']['name'] + '</span>';
-                $("#iss").append(html);
+                var html = '<div class="form-wrapper" id="iss"><label for="">Tên nhân viên</label><input disabled placeholder="'+ arrResult['data']['name'] + '"  type="text" class="form-control"  value="'+ arrResult['data']['name'] + '"></div>'
+                console.log(html)
+                // var html = '<span>Gới thiệu từ nhân viên: '+ arrResult['data']['name'] + '</span>';
+                $("#iss").html(html);
                 Swal.fire({
                     position: 'top-end',
                     icon: 's',

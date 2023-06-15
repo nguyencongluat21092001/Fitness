@@ -26,7 +26,7 @@
                                 <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                                 @csrf
                                     <h3>Đăng ký tài khoản
-                                <div id="iss"></div>
+                                <!-- <div id="iss"></div> -->
                                     </h3>
                                     <div class="form-group">
                                         <div class="form-wrapper">
@@ -74,11 +74,15 @@
                                     <div class="form-group">
                                         <div class="form-wrapper">
                                             <label for="">Mã nhân viên giới thiệu</label>
+                                            @if(isset($data['user_introduce_name']))
+                                            <input disabled onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                            @else
                                             <input onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                            @endif
                                         </div>
-                                        <div class="form-wrapper">
+                                        <div class="form-wrapper" id="iss">
                                             <label for="">Tên nhân viên</label>
-                                            <input placeholder="Tên nhân viên giới thiệu..."  type="text" class="form-control"  value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
+                                            <input disabled placeholder="Tên nhân viên giới thiệu..."  type="text" class="form-control"  value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
                                         </div>
                                     </div>
                                     <div class="checkbox">

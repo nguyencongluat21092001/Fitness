@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('avatar')->default('avatar_default.png');
             $table->tinyInteger('status')->nullable();
             $table->string('user_introduce')->nullable();
+            $table->string('id_personnel')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

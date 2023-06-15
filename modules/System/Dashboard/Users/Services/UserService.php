@@ -31,7 +31,7 @@ class UserService extends Service
      * cập nhật người dùng
      */
     public function store($input,$file){
-        $password = '123';
+        $password = 'fintop123';
         //check quyền chỉnh sửa
         if($_SESSION['role'] != 'ADMIN' && $_SESSION['role'] != 'MANAGE' && $_SESSION['role'] != 'CV_ADMIN'){
             if($input['role'] == 'ADMIN' || $input['role'] == 'MANAGE' || $input['role'] == 'CV_ADMIN'){
@@ -50,12 +50,13 @@ class UserService extends Service
            
             // array data users
             $arrData = [
-                'name'=>$input['name'],
-                'address'=>$input['address'],
-                'phone'=>$input['phone'],
-                'email'=>$input['email'],
-                'dateBirth'=>$input['dateBirth'],
-                'role'=>$input['role'],
+                'name'=> $input['name'],
+                'address'=> $input['address'],
+                'phone'=> $input['phone'],
+                'email'=> $input['email'],
+                'dateBirth'=> $input['dateBirth'],
+                'role'=> $input['role'],
+                'id_personnel'=> isset($input['id_personnel'])?$input['id_personnel']:'YE07',
                 "status" => isset($input['status']) ? 1 : 0,
             ];
              // nếu có ảnh mới thì cập nhật

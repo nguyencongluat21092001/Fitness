@@ -163,8 +163,26 @@ class UserController extends Controller
     public function loadList(Request $request)
     { 
         $paginationHelper = new PaginationHelper();
-        if($request['role'] == '' || $request['role'] == null){
-            unset($request['role']);
+        if($_SESSION['role'] != 'ADMIN' && $_SESSION['role'] != 'MANAGE'){
+            if($_SESSION['role'] == 'CV_ADMIN' ){
+                if($_SESSION['role'] == '' || $request['role'] == null){
+                    $request['role'] = ['CV_ADMIN','CV_PRO','CV_BASIC','SALE_ADMIN','SALE_BASIC','USERS'];
+                }else{
+                    $request['role'] = array($request['role']);
+                }
+            }elseif($_SESSION['role'] == 'SALE_ADMIN'){
+                if($_SESSION['role'] == '' || $request['role'] == null){
+                    $request['role'] = ['SALE_ADMIN','SALE_BASIC'];
+                }else{
+                    $request['role'] = array($request['role']);
+                }
+            }
+        }else{
+            if($request['role'] == '' || $request['role'] == null){
+                unset($request['role']);
+            }else{
+                $request['role'] = array($request['role']);
+            }
         }
         $arrInput = $request->input();
         $data = array();
@@ -292,11 +310,11 @@ class UserController extends Controller
     public function registerIntroduce(Request $request ,$id)
     {
         $input = $request->all();
-        $checkUser = $this->userService->where('id', $id)->first();
+        $checkUser = $this->userService->where('id_personnel', $id)->first();
         if(!empty($checkUser)){
-            $data['user_introduce'] = $checkUser['id'];
+            $data['user_introduce'] = $checkUser['id_personnel'];
             $data['user_introduce_name'] = $checkUser['name'];
-            $data['user_introduce_id'] = $checkUser['id'];
+            $data['user_introduce_id'] = $checkUser['id_personnel'];
             return view('auth.register',compact('data'));
         }else{
             return view('dashboard.home.404_registerUserCode');
@@ -308,7 +326,7 @@ class UserController extends Controller
     public function getUser(Request $request)
     {
         $input = $request->all();
-        $selectUser = $this->userService->where('id',$input['code_introduce'])->first();
+        $selectUser = $this->userService->where('id_personnel',$input['code_introduce'])->first();
         if($input['code_introduce'] == ''){
             return '';
         }

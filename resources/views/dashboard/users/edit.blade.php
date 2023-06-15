@@ -37,7 +37,7 @@
 							<input class="form-control" type="text" value="{{!empty($data['phone'])?$data['phone']:''}}" name="phone" id="phone" placeholder="Nhập số điện thoại..." />
 						</div>
 					</div>
-					@if(!empty($data) && $_SESSION["email"] == $data['email'])
+					@if(!empty($data) && $_SESSION["email"] == $data['email'] || $_SESSION["role"] == 'ADMIN')
 					<span id='btn_changePass'>
 						<button class="btn btn-primary btn-sm" type="button">
 							Đổi mật khẩu
@@ -48,10 +48,16 @@
 				<hr class="horizontal dark">
 				<p class="text-uppercase text-sm">Thông tin liên lạc</p>
 				<div class="row">
-					<div class="col-md-12">
+					<div class="col-md-6">
 						<div class="form-group">
 							<p for="example-text-input" class="form-control-label">Địa chỉ</p>
 							<input class="form-control" type="text" value="{{!empty($data['address'])?$data['address']:''}}" name="address" id="address" placeholder="Nhập địa chỉ..." />
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<p for="example-text-input" class="form-control-label">ID nhân sự</p>
+							<input class="form-control" type="text" value="{{!empty($data['id_personnel'])?$data['id_personnel']:''}}" name="id_personnel" id="id_personnel">
 						</div>
 					</div>
 					<div class="col-md-4">

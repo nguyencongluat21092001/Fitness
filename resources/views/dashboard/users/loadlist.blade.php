@@ -28,6 +28,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td style="width:65%;height:150px;padding-left:30px;vertical-align: middle;" onclick="{select_row(this);}">
                        <div>
                            <div>Tên người dùng : {{ $data['name'] }}</div>
+                           <div>ID nhân sự : <span style="color:red">{{ $data['id_personnel'] }}</span> </div>
                            <div>Số điện thoại : {{ $data['phone'] }}</div>
                            <div>Địa chỉ Email : {{ $data['email'] }}</div>
                            <div>Địa chỉ : {{ $data['address'] }}</div>
