@@ -6,7 +6,7 @@
             <img src="https://vcdn.subiz-cdn.com/widget-v4/public/assets/img/default_avatar.5b74dc1.png"
                 alt="avatar 1" style="width: 30px; height: 100%;">
                 <div style="padding-left:5px">
-                <div class="p-3 ms-3" style="border-radius: 15px; background-color: #e1ebe6;width:100%">
+                <div class="p-3 ms-3" style="border-radius: 15px; background-color: #45ffa2;width:100%">
                 <p style="font-size:14px;font-family:auto" class="small mb-0">
                     <h5>{{ $data->title }}</h5>
                     <span>Giá mua: {{ $data->price_buy }}</span> 

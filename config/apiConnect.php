@@ -12,7 +12,7 @@
 
 return [
     'financial' => [
-        'api'         => 'http://202.92.5.108:7500/api/',
+        'api'         => 'http://fintopdata.vn/api/',
         "token"       => "key0000",
         'apiChild' => [
             'list-coin-code' => "list-coin-code", // lấy chỉ số chứng khoán việt Nam 
