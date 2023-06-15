@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="../clients/css/custom.css">
     <link rel="stylesheet" href="../assets/chosen/chosen.min.css">
     <script src="https://unpkg.com/lightweight-charts@3.4.0/dist/lightweight-charts.standalone.production.js"></script>
-    
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 </head>
 <style>
     b,span,strong{
