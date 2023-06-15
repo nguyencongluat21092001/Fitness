@@ -52,7 +52,16 @@ function checkallper(obj, name) {
     $('input[name="' + name + '"]').prop('checked', false);
   }
 }
-
+$(window).scroll(function() {
+  if ($(this).scrollTop() > 200) {
+      $('#goTop').fadeIn();
+  } else {
+      $('#goTop').fadeOut();
+  }
+});
+function gotop(){
+  $("html, body").animate({scrollTop: 0}, 1000);
+}
 var set_checked_checbox = function (obj) {
   var sValue = '';
   var oTable = $(obj).parent().parent().parent();

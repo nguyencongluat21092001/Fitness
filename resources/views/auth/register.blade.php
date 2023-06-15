@@ -26,16 +26,6 @@
                                 <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                                 @csrf
                                     <h3>Đăng ký tài khoản
-                                    <div>
-                                    <span>
-                                    @if(isset($data['user_introduce']))
-                                    Giới thiệu từ nhân viên: 
-                                    @endif
-                                    @if(isset($data['user_introduce_name']))
-                                    {{$data['user_introduce_name']}}
-                                    @endif
-                                    </span>
-                                </div>
                                 <div id="iss"></div>
                                     </h3>
                                     <div class="form-group">
@@ -80,11 +70,16 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
                                     @error('otp') <span style="color: red">{{$message}}</span> @enderror
-                                    <div class="form-wrapper">
-                                        <label for="">Mã nhân viên giới thiệu</label>
-                                        <input onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                    <div class="form-group">
+                                        <div class="form-wrapper">
+                                            <label for="">Mã nhân viên giới thiệu</label>
+                                            <input onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                        </div>
+                                        <div class="form-wrapper">
+                                            <label for="">Tên nhân viên</label>
+                                            <input placeholder="Tên nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
+                                        </div>
                                     </div>
                                     <div class="checkbox">
                                         <label>
