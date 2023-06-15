@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mt-3">
-                <h2 class="h4 text-light light-300">
+                <h2 class="h4 text-light light-300" style="height: 5rem;">
                     <img src="../clients/img/LogoFinTop_red.png" alt="Card image" width="10%">
                     <span style="color:#ff0000d1">
                         <b style="font-family: auto;color:#ff000091;font-weight: 600;animation: lights 10s 750ms linear infinite;">Công ty TNHH Đầu tư & Phát triển FinTop</b>
@@ -34,7 +34,7 @@
                 </table>
             </div>
             <div class="col-md-3 mt-3">
-                <h2 class="h4 text-light light-300">
+                <h2 class="h4 text-light light-300" style="height: 5rem;display: flex;align-items: center;" >
                     <i class="fas fa-handshake"></i> Đồng hành
                 </h2>
                 <!-- Đồng hành -->
@@ -89,7 +89,7 @@
                 </table>
             </div>
             <div class="col-md-3 mt-3">
-                <h2 class="h4 text-light light-300">
+                <h2 class="h4 text-light light-300" style="height: 5rem;display: flex;align-items: center;" >
                     <i class="fas fa-handshake"></i> Tải APP
                 </h2>
                 <!-- Tải app -->

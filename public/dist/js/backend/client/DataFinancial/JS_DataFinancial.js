@@ -71,7 +71,7 @@ JS_DataFinancial.prototype.addrow = function(arrResult) {
     html += '<td style="vertical-align: middle;" align="center">' + arrResult.id + '</td>';
      // code_cp
     html += '<td style="vertical-align: middle;" align="center" class="td_code_cp_' + arrResult.id + '" ondblclick="click2(\'' + arrResult.id + '\', \'code_cp\')">';
-    html += '<span id="span_code_cp_' + arrResult.id + '" class="span_code_cp_' + arrResult.id + '">'+arrResult.code_cp+'</span>';
+    html += '<span id="span_code_cp_' + arrResult.id + '" class="text-success span_code_cp_' + arrResult.id + '" onclick="click2(\'' + arrResult.id + '\', \'code_cp\',this)">'+arrResult.code_cp+'</span>';
     html += '</td>';
     // exchange
     html += '<td class="td_exchange_' + arrResult.id + '" style="vertical-align: middle;" align="center">';
@@ -115,7 +115,7 @@ JS_DataFinancial.prototype.addrow = function(arrResult) {
             + '<td style="vertical-align: middle;color:#83beff" align="center">'
             + '<span>' + (parseInt(arrResult.id) + 1) + '</span></td>'
             + '<td class="td_code_cp_' + (parseInt(arrResult.id) + 1) + '" style="vertical-align: middle;" align="center" ondblclick="click2(\'' + (parseInt(arrResult.id) + 1) + '\', \'code_cp\',this)">'
-            + '<span id="span_code_cp_' + (parseInt(arrResult.id) + 1) + '" class="span_code_cp_' + (parseInt(arrResult.id) + 1) + '">-</span></td>'
+            + '<span id="span_code_cp_' + (parseInt(arrResult.id) + 1) + '" class="text-success span_code_cp_' + (parseInt(arrResult.id) + 1) + '" onclick="click2(\'' + (parseInt(arrResult.id) + 1) + '\', \'code_cp\',this)">Nhập</span>'
             + '</tr>'
         );
     }
@@ -204,17 +204,18 @@ JS_DataFinancial.prototype.edit = function (id) {
  */
 function click2(id, type) {
     $(".td_"+type+"_" + id).removeAttr('ondblclick');
-    var text = $("#span_"+type+"_" + id).html();
+    var text = $("#span_" + type + "_" + id).html();
     $("#"+type+"_" + id).removeAttr('hidden');
-    $("#span_"+type+"_" + id).html('<textarea name="'+type+'" id="'+type+'_' + id + '" rows="3">'+text+'</textarea>');
+    $("#span_"+type+"_" + id).html('<textarea name="'+type+'" id="'+type+'_' + id + '" rows="3"></textarea>');
     $("#"+type+"_" + id).focus();
     $("#span_"+type+"_" + id).removeAttr('id');
     $("#"+type+"_" + id).focusout(function(){
+        var nhap = $("#"+type+"_" + id).val() != '' ? $("#"+type+"_" + id).val() : text;
         $(".td_"+type+"_" + id).attr('ondblclick', "click2('"+id+"', '"+type+"')");
         $("#"+type+"_" + id).attr('hidden', true);
         $(".span_"+type+"_" + id).attr('id', 'span_'+type+'_' + id);
-        $(".span_"+type+"_" + id).html($("#"+type+"_" + id).val());
-        if(text != $(".span_" + type + '_' + id).html()){
+        $(".span_"+type+"_" + id).html(nhap);
+        if(text != $(".span_" + type + "_" + id).html()){
             JS_DataFinancial.updateDataFinancial(id, type, $(".span_" + type + '_' + id).html());
         }
     })

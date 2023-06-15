@@ -63,6 +63,24 @@
         right: 0;
         z-index: 1000;
     }
+    .menuClient{
+        display: none;
+    }
+    @media (min-width: 992px){
+        #menuClient{
+            display: block;
+        }
+        .header-logo{
+            margin-left:10%;
+        }
+        #navbar-toggler-success{
+            display: block;
+        }
+    }
+    .navbar-toggler.border-0:focus{
+        outline: none;
+        box-shadow: none;
+    }
 </style>
 <script src="../clients/js/jquery.min.js"></script>
 <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
@@ -173,7 +191,10 @@
     <div class="bgs">
         <nav id="main_nav" class="navbar navbar-expand-lg  shadow" style="padding:0px !important">
             <div class="container d-flex justify-content-between align-items-center">
-                <a class="navbar-brand h1" style="width: 7%;margin-left:10%">
+                <a class="navbar-brand h1 header-logo" style="width: 7%;">
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon text-white"><i class="fa fa-bars"></i></span>
+                    </button>
                     <!-- <span class="text-dark h4">Purple</span> <span class="text-primary h4">Buzz</span> -->
                     <!-- <img src="../" class="navbar-brand-img h-100" alt="main_logo"> -->
                     <img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image">
@@ -201,9 +222,6 @@
     </div>
     <nav id="menuClient" class=" navbar-expand-lg  shadow" style="background:#0000008a"> 
         <div class="container d-flex justify-content-between align-items-center">
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="align-self-center collapse navbar-collapse flex-fill text-center  d-lg-flex align-items-center" id="navbar-toggler-success">
                 @include('client.layouts.menu')
             </div>

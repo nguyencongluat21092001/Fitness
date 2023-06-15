@@ -47,7 +47,7 @@
                             <span >1</span>
                         </td>
                         <td class="td_code_cp_1" style="vertical-align: middle;" align="center" ondblclick="click2('1', 'code_cp',this)">
-                            <span id="span_code_cp_1" class="span_code_cp_1">-</span>
+                            <span id="span_code_cp_1" class="span_code_cp_1 text-success" onclick="click2('1', 'code_cp',this)">Nhập</span>
                         </td>
                     </tr>
                 @else

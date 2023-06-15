@@ -9,7 +9,7 @@
                 <div class="home_index_vnindex pt-1 pb-3" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- Chú giải xếp hạng TA/FA -->
                     <div class="home_index_child" style="background:#ffffffe0 !important;">
-                        <div class="col-lg-12" style="padding:10px;">
+                        <div class="col-lg-12" style="padding:10px;overflow-y: scroll;">
                             <h1 class="h5 "> I. TÍN HIỆU MUA</h1>
                             <div class="py-2">
                                 <!-- Màn hình danh sách -->

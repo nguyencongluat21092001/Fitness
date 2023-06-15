@@ -19,9 +19,9 @@
                     @else
                     <div class=" d-flex p-3 ms-3" style="border-radius: 15px; background-color: #861515;color:white;width:100%;font-family:auto">
                     @endif
-                       <div style="width:30%">
+                       <div style="width:30%; display: flex; align-items: center;">
                         <img src="{{url('/file-image-client/blogs/2023_05_10_1353000000541828!~!image_background.png')}}"
-                            alt="avatar 1" style="height: 150px;width: 250px;object-fit: cover;">
+                            alt="avatar 1" width="100%" style="object-fit: cover; max-width: 250px;">
                        </div>
                        <div style="padding-left:30px">
                         <h4>{{ $data->title }}</h4>
