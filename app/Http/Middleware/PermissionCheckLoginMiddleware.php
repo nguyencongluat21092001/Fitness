@@ -23,8 +23,11 @@ class PermissionCheckLoginMiddleware
             if(isset($PermissionLogin) && ($_SESSION['token'] == $PermissionLogin->token)){
                 return $next($request);
             }
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
             return redirect()->route('login');
         };
-        return redirect()->route('404_notFound');
+        return $next($request);
     }
 }

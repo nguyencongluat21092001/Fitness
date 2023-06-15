@@ -213,16 +213,18 @@ Route::prefix('/client')->group(function () {
     view()->composer('*', function ($view) {
         $view->with('menuItems', $this->arrModules);
     });
-    // Trang chủ client
-    Route::get('/home/index', [ClientHomeController::class, 'index']);
-    Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
-    Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
-    Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
-    Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
-    Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
+   
 
-    Route::get('introduce/index', [IntroduceController::class, 'index']);
-    // Route::middleware('permissionCheckLoginClient')->group(function () {
+    Route::middleware('permissionCheckLoginClient')->group(function () {
+         // Trang chủ client
+        Route::get('/home/index', [ClientHomeController::class, 'index']);
+        Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
+        Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
+        Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
+        Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
+        Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
+
+        Route::get('introduce/index', [IntroduceController::class, 'index']);
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
         // Route::middleware('checkloginDatafinancial')->group(function () {
@@ -267,20 +269,20 @@ Route::prefix('/client')->group(function () {
         Route::prefix('des')->group(function () {
             Route::get('index', [DesController::class, 'index']);
         });
-    // });
-    // Thư viện đầu tư
-    Route::get('/library/index', [LibraryController::class, 'index']);
-    Route::post('/library/loadList',[LibraryController::class,'loadList']);
-    Route::get('/library/seeVideo',[LibraryController::class,'seeVideo']);
-    // Đặc quyền hội viên
-    Route::get('/privileges/index', [PrivilegesController::class, 'index']);
+        // Thư viện đầu tư
+        Route::get('/library/index', [LibraryController::class, 'index']);
+        Route::post('/library/loadList',[LibraryController::class,'loadList']);
+        Route::get('/library/seeVideo',[LibraryController::class,'seeVideo']);
+        // Đặc quyền hội viên
+        Route::get('/privileges/index', [PrivilegesController::class, 'index']);
 
-    // Nâng cấp tk 
-    Route::get('/upgradeAcc/index', [UpgradeAccController::class, 'index']);
-    Route::get('/upgradeAcc/viewForm', [UpgradeAccController::class, 'registerVip']);
+        // Nâng cấp tk 
+        Route::get('/upgradeAcc/index', [UpgradeAccController::class, 'index']);
+        Route::get('/upgradeAcc/viewForm', [UpgradeAccController::class, 'registerVip']);
 
-    // Đọc thông báo
-    Route::get('readNotification', [ReadNotificationController::class, 'readNotification']);
+        // Đọc thông báo
+        Route::get('readNotification', [ReadNotificationController::class, 'readNotification']);
+    });
 });
  
 Auth::routes();
