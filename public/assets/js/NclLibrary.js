@@ -53,14 +53,14 @@ function checkallper(obj, name) {
   }
 }
 $(window).scroll(function() {
-  if ($(this).scrollTop() > 200) {
+  if ($(this).scrollTop() > 20) {
       $('#goTop').fadeIn();
   } else {
       $('#goTop').fadeOut();
   }
 });
 function gotop(){
-  $("html, body").animate({scrollTop: 0}, 1000);
+  $("html, body").animate({scrollTop: 0}, 100);
 }
 var set_checked_checbox = function (obj) {
   var sValue = '';

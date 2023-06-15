@@ -63,10 +63,12 @@ a:hover {
 
 form {
   width: 80%;
-  padding-left: 45px; }
+  /* padding-left: 45px;   */
+}
 
 .form-group {
-  display: flex; }
+  /* display: flex;  */
+}
   .form-group .form-wrapper {
     width: 50%; }
     .form-group .form-wrapper:first-child {

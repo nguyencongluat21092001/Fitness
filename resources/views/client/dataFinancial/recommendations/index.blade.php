@@ -9,7 +9,7 @@
             <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
             <div class="home_index_vnindex pt-1 pb-3" style="background:#ffffff91 !important;border-radius:0px !important">
                 <!-- Chú giải xếp hạng TA/FA -->
-                <div class="home_index_child" style="background:#ffffffe6 !important;">
+                <div class="home_index_child" style="background:#ffffffe6 !important;display:block;">
                     <div class="col-lg-12" style="padding:10px;">
                     <h1 class="h5 "> I. KHUYẾN NGHỊ VIP</h1>
                         <!-- <h class="h4 py-2"> <span style="font-family: auto;">Khuyến nghị vip</span></h> -->
