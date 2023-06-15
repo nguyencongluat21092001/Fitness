@@ -24,11 +24,11 @@
             <div class="card" style="background:#fff;">
                 <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg'); display: flex; justify-content: center;">
                     <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
+                        @csrf
                         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group" align="center">
                             <div class="col-md-12 mt-4 mb-3">
                                 <h3 class="text-uppercase" style="font-family: Serif;">Đăng ký tài khoản
-                                    <div id="iss"></div>
                                 </h3>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                             </div>
                         </div>
                         @error('otp') <span style="color: red">{{$message}}</span> @enderror
-                        <div class="form-group">
+                        <div class="form-group" style="display:flex">
                             <div class="form-wrapper">
                                 <label for="">Mã nhân viên giới thiệu</label>
                                 @if(isset($data['user_introduce_name']))
@@ -117,8 +117,7 @@
 <script type="text/javascript" src="{{ URL::asset('dist\js\backend\pages\JS_Register.js') }}"></script>
 <script src='../assets/js/jquery.js'></script>
 <script type="text/javascript">
-    var baseUrl = '{{ url('
-    ') }}';
+    var baseUrl = '{{ url('') }}';
     var JS_Register = new JS_Register(baseUrl, 'register', 'send-otp');
     $(document).ready(function($) {
         JS_Register.loadIndex(baseUrl);
