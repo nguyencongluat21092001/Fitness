@@ -13,7 +13,6 @@
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
 
     <link href="../clients/css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
     <!-- Font CSS -->
     <link href="../clients/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -66,6 +65,7 @@
     }
 </style>
 <script src="../clients/js/jquery.min.js"></script>
+<script type="text/javascript" src="{{ URL::asset('assets\js\NclLibrary.js') }}"></script>
 
 <script type="text/javascript">
         $('.button').click(function() {
@@ -216,119 +216,7 @@
     @endif
     {{-- end-chat --}}
     <!-- Start Footer -->
-    <footer class="bgft pt-4" style="background:#121d29bf">
-        <div class="container" >
-            <div class="row py-4">
-                <div style="pamadding-left:2%">
-                    <h2 class="h4 text-light light-300"><img class="card-img " src="../clients/img/LogoFinTop_red.png" alt="Card image" style="width:4%;"> 
-                     <span style="color:#ff0000d1"><b style="font-family: auto;color:#ff000091;font-weight: 600;animation: lights 10s 750ms linear infinite;">Công ty TNHH Đầu tư & Phát triển FinTop</b></span> 
-                </div>
-            </h2>
-
-                <div class="col-lg-5 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
-                    <a class="navbar-brand" href="index.html">
-                        <h3 class="h5 text-light light-300"><i class="fas fa-address-book"></i> Liên hệ</h3>
-                    </a>
-                    <!-- <p class="text-light my-lg-4 my-2">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                        sed do eiusmod tempor incididunt ut.
-                    </p> -->
-                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
-                        <li class="pb-2">
-                        <i class="fas fa-phone-volume"></i><a class="text-decoration-none pt-2 text-light py-1" href="tel:086.234.8886"> 086.234.8886</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class="fas fa-envelope"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> FinTop.DVKH@gmail.com</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class="fas fa-laptop-house"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> Trụ sở Hà Nội: 121/26 Thái Hà, P. Trung Liệt, Q. Đống Đa, Hà Nội</a>
-                        </li>
-                        <li class="pb-2">
-                        <i class="fas fa-house-user"></i><a class="text-decoration-none pt-2 text-light py-1" href="mailto:FinTop.DVKH@gmail.com"> Văn phòng HCM:  383 Võ Văn Tần, P. 5, Q. 3, TP. Hồ Chí Minh</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-4 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
-                    <a class="navbar-brand" href="index.html">
-                        <h2 class="h5 text-light light-300"><i class="fas fa-handshake"></i> Đồng hành</h2>
-                    </a>
-                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
-                        <li class="pb-2">
-                        <i class="fab fa-facebook-f"></i><a class="text-decoration-none pt-2 text-light py-1" href="tel:086.234.8886"> Dữ liệu chứng khoán FinTop.Data</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class="fab fa-youtube"></i><a class="text-decoration-none pt-2 text-light py-1" href="https://www.youtube.com/@taichinhdautufintop"> Tài chính & Đầu tư FinTop</a>
-                        </li>
-                        <li class="pb-2">
-                            <i class="fas fa-hand-point-right"></i><a class="text-decoration-none pt-2 text-light py-1" href="https://www.youtube.com/@taichinhdautufintop"> Tham gia cộng đồng FinTop </a>
-                        </li>
-                    </ul>
-                    <ul class="list-inline footer-icons light-300">
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="http://facebook.com/">
-                                <i class='bx bxl-facebook-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.linkedin.com/">
-                                <i class='bx bxl-linkedin-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
-                                <i class='bx bxl-whatsapp-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.flickr.com/">
-                                <i class='bx bxl-flickr-square bx-md'></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item m-0">
-                            <a class="text-light" target="_blank" href="https://www.medium.com/">
-                                <i class='bx bxl-medium-square bx-md' ></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-4 my-sm-0 mt-2"style="padding-top:20px;padding-left:5%">
-                    <h2 class="h5 pb-lg-3 text-light light-300"><i class="fas fa-cloud-download-alt"></i> Tải App</h2>
-                    <ul class="list-unstyled text-light light-300" style="padding-left:10px;">
-                        
-                        <li class="pb-2">
-                            <i class="fab fa-app-store-ios"></i><a class="text-decoration-none text-light py-1" href="tel:086.234.8886"> App Store </a>
-                        </li>
-                        <li class="pb-2">
-                        <i class="fab fa-google-play"></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com"> Google Play</a>
-                        </li>
-                        <li class="pb-2">
-                        <i class="fas fa-qrcode"></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com"> QR ví momo</a>
-                        </li>
-                        <li class="pb-2" style="padding-left:20px;">
-                            <a class="text-decoration-none text-light py-1" href="tel:086.234.8886"> <img class="card-img " src="../clients/img/qrluatnc.jpg" alt="Card image" style="width:30%">  </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="w-100 py-1" style="background: #fcfcfc0f;">
-                    <div class="container">
-                        <div class="row pt-2">
-                            <div class="col-lg-6 col-sm-12">
-                                <p class="text-lg-start text-center text-light light-300">
-                                Bản quyền @2023 , Công ty TNHH Đầu tư & Phát triển FinTop
-                                </p>
-                            </div>
-                            <div class="col-lg-6 col-sm-12">
-                                <p class="text-lg-end text-center text-light light-300">
-                                    Phát triển bởi <a rel="sponsored" class="text-decoration-none text-light" href="https://templatemo.com/" target="_blank"><strong>nguyencongluat092001@gmail.com</strong></a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </footer>
+    @include('client.layouts.footer')
     <!-- End Footer -->
     <!-- Bootstrap -->
     <script src="../clients/js/bootstrap.bundle.min.js"></script>
