@@ -55,7 +55,8 @@
     <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 ps " id="sidenav-main" style="background:#1d2440 !important">
         <div class="sidenav-header">
         <i class="fas fa-times cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="{{url('')}}" target="_blank">
+        <!-- target="_blank" -->
+        <a class="navbar-brand m-0" href="{{url('/client/home/index')}}">
             <img src="../clients\img\LogoFinTop_red.png" class="navbar-brand-imgh-120" alt="main_logo" style="width:80%;padding-left:20%">
             <span class="ms-1 font-weight-bold"></span>
         </a>

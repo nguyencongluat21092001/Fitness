@@ -214,16 +214,14 @@ Route::prefix('/client')->group(function () {
         $view->with('menuItems', $this->arrModules);
     });
    
-
-    Route::middleware('permissionCheckLoginClient')->group(function () {
-         // Trang chủ client
+    // Trang chủ client
         Route::get('/home/index', [ClientHomeController::class, 'index']);
         Route::get('/home/loadList',[ClientHomeController::class,'loadList']);
         Route::get('/home/loadListBlog',[ClientHomeController::class,'loadListBlog']);
         Route::get('/home/loadListTap1',[ClientHomeController::class,'loadListTap1']);
         Route::get('/home/loadListTop',[ClientHomeController::class,'loadListTop']);
         Route::get('/home/loadListChartNen',[ClientHomeController::class,'loadListChartNen']);
-
+    Route::middleware('permissionCheckLoginClient')->group(function () {
         Route::get('introduce/index', [IntroduceController::class, 'index']);
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
