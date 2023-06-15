@@ -66,7 +66,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     </td>
                     <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}">{{!empty($data->category) ? $data->category->name_category : ''}}</td>
                     <td style="vertical-align: middle;white-space: inherit;" align="center">
-                       <!-- {{$data->Users->name}} -->
+                    {{-- {{$data->Users->name}} --}}
                     </td>
                     <td style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}">{{!empty($data->created_at) ? date('d/m/Y', strtotime($data->created_at)) : ''}}</td>
                     <td class="td_ratings_TA_{{$id}}" style="vertical-align: middle;" align="center" onclick="{select_row(this);}" ondblclick="click2('{{$id}}', 'ratings_TA')">
