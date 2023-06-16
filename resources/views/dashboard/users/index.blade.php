@@ -39,12 +39,22 @@
                                     <select class="form-control input-sm chzn-select" name="role"
                                         id="role">
                                         <option value=''>-- Quyền hiển thị --</option>
+                                        @if(Auth::user()->role == 'ADMIN')
                                         <option value="ADMIN">Quản trị hệ thống - CEO</option>
+                                        @endif
+                                        @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE')
                                         <option value="MANAGE">Trợ lý CEO</option>
+                                        @endif
+                                        @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'CV_ADMIN')
                                         <option value="CV_ADMIN">Leader/TPKD/TPPT</option>
+                                        @endif
+                                        @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'CV_ADMIN' || Auth::user()->role == 'CV_PRO' || Auth::user()->role == 'CV_BASIC')
                                         <option value="CV_PRO">Nhân sự Editor-Pro</option>
                                         <option value="CV_BASIC">Nhân sự Editor-Basic</option>
+                                        @endif
+                                        @if(Auth::user()->role == 'ADMIN' || Auth::user()->role == 'MANAGE' || Auth::user()->role == 'CV_ADMIN' || Auth::user()->role == 'CV_PRO' || Auth::user()->role == 'CV_BASIC' || Auth::user()->role == 'SALE_ADMIN')
                                         <option value="SALE_ADMIN">Sales Admin</option>
+                                        @endif
                                         <option value="SALE_BASIC">Sales basic</option>
                                         <option value="USERS">Người dùng</option>
                                     </select>

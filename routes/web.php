@@ -102,6 +102,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
         });
     });
     Route::prefix('/system')->group(function () {
+        Route::get('/userInfo/changePass', [UserController::class,'changePass'])->name('changePass');
+        Route::post('/userInfo/updatePass', [UserController::class,'updatePass'])->name('updatePass');
+
         // quản trị danh mục - thể loại
         Route::prefix('/category')->group(function () {
             //Danh mục

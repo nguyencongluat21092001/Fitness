@@ -202,7 +202,8 @@ class UserController extends Controller
     {
         $input = $request->all();
         $data['id'] = $input['id'];
-        $data['email_acc'] = $input['email'];
+        $users = $this->userService->where('id',$input['id'])->first();
+        $data['email_acc'] = $users['email'];
         return view('dashboard.users.userInfor.edit',compact('data'));
     }
     /**

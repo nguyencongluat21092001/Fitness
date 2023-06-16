@@ -5,6 +5,7 @@
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <form action="" method="POST" id="frmUsersInfo_index">
     @csrf
+    <form id="frmView"  role="form" action="" method="POST">
 
       <div class="container-fluid py-4">
         <div class="row">
@@ -12,17 +13,22 @@
             <div class="card">
               <div class="card-header pb-0">
                 <div class="d-flex align-items-center">
-                  <form id="frmView"  role="form" action="" method="POST">
                     <input type="hidden" name="id" id="id" value="{{$data['id']}}">
-                      <div class="mt-2 d-flex">
-                          <h6 class="mb-0">Chế độ tối</h6></h6>
-                          <div class="form-check form-switch" id="btn_checkbox">
-                              <input class="form-check-input mt-1 ms-auto" type="checkbox" name="is_checkbox" id="dark-version"{{($_SESSION["color_view"] == '1') ? 'checked' : ''}}/>
+                      @if(!empty($data) && $_SESSION["email"] == $data['email'] || $_SESSION["role"] == 'ADMIN')
+                      <span id='btn_changePass' class="pt-3">
+                        <button class="btn btn-primary btn-sm ms-auto" type="button">
+                          Đổi mật khẩu
+                        </button>
+                      </span>
+                      @endif
+                      <!-- <div  > -->
+                          <h6 style="padding-left:10%" class="mb-0">Sáng/tối &nbsp;&nbsp;</h6></h6>
+                          <div  class="form-check form-switch" id="btn_checkbox">
+                              <input class="form-check-input mt-1" type="checkbox" name="is_checkbox" id="dark-version"{{($_SESSION["color_view"] == '1') ? 'checked' : ''}}/>
                           </div>
-                      </div>
-                  </form>
-              <!-- </div> -->
-                  <button class="btn btn-primary btn-sm ms-auto">Cập nhật</button>
+                      <!-- </div> -->
+                  <!-- </div> -->
+                  <!-- <button class="btn btn-primary btn-sm ms-auto">Đổi mật khẩu</button> -->
                 </div>
               </div>
               <div class="card-body">
@@ -31,25 +37,25 @@
                   <div class="col-md-6">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Tên</p>
-                      <input class="form-control" type="text" value="{{$data['name']}}">
+                      <input disabled  class="form-control" type="text" value="{{$data['name']}}">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Địa chỉ Email</p>
-                      <input class="form-control" type="email" value="{{$data['email']}}">
+                      <input disabled class="form-control" type="email" value="{{$data['email']}}">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Ngày sinh</p>
-                      <input class="form-control" type="date" value="{{$data['dateBirth']}}">
+                      <input disabled class="form-control" type="date" value="{{$data['dateBirth']}}">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Số điện thoại</p>
-                      <input class="form-control" type="text" value="{{$data['phone']}}">
+                      <input disabled class="form-control" type="text" value="{{$data['phone']}}">
                     </div>
                   </div>
                 </div>
@@ -59,25 +65,25 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Địa chỉ</p>
-                      <input class="form-control" type="text" value="{{$data['address']}}">
+                      <input disabled class="form-control" type="text" value="{{$data['address']}}">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Công ty</p>
-                      <input class="form-control" type="text" value="{{$data['company']}}">
+                      <input disabled class="form-control" type="text" value="{{$data['company']}}">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Chức vụ</p>
-                      <input class="form-control" type="text" value="{{$data['position']}}">
+                      <input disabled class="form-control" type="text" value="{{$data['position']}}">
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
                       <p for="example-text-input" class="form-control-label">Gia nhập ngày</p>
-                      <input class="form-control" type="date" value="{{$data['date_join']}}">
+                      <input disabled class="form-control" type="date" value="{{$data['date_join']}}">
                     </div>
                   </div>
                 </div>
@@ -87,7 +93,7 @@
                   <div class="col-md-12">
                     <div class="form-group">
                       <label for="example-text-input" class="form-control-label">About me</label>
-                      <input class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
+                      <input disabled class="form-control" type="text" value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source.">
                     </div>
                   </div>
                 </div> -->
@@ -156,6 +162,10 @@
         </div>
       </div>
     </form>
+    <div class="modal fade" id="editmodal" role="dialog"></div>
+
+    <div class="modal " id="editPassmodal" role="dialog" style=" width: 100%;height: 100%;background: #0000007d; background-repeat:no-repeat;background-size: cover;"></div>
+
     <script src='../assets/js/jquery.js'></script>
     <script type="text/javascript">
         var baseUrl = '{{ url('') }}';

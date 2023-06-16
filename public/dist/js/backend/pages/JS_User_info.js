@@ -20,6 +20,12 @@ JS_User_info.prototype.loadIndex = function () {
     $(oForm).find('#btn_checkbox').click(function () {
         myClass.color_view(oForm);
     });
+    $(oForm).find('#btn_changePass').click(function () {
+        myClass.changePass(oForm);
+    })
+    $('form#frmChangePass').find('#btn_updatePass').click(function () {
+        myClass.updatePass('form#frmChangePass');
+    })
 }
 JS_User_info.prototype.loadevent = function (oForm) {
     var myClass = this;
@@ -29,6 +35,9 @@ JS_User_info.prototype.loadevent = function (oForm) {
     // $('form#frmView').find('#btn_create').click(function () {
     //     myClass.color_view('form#frmView');
     // })
+    $('form#frmChangePass').find('#btn_updatePass').click(function () {
+        myClass.updatePass('form#frmChangePass');
+    })
 }
 /**
  * Hàm hiển thị modal
@@ -184,6 +193,85 @@ JS_User_info.prototype.loadList = function (oForm, numberPage = 1, perPage = 15)
             });
             var loadding = NclLib.successLoadding();
             myClass.loadevent(oForm);
+        }
+    });
+}
+/**
+ * Hàm hiển thị modal edit
+ *
+ * @param oForm (tên form)
+ *
+ * @return void
+ */
+JS_User_info.prototype.changePass = function (oForm) {
+    var url = this.urlPath + '/changePass';
+    var myClass = this;
+    var data = 'id=' + $("#id").val();
+    data += '&email=' +$("#email").val();
+    var loadding = NclLib.successLoadding();
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: data,
+        success: function (arrResult) {
+            $('#editPassmodal').html(arrResult);
+            $('#editPassmodal').modal('show');
+            myClass.loadevent(oForm);
+
+        }
+    });
+}
+/**
+ * Cập nhật mật khẩu
+ *
+ * @param oFormCreate (tên form)
+ *
+ * @return void
+ */
+JS_User_info.prototype.updatePass = function (oFormCreate) {
+    var url = this.urlPath + '/updatePass';
+    var myClass = this;
+    var data = $(oFormCreate).serialize();
+    if ($("#password_old").val() == '') {
+        var nameMessage = 'Mật khẩu cũ không được để trống!';
+        var icon = 'warning';
+        var color = '#f5ae67';
+        NclLib.alerMesage(nameMessage,icon,color);
+        return false;
+    }
+    if ($("#password_new").val() == '') {
+        var nameMessage = 'Mật khẩu mới không được để trống!';
+        var icon = 'warning';
+        var color = '#f5ae67';
+        NclLib.alerMesage(nameMessage,icon,color);
+        return false;
+    }
+    if ($("#password_retype_change").val() == '') {
+        var nameMessage = 'Chưa nhập lại mật khẩu mới!';
+        var icon = 'warning';
+        var color = '#f5ae67';
+        NclLib.alerMesage(nameMessage,icon,color);
+        return false;
+    }
+    $.ajax({
+        url: url,
+        type: "POST",
+        //cache: true,
+        data: data,
+        success: function (arrResult) {
+            if (arrResult['success'] == true) {
+                  var nameMessage = arrResult['message'];
+                  var icon = 'success';
+                  var color = '#f5ae67';
+                  NclLib.alerMesage(nameMessage,icon,color);
+                  $('#editPassmodal').modal('hide');
+                  myClass.loadList(oFormCreate);
+            } else {
+                  var nameMessage = arrResult['message'];
+                  var icon = 'warning';
+                  var color = '#f5ae67';
+                  NclLib.alerMesage(nameMessage,icon,color);
+            }
         }
     });
 }
