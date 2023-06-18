@@ -5,6 +5,9 @@
      .form-wrapper ,.checkbox{
         color:#ffffff;
     }
+    .form-control{
+        color:#fff079;
+    }
 </style>
 <link rel="stylesheet" href="../clients/css/style.css">
 
