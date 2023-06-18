@@ -89,14 +89,14 @@
                             <div class="form-wrapper">
                                 <label for="">Mã nhân viên giới thiệu</label>
                                 @if(isset($data['user_introduce_name']))
-                                <input disabled onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                <input style="#ff0000" disabled onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
                                 @else
-                                <input onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
+                                <input style="#ff0000"  onchange="JS_Register.getUser()" placeholder="Mã nhân viên giới thiệu..." id="code_introduce" type="text" class="form-control" name="code_introduce" value="{{isset($data['user_introduce_id']) ? $data['user_introduce_id'] : ''}}">
                                 @endif
                             </div>
                             <div class="form-wrapper" id="iss">
                                 <label for="">Tên nhân viên</label>
-                                <input disabled placeholder="Tên nhân viên giới thiệu..."  type="text" class="form-control"  value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
+                                <input style="#ff0000"  disabled placeholder="Tên nhân viên sgiới thiệu..."  type="text" class="form-control"  value="{{isset($data['user_introduce_name']) ? $data['user_introduce_name'] : ''}}">
                             </div>
                         </div>
                         <div class="checkbox">
