@@ -1,19 +1,24 @@
 @extends('client.layouts.index')
 
 @section('body-client')
+<style>
+     .form-wrapper ,.checkbox{
+        color:#ffffff;
+    }
+</style>
 <link rel="stylesheet" href="../clients/css/style.css">
 
     <div class="container mt-2 mb-2">
         <div class="row justify-content-center">
             <div class="col-md-7">
-                <div class="card" style="background:#fff;">
+                <div class="card" style="background:#000000d6;">
                     <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg'); display: flex; justify-content: center;">
                         <!-- <div class="inner"> -->
                             <form method="POST" action="{{ route('checkLogin') }}" autocomplete="off">
                                 <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
                                 <div class="form-group" align="center">
                                     <div class="col-md-12 mt-3 mb-3">
-                                        <h3 class="text-uppercase" style="font-family: Serif;">Đăng nhập</h3>
+                                        <h3 class="text-uppercase" style="font-family: Serif;color:#ffffff">Đăng nhập</h3>
                                     </div>
                                 </div>
                                 <div class="form-wrapper row {{!isset($data['email']) ? 'mb-3' : ''}}">

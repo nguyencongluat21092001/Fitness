@@ -105,6 +105,8 @@
 						<input type="radio" value="SALE_BASIC" name="role" id="role_Sale" {{!empty($data['role']) && $data['role'] == 'SALE_BASIC' ? 'checked' : ''}} />
 						<label for="role_Sale">Sale</label><br>
 						@endif
+						<input type="radio" value="USERS" name="role" id="role_Users" {{!empty($data['role']) && $data['role'] == 'USERS' ? 'checked' : ''}} />
+						<label for="role_Users">Người dùng</label><br>
 					</div>
 					<div class="col-md-4">
 						<label for="">Trạng thái</label><br>

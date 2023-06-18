@@ -17,18 +17,24 @@
         font-size: 20px;
         color: #690000;
     }
+    .form-wrapper ,.checkbox{
+        color:#ffffff;
+    }
+    .form-control{
+        color:#fff079;
+    }
 </style>
 <div class="container mt-2 mb-2">
     <div class="row justify-content-center">
         <div class="col-md-7">
-            <div class="card" style="background:#fff;">
+            <div class="card" style="background:#000000d6;">
                 <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg'); display: flex; justify-content: center;">
                     <form id="frmSend_Otp" method="POST" action="{{ route('register') }}" autocomplete="off">
                         @csrf
                         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
                         <div class="form-group" align="center">
                             <div class="col-md-12 mt-4 mb-3">
-                                <h3 class="text-uppercase" style="font-family: Serif;">Đăng ký tài khoản
+                                <h3 class="text-uppercase" style="font-family: Serif;color:#ffffff">Đăng ký tài khoản
                                 </h3>
                             </div>
                         </div>

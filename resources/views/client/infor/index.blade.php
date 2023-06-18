@@ -1,5 +1,15 @@
 @extends('client.layouts.index')
 @section('body-client')
+<link rel="stylesheet" href="../clients/css/style.css">
+<style>
+    form{
+        width: 100%; 
+        padding-left: 0px;
+    }
+    .form-control{
+        color:#fff079;
+    }
+</style>
 <section class="container">
     <div class=" pb-3 d-lg-flex gx-5">
         <div class="col-lg-12">
@@ -8,12 +18,12 @@
                 <input type="hidden" name="_id" id="_id" value="{{ isset($datas->id) ? $datas->id : '' }}">
                 <div class="home_index_vnindex pt-1 pb-3" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- phần giới thiệu FIn top -->
-                    <div class="home_index_child" style="background:#ffffff91 !important;">
+                    <div class="home_index_child" style="background:#000000d6 !important;">
                         <div class="col-lg-12" style="padding:10px;">
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-8" style="color: white;">
                                     <div class="card-header">
-                                        <button class="btn btn-primary btn-sm ms-auto">Cập nhật</button>
+                                        <button class="btn btn-primary btn-sm ms-auto">Đổi mật khẩu</button>
                                     </div>
                                     <div class="card-body">
                                         <p class="text-uppercase text-sm">Thông tin người dùng</p>
@@ -24,47 +34,47 @@
                                                     <input class="form-control" type="text" name="name" value="{{isset($datas->name) ? $datas->name : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Địa chỉ Email</p>
                                                     <input class="form-control" type="email" name="email" value="{{isset($datas->email) ? $datas->email : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Ngày sinh</p>
                                                     <input class="form-control" type="date" name="dateBirth" value="{{isset($datas->dateBirth) ? $datas->dateBirth : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Số điện thoại</p>
                                                     <input class="form-control" type="text" name="phone" value="{{isset($datas->phone) ? $datas->phone : ''}}">
                                                 </div>
                                             </div>
                                         </div>
-                                        <hr class="horizontal dark">
+                                        <hr class="horizontal dark pt-1">
                                         <p class="text-uppercase text-sm">Thông tin liên lạc</p>
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-12 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Địa chỉ</p>
                                                     <input class="form-control" type="text" name="address" value="{{isset($datas->address) ? $datas->address : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Công ty</p>
                                                     <input class="form-control" type="text" name="company" value="{{isset($datas->user_infor->company) ? $datas->user_infor->company : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Chức vụ</p>
                                                     <input class="form-control" type="text" name="position" value="{{isset($datas->user_infor->position) ? $datas->user_infor->position : ''}}">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 pt-2">
                                                 <div class="form-group">
                                                     <p for="example-text-input" class="form-control-label">Gia nhập ngày</p>
                                                     <input class="form-control" type="date" name="date_join" value="{{isset($datas->user_infor->date_join) ? $datas->user_infor->date_join : ''}}">
@@ -96,21 +106,21 @@
                                             <div class="col-4 col-lg-4 order-lg-2">
                                                 <div class="mt-n4 mt-lg-n6 mb-4 mb-lg-0">
                                                     <a href="javascript:;">
-                                                        <img src="{{url('file-image/avatar')}}/{{$datas->avatar}}" style="height: 150px;width: 150px;object-fit: cover;border-radius:50%">
+                                                        <img src="{{url('file-image/avatar')}}/{{$datas->avatar}}" style="height: 140px;width: 150px;object-fit: cover;border-radius:50%">
                                                     </a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
+                                        <!-- <div class="card-header text-center border-0 pt-0 pt-lg-2 pb-4 pb-lg-3">
                                             <div class="d-flex justify-content-between">
                                                 <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-none d-lg-block">Connect</a>
                                                 <a href="javascript:;" class="btn btn-sm btn-info mb-0 d-block d-lg-none"><i class="ni ni-collection"></i></a>
                                                 <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-none d-lg-block">Message</a>
                                                 <a href="javascript:;" class="btn btn-sm btn-dark float-right mb-0 d-block d-lg-none"><i class="ni ni-email-83"></i></a>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="card-body pt-0">
-                                            <div class="row">
+                                            <!-- <div class="row">
                                                 <div class="col">
                                                     <div class="d-flex justify-content-center">
                                                         <div class="d-grid text-center">
@@ -127,7 +137,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> -->
                                             <div class="text-center mt-4">
                                                 <h5>
                                                     {{isset($datas->name) ? $datas->name : ''}}
