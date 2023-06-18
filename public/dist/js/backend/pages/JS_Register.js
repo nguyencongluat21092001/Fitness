@@ -143,14 +143,11 @@ JS_Register.prototype.getUser = function (oForm) {
         data: data,
         success: function (arrResult) {
             if (arrResult['success'] == true) {
-                console.log(arrResult)
-                var html = '<div class="form-wrapper" id="iss"><label for="">Tên nhân viên</label><input disabled placeholder="'+ arrResult['data']['name'] + '"  type="text" class="form-control"  value="'+ arrResult['data']['name'] + '"></div>'
-                console.log(html)
-                // var html = '<span>Gới thiệu từ nhân viên: '+ arrResult['data']['name'] + '</span>';
+                var html = '<div class="" id="iss"><label for="">Tên nhân viên</label><input style="color:red" disabled placeholder="'+ arrResult['data']['name'] + '"  type="text" class="form-control"  value="'+ arrResult['data']['name'] + '"></div>'
                 $("#iss").html(html);
                 Swal.fire({
                     position: 'top-end',
-                    icon: 's',
+                    icon : 'success',
                     title: arrResult.message,
                     showConfirmButton: false,
                     // background:'#06ff00',
@@ -159,7 +156,7 @@ JS_Register.prototype.getUser = function (oForm) {
           } else if (arrResult['success'] == false) {
             Swal.fire({
                 position: 'top-end',
-                icon: 's',
+                icon : 'warning',
                 title: arrResult.message,
                 showConfirmButton: false,
                 timer: 3000

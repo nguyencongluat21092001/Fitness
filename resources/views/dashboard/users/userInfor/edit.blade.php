@@ -1,3 +1,9 @@
+<style>
+	    .color{
+        color:black;
+    }
+</style>
+
 <div class="modal-dialog modal-lg">
 	<div class="modal-content card">
 		<form id="frmChangePass">
@@ -5,34 +11,34 @@
 			<input type="hidden" name="user_id" id="user_id" value="{{!empty($data['id'])?$data['id']:''}}">
 			<div class="modal-header">
 				<h5 class="modal-title">Đổi mật khẩu</h5>
-				<button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
+				<!-- <button type="button" class="btn btn-sm" data-bs-dismiss="modal" style="background: #f1f2f2;">
 					X
-				</button>
+				</button> -->
 			</div>
 			<div class="card-body">
-				<div class="row">
+				<div class="row mb-3">
 					<div class="col-md-6">
 						<div class="form-group">
 							<p for="example-text-input" class="form-control-label">Email</p>
-							<input class="form-control" type="text" value="{{!empty($data['email_acc'])?$data['email_acc']:''}}" name="email_acc" id="email_acc" />
+							<input class="form-control color" type="text" value="{{!empty($data['email_acc'])?$data['email_acc']:''}}" name="email_acc" id="email_acc" />
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
 							<p for="example-text-input" class="form-control-label">Mật khẩu cũ</p>
-							<input class="form-control" type="password" value="" name="password_old" id="password_old" />
+							<input class="form-control color" type="password" value="" name="password_old" id="password_old" />
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 pt-2">
 						<div class="form-group">
 							<p for="example-text-input" class="form-control-label">Mật khẩu mới</p>
-							<input class="form-control" type="password" value="" name="password_new" id="password_new" />
+							<input class="form-control color" type="password" value="" name="password_new" id="password_new" />
 						</div>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-6 pt-2">
 						<div class="form-group">
 							<p for="example-text-input" class="form-control-label">Nhập lại mật khẩu</p>
-							<input class="form-control" type="password" value="" name="password_retype_change" id="password_retype_change" />
+							<input class="form-control color" type="password" value="" name="password_retype_change" id="password_retype_change" />
 						</div>
 					</div>
 				</div>

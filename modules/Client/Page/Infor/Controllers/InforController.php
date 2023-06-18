@@ -42,7 +42,7 @@ class InforController extends Controller
     }
 
      /**
-     * load màn hình danh sách lấy chỉ số thị trường
+     * load màn hình thông tin người dùng
      *
      * @param Request $request
      *
@@ -50,9 +50,11 @@ class InforController extends Controller
      */
     public function loadList(Request $request)
     { 
-        $arrInput = $request->input();
-        $data = $this->homeService->loadList($arrInput);
-        return view("client.Introduce.loadlist", $data);
+        $users = $this->userService->where('id', $_SESSION['id'])->first();
+        $user_infor = $this->userInfoService->where('user_id', $_SESSION['id'])->first();
+        $users['user_infor'] = $user_infor;
+        $data['datas'] = $users;
+        return view('client.infor.index', $data);
     }
     
      /**

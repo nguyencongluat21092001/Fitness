@@ -228,6 +228,9 @@ Route::prefix('/client')->group(function () {
         Route::get('introduce/index', [IntroduceController::class, 'index']);
         Route::get('infor/index', [InforController::class, 'index']);
         Route::post('infor/update', [InforController::class, 'update']);
+        Route::post('infor/loadList', [InforController::class, 'loadList']);
+        Route::get('/infor/changePass', [UserController::class,'changePass']);
+        Route::post('/infor/updatePass', [UserController::class,'updatePass']);
         // Route::middleware('checkloginDatafinancial')->group(function () {
             Route::prefix('datafinancial')->group(function () {
                 // Tra cứu cổ phiếu

@@ -1,6 +1,8 @@
 @extends('client.layouts.index')
 @section('body-client')
 <link rel="stylesheet" href="../clients/css/style.css">
+<script type="text/javascript" src="{{ URL::asset('dist\js\backend\client\JS_InforClient.js') }}"></script>
+
 <style>
     form{
         width: 100%; 
@@ -9,22 +11,34 @@
     .form-control{
         color:#fff079;
     }
+  button:before {
+    background: none ;
+   }
+
 </style>
 <section class="container">
     <div class=" pb-3 d-lg-flex gx-5">
         <div class="col-lg-12">
-            <form action="{{URL::asset('client/infor/update')}}" method="POST" id="frmLoadlist_signal">
+            <form action="" method="POST" id="frmLoadlist_infor">
+                @csrf
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
-                <input type="hidden" name="_id" id="_id" value="{{ isset($datas->id) ? $datas->id : '' }}">
+                <input type="hidden" name="id" id="id" value="{{ isset($datas->id) ? $datas->id : '' }}">
                 <div class="home_index_vnindex pt-1 pb-3" style="background:#ffffff91 !important;border-radius:0px !important">
                     <!-- phần giới thiệu FIn top -->
                     <div class="home_index_child" style="background:#000000d6 !important;">
                         <div class="col-lg-12" style="padding:10px;">
                             <div class="row">
                                 <div class="col-md-8" style="color: white;">
-                                    <div class="card-header">
+                                    <!-- <div class="card-header">
                                         <button class="btn btn-primary btn-sm ms-auto">Đổi mật khẩu</button>
-                                    </div>
+                                    </div> -->
+                                   {{-- @if(!empty($data) && $_SESSION["email"] == $data['email']) --}}
+                                    <span id='btn_changePass'>
+                                        <button class="btn btn-primary btn-sm" type="button">
+                                            Đổi mật khẩu
+                                        </button>
+                                    </span>
+                                    {{-- @endif --}}
                                     <div class="card-body">
                                         <p class="text-uppercase text-sm">Thông tin người dùng</p>
                                         <div class="row">
@@ -164,4 +178,15 @@
     </div>
 </section>
 <script src="../clients/js/jquery.min.js"></script>
+<div class="modal fade" id="editmodal" role="dialog"></div>
+<div class="modal " id="editPassmodal" role="dialog" style=" width: 100%;height: 100%;background: #0000007d; background-repeat:no-repeat;background-size: cover;"></div>
+
+<div id="dialogconfirm"></div>
+<script type="text/javascript">
+    var baseUrl = '{{ url('') }}';
+    var JS_InforClient = new JS_InforClient(baseUrl, 'client', 'infor');
+    $(document).ready(function($) {
+        JS_InforClient.loadIndex(baseUrl);
+    })
+</script>
 @endsection
