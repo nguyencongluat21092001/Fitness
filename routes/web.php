@@ -28,6 +28,8 @@ use Modules\System\Dashboard\Home\Controllers\HomeController;
 use Modules\System\Dashboard\Recommended\Controllers\RecommendedController;
 use Modules\System\Dashboard\Signal\Controllers\SignalController;
 use Modules\System\Dashboard\Users\Controllers\UserController;
+use Modules\System\Dashboard\Permision\Controllers\PermisionController;
+
 
 
 /*
@@ -99,6 +101,18 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
             Route::post('/edit',[DataFinancialController::class,'edit']);
             Route::post('/delete',[DataFinancialController::class,'delete']);
             Route::post('/updateDataFinancial',[DataFinancialController::class,'updateDataFinancial']);
+        });
+         //Quản trị quyền sủ dụng quản trị
+         Route::prefix('/system/permision')->group(function () {
+            //Handbook
+            Route::get('/index', [PermisionController::class, 'index']);
+            Route::get('/loadList',[PermisionController::class,'loadList']);
+            Route::post('/createForm',[PermisionController::class,'createForm']);
+            Route::post('/create',[PermisionController::class,'create']);
+            Route::get('/changeUpdate',[PermisionController::class,'changeUpdate']);
+            Route::post('/edit',[PermisionController::class,'edit']);
+            Route::post('/delete',[PermisionController::class,'delete']);
+            Route::post('/updateDataFinancial',[PermisionController::class,'updateDataFinancial']);
         });
     });
     Route::prefix('/system')->group(function () {

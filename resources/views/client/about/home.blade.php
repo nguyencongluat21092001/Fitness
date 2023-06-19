@@ -84,10 +84,10 @@
   <!-- tra cứu cổ phiếu -->
   <section class="container" style="background:#ffffff8a">
     <div class="pt-3 pb-3 d-lg-flex gx-5">
-      <div class="col-lg-4">
+      <!-- <div class="col-lg-4">
 
-      </div>
-      <div class="col-lg-8" style="background: #fff">
+      </div> -->
+      <div class="col-lg-12" style="background: #fff">
       <form id="frmLoadlist_blog">
         <input type="hidden" id="_token" value="{{csrf_token()}}">
         <div id="table-blog-container"></div>

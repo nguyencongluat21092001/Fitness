@@ -63,6 +63,12 @@ return [
         'a'    => 'nav-link link-report',
         'href' => '/system/report/index',
     ],
+    'permision' => [
+        'name' => 'Phân quyền truy cập',
+        'icon' => 'fas fa-medkit',
+        'a'    => 'nav-link link-permision',
+        'href' => '/system/permision/index',
+    ],
    ],
   //role 3
   "MANAGE" => [
