@@ -228,8 +228,9 @@
         </div>
     </nav>
     @yield('body-client')
+    
     {{-- chat --}}
-    @if(auth::check())
+    @if(!empty(Auth::user()))
     @include('client.layouts.chat')
     @endif
     {{-- end-chat --}}

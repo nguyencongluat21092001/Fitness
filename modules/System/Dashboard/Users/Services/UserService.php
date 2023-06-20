@@ -3,8 +3,10 @@
 namespace Modules\System\Dashboard\Users\Services;
 
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Http;
 use Modules\Base\Service;
 use Modules\Base\Library;
+use Modules\System\Dashboard\Users\Models\AuthenticationOTPModel;
 use Modules\System\Dashboard\Users\Repositories\UserRepository;
 use Modules\System\Dashboard\Users\Services\UserInfoService;
 use Str;
@@ -134,5 +136,66 @@ class UserService extends Service
         $getUserInfor['date_join'] = !empty($userInfo->date_join)?$userInfo->date_join:null;
         return $getUserInfor;
     }
+
+    public function sent_OTP($input)
+    {
+        $selectOtp = AuthenticationOTPModel::where('phone',$input['phone'])->first();
+        $zenData = [
+            'phone'=> $input['phone'],
+            'otp'=> rand(10,100).rand(10,100),
+            'created_at'=> date("Y/m/d H:i:s"),
+            'updated_at'=> date("Y/m/d H:i:s"),
+        ];
+        if(isset($selectOtp)){
+            $create = AuthenticationOTPModel::where('phone',$input['phone'])->update($zenData);
+        }else{
+            $zenData['id'] = (string)\Str::uuid();
+            $create = AuthenticationOTPModel::create($zenData);
+        }
+        $otp_sms = $zenData['otp'];
+        $phone = $zenData['phone'];
+        $sendOtp = $this->sendOtp($phone,$otp_sms);
+        if($sendOtp){
+            return array('success' => true, 'message' => 'Mã xác thực của bạn đã được gửi qua số điện thoại: '.$input['phone'].'. Vui lòng kiểm tra tin nhắn!');
+        }else{
+            return array('success' => false, 'message' => 'Lỗi xảy ra - liên hệ đội ngũ hỗ trợ qua hotline: 0386358006');
+        }
+    }
+    /**
+    * Cập nhật trạng thái
+    */
+   public function sendOtp($phone,$otp_sms)
+   {
+       try{
+           $param = [
+               'phoneNumber'=> $phone,
+               'message'=> 'FinTop - OTP của bạn là: '.$otp_sms,
+           ];
+           $dataConfig = config('apiConnect.financial');
+           $urlApi = $dataConfig['api'].$dataConfig['apiChild']['send-sms'];
+           $response = Http::withHeaders(['Authorization' => 'Bearer key0000'])->withToken($dataConfig['token'])
+                           ->withBody(json_encode($param),'application/json')
+                           ->post($urlApi);
+           $response = $response->getBody()->getContents();
+           $response = json_decode($response,true);
+
+           $data['datas'] = $response;
+           if($data['datas'] == null || $data['datas'] == ''){
+               return false;
+               // $data['datas']['message'] = [
+               //     "message" => 'Lỗi xảy ra - liên hệ đội ngũ hỗ trợ qua hotline: 0386358006'
+               // ];
+           }
+           return $data;
+       }catch (\Exception $e) {
+           if($data['datas'] == null || $data['datas'] == ''){
+               return false;
+               // $data['datas']['message'] = [
+               //     "message" => 'Lỗi xảy ra - liên hệ đội ngũ hỗ trợ qua hotline: 0386358006'
+               // ];
+           }
+           return $data;
+       }
+   }
 
 }
