@@ -67,7 +67,7 @@ use Modules\System\Recordtype\Helpers\WorkflowHelper;
                     <td style="vertical-align: middle;" align="center" onclick="{select_row(this);}">{{!empty($data->category) ? $data->category->name_category : ''}}</td>
                     <td style="vertical-align: middle;white-space: inherit;" align="center">
                     @if(isset($data->Users->name))
-                    $data->Users->name
+                    {{$data->Users->name}}
                     @endif
                     </td>
                     <td style="vertical-align: middle;white-space: inherit;" align="center" onclick="{select_row(this);}">{{!empty($data->created_at) ? date('d/m/Y', strtotime($data->created_at)) : ''}}</td>
