@@ -5,6 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <form action="" method="POST" id="frmpermision_index">
+                @csrf
                 <input type="hidden" name="_token" id="_token" value="{{ csrf_token() }}">
                 <!-- <div class="breadcrumb-input-fix d-sm-flex align-items-center justify-content-between">
                     <button class="btn btn-success btn-sm shadow-sm" id="" type="button"data-toggle="tooltip"
@@ -15,15 +16,14 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="row form-group" style="text-align: center;">
-                                <!-- <div class="col-md-3">
-                                    <select class="form-control input-sm chzn-select" name="cate"
-                                        id="cate">
-                                        <option value=''>-- Chọn loại cẩm nang --</option>
-                                        @foreach($data['category'] as $item)
-                                            <option value="{{$item['code_category']}}">{{$item['decision']}}</option>
-                                        @endforeach
-                                    </select>
-                                </div> -->
+                                <div class="col-md-3">
+                                     <div class="breadcrumb-input-right">
+                                        <button class="btn btn-success shadow-sm" id="btn_add" type="button"data-toggle="tooltip"
+                                            data-original-title="Thêm cẩm nang"><i class="fas fa-plus"></i></button>
+                                        <button class="btn btn-danger shadow-sm" id="btn_delete" type="button"data-toggle="tooltip"
+                                            data-original-title="Xóa cẩm nang"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </div> 
                                 <div class="input-group" style="width:30%;height:10%">
                                     <span class="input-group-text text-body"><i class="fas fa-search"
                                             aria-hidden="true"></i></span>

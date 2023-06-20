@@ -14,7 +14,7 @@ function JS_Permision(baseUrl, module, controller) {
 JS_Permision.prototype.loadIndex = function () {
     var myClass = this;
     // $('.chzn-select').chosen({ height: '100%', width: '100%' });
-    var oForm = 'form#frmHandbook_index';
+    var oForm = 'form#frmpermision_index';
     var oFormCreate = 'form#frmAdd';
     myClass.loadList(oForm);
 
@@ -90,34 +90,21 @@ JS_Permision.prototype.store = function (oFormCreate) {
     var url = this.urlPath + '/create';
     var myClass = this;
     var data = $(oFormCreate).serialize();
-    if ($("#category_handbook").val() == '') {
-        var nameMessage = 'Loại cẩm nang không được để trống!';
+    if ($("#category_permision").val() == '') {
+        var nameMessage = 'Loại quyền không được để trống!';
         var icon = 'warning';
         var color = '#f5ae67';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
-    if ($("#name_handbook").val() == '') {
-        var nameMessage = 'Tên cẩm nang không được để trống!';
+    if ($("#name_permision").val() == '') {
+        var nameMessage = 'Tên quyền không được để trống!';
         var icon = 'warning';
         var color = '#f5ae67';
         NclLib.alerMesage(nameMessage,icon,color);
         return false;
     }
-    if ($("#url_link").val() == '') {
-        var nameMessage = 'Đường dẫn không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
-    if ($("#type_handbook").val() == '') {
-        var nameMessage = 'Loại đường dẫn không được để trống!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
+    console.log(data)
     $.ajax({
         url: url,
         type: "POST",
@@ -190,37 +177,12 @@ JS_Permision.prototype.loadList = function (oForm, numberPage = 1, perPage = 15)
  *
  * @return void
  */
-JS_Permision.prototype.edit = function (oForm) {
+JS_Permision.prototype.edit = function (id) {
     var url = this.urlPath + '/edit';
     var myClass = this;
+    oForm = 'form#frmpermision_index'
     var data = $(oForm).serialize();
-    var listitem = '';
-    var i = 0;
-    var p_chk_obj = $('#table-data').find('input[name="chk_item_id"]');
-    $(p_chk_obj).each(function () {
-        if ($(this).is(':checked')) {
-            if (listitem !== '') {
-                listitem += ',' + $(this).val();
-            } else {
-                listitem = $(this).val();
-            }
-            i++;
-        }
-    });
-    if (listitem == '') {
-        var nameMessage = 'Bạn chưa chọn thể loại!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
-    if (i > 1) {
-        var nameMessage = 'Bạn chỉ được chọn một thể loại!';
-        var icon = 'warning';
-        var color = '#f5ae67';
-        NclLib.alerMesage(nameMessage,icon,color);
-        return false;
-    }
+    data += '&id=' + id;
     $.ajax({
         url: url,
         type: "POST",

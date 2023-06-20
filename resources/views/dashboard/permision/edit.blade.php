@@ -5,22 +5,22 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content card">
             <div class="modal-header">
-                <h5 class="modal-title">Cập nhật cẩm nang</h5>
+                <h5 class="modal-title">Cập nhật quyền</h5>
                 <button type="button" class="btn btn-sm" data-bs-dismiss="modal">
                     X
                 </button>
             </div>
             <div class="modal-body" style="padding:15px">
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Loại cẩm nang</span>
+                    <span class="col-md-3 control-label required">Loại quyền</span>
                     <div class="col-md-8">
-                        <select class="form-control input-sm chzn-select" name="category_handbook"
-                            id="category_handbook">
-                            <option value=''>-- Chọn loại cẩm nang --</option>
-                            @if(!empty($data['detail']['category_handbook']))
+                        <select class="form-control input-sm chzn-select" name="category_permision"
+                            id="category_permision">
+                            <option value=''>-- Chọn mục quyền --</option>
+                            @if(!empty($data['detail']['category_permision']))
                                 @foreach($data['category'] as $item)
                                     <option 
-                                    {{!empty($data['detail']['category_handbook'] == $item['code_category']) ? 'selected' :''}}
+                                    {{!empty($data['detail']['category_permision'] == $item['code_category']) ? 'selected' :''}}
                                     value="{{$item['code_category']}}">{{$item['name_category']}}</option>
                                 @endforeach
                             @else 
@@ -33,56 +33,71 @@
                 </div>
                 <!-- tên -->
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Tên cẩm nang</span>
+                    <span class="col-md-3 control-label required">Tên quyền</span>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" value="{{!empty($data['detail']['name_handbook'])?$data['detail']['name_handbook']:''}}" name="name_handbook" id="name_handbook"
-                            placeholder="Nhập tên cẩm nang..." />
+                        <input class="form-control" type="text" value="{{!empty($data['detail']['name_permision'])?$data['detail']['name_permision']:''}}" name="name_permision" id="name_permision"
+                            placeholder="Nhập tên quyền..." />
                     </div>
                 </div>
-                {{-- Đường dẫn --}}
-                <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Đường dẫn</span>
-                    <div class="col-md-8">
-                        <input class="form-control" type="text" value="{{!empty($data['detail']['url_link'])?$data['detail']['url_link']:''}}" name="url_link" id="url_link"
-                            placeholder="Nhập đường dẫn..." />
-                    </div>
-                </div>
-                {{--Loại đường dẫn --}}
-                <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label required">Kiểu đường dẫn</span>
-                    <div class="col-md-8">
-                        <select class="form-control input-sm chzn-select" name="type_handbook"
-                            id="type_handbook">
-                            <option value=''>-- Chọn kiểu --</option>
-                            @if(!empty($data['detail']['type_handbook']))
-                            <option {{!empty($data['detail']['type_handbook'] == 'VIDEO') ? 'selected' :''}} value="VIDEO">Video</option>
-                            <option {{!empty($data['detail']['type_handbook'] == 'LINK_LIEN_KET') ? 'selected' :''}} value="LINK_LIEN_KET">Link liên kết</option>
-                            @else
-                            <option value="VIDEO">Video</option>
-                            <option value="LINK_LIEN_KET">Link liên kết</option>
-                            @endif
-                        </select>
-                    </div>
-                </div>
-                {{-- mô tả --}}
-                <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label">Mô tả</span>
-                    <div class="col-md-8">
-                        <input class="form-control" type="text" value="{{!empty($data['detail']['decision'])?$data['detail']['decision']:''}}" name="decision" id="decision"
-                            placeholder="Nhập mô tả..." />
-                    </div>
-                </div>
+                
                 <div class="preview"></div>
                 {{-- trạng thái --}}
                 <div class="row form-group" id="div_hinhthucgiai">
-                    <span class="col-md-3 control-label">Trạng thái</span>
+                    <span class="col-md-3 control-label">Editor Tổng</span>
                     <div class="col-md-8">
                         @if(!empty($data['detail']['current_status']))
-                        <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
-                        <span for="is_checkbox_status">Hoạt động</span> <br>
+                        <input type="checkbox" value="1" name="CV_ADMIN" id="CV_ADMIN" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
                         @else
-                        <input type="checkbox" value="1" name="is_checkbox_status" id="is_checkbox_status"/>
-                        <span for="is_checkbox_status">Hoạt động</span> <br>
+                        <input type="checkbox" value="1" name="CV_ADMIN" id="CV_ADMIN"/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @endif
+                    </div>
+                </div>
+                 <div class="row form-group" id="div_hinhthucgiai">
+                    <span class="col-md-3 control-label">Editor Pro	</span>
+                    <div class="col-md-8">
+                        @if(!empty($data['detail']['current_status']))
+                        <input type="checkbox" value="1" name="CV_PRO" id="CV_PRO" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @else
+                        <input type="checkbox" value="1" name="CV_PRO" id="CV_PRO"/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @endif
+                    </div>
+                </div> <div class="row form-group" id="div_hinhthucgiai">
+                    <span class="col-md-3 control-label">Editor Pro	</span>
+                    <div class="col-md-8">
+                        @if(!empty($data['detail']['current_status']))
+                        <input type="checkbox" value="1" name="CV_BASIC" id="CV_BASIC" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @else
+                        <input type="checkbox" value="1" name="CV_BASIC" id="CV_BASIC"/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @endif
+                    </div>
+                </div>
+                <div class="row form-group" id="div_hinhthucgiai">
+                    <span class="col-md-3 control-label">Sales Admin</span>
+                    <div class="col-md-8">
+                        @if(!empty($data['detail']['current_status']))
+                        <input type="checkbox" value="1" name="SALE_ADMIN" id="SALE_ADMIN" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @else
+                        <input type="checkbox" value="1" name="SALE_ADMIN" id="SALE_ADMIN"/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @endif
+                    </div>
+                </div>
+                <div class="row form-group" id="div_hinhthucgiai">
+                    <span class="col-md-3 control-label">Sales</span>
+                    <div class="col-md-8">
+                        @if(!empty($data['detail']['current_status']))
+                        <input type="checkbox" value="1" name="SALE_BASIC" id="SALE_BASIC" {{($data['detail']['current_status'] == '1') ? 'checked' : ''}}/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
+                        @else
+                        <input type="checkbox" value="1" name="SALE_BASIC" id="SALE_BASIC"/>
+                        <span for="is_checkbox_status">Cấp quyền</span> <br>
                         @endif
                     </div>
                 </div>

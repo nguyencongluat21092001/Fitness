@@ -55,7 +55,7 @@ class PermisionController extends Controller
         // $data['datas'] = $objResult;
         // $data['param'] = $param;
         // $catePermision = $this->PermisionService->filter($param);
-        $catePermision = $this->categoryService->where('cate','DM_PHAN_QUYEN')->get()->toArray();
+        $catePermision = $this->categoryService->where('cate','DM_PHAN_QUYEN')->orderBy('created_at','asc')->get();
         foreach ($catePermision as $value) {
             $data[] = [
                 'id' => $value['id'],
@@ -82,7 +82,7 @@ class PermisionController extends Controller
     public function createForm(Request $request)
     {
         $input = $request->all();
-        $getCategory = $this->categoryService->where('cate','CNK_001')->get()->toArray();
+        $getCategory = $this->categoryService->where('cate','DM_PHAN_QUYEN')->get()->toArray();
         $data['category'] = $getCategory;
         return view('dashboard.permision.edit',compact('data'));
     }
@@ -110,7 +110,6 @@ class PermisionController extends Controller
     {
         $input = $request->all();
         $data['detail'] = $this->PermisionService->edit($input);
-        $data['category'] = $this->categoryService->where('cate','CNK_001')->get()->toArray();
         return view('dashboard.permision.edit',compact('data'));
     }
 

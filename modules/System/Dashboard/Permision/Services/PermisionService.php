@@ -24,7 +24,13 @@ class PermisionService extends Service
     }
 
     public function store($input){
+        dd($input);
         return $create;
+    }
+    public function edit($input){
+        $data = $this->find('id',$input['id']);
+        dd($data);
+        return $data;
     }
 
 }
