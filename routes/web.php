@@ -3,6 +3,7 @@
 //Client
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
+use Modules\Client\Auth\Controllers\RegisterController;
 use Modules\Client\Page\About\Controllers\AboutController;
 use Modules\Client\Page\DataFinancial\Controllers\DataFinancialController as ClientDataFinancialController;
 use Modules\Client\Page\Des\Controllers\DesController;
@@ -69,14 +70,15 @@ Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
 // Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
 // Route::get('/register', [RegisterController::class, 'registerIntroduce']);
 
+Auth::routes();
 Route::prefix('register')->group(function () {
-    Route::get('', [RegisterController::class, 'index'])->name('register');
+    Route::get('', [RegisterController::class, 'index']);
     Route::get('tab1', [RegisterController::class, 'tab1']);
     Route::get('tab2', [RegisterController::class, 'tab2']);
     Route::get('tab3', [RegisterController::class, 'tab3']);
     Route::get('tab4', [RegisterController::class, 'tab4']);
+    Route::get('checkEmail', [RegisterController::class, 'checkEmail']);
 });
-
 
 Route::get('/dangky/{id}', [UserController::class, 'registerIntroduce']);
 
@@ -312,7 +314,6 @@ Route::prefix('/client')->group(function () {
     });
 });
  
-// Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 

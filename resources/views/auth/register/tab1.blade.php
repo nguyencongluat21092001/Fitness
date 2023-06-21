@@ -12,7 +12,7 @@
             </div>
             <div class="form-wrapper col-md-4">
                 <label for="">Email <span class="request_star">*</span></label>
-                <input placeholder="Nhập Email..." id="email" type="email" class="form-control" name="email" value="">
+                <input placeholder="Nhập Email..." id="email" type="email" class="form-control" name="email" onchange="JS_Register.checkEmail()">
             </div>
             <div class="form-wrapper col-md-4">
                 <label for="">Số điện thoại <span class="request_star">*</span></label>
