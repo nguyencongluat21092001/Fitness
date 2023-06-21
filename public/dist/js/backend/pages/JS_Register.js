@@ -3,6 +3,7 @@ function JS_Register(baseUrl, module, controller) {
     this.baseUrl = baseUrl;
     this.controller = controller;
     this.urlPath = baseUrl + '/' + module + '/' + controller;
+    this.email;
 }
 
 /**
@@ -175,6 +176,7 @@ JS_Register.prototype.Tab1 = function(){
     $(oForm).find("#tab2-register").hide();
     $(oForm).find("#tab3-register").hide();
     $(oForm).find("#tab4-register").hide();
+    $(".step2").removeClass('active');
 }
 /**
  * Chuyển tab 2
@@ -182,6 +184,7 @@ JS_Register.prototype.Tab1 = function(){
 JS_Register.prototype.Tab2 = function(){
     var oForm = '#frmRegister';
     var myClass = this;
+    var email = $(oForm).find("#email").val();
     var regexEmail = /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
     var regexPhone = /(84|0[3|5|7|8|9])+([0-9]{8})/;
     if($(oForm).find("#name").val() == ''){
@@ -194,12 +197,12 @@ JS_Register.prototype.Tab2 = function(){
         $(oForm).find("#dateBirth").focus();
         return false;
     }
-    if($(oForm).find("#email").val() == ''){
+    if(email == ''){
         NclLib.alerMesage('Email không được để trống!', 'warning', '#f5ae67');
         $(oForm).find("#email").focus();
         return false;
     }
-    if(!$(oForm).find("#email").val().match(regexEmail)){
+    if(!email.match(regexEmail)){
         NclLib.alerMesage('Email không đúng định dạng!', 'warning', '#f5ae67');
         $(oForm).find("#email").focus();
         return false;
@@ -214,22 +217,34 @@ JS_Register.prototype.Tab2 = function(){
         $(oForm).find("#phone").focus();
         return false;
     }
-    $(oForm).find("#tab1-register").hide();
-    $(oForm).find("#tab3-register").hide();
-    $(oForm).find("#tab4-register").hide();
-    if($(oForm).find("#tab2-register").html() == ''){
+    if($(oForm).find("#tab2-register").html() == '' || email != this.email){
         var url = myClass.baseUrl + '/register/tab2';
         $.ajax({
             url: url,
             type: "GET",
+            data: $(oForm).serialize(),
             success: function(arrResult){
+                if(arrResult['success'] == false){
+                    NclLib.alerMesage(arrResult['message'], 'warning', '#f5ae67');
+                    return false;
+                }
+                myClass.checkEmail(email);
                 $(oForm).find("#tab2-register").html(arrResult);
-                $(".step2").addClass('active');
                 $(oForm).find("#tab2-register").show();
+                $(".step2").addClass('active');
+                $(".step3").removeClass('active');
+                $(oForm).find("#tab1-register").hide();
+                $(oForm).find("#tab3-register").hide();
+                $(oForm).find("#tab4-register").hide();
             }
         });
     }else{
         $(oForm).find("#tab2-register").show();
+        $(".step2").addClass('active');
+        $(".step3").removeClass('active');
+        $(oForm).find("#tab1-register").hide();
+        $(oForm).find("#tab3-register").hide();
+        $(oForm).find("#tab4-register").hide();
     }
 }
 /**
@@ -253,9 +268,6 @@ JS_Register.prototype.Tab3 = function(){
         $(oForm).find("#repass").focus();
         return false;
     }
-    $(oForm).find("#tab1-register").hide();
-    $(oForm).find("#tab2-register").hide();
-    $(oForm).find("#tab4-register").hide();
     var url = myClass.baseUrl + '/register/tab3';
     var data = $(oForm).serialize();
     $.ajax({
@@ -266,6 +278,9 @@ JS_Register.prototype.Tab3 = function(){
             $(oForm).find("#tab3-register").html(arrResult);
             $(".step3").addClass('active');
             $(oForm).find("#tab3-register").show();
+            $(oForm).find("#tab1-register").hide();
+            $(oForm).find("#tab2-register").hide();
+            $(oForm).find("#tab4-register").hide();
         }
     });
 }
@@ -275,9 +290,6 @@ JS_Register.prototype.Tab3 = function(){
 JS_Register.prototype.Tab4 = function(){
     var oForm = '#frmRegister';
     var myClass = this;
-    $(oForm).find("#tab1-register").hide();
-    $(oForm).find("#tab2-register").hide();
-    $(oForm).find("#tab3-register").hide();
     var url = myClass.baseUrl + '/register/tab4';
     var data = $(oForm).serialize();
     $.ajax({
@@ -292,6 +304,9 @@ JS_Register.prototype.Tab4 = function(){
             $(oForm).find("#tab4-register").html(arrResult);
             $(".step4").addClass('active');
             $(oForm).find("#tab4-register").show();
+            $(oForm).find("#tab1-register").hide();
+            $(oForm).find("#tab2-register").hide();
+            $(oForm).find("#tab3-register").hide();
         }, error: function(e){
             console.log(e)
         }
@@ -328,4 +343,10 @@ JS_Register.prototype.getPersonnel = function () {
 
         }
     });
+}
+/**
+ * Check email
+ */
+JS_Register.prototype.checkEmail = function(email = ''){
+    this.email = email;
 }

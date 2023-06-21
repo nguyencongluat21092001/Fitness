@@ -27,8 +27,13 @@ class RegisterController extends Controller
     {
         return view('auth.register.tab1');
     }
-    public function tab2()
+    public function tab2(Request $request)
     {
+        $arrInput = $request->all();
+        $user = $this->userService->where('email', $arrInput['email'])->first();
+        if(!empty($user)){
+            return array('success' => false, 'message' => 'Email đã tồn tại!');
+        }
         return view('auth.register.tab2');
     }
     public function tab3(Request $request)

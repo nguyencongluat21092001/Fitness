@@ -188,13 +188,13 @@ class UserService extends Service
            }
            return $data;
        }catch (\Exception $e) {
-           if($data['datas'] == null || $data['datas'] == ''){
+        //    if($data['datas'] == null || $data['datas'] == ''){
                return false;
                // $data['datas']['message'] = [
                //     "message" => 'Lỗi xảy ra - liên hệ đội ngũ hỗ trợ qua hotline: 0386358006'
                // ];
-           }
-           return $data;
+        //    }
+        //    return $data;
        }
    }
 
