@@ -15,7 +15,7 @@
                 <a href="{{url('login')}}" style="color: #fff;text-decoration: none;">Đăng nhập</a>
             </button>
             <button type="button" class="btn-primary" style="background-color: #731b1bde">
-                <a href="" style="color: #fff;text-decoration: none;">Xem đặc quyền hội viên</a>
+                <a href="{{url('/client/privileges/index')}}" style="color: #fff;text-decoration: none;">Xem đặc quyền hội viên</a>
             </button>
         </div>
     </div>

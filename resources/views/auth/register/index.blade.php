@@ -26,11 +26,9 @@
 </style>
 <div class="container mt-2 mb-2">
     <div class="row justify-content-center">
-        <div class="col-md-12">
-            @include('auth.register.step')
-        </div>
-        <div class="col-md-8 mt-3">
-            <div class="card">
+       
+        <div class="col-md-10 mt-3">
+            <div class="">
                 <form id="frmRegister">
                     <input type="hidden" name="_token" id="_token" value="{{csrf_token()}}">
                     <div id="tab1-register">@include('auth.register.tab1')</div>
@@ -40,9 +38,11 @@
                 </form>
                 <!-- <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg'); display: flex; justify-content: center;"></div> -->
             </div>
-
-
+            <div class="col-md-12">
+            @include('auth.register.step')
         </div>
+        </div>
+        
     </div>
 </div>
 <link rel="stylesheet" href="../assets/css/sweetalert2.min.css" />

@@ -86,7 +86,7 @@
               </tr>
           </thead>
             <tbody id="body_data">
-            @if(auth::check())
+            @if(Auth::check())
             @foreach ($datas as $key => $data)
                  @php $id = $data->id; @endphp
                 <tr>

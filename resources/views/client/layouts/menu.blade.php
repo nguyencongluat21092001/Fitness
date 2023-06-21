@@ -1,3 +1,9 @@
+<style>
+    .nav-link:hover{
+        background: #ffffff;
+        color: #00b609 !important
+    }
+</style>
 <div class="" style="border-radius: 50px;margin:auto">
     <ul class="nav navbar-nav d-flex justify-content-between text-center text-dark">
         @foreach($menuItems as $key => $value)
