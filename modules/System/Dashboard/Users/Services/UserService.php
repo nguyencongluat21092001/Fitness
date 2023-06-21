@@ -154,7 +154,8 @@ class UserService extends Service
         }
         $otp_sms = $zenData['otp'];
         $phone = $zenData['phone'];
-        $sendOtp = $this->sendOtp($phone,$otp_sms);
+         $sendOtp = true;
+        // $sendOtp = $this->sendOtp($phone,$otp_sms);
         if($sendOtp){
             return array('success' => true, 'message' => 'Mã xác thực của bạn đã được gửi qua số điện thoại: '.$input['phone'].'. Vui lòng kiểm tra tin nhắn!');
         }else{

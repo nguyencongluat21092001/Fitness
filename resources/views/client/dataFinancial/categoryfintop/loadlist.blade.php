@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            @if(auth::check())
+            @if(Auth::check())
             @foreach ($datas as $key => $data)
                 <tr >
                     <td align="center" >{{ $key + 1 }}</td>

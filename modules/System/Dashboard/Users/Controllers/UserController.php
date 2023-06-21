@@ -264,7 +264,7 @@ class UserController extends Controller
             $data['user_introduce'] = $checkUser['id_personnel'];
             $data['user_introduce_name'] = $checkUser['name'];
             $data['user_introduce_id'] = $checkUser['id_personnel'];
-            return view('auth.register',compact('data'));
+            return view('auth.register.index',compact('data'));
         }else{
             return view('dashboard.home.404_registerUserCode');
         }

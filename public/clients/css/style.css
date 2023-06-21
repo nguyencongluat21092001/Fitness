@@ -219,12 +219,12 @@ button {
 }
 
 .registration-step__item::before {
-    width: 3.5rem;
-    height: 3.5rem;
+    width: 2rem;
+    height: 2rem;
     counter-increment: item-counter;
     content: counter(item-counter);
     font-size: 1.6rem;
-    background-color: #ddd;
+    background-color: #fa6b7f;
     color: #fff;
     border-radius: 50%;
     align-items: center;
@@ -238,5 +238,11 @@ button {
     font-size: 1.3rem;
 }
 .registration-step__item.active::before{
-  background: #731b1bde;
+  background: #2cbf00;
+}
+.text-center ,.registration-step{
+  font-family: "Muli-Regular";
+}
+.card-header{
+  background: #ffc827;
 }

@@ -40,7 +40,7 @@
                 </tr>
             </thead>
             <tbody id="body_data">
-                @if(auth::check())
+                @if(Auth::check())
                     @php $id = 1; @endphp
                     <tr id="code_1">
                         <td  style="vertical-align: middle;color:#83beff" align="center">

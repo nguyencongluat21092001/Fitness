@@ -17,7 +17,7 @@ NclLib.prototype.alerMesage = function(nameMessage,icon,color){
       color: color,
       showConfirmButton: false,
       width:'30%',
-      timer: 2500
+      timer: 25555500
     })
 }
 NclLib.prototype.alertMessageBackend = function(type, label, message, s = 30000) {
