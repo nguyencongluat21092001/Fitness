@@ -29,6 +29,7 @@ use Modules\System\Dashboard\Recommended\Controllers\RecommendedController;
 use Modules\System\Dashboard\Signal\Controllers\SignalController;
 use Modules\System\Dashboard\Users\Controllers\UserController;
 use Modules\System\Dashboard\Permision\Controllers\PermisionController;
+use Modules\Client\Auth\Controllers\RegisterController;
 
 
 
@@ -66,7 +67,15 @@ Route::get('/system/login', [LoginController::class, 'logout'])->name('fromLogin
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
 // Route::post('register/send-otp/sent_OTP', [UserController::class, 'sent_OTP']);
-Route::get('/register', [RegisterController::class, 'registerIntroduce']);
+// Route::get('/register', [RegisterController::class, 'registerIntroduce']);
+
+Route::prefix('register')->group(function () {
+    Route::get('', [RegisterController::class, 'index'])->name('register');
+    Route::get('tab1', [RegisterController::class, 'tab1']);
+    Route::get('tab2', [RegisterController::class, 'tab2']);
+    Route::get('tab3', [RegisterController::class, 'tab3']);
+    Route::get('tab4', [RegisterController::class, 'tab4']);
+});
 
 
 Route::get('/dangky/{id}', [UserController::class, 'registerIntroduce']);
@@ -303,7 +312,7 @@ Route::prefix('/client')->group(function () {
     });
 });
  
-Auth::routes();
+// Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/test/{userInfo_id}', [App\Http\Controllers\HomeController::class, 'editTest']);
 

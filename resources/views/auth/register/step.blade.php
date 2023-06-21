@@ -1,26 +1,33 @@
-<div class="card">
-    <div class="card-header">
-        <h2 class="text-center">Các bước để hoàn thành đăng ký</h2>
-    </div>
-    <div class="card-body">
+<link rel="stylesheet" href="../clients/css/style.css">
 
-        <div class="registration-step">
-            <div class="registration-step__group">
+<div class="card" style="background:#000000d6 !important">
+    <div class="card-header">
+        <h3 class="text-center">Các bước đăng ký mở tài khoản</h2>
+    </div>
+    <div class="card-body registration-step">
+        <div class="row registration-step__group">
+            <div class="form-wrapper col-md-3">
                 <div class="registration-step__item step1 active">
                     <div class="registration-step__title">
                         <span>Thông tin cơ bản</span>
                     </div>
                 </div>
+            </div>
+            <div class="form-wrapper col-md-3">
                 <div class="registration-step__item step2">
                     <div class="registration-step__title">
                         <span>Thông tin tài khoản</span>
                     </div>
                 </div>
+            </div>
+            <div class="form-wrapper col-md-3">
                 <div class="registration-step__item step3">
                     <div class="registration-step__title">
                         <span>Xác thực thông tin</span>
                     </div>
                 </div>
+            </div>
+            <div class="form-wrapper col-md-3">
                 <div class="registration-step__item step4">
                     <div class="registration-step__title">
                         <span>Thành công</span>
